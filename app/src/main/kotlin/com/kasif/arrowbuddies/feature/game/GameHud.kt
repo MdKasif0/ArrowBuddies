@@ -6,6 +6,8 @@ import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -163,15 +165,24 @@ fun GameBottomControls(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        // Dev Level Quick Switcher Chips
+        // Dev Level Quick Switcher Chips (Dev 1 to Dev 9)
         Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             val devLevels = listOf(
                 "w1-l01-dev" to "1",
                 "w1-l02-dev" to "2",
-                "w1-l03-dev" to "3"
+                "w1-l03-dev" to "3",
+                "w2-l04-dev" to "4",
+                "w3-l05-dev" to "5",
+                "w4-l06-dev" to "6",
+                "w5-l07-dev" to "7",
+                "w6-l08-dev" to "8",
+                "w7-l09-dev" to "9"
             )
             for ((id, num) in devLevels) {
                 val isSelected = currentLevelId == id || currentLevelId == num
