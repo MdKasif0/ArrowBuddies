@@ -34,6 +34,7 @@ class SettingsViewModelTest {
         override val soundEnabled: Flow<Boolean> = soundFlow
         override val musicEnabled: Flow<Boolean> = musicFlow
         override val hapticsEnabled: Flow<Boolean> = hapticsFlow
+        override fun isMechanicSeen(mechanic: String): Flow<Boolean> = kotlinx.coroutines.flow.flowOf(true)
 
         override suspend fun setSoundEnabled(enabled: Boolean) {
             soundFlow.value = enabled
@@ -46,6 +47,8 @@ class SettingsViewModelTest {
         override suspend fun setHapticsEnabled(enabled: Boolean) {
             hapticsFlow.value = enabled
         }
+
+        override suspend fun setMechanicSeen(mechanic: String) {}
     }
 
     private class FakeSoundManager : SoundManager {

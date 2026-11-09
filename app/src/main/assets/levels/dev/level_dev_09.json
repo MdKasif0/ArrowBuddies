@@ -1,0 +1,41 @@
+{
+  "id": "w7-l09-dev",
+  "world": 7,
+  "index": 9,
+  "cols": 5,
+  "rows": 6,
+  "grid": [
+    ".....",
+    ".T...",
+    "...M.",
+    ".1.1.",
+    ".....",
+    "....."
+  ],
+  "buddies": [
+    {
+      "x": 1,
+      "y": 4,
+      "d": "U",
+      "s": "CAMEL",
+      "id": "camel_1",
+      "keyColor": "gold"
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "d": "U",
+      "s": "FENNEC_FOX",
+      "id": "fennec_1",
+      "cageColor": "gold"
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "d": "U",
+      "s": "MEERKAT",
+      "id": "meerkat_1",
+      "sleepy": true
+    }
+  ]
+}

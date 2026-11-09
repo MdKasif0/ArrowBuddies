@@ -356,6 +356,252 @@ class GameEngineTest {
         assertThat(outcome.newState.hearts).isEqualTo(3)
     }
 
+    // ==========================================
+    // STEP 6: MECHANICS UNIT TESTS
+    // ==========================================
+
+    @Test
+    fun `buddy continues from mud in same direction on next tap and escapes`() {
+        val mudPos = Pos(2, 2)
+        val buddy = Buddy(id = "b1", species = "PUPPY", pos = Pos(2, 4), dir = Direction.UP)
+        val state = GameState.fromLevel(createEmptyLevel(tiles = mapOf(mudPos to Tile.Mud), buddies = listOf(buddy)))
+
+        // 1st tap: stops on mud
+        val outcome1 = GameEngine.tap(state, "b1")
+        assertThat(outcome1.result).isInstanceOf(MoveResult.Stopped::class.java)
+        assertThat(outcome1.newState.buddyAt(mudPos)?.id).isEqualTo("b1")
+
+        // 2nd tap: continues from mud in Direction.UP and escapes
+        val outcome2 = GameEngine.tap(outcome1.newState, "b1")
+        assertThat(outcome2.result).isInstanceOf(MoveResult.Escaped::class.java)
+        val escaped = outcome2.result as MoveResult.Escaped
+        assertThat(escaped.exitSide).isEqualTo(Direction.UP)
+        assertThat(outcome2.newState.buddies).isEmpty()
+    }
+
+    @Test
+    fun `buddy on mud blocks another buddy moving towards that cell`() {
+        val mudPos = Pos(2, 2)
+        val buddyOnMud = Buddy(id = "b1", species = "PUPPY", pos = mudPos, dir = Direction.UP)
+        val buddy2 = Buddy(id = "b2", species = "CALF", pos = Pos(2, 4), dir = Direction.UP)
+        val state = GameState.fromLevel(
+            createEmptyLevel(
+                tiles = mapOf(mudPos to Tile.Mud),
+                buddies = listOf(buddyOnMud, buddy2)
+            )
+        )
+
+        // b2 tries to move UP through (2,2) -> blocked by b1 -> bonk!
+        val outcome = GameEngine.tap(state, "b2")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Bonked::class.java)
+        val bonked = outcome.result as MoveResult.Bonked
+        assertThat(bonked.blockerKind).isEqualTo(BlockerKind.BUDDY)
+        assertThat(bonked.blockerPos).isEqualTo(mudPos)
+    }
+
+    @Test
+    fun `key carrier buddy escaping unlocks all cages of matching color`() {
+        val keyBuddy = Buddy(id = "key_gold", species = "PENGUIN", pos = Pos(0, 1), dir = Direction.LEFT, keyColor = "gold")
+        val caged1 = Buddy(id = "caged_1", species = "ARCTIC_FOX", pos = Pos(2, 2), dir = Direction.UP, cageColor = "gold")
+        val caged2 = Buddy(id = "caged_2", species = "POLAR_CUB", pos = Pos(3, 3), dir = Direction.RIGHT, cageColor = "ruby")
+
+        val state = GameState.fromLevel(createEmptyLevel(buddies = listOf(keyBuddy, caged1, caged2)))
+
+        // Tap keyBuddy -> escapes -> unlocks gold cage
+        val outcome = GameEngine.tap(state, "key_gold")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Escaped::class.java)
+
+        val updatedCaged1 = outcome.newState.findBuddy("caged_1")
+        val updatedCaged2 = outcome.newState.findBuddy("caged_2")
+        assertThat(updatedCaged1?.cageColor).isNull() // Unlocked!
+        assertThat(updatedCaged2?.cageColor).isEqualTo("ruby") // Still locked
+
+        // Now caged1 can move!
+        val outcome2 = GameEngine.tap(outcome.newState, "caged_1")
+        assertThat(outcome2.result).isInstanceOf(MoveResult.Escaped::class.java)
+    }
+
+    @Test
+    fun `blocked portal exit causes bonk returning buddy to start cell`() {
+        val portal1 = Pos(1, 1)
+        val portal2 = Pos(3, 3)
+        val tiles = mapOf(
+            portal1 to Tile.Portal(pairId = 1),
+            portal2 to Tile.Portal(pairId = 1)
+        )
+        val movingBuddy = Buddy(id = "m1", species = "OTTER", pos = Pos(1, 3), dir = Direction.UP)
+        val blockingBuddy = Buddy(id = "b_block", species = "CRAB", pos = portal2, dir = Direction.RIGHT)
+
+        val state = GameState.fromLevel(createEmptyLevel(tiles = tiles, buddies = listOf(movingBuddy, blockingBuddy)))
+
+        val outcome = GameEngine.tap(state, "m1")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Bonked::class.java)
+        val bonked = outcome.result as MoveResult.Bonked
+        assertThat(bonked.blockerKind).isEqualTo(BlockerKind.BUDDY)
+        assertThat(bonked.blockerPos).isEqualTo(portal2)
+        // Buddy returns to start cell
+        assertThat(outcome.newState.findBuddy("m1")?.pos).isEqualTo(Pos(1, 3))
+    }
+
+    @Test
+    fun `portal exit next to board edge escapes immediately`() {
+        val portal1 = Pos(2, 2)
+        val portal2 = Pos(2, 0) // On top row of 5x5 board (cols=5, rows=5), facing UP -> exits immediately!
+        val tiles = mapOf(
+            portal1 to Tile.Portal(pairId = 2),
+            portal2 to Tile.Portal(pairId = 2)
+        )
+        val buddy = Buddy(id = "b1", species = "TURTLE", pos = Pos(2, 4), dir = Direction.UP)
+        // (2,4) UP -> enters (2,2) Portal 2 -> teleports to (2,0) Portal 2 -> faces UP -> exits UP!
+        val state = GameState.fromLevel(createEmptyLevel(tiles = tiles, buddies = listOf(buddy)))
+
+        val outcome = GameEngine.tap(state, "b1")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Escaped::class.java)
+        val escaped = outcome.result as MoveResult.Escaped
+        assertThat(escaped.path.last().event).isEqualTo(StepEvent.TELEPORT)
+    }
+
+    @Test
+    fun `sleepy buddy wakes up when orthogonal neighbor escapes`() {
+        val sleepy = Buddy(id = "sleepy_1", species = "OWL", pos = Pos(2, 2), dir = Direction.UP, sleepy = true)
+        val neighbor = Buddy(id = "neighbor", species = "HEDGEHOG", pos = Pos(2, 1), dir = Direction.UP)
+        val state = GameState.fromLevel(createEmptyLevel(buddies = listOf(sleepy, neighbor)))
+
+        // Tap neighbor -> escapes -> vacates (2,1), orthogonal to (2,2)
+        val outcome = GameEngine.tap(state, "neighbor")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Escaped::class.java)
+
+        val updatedSleepy = outcome.newState.findBuddy("sleepy_1")
+        assertThat(updatedSleepy?.sleepy).isFalse() // Woken up!
+
+        // Now sleepy buddy can move!
+        val outcome2 = GameEngine.tap(outcome.newState, "sleepy_1")
+        assertThat(outcome2.result).isInstanceOf(MoveResult.Escaped::class.java)
+    }
+
+    @Test
+    fun `sleepy buddy wakes up when orthogonal neighbor moves to mud`() {
+        val mudPos = Pos(1, 1)
+        val sleepy = Buddy(id = "sleepy_1", species = "RACCOON", pos = Pos(2, 2), dir = Direction.UP, sleepy = true)
+        val neighbor = Buddy(id = "neighbor", species = "PUPPY", pos = Pos(2, 1), dir = Direction.LEFT)
+        val state = GameState.fromLevel(
+            createEmptyLevel(
+                tiles = mapOf(mudPos to Tile.Mud),
+                buddies = listOf(sleepy, neighbor)
+            )
+        )
+
+        // neighbor at (2,1) moves LEFT to mud at (1,1) -> vacates (2,1) -> wakes sleepy at (2,2)!
+        val outcome = GameEngine.tap(state, "neighbor")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Stopped::class.java)
+
+        val updatedSleepy = outcome.newState.findBuddy("sleepy_1")
+        assertThat(updatedSleepy?.sleepy).isFalse()
+    }
+
+    @Test
+    fun `sleepy buddy does not wake when diagonal non-orthogonal buddy leaves`() {
+        val sleepy = Buddy(id = "sleepy_1", species = "OWL", pos = Pos(2, 2), dir = Direction.UP, sleepy = true)
+        val diagonal = Buddy(id = "diag", species = "HEDGEHOG", pos = Pos(3, 3), dir = Direction.DOWN)
+        val state = GameState.fromLevel(createEmptyLevel(buddies = listOf(sleepy, diagonal)))
+
+        val outcome = GameEngine.tap(state, "diag")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Escaped::class.java)
+
+        val updatedSleepy = outcome.newState.findBuddy("sleepy_1")
+        assertThat(updatedSleepy?.sleepy).isTrue() // Remains asleep
+    }
+
+    @Test
+    fun `cross-mechanic mud then turntable`() {
+        val mudPos = Pos(2, 3)
+        val turnPos = Pos(2, 1)
+        val tiles = mapOf(
+            mudPos to Tile.Mud,
+            turnPos to Tile.Turntable
+        )
+        val buddy = Buddy(id = "b1", species = "MONKEY", pos = Pos(2, 4), dir = Direction.UP)
+        val state = GameState.fromLevel(createEmptyLevel(tiles = tiles, buddies = listOf(buddy)))
+
+        // Step 1: enters mud -> stops
+        val outcome1 = GameEngine.tap(state, "b1")
+        assertThat(outcome1.result).isInstanceOf(MoveResult.Stopped::class.java)
+
+        // Step 2: continues from mud in Direction.UP -> enters Turntable at (2,1) -> turns RIGHT -> exits RIGHT!
+        val outcome2 = GameEngine.tap(outcome1.newState, "b1")
+        assertThat(outcome2.result).isInstanceOf(MoveResult.Escaped::class.java)
+        val escaped = outcome2.result as MoveResult.Escaped
+        assertThat(escaped.exitSide).isEqualTo(Direction.RIGHT)
+    }
+
+    @Test
+    fun `cross-mechanic portal into mud`() {
+        val portal1 = Pos(1, 2)
+        val portal2 = Pos(3, 2)
+        val mudPos = Pos(4, 2)
+        val tiles = mapOf(
+            portal1 to Tile.Portal(pairId = 1),
+            portal2 to Tile.Portal(pairId = 1),
+            mudPos to Tile.Mud
+        )
+        val buddy = Buddy(id = "b1", species = "TURTLE", pos = Pos(0, 2), dir = Direction.RIGHT)
+        val state = GameState.fromLevel(createEmptyLevel(tiles = tiles, buddies = listOf(buddy)))
+
+        // Moves RIGHT -> enters Portal1 at (1,2) -> teleports to Portal2 at (3,2) -> enters Mud at (4,2) -> stops on mud!
+        val outcome = GameEngine.tap(state, "b1")
+        assertThat(outcome.result).isInstanceOf(MoveResult.Stopped::class.java)
+        assertThat(outcome.newState.buddyAt(mudPos)?.id).isEqualTo("b1")
+    }
+
+    @Test
+    fun `undo restores cage lock, sleep state, mud stop, and directions`() {
+        val mudPos = Pos(1, 1)
+        val keyBuddy = Buddy(id = "key", species = "PENGUIN", pos = Pos(0, 3), dir = Direction.LEFT, keyColor = "gold")
+        val caged = Buddy(id = "caged", species = "ARCTIC_FOX", pos = Pos(2, 2), dir = Direction.UP, cageColor = "gold")
+        val sleepy = Buddy(id = "sleepy", species = "OWL", pos = Pos(0, 2), dir = Direction.UP, sleepy = true)
+
+        val state = GameState.fromLevel(
+            createEmptyLevel(
+                tiles = mapOf(mudPos to Tile.Mud),
+                buddies = listOf(keyBuddy, caged, sleepy)
+            )
+        )
+
+        // Key buddy escapes -> unlocks caged and wakes sleepy (at (0,2), orthogonal to (0,3)!)
+        val afterMove = GameEngine.tap(state, "key")
+        assertThat(afterMove.newState.findBuddy("caged")?.cageColor).isNull()
+        assertThat(afterMove.newState.findBuddy("sleepy")?.sleepy).isFalse()
+
+        // Undo move
+        val undone = GameEngine.undo(afterMove.newState)
+        assertThat(undone).isNotNull()
+        assertThat(undone!!.findBuddy("caged")?.cageColor).isEqualTo("gold")
+        assertThat(undone.findBuddy("sleepy")?.sleepy).isTrue()
+        assertThat(undone.findBuddy("key")?.pos).isEqualTo(Pos(0, 3))
+    }
+
+    @Test
+    fun `peekPath traces full true path including turns and teleports`() {
+        val portal1 = Pos(1, 2)
+        val portal2 = Pos(3, 2)
+        val turnPos = Pos(4, 2)
+        val tiles = mapOf(
+            portal1 to Tile.Portal(pairId = 1),
+            portal2 to Tile.Portal(pairId = 1),
+            turnPos to Tile.Turntable
+        )
+        val buddy = Buddy(id = "b1", species = "TURTLE", pos = Pos(0, 2), dir = Direction.RIGHT)
+        val state = GameState.fromLevel(createEmptyLevel(tiles = tiles, buddies = listOf(buddy)))
+
+        val peek = GameEngine.peekPath(state, "b1")
+        assertThat(peek).isNotNull()
+        assertThat(peek!!.isEscape).isTrue()
+        // Path should include portal1 (1,2), portal2 (3,2), turntable (4,2), and exit to south (4,5)
+        assertThat(peek.steps).contains(portal1)
+        assertThat(peek.steps).contains(portal2)
+        assertThat(peek.steps).contains(turnPos)
+    }
+
     @Test
     fun `tap with unknown buddy ID is ignored`() {
         val state = GameState.fromLevel(createEmptyLevel())

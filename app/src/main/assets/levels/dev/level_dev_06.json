@@ -1,0 +1,39 @@
+{
+  "id": "w4-l06-dev",
+  "world": 4,
+  "index": 6,
+  "cols": 5,
+  "rows": 5,
+  "grid": [
+    ".....",
+    ".....",
+    ".....",
+    ".....",
+    "....."
+  ],
+  "buddies": [
+    {
+      "x": 1,
+      "y": 3,
+      "d": "L",
+      "s": "PENGUIN",
+      "id": "penguin_1",
+      "keyColor": "gold"
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "d": "U",
+      "s": "ARCTIC_FOX",
+      "id": "fox_1",
+      "cageColor": "gold"
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "d": "D",
+      "s": "POLAR_CUB",
+      "id": "polar_1"
+    }
+  ]
+}

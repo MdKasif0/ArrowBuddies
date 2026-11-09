@@ -42,6 +42,22 @@
     <string name="game_next_level">Next Level</string>
     <string name="game_dev_level_chip">Dev %1$s</string>
 
+    <!-- Mechanic Intro Dialogs & Bubbles -->
+    <string name="mechanic_intro_title">New Mechanic!</string>
+    <string name="mechanic_intro_got_it">Got It!</string>
+    <string name="mechanic_mud_title">Sticky Mud</string>
+    <string name="mechanic_mud_desc">Mud is sticky! Buddies stop here.</string>
+    <string name="mechanic_turntable_title">Turntable</string>
+    <string name="mechanic_turntable_desc">Turntables spin buddies 90° clockwise!</string>
+    <string name="mechanic_cage_title">Cage &amp; Key</string>
+    <string name="mechanic_cage_desc">Free the key buddy to unlock matching cages!</string>
+    <string name="mechanic_portal_title">Portals</string>
+    <string name="mechanic_portal_desc">Step into one portal to pop out of the other!</string>
+    <string name="mechanic_sleepy_title">Sleepy Buddies</string>
+    <string name="mechanic_sleepy_desc">Sleepy buddies wake up when a neighbor leaves!</string>
+    <string name="bubble_needs_key">Needs a key!</string>
+    <string name="bubble_sleepy_mumble">Zzz...</string>
+
     <!-- Buddy Gallery Controls -->
     <string name="gallery_expression_label">Expression</string>
     <string name="gallery_direction_label">Direction</string>

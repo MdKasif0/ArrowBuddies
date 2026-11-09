@@ -64,5 +64,15 @@ class GamePreferencesDataStore @Inject constructor(
             preferences[PreferencesKeys.HAPTICS_ENABLED] = enabled
         }
     }
+
+    fun isMechanicSeen(mechanic: String): Flow<Boolean> = context.dataStore.data.map { preferences ->
+        preferences[booleanPreferencesKey("mechanic_seen_$mechanic")] ?: false
+    }
+
+    suspend fun setMechanicSeen(mechanic: String) {
+        context.dataStore.edit { preferences ->
+            preferences[booleanPreferencesKey("mechanic_seen_$mechanic")] = true
+        }
+    }
 }
 

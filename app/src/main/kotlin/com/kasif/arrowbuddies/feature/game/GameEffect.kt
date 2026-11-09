@@ -52,3 +52,4 @@ sealed interface GameEffect {
         val type: SoundType
     ) : GameEffect
 }
+

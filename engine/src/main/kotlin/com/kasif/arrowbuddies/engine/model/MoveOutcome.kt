@@ -116,3 +116,17 @@ data class MoveOutcome(
     val result: MoveResult
 )
 
+/**
+ * Detailed path peek information computed by [com.kasif.arrowbuddies.engine.GameEngine.peekPath].
+ */
+@Serializable
+data class PeekingPath(
+    val buddyId: String,
+    val startPos: Pos,
+    val steps: List<Pos>,
+    val endPos: Pos,
+    val isEscape: Boolean,
+    val blockerKind: BlockerKind? = null,
+    val refusalReason: RefusalReason? = null
+)
+

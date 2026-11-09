@@ -7,6 +7,7 @@ import com.kasif.arrowbuddies.engine.model.GameState
 import com.kasif.arrowbuddies.engine.model.GameStatus
 import com.kasif.arrowbuddies.engine.model.MoveOutcome
 import com.kasif.arrowbuddies.engine.model.MoveResult
+import com.kasif.arrowbuddies.engine.model.PeekingPath
 import com.kasif.arrowbuddies.engine.model.Pos
 import com.kasif.arrowbuddies.engine.model.RefusalReason
 import com.kasif.arrowbuddies.engine.model.Step
@@ -58,7 +59,26 @@ object GameEngine {
 
             // A. Did the buddy reach beyond the board boundaries? -> ESCAPED!
             if (!state.level.isInside(nextPos)) {
-                val newBuddies = state.buddies.filter { it.id != buddy.id }
+                val remainingBuddies = state.buddies.filter { it.id != buddy.id }
+
+                // World 4: Unlock cages matching keyColor
+                val unlockedBuddies = if (buddy.keyColor != null) {
+                    remainingBuddies.map {
+                        if (it.cageColor == buddy.keyColor) it.copy(cageColor = null) else it
+                    }
+                } else {
+                    remainingBuddies
+                }
+
+                // World 6: Wake sleepy orthogonal neighbors of vacated starting cell
+                val newBuddies = unlockedBuddies.map {
+                    if (it.sleepy && it.pos.isOrthogonalTo(buddy.pos)) {
+                        it.copy(sleepy = false)
+                    } else {
+                        it
+                    }
+                }
+
                 val newRescuedIds = state.rescuedIds + buddy.id
                 val newStatus = if (newBuddies.isEmpty()) GameStatus.WON else GameStatus.PLAYING
 
@@ -104,7 +124,15 @@ object GameEngine {
                     // Mud stops buddy on it safely (valid move, no heart lost)
                     path.add(Step(pos = nextPos, dirAfter = currentDir, event = StepEvent.STOP))
                     val updatedBuddy = buddy.copy(pos = nextPos, dir = currentDir)
-                    val newBuddies = state.buddies.map { if (it.id == buddy.id) updatedBuddy else it }
+
+                    // World 6: If buddy left its initial cell, wake its orthogonal sleepy neighbors
+                    val newBuddies = state.buddies.map {
+                        when {
+                            it.id == buddy.id -> updatedBuddy
+                            it.sleepy && nextPos != buddy.pos && it.pos.isOrthogonalTo(buddy.pos) -> it.copy(sleepy = false)
+                            else -> it
+                        }
+                    }
 
                     val historyEntry = state.copy(history = emptyList())
                     val nextState = state.copy(
@@ -136,9 +164,25 @@ object GameEngine {
                 }
 
                 is Tile.Portal -> {
-                    // Teleport through portal pair
+                    // 1. Enter portal A
+                    path.add(Step(pos = nextPos, dirAfter = currentDir, event = StepEvent.NONE))
+
+                    // 2. Locate twin portal B
                     val twins = state.level.portalPositions(tile.pairId)
                     val exitPos = twins.firstOrNull { it != nextPos } ?: nextPos
+
+                    // 3. Blocked exit check: Is another buddy occupying portal B?
+                    val blockerAtExit = state.buddyAt(exitPos)
+                    if (blockerAtExit != null && blockerAtExit.id != buddy.id) {
+                        return executeBonk(
+                            state = state,
+                            path = path,
+                            blockerPos = exitPos,
+                            blockerKind = BlockerKind.BUDDY
+                        )
+                    }
+
+                    // 4. Teleport step at portal B
                     currentPos = exitPos
                     path.add(Step(pos = currentPos, dirAfter = currentDir, event = StepEvent.TELEPORT))
 
@@ -226,6 +270,160 @@ object GameEngine {
         return state.buddies.filter { buddy ->
             val outcome = tap(state, buddy.id)
             outcome.result is MoveResult.Escaped || outcome.result is MoveResult.Stopped
+        }
+    }
+
+    /**
+     * Simulates and computes the full path peek for [buddyId] without mutating game state.
+     * Traces turns through turntables, teleports through portals, stops on mud,
+     * and identifies blockers (rock, buddy, loop) or successful escape.
+     */
+    fun peekPath(state: GameState, buddyId: String): PeekingPath? {
+        if (state.status != GameStatus.PLAYING) return null
+        val buddy = state.findBuddy(buddyId) ?: return null
+
+        if (buddy.cageColor != null) {
+            return PeekingPath(
+                buddyId = buddy.id,
+                startPos = buddy.pos,
+                steps = emptyList(),
+                endPos = buddy.pos,
+                isEscape = false,
+                refusalReason = RefusalReason.CAGED
+            )
+        }
+
+        if (buddy.sleepy) {
+            return PeekingPath(
+                buddyId = buddy.id,
+                startPos = buddy.pos,
+                steps = emptyList(),
+                endPos = buddy.pos,
+                isEscape = false,
+                refusalReason = RefusalReason.SLEEPY
+            )
+        }
+
+        val steps = mutableListOf<Pos>()
+        var currentPos = buddy.pos
+        var currentDir = buddy.dir
+        val visited = mutableSetOf<Pair<Pos, Direction>>()
+        visited.add(currentPos to currentDir)
+
+        while (true) {
+            val nextPos = currentPos + currentDir
+
+            // Beyond edge = escape!
+            if (!state.level.isInside(nextPos)) {
+                steps.add(nextPos)
+                return PeekingPath(
+                    buddyId = buddy.id,
+                    startPos = buddy.pos,
+                    steps = steps,
+                    endPos = nextPos,
+                    isEscape = true
+                )
+            }
+
+            // Blocker buddy
+            val blockerBuddy = state.buddyAt(nextPos)
+            if (blockerBuddy != null && blockerBuddy.id != buddy.id) {
+                steps.add(nextPos)
+                return PeekingPath(
+                    buddyId = buddy.id,
+                    startPos = buddy.pos,
+                    steps = steps,
+                    endPos = nextPos,
+                    isEscape = false,
+                    blockerKind = BlockerKind.BUDDY
+                )
+            }
+
+            when (val tile = state.level.tileAt(nextPos)) {
+                is Tile.Rock -> {
+                    steps.add(nextPos)
+                    return PeekingPath(
+                        buddyId = buddy.id,
+                        startPos = buddy.pos,
+                        steps = steps,
+                        endPos = nextPos,
+                        isEscape = false,
+                        blockerKind = BlockerKind.ROCK
+                    )
+                }
+
+                is Tile.Mud -> {
+                    steps.add(nextPos)
+                    return PeekingPath(
+                        buddyId = buddy.id,
+                        startPos = buddy.pos,
+                        steps = steps,
+                        endPos = nextPos,
+                        isEscape = true
+                    )
+                }
+
+                is Tile.Turntable -> {
+                    steps.add(nextPos)
+                    currentDir = currentDir.turnClockwise90()
+                    currentPos = nextPos
+                    if (!visited.add(currentPos to currentDir)) {
+                        return PeekingPath(
+                            buddyId = buddy.id,
+                            startPos = buddy.pos,
+                            steps = steps,
+                            endPos = nextPos,
+                            isEscape = false,
+                            blockerKind = BlockerKind.LOOP
+                        )
+                    }
+                }
+
+                is Tile.Portal -> {
+                    steps.add(nextPos)
+                    val twins = state.level.portalPositions(tile.pairId)
+                    val exitPos = twins.firstOrNull { it != nextPos } ?: nextPos
+                    val blockerAtExit = state.buddyAt(exitPos)
+                    if (blockerAtExit != null && blockerAtExit.id != buddy.id) {
+                        steps.add(exitPos)
+                        return PeekingPath(
+                            buddyId = buddy.id,
+                            startPos = buddy.pos,
+                            steps = steps,
+                            endPos = exitPos,
+                            isEscape = false,
+                            blockerKind = BlockerKind.BUDDY
+                        )
+                    }
+                    steps.add(exitPos)
+                    currentPos = exitPos
+                    if (!visited.add(currentPos to currentDir)) {
+                        return PeekingPath(
+                            buddyId = buddy.id,
+                            startPos = buddy.pos,
+                            steps = steps,
+                            endPos = nextPos,
+                            isEscape = false,
+                            blockerKind = BlockerKind.LOOP
+                        )
+                    }
+                }
+
+                is Tile.Empty -> {
+                    steps.add(nextPos)
+                    currentPos = nextPos
+                    if (!visited.add(currentPos to currentDir)) {
+                        return PeekingPath(
+                            buddyId = buddy.id,
+                            startPos = buddy.pos,
+                            steps = steps,
+                            endPos = nextPos,
+                            isEscape = false,
+                            blockerKind = BlockerKind.LOOP
+                        )
+                    }
+                }
+            }
         }
     }
 }

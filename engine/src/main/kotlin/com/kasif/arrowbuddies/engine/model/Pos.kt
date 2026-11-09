@@ -26,6 +26,15 @@ data class Pos(
      */
     operator fun minus(other: Pos): Pos = Pos(x - other.x, y - other.y)
 
+    /**
+     * True if [other] is orthogonally adjacent (Manhattan distance == 1).
+     */
+    fun isOrthogonalTo(other: Pos): Boolean {
+        val dx = kotlin.math.abs(x - other.x)
+        val dy = kotlin.math.abs(y - other.y)
+        return (dx == 1 && dy == 0) || (dx == 0 && dy == 1)
+    }
+
     override fun toString(): String = "($x, $y)"
 }
 

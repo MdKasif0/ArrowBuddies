@@ -42,6 +42,22 @@
     <string name="game_next_level">अगला स्तर</string>
     <string name="game_dev_level_chip">डेव %1$s</string>
 
+    <!-- Mechanic Intro Dialogs & Bubbles -->
+    <string name="mechanic_intro_title">नया तत्व!</string>
+    <string name="mechanic_intro_got_it">समझ गया!</string>
+    <string name="mechanic_mud_title">चिपचिपा कीचड़</string>
+    <string name="mechanic_mud_desc">कीचड़ चिपचिपा है! साथी यहाँ रुकते हैं।</string>
+    <string name="mechanic_turntable_title">घूर्णक चक्र</string>
+    <string name="mechanic_turntable_desc">घूर्णक चक्र साथियों को 90° दक्षिणावर्त घुमाते हैं!</string>
+    <string name="mechanic_cage_title">पिंजरा और चाबी</string>
+    <string name="mechanic_cage_desc">मिलते-जुलते पिंजरे खोलने के लिए चाबी वाले साथी को छुड़ाएँ!</string>
+    <string name="mechanic_portal_title">सुरंग द्वार</string>
+    <string name="mechanic_portal_desc">एक द्वार में प्रवेश करें और दूसरे से बाहर निकलें!</string>
+    <string name="mechanic_sleepy_title">सोए हुए साथी</string>
+    <string name="mechanic_sleepy_desc">पड़ोसी के जाते ही सोए हुए साथी जाग जाते हैं!</string>
+    <string name="bubble_needs_key">चाबी चाहिए!</string>
+    <string name="bubble_sleepy_mumble">ज़ेड्ज़ेड्ज़ेड्...</string>
+
     <!-- Buddy Gallery Controls -->
     <string name="gallery_expression_label">भाव-भंगिमा</string>
     <string name="gallery_direction_label">दिशा</string>

@@ -1,0 +1,38 @@
+{
+  "id": "w6-l08-dev",
+  "world": 6,
+  "index": 8,
+  "cols": 5,
+  "rows": 5,
+  "grid": [
+    ".....",
+    ".....",
+    ".....",
+    ".....",
+    "....."
+  ],
+  "buddies": [
+    {
+      "x": 2,
+      "y": 1,
+      "d": "U",
+      "s": "HEDGEHOG",
+      "id": "hedgehog_1"
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "d": "U",
+      "s": "OWL",
+      "id": "owl_1",
+      "sleepy": true
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "d": "R",
+      "s": "RACCOON",
+      "id": "raccoon_1"
+    }
+  ]
+}
