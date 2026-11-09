@@ -9,6 +9,7 @@ import com.kasif.arrowbuddies.data.db.AppDatabase
 import com.kasif.arrowbuddies.data.db.entity.LevelProgress
 import com.kasif.arrowbuddies.data.db.entity.PlayerProfile
 import com.kasif.arrowbuddies.data.db.entity.SpeciesProgress
+import com.kasif.arrowbuddies.engine.model.LevelIdHelper
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -73,17 +74,18 @@ class CompleteLevelUseCase @Inject constructor(
 
         // 2. Update player profile
         val currentProfile = profileDao.getPlayerProfileOnce() ?: PlayerProfile()
-        val levelIndex = levelId.filter { it.isDigit() }.toIntOrNull() ?: currentProfile.currentLevelIndex
-        val nextLevel = levelIndex + 1
+        val levelIndex = LevelIdHelper.parseFlatIndex(levelId) ?: currentProfile.currentLevelIndex
+        val nextLevel = (levelIndex + 1).coerceAtMost(240)
         val newHighest = maxOf(currentProfile.highestUnlockedLevel, nextLevel)
         val newCurrent = maxOf(currentProfile.currentLevelIndex, nextLevel)
         val newTotalRescued = currentProfile.totalRescued + rescuedSpeciesList.size
+        val isTutorialGraduation = levelIndex >= 3 || currentProfile.tutorialDone
 
         profileDao.insertOrUpdate(
             currentProfile.copy(
                 berries = currentProfile.berries + earnedBerries,
                 totalRescued = newTotalRescued,
-                tutorialDone = true,
+                tutorialDone = isTutorialGraduation,
                 currentLevelIndex = newCurrent,
                 highestUnlockedLevel = newHighest
             )

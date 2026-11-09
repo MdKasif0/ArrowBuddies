@@ -50,3 +50,34 @@ data class LevelDef(
     }
 }
 
+/**
+ * Utility for parsing and formatting campaign level IDs (e.g. "w1-l01" <-> flat index 1).
+ */
+object LevelIdHelper {
+    private val CAMPAIGN_REGEX = Regex("""w([1-8])-l([0-3][0-9])(-dev)?""")
+
+    /**
+     * Returns the 1-based flat campaign index (1..240) corresponding to [levelId],
+     * or parses direct numeric strings (e.g. "1"), returning null if unrecognizable.
+     */
+    fun parseFlatIndex(levelId: String): Int? {
+        val match = CAMPAIGN_REGEX.matchEntire(levelId)
+        if (match != null) {
+            val world = match.groupValues[1].toInt()
+            val index = match.groupValues[2].toInt()
+            return ((world - 1) * 30) + index
+        }
+        return levelId.toIntOrNull()
+    }
+
+    /**
+     * Formats a 1-based flat index (1..240) into the standard campaign level id format (e.g. "w1-l01").
+     */
+    fun formatLevelId(flatIndex: Int): String {
+        val safe = flatIndex.coerceIn(1, 240)
+        val world = ((safe - 1) / 30) + 1
+        val levelInWorld = ((safe - 1) % 30) + 1
+        return "w$world-l${levelInWorld.toString().padStart(2, '0')}"
+    }
+}
+

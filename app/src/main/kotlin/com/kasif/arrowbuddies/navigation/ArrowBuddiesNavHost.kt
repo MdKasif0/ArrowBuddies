@@ -103,7 +103,11 @@ fun ArrowBuddiesNavHost(
                     navController.navigate(Route.Game(levelId = levelId))
                 },
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }
@@ -144,7 +148,11 @@ fun ArrowBuddiesNavHost(
                     viewModel.onEvent(com.kasif.arrowbuddies.feature.game.GameUiEvent.LoadLevel(nextLevelId))
                 },
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }
@@ -156,7 +164,11 @@ fun ArrowBuddiesNavHost(
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }
@@ -168,7 +180,11 @@ fun ArrowBuddiesNavHost(
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }
@@ -183,7 +199,11 @@ fun ArrowBuddiesNavHost(
                     navController.navigate(Route.Game(levelId = levelId))
                 },
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }
@@ -195,7 +215,11 @@ fun ArrowBuddiesNavHost(
                 uiState = uiState,
                 onEvent = viewModel::onEvent,
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 },
                 onReplayTutorial = {
                     navController.navigate(Route.Game(levelId = "w1-l01")) {
@@ -217,7 +241,11 @@ fun ArrowBuddiesNavHost(
         composable<Route.DesignCatalog> {
             DesignCatalogScreen(
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }
@@ -225,7 +253,11 @@ fun ArrowBuddiesNavHost(
         composable<Route.BuddyGallery> {
             com.kasif.arrowbuddies.feature.gallery.BuddyGalleryScreen(
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }
@@ -241,7 +273,11 @@ fun ArrowBuddiesNavHost(
                     navController.navigate(Route.Game(levelId = customId))
                 },
                 onNavigateBack = {
-                    navController.popBackStack()
+                    if (!navController.popBackStack()) {
+                        navController.navigate(Route.Home) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
                 }
             )
         }

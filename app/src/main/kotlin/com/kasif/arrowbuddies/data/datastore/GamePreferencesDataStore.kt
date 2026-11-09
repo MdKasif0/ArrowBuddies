@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.kasif.arrowbuddies.engine.model.LevelIdHelper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -238,15 +239,13 @@ class GamePreferencesDataStore @Inject constructor(
             }
 
             // Unlock next level if this was the current highest
-            val match = Regex("""w([1-8])-l([0-3][0-9])""").matchEntire(levelId)
-            if (match != null) {
-                val world = match.groupValues[1].toInt()
-                val idx = match.groupValues[2].toInt()
-                val flatIndex = ((world - 1) * 30) + idx
+            val flatIndex = LevelIdHelper.parseFlatIndex(levelId)
+            if (flatIndex != null) {
                 val currentHighest = preferences[PreferencesKeys.HIGHEST_UNLOCKED_LEVEL] ?: 1
-                if (flatIndex >= currentHighest) {
-                    preferences[PreferencesKeys.HIGHEST_UNLOCKED_LEVEL] = flatIndex + 1
-                    preferences[PreferencesKeys.CURRENT_LEVEL_INDEX] = flatIndex + 1
+                val nextFlat = (flatIndex + 1).coerceAtMost(240)
+                if (nextFlat > currentHighest) {
+                    preferences[PreferencesKeys.HIGHEST_UNLOCKED_LEVEL] = nextFlat
+                    preferences[PreferencesKeys.CURRENT_LEVEL_INDEX] = nextFlat
                 }
             }
         }

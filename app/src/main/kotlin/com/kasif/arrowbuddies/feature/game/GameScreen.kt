@@ -226,7 +226,11 @@ fun GameScreen(
                 newSpecies = uiState.newSpeciesUnlocked,
                 onNextLevel = {
                     onEvent(GameUiEvent.DismissDialog)
-                    onEvent(GameUiEvent.NextLevel)
+                    if (uiState.levelId in listOf("w1-l03", "3")) {
+                        onNavigateBack()
+                    } else {
+                        onEvent(GameUiEvent.NextLevel)
+                    }
                 },
                 onRestart = {
                     onEvent(GameUiEvent.DismissDialog)

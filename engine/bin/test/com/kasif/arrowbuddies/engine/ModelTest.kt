@@ -128,5 +128,28 @@ class ModelTest {
         """.trimIndent()
         LevelCodec.decode(json)
     }
+
+    @Test
+    fun `LevelIdHelper parses and formats campaign level indices accurately`() {
+        val helper = com.kasif.arrowbuddies.engine.model.LevelIdHelper
+
+        // Parsing
+        assertThat(helper.parseFlatIndex("w1-l01")).isEqualTo(1)
+        assertThat(helper.parseFlatIndex("w1-l02")).isEqualTo(2)
+        assertThat(helper.parseFlatIndex("w1-l30")).isEqualTo(30)
+        assertThat(helper.parseFlatIndex("w2-l01")).isEqualTo(31)
+        assertThat(helper.parseFlatIndex("w8-l30")).isEqualTo(240)
+        assertThat(helper.parseFlatIndex("w1-l01-dev")).isEqualTo(1)
+        assertThat(helper.parseFlatIndex("1")).isEqualTo(1)
+        assertThat(helper.parseFlatIndex("42")).isEqualTo(42)
+        assertThat(helper.parseFlatIndex("invalid")).isNull()
+
+        // Formatting
+        assertThat(helper.formatLevelId(1)).isEqualTo("w1-l01")
+        assertThat(helper.formatLevelId(2)).isEqualTo("w1-l02")
+        assertThat(helper.formatLevelId(30)).isEqualTo("w1-l30")
+        assertThat(helper.formatLevelId(31)).isEqualTo("w2-l01")
+        assertThat(helper.formatLevelId(240)).isEqualTo("w8-l30")
+    }
 }
 

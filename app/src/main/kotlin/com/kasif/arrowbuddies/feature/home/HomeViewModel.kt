@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.data.repository.GameRepository
+import com.kasif.arrowbuddies.engine.model.LevelIdHelper
 import com.kasif.arrowbuddies.engine.model.WorldSpecies
 import com.kasif.arrowbuddies.engine.runtime.DailyRescue
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,9 +30,9 @@ class HomeViewModel @Inject constructor(
         repository.rescuedSpecies
     ) { totalRescued, berries, currentLevelIndex, highestUnlocked, speciesSet ->
         val safeIndex = currentLevelIndex.coerceIn(1, 240)
+        val levelId = LevelIdHelper.formatLevelId(safeIndex)
         val world = ((safeIndex - 1) / 30) + 1
         val levelInWorld = ((safeIndex - 1) % 30) + 1
-        val levelId = "w$world-l${levelInWorld.toString().padStart(2, '0')}"
 
         val worldPool = WorldSpecies.forWorld(world)
         val speciesName = worldPool[(levelInWorld - 1) % worldPool.size]

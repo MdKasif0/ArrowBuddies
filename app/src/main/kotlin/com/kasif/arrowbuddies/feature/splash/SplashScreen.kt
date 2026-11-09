@@ -25,7 +25,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -51,6 +55,7 @@ import com.kasif.arrowbuddies.core.designsystem.theme.Sky
 import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 import com.kasif.arrowbuddies.engine.model.Direction
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @Composable
@@ -78,11 +83,19 @@ fun SplashScreen(
         label = "waving"
     )
 
+    val currentUiState by rememberUpdatedState(uiState)
+    val currentOnNavigateToGame by rememberUpdatedState(onNavigateToGame)
+    val currentOnNavigateToHome by rememberUpdatedState(onNavigateToHome)
+
+    var hasNavigated by remember { mutableStateOf(false) }
+
     fun navigateNext() {
-        if (uiState.isFirstLaunch) {
-            onNavigateToGame(uiState.initialLevelId)
+        if (hasNavigated) return
+        hasNavigated = true
+        if (currentUiState.isFirstLaunch) {
+            currentOnNavigateToGame(currentUiState.initialLevelId)
         } else {
-            onNavigateToHome()
+            currentOnNavigateToHome()
         }
     }
 
@@ -113,8 +126,9 @@ fun SplashScreen(
             )
         }
 
-        // Auto-advance after 1.2s branded intro
+        // Auto-advance after 1.2s branded intro, waiting for persistent state to be ready
         delay(1200L)
+        snapshotFlow { currentUiState.isReady }.first { it }
         navigateNext()
     }
 
@@ -124,7 +138,11 @@ fun SplashScreen(
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
                 indication = null,
-                onClick = { navigateNext() }
+                onClick = {
+                    if (currentUiState.isReady) {
+                        navigateNext()
+                    }
+                }
             )
     ) {
         AnimatedSkyBackground(

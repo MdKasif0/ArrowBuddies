@@ -44,6 +44,7 @@ object DatabaseModule {
             "arrow_buddies.db"
         )
             .addMigrations(AppDatabaseMigrations.MIGRATION_1_2)
+            .fallbackToDestructiveMigration()
             .build()
     }
 

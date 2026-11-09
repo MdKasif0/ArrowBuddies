@@ -18,6 +18,7 @@ import com.kasif.arrowbuddies.domain.usecase.EquipAccessoryUseCase
 import com.kasif.arrowbuddies.domain.usecase.LevelCompletionResult
 import com.kasif.arrowbuddies.domain.usecase.SpendBerriesUseCase
 import com.kasif.arrowbuddies.domain.usecase.StreakClaimResult
+import com.kasif.arrowbuddies.engine.model.LevelIdHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -117,8 +118,23 @@ class DefaultGameRepository @Inject constructor(
 
     private suspend fun initDefaults() {
         // Ensure default player profile exists
-        if (profileDao.getPlayerProfileOnce() == null) {
+        val currentProfile = profileDao.getPlayerProfileOnce()
+        if (currentProfile == null) {
             profileDao.insertOrUpdate(PlayerProfile())
+        } else if (currentProfile.currentLevelIndex > 100) {
+            // Repair any corrupted level index from previous digit filter bug (e.g. "w1-l01" -> 101 -> 102)
+            val allProgress = levelDao.getAllProgressOnce()
+            val maxCompletedFlat = allProgress.mapNotNull { LevelIdHelper.parseFlatIndex(it.levelId) }.maxOrNull() ?: 0
+            if (maxCompletedFlat < 50) {
+                val repairedIndex = (maxCompletedFlat + 1).coerceAtLeast(1)
+                profileDao.insertOrUpdate(
+                    currentProfile.copy(
+                        currentLevelIndex = repairedIndex,
+                        highestUnlockedLevel = maxOf(repairedIndex, maxCompletedFlat + 1)
+                    )
+                )
+                preferences.setCurrentLevelIndex(repairedIndex)
+            }
         }
 
         // Initialize 8 Zone Decorations if not yet inserted
@@ -263,6 +279,10 @@ class DefaultGameRepository @Inject constructor(
             isGoldenBuddyRescued = isGoldenBuddyRescued
         )
         preferences.recordLevelWin(levelId, stars, result.berriesEarned, rescuedSpeciesList.size, rescuedSpeciesList)
+        val flatIndex = LevelIdHelper.parseFlatIndex(levelId) ?: 1
+        if (flatIndex >= 3) {
+            preferences.setTutorialCompleted(true)
+        }
         return result
     }
 

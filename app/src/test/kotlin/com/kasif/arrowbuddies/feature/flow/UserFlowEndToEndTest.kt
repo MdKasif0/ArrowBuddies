@@ -308,4 +308,36 @@ class UserFlowEndToEndTest {
             assertThat(species.nameRes).isNotEqualTo(0)
         }
     }
+
+    @Test
+    fun testReopeningGameResumesAtCurrentProgress() = runTest(testDispatcher) {
+        // Case 1: Fresh install -> Level 1 (w1-l01)
+        val freshSplashVm = com.kasif.arrowbuddies.feature.splash.SplashViewModel(gameRepository)
+        advanceUntilIdle()
+        val freshState = freshSplashVm.uiState.value
+        assertThat(freshState.isReady).isTrue()
+        assertThat(freshState.isFirstLaunch).isTrue()
+        assertThat(freshState.initialLevelId).isEqualTo("w1-l01")
+
+        // Case 2: Player completed Level 1 -> progress is now Level 2 (w1-l02)
+        gameRepository.setCurrentLevelIndex(2)
+        advanceUntilIdle()
+        val resumingSplashVm = com.kasif.arrowbuddies.feature.splash.SplashViewModel(gameRepository)
+        advanceUntilIdle()
+        val resumingState = resumingSplashVm.uiState.value
+        assertThat(resumingState.isReady).isTrue()
+        assertThat(resumingState.isFirstLaunch).isTrue()
+        assertThat(resumingState.initialLevelId).isEqualTo("w1-l02")
+
+        // Case 3: Player completed Tutorial (Level 3+) -> routes to Home Screen
+        gameRepository.setTutorialCompleted(true)
+        gameRepository.setCurrentLevelIndex(4)
+        advanceUntilIdle()
+        val returningSplashVm = com.kasif.arrowbuddies.feature.splash.SplashViewModel(gameRepository)
+        advanceUntilIdle()
+        val returningState = returningSplashVm.uiState.value
+        assertThat(returningState.isReady).isTrue()
+        assertThat(returningState.isFirstLaunch).isFalse()
+        assertThat(returningState.initialLevelId).isEqualTo("w1-l04")
+    }
 }
