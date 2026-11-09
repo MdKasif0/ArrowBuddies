@@ -4,6 +4,7 @@ import com.kasif.arrowbuddies.engine.model.BlockerKind
 import com.kasif.arrowbuddies.engine.model.Buddy
 import com.kasif.arrowbuddies.engine.model.Direction
 import com.kasif.arrowbuddies.engine.model.Pos
+import com.kasif.arrowbuddies.engine.model.RefusalReason
 import com.kasif.arrowbuddies.engine.model.Step
 
 enum class HapticType {
@@ -17,7 +18,13 @@ enum class SoundType {
     ESCAPE,
     BONK,
     WIN,
-    LOSE
+    LOSE,
+    SQUELCH,
+    WHOOSH,
+    KEY_UNLOCK,
+    CAGE_LOCKED,
+    SLEEPY_YAWN,
+    WAKE_UP
 }
 
 /**
@@ -39,6 +46,30 @@ sealed interface GameEffect {
         val buddy: Buddy
     ) : GameEffect
 
+    data class PlayMudStop(
+        val buddyId: String,
+        val path: List<Step>,
+        val mudPos: Pos,
+        val buddy: Buddy
+    ) : GameEffect
+
+    data class PlayRefusal(
+        val buddyId: String,
+        val reason: RefusalReason,
+        val buddyPos: Pos
+    ) : GameEffect
+
+    data class PlayKeyUnlock(
+        val keyColor: String,
+        val fromPos: Pos,
+        val targetPositions: List<Pos>
+    ) : GameEffect
+
+    data class PlayWakeUp(
+        val buddyId: String,
+        val buddyPos: Pos
+    ) : GameEffect
+
     data class ScreenShake(
         val intensityDp: Float = 4f,
         val durationMs: Long = 180L
@@ -52,4 +83,3 @@ sealed interface GameEffect {
         val type: SoundType
     ) : GameEffect
 }
-

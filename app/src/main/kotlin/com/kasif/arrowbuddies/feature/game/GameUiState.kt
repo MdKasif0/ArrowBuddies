@@ -1,21 +1,10 @@
 package com.kasif.arrowbuddies.feature.game
 
 import androidx.compose.runtime.Immutable
-import com.kasif.arrowbuddies.engine.model.BlockerKind
 import com.kasif.arrowbuddies.engine.model.GameState
 import com.kasif.arrowbuddies.engine.model.GameStatus
 import com.kasif.arrowbuddies.engine.model.LevelDef
-import com.kasif.arrowbuddies.engine.model.Pos
-
-@Immutable
-data class PeekingPath(
-    val buddyId: String,
-    val startPos: Pos,
-    val steps: List<Pos>,
-    val endPos: Pos,
-    val isEscape: Boolean,
-    val blockerKind: BlockerKind? = null
-)
+import com.kasif.arrowbuddies.engine.model.PeekingPath
 
 @Immutable
 data class GameUiState(
@@ -27,6 +16,7 @@ data class GameUiState(
     val activePeekingPath: PeekingPath? = null,
     val showLevelCompleteDialog: Boolean = false,
     val showLevelFailedDialog: Boolean = false,
+    val activeMechanicIntro: MechanicType? = null,
     val safeBuddyIds: Set<String> = emptySet()
 ) {
     val heartsRemaining: Int get() = gameState.hearts
@@ -48,5 +38,6 @@ sealed interface GameUiEvent {
     data object RestartLevel : GameUiEvent
     data class LoadLevel(val levelId: String) : GameUiEvent
     data object DismissDialog : GameUiEvent
+    data object DismissMechanicIntro : GameUiEvent
     data object NextLevel : GameUiEvent
 }

@@ -51,6 +51,7 @@ import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 import com.kasif.arrowbuddies.engine.model.Buddy
 import com.kasif.arrowbuddies.engine.model.Direction
 import com.kasif.arrowbuddies.engine.model.LevelDef
+import com.kasif.arrowbuddies.engine.model.PeekingPath
 import com.kasif.arrowbuddies.engine.model.Pos
 import com.kasif.arrowbuddies.engine.model.Step
 import com.kasif.arrowbuddies.engine.model.Tile

@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.Dp
 import com.kasif.arrowbuddies.core.designsystem.theme.Coral
 import com.kasif.arrowbuddies.core.designsystem.theme.Mint
 import com.kasif.arrowbuddies.core.designsystem.theme.WhitePure
+import com.kasif.arrowbuddies.engine.model.PeekingPath
 import com.kasif.arrowbuddies.engine.model.Pos
 import kotlin.math.cos
 import kotlin.math.sin

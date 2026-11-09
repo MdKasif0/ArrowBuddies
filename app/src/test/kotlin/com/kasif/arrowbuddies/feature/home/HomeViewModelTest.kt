@@ -30,6 +30,8 @@ class HomeViewModelTest {
         override suspend fun setSoundEnabled(enabled: Boolean) {}
         override suspend fun setMusicEnabled(enabled: Boolean) {}
         override suspend fun setHapticsEnabled(enabled: Boolean) {}
+        override fun isMechanicSeen(mechanic: String): Flow<Boolean> = kotlinx.coroutines.flow.flowOf(true)
+        override suspend fun setMechanicSeen(mechanic: String) {}
     }
 
     @Before
