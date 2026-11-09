@@ -144,6 +144,7 @@ class SanctuaryViewModelTest {
         val bunnyBuddy = state.buddies.firstOrNull { it.species.name == "BUNNY" }
         assertThat(bunnyBuddy).isNotNull()
         assertThat(bunnyBuddy?.accessory).isEqualTo(BuddyAccessory.BOW)
+        viewModel.stopBehaviorLoop()
     }
 
     @Test
@@ -161,6 +162,7 @@ class SanctuaryViewModelTest {
         assertThat(tappedBuddy.state).isEqualTo(SanctuaryBuddyState.HOP)
         assertThat(tappedBuddy.heartPop).isTrue()
         assertThat(tappedBuddy.bubbleText).isNotNull()
+        viewModel.stopBehaviorLoop()
     }
 
     @Test
@@ -177,6 +179,7 @@ class SanctuaryViewModelTest {
         assertThat(repo.claimedTreatDate).isNotNull()
         assertThat(viewModel.uiState.value.isTreatScatterActive).isTrue()
         assertThat(viewModel.uiState.value.isTreatTimeAvailable).isFalse()
+        viewModel.stopBehaviorLoop()
     }
 
     @Test
@@ -193,5 +196,6 @@ class SanctuaryViewModelTest {
 
         assertThat(repo.boughtDecorId).isEqualTo("decor_pond_1")
         assertThat(viewModel.uiState.value.selectedDecorToBuy).isNull()
+        viewModel.stopBehaviorLoop()
     }
 }

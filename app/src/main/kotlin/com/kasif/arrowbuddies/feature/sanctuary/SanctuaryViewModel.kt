@@ -34,6 +34,7 @@ class SanctuaryViewModel @Inject constructor(
 
     private var treatScatterTicksRemaining = 0
     private var hasInitializedBuddies = false
+    private var behaviorJob: kotlinx.coroutines.Job? = null
 
     init {
         // Collect database flows
@@ -120,12 +121,20 @@ class SanctuaryViewModel @Inject constructor(
     }
 
     private fun startBehaviorLoop() {
-        viewModelScope.launch {
+        behaviorJob = viewModelScope.launch {
             while (isActive) {
                 delay(250L)
                 tickBehavior()
             }
         }
+    }
+
+    fun stopBehaviorLoop() {
+        behaviorJob?.cancel()
+    }
+
+    fun tickForTest() {
+        tickBehavior()
     }
 
     private fun tickBehavior() {
