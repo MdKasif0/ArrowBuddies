@@ -9,8 +9,7 @@
 - [x] **Step 6: Mechanics (Mud, Turntable, Cage + Key, Portal, Sleepy)** — All 5 mechanics implemented with (A) pure Kotlin engine rules, (B) comprehensive unit tests, (C) tactile visuals & 60fps animations (mud puddles/splashes, wooden turntable disc spin, colorblind-safe portals, cage bars/key ribbons, nightcaps, refusal speech bubbles), (D) dev showcase levels (dev 4–9), 3x3 animated mini-demo intro cards with DataStore persistence, and cross-mechanic interaction validation.
 - [x] **Step 7: Level Generator & Catalog (240 Levels)** — Solver + Procedural Generator + Level Packs in `:engine`. Deterministic reverse construction generator with FNV-1a seeds, LevelSolver with heuristic PQ search (<4ms for 20 buddies), DifficultyCalculator scoring, 24 handcrafted tutorial levels with lessons, 240 baked levels across 8 worlds with sawtooth difficulty curve, Big Rescue levels 15 & 30 with Golden Buddies, DailyRescue date-seeded puzzles (Asia/Kolkata), endless RescueRun with background prefetching, Level Lab debug screen, and level report.
 - [x] **Step 8: Complete Game Flow** — End-to-end user journey: SplashScreen API + 1.2s bouncy letter branded intro with peeking/waving buddies; First-Time Experience (L1 pointing hand, L2 funny non-lethal bonk, L3 win celebration to Home); Home screen with live Sanctuary background, total rescued counter, pulsing Play button, Daily Rescue & Rescue Run cards; World Map with 240-level winding road, world banners, stars, padlock nodes, and Big Rescue gates; In-Game HUD with Pause, level pill, rescued counter, and HeartsRow; Bottom controls with Hint, Undo, and Restart; Win celebration sheet with dancing buddies, sequential star chimes, and New Friend flip card; Gentle Fail sheet with Try Again and +1 Heart revive; Leave level confirmation; Settings with sound, music, vibration, reduce motion, language switcher (English / Hindi via AppCompatDelegate), privacy policy, and credits; full authentic Hindi parity.
-- [ ] **Step 9: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
-- [ ] **Step 9: Buddy Album & Friendship System** — 24 species album, silhouettes, Bronze/Silver/Gold tiers, cosmetics, berry shop.
+- [x] **Step 9: Meta Progression & Persistence** — Room persistence (PlayerProfile, LevelProgress, SpeciesProgress, DecorItem, DailyRecord, Achievement) with atomic transactions and MIGRATION_1_2 test; Panoramic Sanctuary with 3 parallax layers (sky, hills, ground) and 8 world-themed habitat zones; autonomous buddy behavior AI loop with tap reactions and speech bubbles; Treat Time daily scatter (+20 berries); 8 procedural interactive decorations (100–600 berries); 24 species Buddy Album with kid-friendly fun facts, silhouettes, and friendship tiers (Bronze 10, Silver 50, Gold 150) unlocking vector accessories (Bow, Scarf, Crown); Daily Rescue screen with date-seeded puzzle, 7-day streak calendar, and Android share sheet; 12 achievements; polite opt-in 6 PM WorkManager daily reminder; economy tuning; child-safe ethics guard.
 - [ ] **Step 10: Final Polish, Hindi Localization & Release Verification** — Full Hindi translations, R8 shrink verification (<25MB), offline verification, performance profiling on 60fps budget targets.
 
 ---
@@ -452,3 +451,54 @@ Screenshots captured from live Android emulator execution on API 35:
 - **JUnit**: 4.13.2
 - **Google Truth**: 1.4.4
 - **CashApp Turbine**: 1.2.0
+- **AndroidX WorkManager**: 2.9.1
+- **AndroidX Room Testing**: 2.6.1
+- **Robolectric**: 4.14.1
+
+---
+
+### Step 9: Meta Progression & Persistence Architecture Notes
+
+1. **Structured Persistence & Migrations (`com.kasif.arrowbuddies.data.db`)**:
+   - Entities: `PlayerProfile` (berries, hints, undos, totalRescued, tutorialDone, currentLevelIndex, highestUnlockedLevel, streakDays, lastStreakDate, lastTreatTimeDate), `LevelProgress` (levelId, bestStars, bestMistakes, completedAt), `SpeciesProgress` (species, rescuedCount, tier, equippedAccessory, firstRescuedAt), `DecorItem` (id, owned, slot, zoneId, costBerries), `DailyRecord` (date, completed, stars, mistakes, completedAt), and `Achievement` (id, unlockedAt, progress, maxProgress).
+   - Room Migration `MIGRATION_1_2` safely upgrades schema from v1 to v2 and seeds initial default player profile, 8 fixed zone decorations, and 12 achievements.
+   - Comprehensive Room migration test `AppDatabaseMigrationTest` verifies table creation and default seeds.
+   - Auto backup XML descriptors (`backup_rules.xml`, `data_extraction_rules.xml`) include `datastore/` and database files to survive phone switches.
+
+2. **Atomic Single-Transaction Progression (`com.kasif.arrowbuddies.domain.usecase`)**:
+   - `CompleteLevelUseCase`: Level completion is written in a single `database.withTransaction` block. Computes earned berries, updates level stars and best mistakes, advances unlocked world indices, updates individual species rescue counts, evaluates friendship tier milestones, and checks achievement unlocks (`first_rescue`, `rescued_10`, `rescued_100`, `rescued_500`, `rescued_1000`, `perfect_world`, `mud_master`, `portal_pro`, `zero_bonk_boss`, `collector`).
+   - `SpendBerriesUseCase`: Atomic check-and-decrement to prevent overdrafting or race conditions.
+   - `ClaimDailyRewardUseCase`: Atomic verification and claim for daily streak progression (days 1–7) and Treat Time.
+   - `EquipAccessoryUseCase`: Validates whether the buddy has attained the required friendship tier before equipping cosmetic accessories.
+   - `BuyDecorUseCase`: Atomic deduction and ownership toggle for sanctuary decorations, tracking progress toward the `decorator` achievement.
+
+3. **Living Panoramic Sanctuary (`com.kasif.arrowbuddies.feature.sanctuary`)**:
+   - Wide 3520dp horizontally scrollable habitat with 3 parallax layers:
+     - Layer 1 (Sky): Panoramic horizontal gradient transitioning across the 8 world biomes with floating fluffy clouds drifting in the draw phase.
+     - Layer 2 (Hills): Parallax rolling hills with biome silhouettes (trees, ruins, windmills, dunes).
+     - Layer 3 (Ground): Biome checkering, stepping stone pathway, entrance welcome signboard, Treat Time picnic basket, 8 fixed decoration slots, and roaming buddies.
+   - Autonomous Behavior AI: Lightweight single-coroutine tick loop (~250ms) driving buddy states (`IDLE`, `WALK`, `HOP`, `NAP`, `CHEER`, `REACT_DECOR`) with zero per-buddy coroutines for battery-friendly 60fps operation.
+   - Tapping a buddy triggers a joyful hop, heart particle popup, and speech bubble with the buddy's name.
+   - Treat Time: Daily interactive picnic basket. Tapping scatters berries, plays chimes, awards +20 berries, and causes all buddies to cheer and rush toward the basket.
+   - 8 Fixed Procedural Decorations drawn in Compose DrawScope with idle physics: Koi Pond with swimming fish and lotus, Tree Swing with gentle pendulum sway, Flower Bed with fluttering butterflies, Warm Firepit with crackling embers, Hammock, Glow Lanterns with radial twilight halo, Desert Oasis Kite, and Rangoli Mat & Mango Tree.
+
+4. **Buddy Album & Friendship Wardrobe (`com.kasif.arrowbuddies.feature.album`)**:
+   - 24 species grid with dark mysterious silhouettes and "?" for undiscovered species.
+   - Unlocked cards showcase the buddy avatar wearing its equipped accessory, rescued count, and friendship tier progress bar.
+   - Friendship Tiers: Bronze (10 rescues), Silver (50 rescues), Gold (150 rescues).
+   - Procedural Vector Accessories (`AccessoryRenderer.kt`): Bow (Bronze), Knitted Scarf (Silver), Golden Crown with shimmer sparkle (Gold). Equipping an accessory applies it everywhere across gameplay and the Sanctuary.
+   - Kid-friendly fun facts for all 24 species in English and Hindi.
+   - 12 In-game Badges / Achievements tab with progress bars, localized titles and descriptions, and unlock badges.
+   - Debug developer panel for granting berries during testing.
+
+5. **Daily Rescue & Streak Progression (`com.kasif.arrowbuddies.feature.daily`)**:
+   - Date-seeded daily puzzle generated via `DailyRescue.generate(today)` in `Asia/Kolkata` timezone.
+   - 7-Day Streak Calendar with rewards (+20, +30, +40, +50, +60, +80, +150 🫐 + Rangoli Mat & Mango Tree decor on Day 7).
+   - Hero puzzle card displaying world biome, buddy count, star ratings, and +50 berries daily reward.
+   - Wordle/Royal Match style result sharing via Android Share Sheet and clipboard.
+
+6. **Daily Reminder & Ethics Guard**:
+   - Polite opt-in prompt after clearing Level 5: "Want a friendly nudge when a new Daily Rescue is ready? 🐾".
+   - Scheduled via `WorkManager` with `DailyReminderWorker` for 6:00 PM local time.
+   - Default is strictly OFF; never nags, with a toggle switch in Settings.
+   - Strict ethics guard: Zero energy systems, zero pay-to-win mechanics, zero loot boxes, zero timers or countdown pressure, zero chat. Fully safe and child-friendly.
