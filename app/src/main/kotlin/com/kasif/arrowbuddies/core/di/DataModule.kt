@@ -9,7 +9,9 @@ import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import com.kasif.arrowbuddies.data.db.AppDatabase
 import com.kasif.arrowbuddies.data.db.dao.PlaceholderDao
 import com.kasif.arrowbuddies.data.repository.DefaultGameRepository
+import com.kasif.arrowbuddies.data.repository.DefaultLevelRepository
 import com.kasif.arrowbuddies.data.repository.GameRepository
+import com.kasif.arrowbuddies.data.repository.LevelRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -61,4 +63,10 @@ abstract class BindingModule {
     abstract fun bindHapticsManager(
         impl: DefaultHapticsManager
     ): HapticsManager
+
+    @Binds
+    @Singleton
+    abstract fun bindLevelRepository(
+        impl: DefaultLevelRepository
+    ): LevelRepository
 }
