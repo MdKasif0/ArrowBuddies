@@ -567,28 +567,30 @@ fun GameBoard(
                         )
 
                         // Key carrier: ribbon across chest with dangling key
-                        if (buddy.keyColor != null) {
+                        val carrierKeyColor = buddy.keyColor
+                        if (carrierKeyColor != null) {
                             KeyCarrierRibbon(
-                                size = cellSizeDp,
-                                keyColor = buddy.keyColor
+                                avatarSize = cellSizeDp,
+                                keyColor = carrierKeyColor
                             )
                         }
 
                         // Sleepy buddy: cute nightcap with pompom
                         if (buddy.sleepy && !isWakingUp) {
-                            SleepyNightcap(size = cellSizeDp)
+                            SleepyNightcap(avatarSize = cellSizeDp)
                         }
 
                         // Muddy feet splatters on bottom of buddy
                         if (isOnMud && !isEscaping) {
-                            MuddyFeetSplatters(size = cellSizeDp)
+                            MuddyFeetSplatters(avatarSize = cellSizeDp)
                         }
 
                         // Caged buddy: rounded bars with colored padlock
-                        if (buddy.cageColor != null) {
+                        val cagePadColor = buddy.cageColor
+                        if (cagePadColor != null) {
                             CagedBuddyOverlay(
-                                size = cellSizeDp,
-                                cageColor = buddy.cageColor
+                                avatarSize = cellSizeDp,
+                                cageColor = cagePadColor
                             )
                         }
                     }
@@ -604,8 +606,8 @@ fun GameBoard(
                     Box(
                         modifier = Modifier
                             .offset(
-                                x = (refusal.pos.x * cellSizeDp) - 14.dp,
-                                y = (refusal.pos.y * cellSizeDp) - 46.dp
+                                x = (cellSizeDp * refusal.pos.x) - 14.dp,
+                                y = (cellSizeDp * refusal.pos.y) - 46.dp
                             )
                     ) {
                         SpeechBubble(
@@ -1092,10 +1094,10 @@ private fun DrawScope.drawFreedomFlowers(trayWidth: Float, trayHeight: Float, ri
  */
 @Composable
 private fun CagedBuddyOverlay(
-    size: Dp,
+    avatarSize: Dp,
     cageColor: String
 ) {
-    Canvas(modifier = Modifier.size(size)) {
+    Canvas(modifier = Modifier.size(avatarSize)) {
         val padColor = when (cageColor.lowercase()) {
             "silver" -> Color(0xFFB0BEC5)
             "ruby" -> Color(0xFFFF4757)
@@ -1184,10 +1186,10 @@ private fun CagedBuddyOverlay(
  */
 @Composable
 private fun KeyCarrierRibbon(
-    size: Dp,
+    avatarSize: Dp,
     keyColor: String
 ) {
-    Canvas(modifier = Modifier.size(size)) {
+    Canvas(modifier = Modifier.size(avatarSize)) {
         val keyTone = when (keyColor.lowercase()) {
             "silver" -> Color(0xFFCFD8DC)
             "ruby" -> Color(0xFFFF5252)
@@ -1227,8 +1229,8 @@ private fun KeyCarrierRibbon(
  * Sleepy buddy accessory: cozy nightcap with a white pompom perched on the buddy's head.
  */
 @Composable
-private fun SleepyNightcap(size: Dp) {
-    Canvas(modifier = Modifier.size(size)) {
+private fun SleepyNightcap(avatarSize: Dp) {
+    Canvas(modifier = Modifier.size(avatarSize)) {
         val capPath = Path().apply {
             moveTo(size.width * 0.25f, size.height * 0.32f)
             quadraticTo(
@@ -1265,8 +1267,8 @@ private fun SleepyNightcap(size: Dp) {
  * Cute mud splatters along the bottom of a buddy standing on a mud tile.
  */
 @Composable
-private fun MuddyFeetSplatters(size: Dp) {
-    Canvas(modifier = Modifier.size(size)) {
+private fun MuddyFeetSplatters(avatarSize: Dp) {
+    Canvas(modifier = Modifier.size(avatarSize)) {
         val mudColor = Color(0xFF5A3314)
         val bottomY = size.height * 0.86f
 

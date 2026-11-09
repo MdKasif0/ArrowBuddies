@@ -6,10 +6,10 @@
 - [x] **Step 3: Buddy Characters (Procedural Vector Buddies)** — 24 procedural species in code, distinct silhouettes, 8 expressions, directional arrow badge, drawWithCache performance optimization (60 fps), life & charm idle physics, BuddyGalleryScreen.
 - [x] **Step 4: Pure Kotlin Game Engine & Solver** — Immutable board models (Direction, Pos, Tile, Buddy, LevelDef, GameState), GameEngine tap physics with path tracing, bonk/escape/mud/turntable/portal/caged/sleepy mechanics, undo stack, safeMoves hint API, LevelCodec JSON parser, 93.4% line coverage unit test suite.
 - [x] **Step 5: Playable Board + Juice** — Interactive 60fps board in app/feature/game, GameViewModel with UDF and SavedStateHandle process death survival, 3-layer rendering (drawWithCache tray/checkers/rocks, graphicsLayer avatar movements, particle overlay), immediate feedback (<50ms), escape dash + HUD arc, bonk squash + blocker jiggle + screen shake, dynamic trapped Worried face, long-press Path Peek, Undo, Haptics via performHapticFeedback, all 3 dev levels fully playable.
-- [ ] **Step 6: Level Generator & Catalog (240 Levels)** — 240 level generator with sawtooth difficulty, solvability validator, Daily Rescue seed generator, JSON/binary level serialisation.
-- [ ] **Step 7: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
-- [ ] **Step 8: Buddy Album & Friendship System** — 24 species album, silhouettes, Bronze/Silver/Gold tiers, cosmetics, berry shop.
-- [ ] **Step 9: Audio & Polish** — Procedural/synthesized or low-size sound effects, chimes, background music per world, haptics under 50ms.
+- [x] **Step 6: Mechanics (Mud, Turntable, Cage + Key, Portal, Sleepy)** — All 5 mechanics implemented with (A) pure Kotlin engine rules, (B) comprehensive unit tests, (C) tactile visuals & 60fps animations (mud puddles/splashes, wooden turntable disc spin, colorblind-safe portals, cage bars/key ribbons, nightcaps, refusal speech bubbles), (D) dev showcase levels (dev 4–9), 3x3 animated mini-demo intro cards with DataStore persistence, and cross-mechanic interaction validation.
+- [ ] **Step 7: Level Generator & Catalog (240 Levels)** — 240 level generator with sawtooth difficulty, solvability validator, Daily Rescue seed generator, JSON/binary level serialisation.
+- [ ] **Step 8: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
+- [ ] **Step 9: Buddy Album & Friendship System** — 24 species album, silhouettes, Bronze/Silver/Gold tiers, cosmetics, berry shop.
 - [ ] **Step 10: Final Polish, Hindi Localization & Release Verification** — Full Hindi translations, R8 shrink verification (<25MB), offline verification, performance profiling on 60fps budget targets.
 
 ---
