@@ -1,4 +1,95 @@
 <resources>
-    <!-- Hindi strings will be fully localized in Step 10 -->
-</resources>
+    <string name="app_name">ArrowBuddies</string>
 
+    <!-- Screen Titles -->
+    <string name="screen_splash">प्रारंभ</string>
+    <string name="screen_home">अभयारण्य गृह</string>
+    <string name="screen_map">विश्व मानचित्र</string>
+    <string name="screen_game">स्तर %1$s</string>
+    <string name="screen_sanctuary">अभयारण्य</string>
+    <string name="screen_album">साथी एल्बम</string>
+    <string name="screen_daily">दैनिक बचाव</string>
+    <string name="screen_settings">सेटिंग्स</string>
+    <string name="screen_design_catalog">डिज़ाइन कैटलॉग</string>
+    <string name="screen_buddy_gallery">साथी पात्र गैलरी</string>
+
+    <!-- Actions & Buttons -->
+    <string name="action_play">स्तर 1 खेलें</string>
+    <string name="action_map">विश्व मानचित्र</string>
+    <string name="action_sanctuary">अभयारण्य</string>
+    <string name="action_album">साथी एल्बम</string>
+    <string name="action_daily">दैनिक बचाव</string>
+    <string name="action_settings">सेटिंग्स</string>
+    <string name="action_back">वापस</string>
+    <string name="action_next_level">अगला स्तर</string>
+    <string name="action_design_catalog">🎨 डिज़ाइन सिस्टम कैटलॉग</string>
+    <string name="action_buddy_gallery">🐾 साथी पात्र गैलरी</string>
+
+    <!-- Content Descriptions & Placeholders -->
+    <string name="desc_splash_logo">ArrowBuddies लोगो</string>
+    <string name="placeholder_game_instruction">गेमप्ले चरण 5 में बनाया जाएगा</string>
+    <string name="placeholder_current_level">वर्तमान स्तर: %1$s</string>
+
+    <!-- Buddy Gallery Controls -->
+    <string name="gallery_expression_label">भाव-भंगिमा</string>
+    <string name="gallery_direction_label">दिशा</string>
+    <string name="gallery_size_label">आकार: %1$ddp</string>
+    <string name="gallery_world_format">संसार %1$d: %2$s</string>
+
+    <!-- Buddy Expressions -->
+    <string name="expression_idle">शांत</string>
+    <string name="expression_worried">चिंतित</string>
+    <string name="expression_ready">तैयार</string>
+    <string name="expression_dashing">दौड़ते हुए</string>
+    <string name="expression_bonked">टकराया हुआ</string>
+    <string name="expression_happy">प्रसन्न</string>
+    <string name="expression_sleepy">निद्रामग्न</string>
+    <string name="expression_caged">पिंजरे में</string>
+
+    <!-- Buddy Directions -->
+    <string name="direction_up">ऊपर</string>
+    <string name="direction_down">नीचे</string>
+    <string name="direction_left">बाएँ</string>
+    <string name="direction_right">दाएँ</string>
+
+    <!-- 24 Buddy Species Names -->
+    <!-- World 1: Sunny Meadow -->
+    <string name="buddy_bunny">खरगोश</string>
+    <string name="buddy_chick">चूज़ा</string>
+    <string name="buddy_piglet">नन्हा सूअर</string>
+
+    <!-- World 2: Happy Farm -->
+    <string name="buddy_puppy">पिल्ला</string>
+    <string name="buddy_lamb">मेमना</string>
+    <string name="buddy_calf">बछड़ा</string>
+
+    <!-- World 3: Jungle Ruins -->
+    <string name="buddy_monkey">बंदर</string>
+    <string name="buddy_tiger_cub">नन्हा बाघ</string>
+    <string name="buddy_parrot">तोता</string>
+
+    <!-- World 4: Snowy Peaks -->
+    <string name="buddy_penguin">पेंगुइन</string>
+    <string name="buddy_polar_cub">नन्हा भालू</string>
+    <string name="buddy_arctic_fox">बर्फीली लोमड़ी</string>
+
+    <!-- World 5: Coral Coast -->
+    <string name="buddy_turtle">कछुआ</string>
+    <string name="buddy_otter">ऊदबिलाव</string>
+    <string name="buddy_crab">केकड़ा</string>
+
+    <!-- World 6: Moonlit Forest -->
+    <string name="buddy_owl">उल्लू</string>
+    <string name="buddy_hedgehog">साही</string>
+    <string name="buddy_raccoon">रैकून</string>
+
+    <!-- World 7: Desert Oasis -->
+    <string name="buddy_camel">ऊँट</string>
+    <string name="buddy_fennec_fox">फ़ेनेक लोमड़ी</string>
+    <string name="buddy_meerkat">मीरकट</string>
+
+    <!-- World 8: Sky Islands -->
+    <string name="buddy_red_panda">लाल पांडा</string>
+    <string name="buddy_elephant_calf">नन्हा हाथी</string>
+    <string name="buddy_peacock">मोर</string>
+</resources>

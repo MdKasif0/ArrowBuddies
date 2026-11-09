@@ -10,6 +10,8 @@
     <string name="screen_album">Buddy Album</string>
     <string name="screen_daily">Daily Rescue</string>
     <string name="screen_settings">Settings</string>
+    <string name="screen_design_catalog">Design Catalog</string>
+    <string name="screen_buddy_gallery">Buddy Characters Gallery</string>
 
     <!-- Actions & Buttons -->
     <string name="action_play">Play Level 1</string>
@@ -20,10 +22,74 @@
     <string name="action_settings">Settings</string>
     <string name="action_back">Back</string>
     <string name="action_next_level">Next Level</string>
+    <string name="action_design_catalog">🎨 Design System Catalog</string>
+    <string name="action_buddy_gallery">🐾 Buddy Characters Gallery</string>
 
     <!-- Content Descriptions & Placeholders -->
     <string name="desc_splash_logo">ArrowBuddies Logo</string>
     <string name="placeholder_game_instruction">Gameplay will be built in Step 5</string>
     <string name="placeholder_current_level">Current Level: %1$s</string>
-</resources>
 
+    <!-- Buddy Gallery Controls -->
+    <string name="gallery_expression_label">Expression</string>
+    <string name="gallery_direction_label">Direction</string>
+    <string name="gallery_size_label">Size: %1$ddp</string>
+    <string name="gallery_world_format">World %1$d: %2$s</string>
+
+    <!-- Buddy Expressions -->
+    <string name="expression_idle">Idle</string>
+    <string name="expression_worried">Worried</string>
+    <string name="expression_ready">Ready</string>
+    <string name="expression_dashing">Dashing</string>
+    <string name="expression_bonked">Bonked</string>
+    <string name="expression_happy">Happy</string>
+    <string name="expression_sleepy">Sleepy</string>
+    <string name="expression_caged">Caged</string>
+
+    <!-- Buddy Directions -->
+    <string name="direction_up">Up</string>
+    <string name="direction_down">Down</string>
+    <string name="direction_left">Left</string>
+    <string name="direction_right">Right</string>
+
+    <!-- 24 Buddy Species Names -->
+    <!-- World 1: Sunny Meadow -->
+    <string name="buddy_bunny">Bunny</string>
+    <string name="buddy_chick">Chick</string>
+    <string name="buddy_piglet">Piglet</string>
+
+    <!-- World 2: Happy Farm -->
+    <string name="buddy_puppy">Puppy</string>
+    <string name="buddy_lamb">Lamb</string>
+    <string name="buddy_calf">Calf</string>
+
+    <!-- World 3: Jungle Ruins -->
+    <string name="buddy_monkey">Monkey</string>
+    <string name="buddy_tiger_cub">Tiger Cub</string>
+    <string name="buddy_parrot">Parrot</string>
+
+    <!-- World 4: Snowy Peaks -->
+    <string name="buddy_penguin">Penguin</string>
+    <string name="buddy_polar_cub">Polar Cub</string>
+    <string name="buddy_arctic_fox">Arctic Fox</string>
+
+    <!-- World 5: Coral Coast -->
+    <string name="buddy_turtle">Turtle</string>
+    <string name="buddy_otter">Otter</string>
+    <string name="buddy_crab">Crab</string>
+
+    <!-- World 6: Moonlit Forest -->
+    <string name="buddy_owl">Owl</string>
+    <string name="buddy_hedgehog">Hedgehog</string>
+    <string name="buddy_raccoon">Raccoon</string>
+
+    <!-- World 7: Desert Oasis -->
+    <string name="buddy_camel">Camel</string>
+    <string name="buddy_fennec_fox">Fennec Fox</string>
+    <string name="buddy_meerkat">Meerkat</string>
+
+    <!-- World 8: Sky Islands -->
+    <string name="buddy_red_panda">Red Panda</string>
+    <string name="buddy_elephant_calf">Elephant Calf</string>
+    <string name="buddy_peacock">Peacock</string>
+</resources>
