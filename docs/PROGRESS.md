@@ -5,8 +5,8 @@
 - [x] **Step 2: Premium Design System** — Soft-toy / clay tactile UI tokens, 3D candy buttons, Baloo 2 typography, 8 WorldTheme biomes, spring physics, squishy components, particle burst system, Design Catalog showcase screen.
 - [x] **Step 3: Buddy Characters (Procedural Vector Buddies)** — 24 procedural species in code, distinct silhouettes, 8 expressions, directional arrow badge, drawWithCache performance optimization (60 fps), life & charm idle physics, BuddyGalleryScreen.
 - [x] **Step 4: Pure Kotlin Game Engine & Solver** — Immutable board models (Direction, Pos, Tile, Buddy, LevelDef, GameState), GameEngine tap physics with path tracing, bonk/escape/mud/turntable/portal/caged/sleepy mechanics, undo stack, safeMoves hint API, LevelCodec JSON parser, 93.4% line coverage unit test suite.
-- [ ] **Step 5: Level Generator & Catalog** — 240 level generator with sawtooth difficulty, solvability validator, Daily Rescue seed generator, JSON/binary level serialisation.
-- [ ] **Step 6: Core Gameplay Screen** — Interactive board, tap dashing, path peek, bonk bounce, escape animations, HUD (hearts, pause, boosters), 60fps budget optimization.
+- [x] **Step 5: Playable Board + Juice** — Interactive 60fps board in app/feature/game, GameViewModel with UDF and SavedStateHandle process death survival, 3-layer rendering (drawWithCache tray/checkers/rocks, graphicsLayer avatar movements, particle overlay), immediate feedback (<50ms), escape dash + HUD arc, bonk squash + blocker jiggle + screen shake, dynamic trapped Worried face, long-press Path Peek, Undo, Haptics via performHapticFeedback, all 3 dev levels fully playable.
+- [ ] **Step 6: Level Generator & Catalog (240 Levels)** — 240 level generator with sawtooth difficulty, solvability validator, Daily Rescue seed generator, JSON/binary level serialisation.
 - [ ] **Step 7: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
 - [ ] **Step 8: Buddy Album & Friendship System** — 24 species album, silhouettes, Bronze/Silver/Gold tiers, cosmetics, berry shop.
 - [ ] **Step 9: Audio & Polish** — Procedural/synthesized or low-size sound effects, chimes, background music per world, haptics under 50ms.
@@ -156,6 +156,38 @@
   Computes star rating (3 = 0 mistakes, 2 = 1 mistake, 1 = 2 mistakes, 0 = failed/in-progress).
 - `Direction.rotateClockwise(): Direction` / `Pos.plus(Direction): Pos`
   Cartesian grid math utilities for vector movement and 90-degree rotations.
+
+---
+
+### Step 5: Playable Board + Juice Architecture Notes
+
+1. **UDF Architecture & Process Survival (`GameViewModel.kt`)**:
+   - Strictly delegating all game rules, path tracing, and win/loss calculations to `GameEngine.tap`.
+   - `GameUiState`: Immutable state snapshot exposing current `level`, `gameState`, `isInputLocked`, `safeBuddyIds`, `activePeekingPath`, `pressedBuddyId`, and dialog visibility flags.
+   - One-shot `SharedFlow<GameEffect>`: Separates transient side-effects (`PlayEscape`, `PlayBonk`, `ScreenShake`, `TriggerHaptic`, `PlaySound`) from persistent state.
+   - Process death survival: Serializes `GameState` to `SavedStateHandle` using `Json { allowStructuredMapKeys = true }` so complex `Map<Pos, Tile>` keys round-trip safely.
+
+2. **3-Layer 60fps Board Architecture (`GameBoard.kt`)**:
+   - `Cell Size`: Dynamically sized using `min(availableWidth / cols, availableHeight / rows)` with tablet cap (560dp) and centered tray placement.
+   - **Layer (a) [Tray & Background]**: Single cached `Spacer` using `Modifier.drawWithCache`. Renders 3D raised rim with 6dp bottom lip, 2dp top highlight, inner shadow bevel, checkered grass tiles from `WorldTheme`, 3D vector rocks with contact shadow and moss flecks, and freedom glowing gradient with tiny petals outside the rim. Zero recompositions during buddy moves.
+   - **Layer (b) [Buddies]**: Rendered as `BuddyAvatar` vectors. Movement and squash transformations operate entirely via `graphicsLayer { translationX, translationY, scaleX, scaleY, alpha }` without triggering parent relayout.
+   - **Layer (c) [Juice & Particles]**: Overlay `ParticleBurst` running on `withFrameNanos` with zero per-frame heap allocations. Emits confetti bursts on win, sparkles on rescue, dust puffs on dash, and heart pops on HUD counter bump.
+
+3. **Touch Input & Edge Tolerance**:
+   - Single `pointerInput` with `awaitEachGesture` mapping touch positions to grid cells.
+   - 30% cell boundary edge tolerance: taps landing near a buddy's cell border within 30% of cell size are gracefully attributed to that buddy.
+   - Immediate feedback (<50ms): down event triggers light haptic tick, squashes buddy (scale 0.92f), and transitions face to `BuddyExpression.READY`.
+
+4. **Animations & Living Charm**:
+   - **Escape**: Anticipation (70ms squash opposite travel axis) $\to$ dash along step path (55ms/cell, capped at 450ms) with dust puffs and `BuddyExpression.DASHING` $\to$ board edge exit $\to$ parabolic arc (320ms) into HUD rescued counter $\to$ HUD scale bump + heart pop!
+   - **Bonk**: Rapid dash to blocker $\to$ flat impact squash (scale 0.65f/1.28f) $\to$ swirly eyes and orbiting stars (`BuddyExpression.BONKED`) $\to$ blocker jiggles $\to$ spring rebound (220ms `SpringBouncy`) back to starting cell $\to$ HUD heart loss crack, soft screen shake (4dp, 180ms), and strong reject haptic.
+   - **Dynamic Worried Face**: Buddies with blocked paths automatically show `BuddyExpression.WORRIED`; as blockers escape, they dynamically switch to hopeful (`BuddyExpression.IDLE`).
+
+5. **Boosters & HUD**:
+   - **Path Peek**: Free long-press peek drawing animated marching-ants dotted path to either a red tactile 'X' blocker marker or a glowing green sparkle exit glint.
+   - **Undo**: Restores board state from engine history stack while preserving hearts and mistakes.
+   - **Dev Level Quick Switcher**: Dev chips ("Dev 1", "Dev 2", "Dev 3") for instant testing of all 3 dev levels.
+   - **Haptics**: `DefaultHapticsManager` using `View.performHapticFeedback` (`HapticFeedbackConstants.CONFIRM` / `REJECT` on API 30+, fallbacks for older devices, plus `Vibrator` fallback).
 
 ---
 
