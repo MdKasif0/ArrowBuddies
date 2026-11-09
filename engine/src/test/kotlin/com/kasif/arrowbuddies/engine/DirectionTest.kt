@@ -50,3 +50,4 @@ class DirectionTest {
         assertThat(Direction.RIGHT.dy).isEqualTo(0)
     }
 }
+

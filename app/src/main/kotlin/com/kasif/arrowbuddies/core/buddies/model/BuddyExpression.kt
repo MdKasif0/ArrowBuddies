@@ -47,3 +47,4 @@ enum class BuddyExpression(@StringRes val labelRes: Int) {
      */
     CAGED(R.string.expression_caged);
 }
+

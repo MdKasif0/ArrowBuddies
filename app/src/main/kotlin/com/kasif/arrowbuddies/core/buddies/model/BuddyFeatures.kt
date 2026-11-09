@@ -54,3 +54,4 @@ enum class SpecialFeature {
     ELEPHANT_TRUNK,     // Upward curled front trunk
     PEACOCK_CREST       // 3-bobble celestial crest crown
 }
+

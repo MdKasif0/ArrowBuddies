@@ -319,3 +319,4 @@ enum class BuddySpecies(
         fun byWorld(world: Int): List<BuddySpecies> = entries.filter { it.worldIndex == world }
     }
 }
+

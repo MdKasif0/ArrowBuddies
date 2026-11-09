@@ -511,3 +511,4 @@ object BuddyFaceRenderer {
         }
     }
 }
+
