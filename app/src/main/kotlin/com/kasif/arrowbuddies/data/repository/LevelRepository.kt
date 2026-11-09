@@ -2,13 +2,19 @@ package com.kasif.arrowbuddies.data.repository
 
 import android.content.Context
 import com.kasif.arrowbuddies.engine.codec.LevelCodec
+import com.kasif.arrowbuddies.engine.generator.HandcraftedTutorials
 import com.kasif.arrowbuddies.engine.model.LevelDef
+import com.kasif.arrowbuddies.engine.runtime.DailyRescue
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 
 interface LevelRepository {
     fun loadLevel(levelId: String): LevelDef
+    fun loadWorldLevels(world: Int): List<LevelDef> = emptyList()
+    fun loadDailyRescue(): LevelDef = loadLevel("1")
+    fun registerCustomLevel(level: LevelDef): String = level.id
     fun getAvailableDevLevelIds(): List<String>
 }
 
@@ -17,7 +23,34 @@ class DefaultLevelRepository @Inject constructor(
     @ApplicationContext private val context: Context
 ) : LevelRepository {
 
+    private val worldCache = ConcurrentHashMap<Int, List<LevelDef>>()
+    private val customLevels = ConcurrentHashMap<String, LevelDef>()
+
+    override fun registerCustomLevel(level: LevelDef): String {
+        customLevels[level.id] = level
+        return level.id
+    }
+
     override fun loadLevel(levelId: String): LevelDef {
+        customLevels[levelId]?.let { return it }
+
+        // Daily rescue routing
+        if (levelId == "daily" || levelId.startsWith("daily-")) {
+            return DailyRescue.generate()
+        }
+
+        // Campaign level pattern: w{world}-l{level} (e.g. w1-l01 ... w8-l30)
+        val campaignMatch = Regex("""w([1-8])-l([0-3][0-9])""").matchEntire(levelId)
+        if (campaignMatch != null) {
+            val world = campaignMatch.groupValues[1].toInt()
+            val index = campaignMatch.groupValues[2].toInt()
+            val worldLevels = loadWorldLevels(world)
+            val level = worldLevels.firstOrNull { it.id == levelId || it.index == index }
+            if (level != null) return level
+            if (index in 1..3) return HandcraftedTutorials.getTutorialLevel(world, index)
+        }
+
+        // Dev level routing & backward compatibility
         val assetPath = when (levelId) {
             "2", "w1-l02-dev" -> "levels/dev/level_dev_02.json"
             "3", "w1-l03-dev" -> "levels/dev/level_dev_03.json"
@@ -36,6 +69,23 @@ class DefaultLevelRepository @Inject constructor(
         }.getOrElse {
             getEmbeddedDevLevel(levelId)
         }
+    }
+
+    override fun loadWorldLevels(world: Int): List<LevelDef> {
+        require(world in 1..8) { "Invalid world: $world" }
+        return worldCache.getOrPut(world) {
+            runCatching {
+                val assetPath = "levels/world_$world.json"
+                val json = context.assets.open(assetPath).bufferedReader().use { it.readText() }
+                LevelCodec.decodeList(json)
+            }.getOrElse {
+                (1..3).map { idx -> HandcraftedTutorials.getTutorialLevel(world, idx) }
+            }
+        }
+    }
+
+    override fun loadDailyRescue(): LevelDef {
+        return DailyRescue.generate()
     }
 
     override fun getAvailableDevLevelIds(): List<String> {

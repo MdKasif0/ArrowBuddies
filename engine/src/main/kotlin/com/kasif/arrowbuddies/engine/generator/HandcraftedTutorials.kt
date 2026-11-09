@@ -166,7 +166,7 @@ object HandcraftedTutorials {
                     buddies = listOf(
                         Buddy("polar_1", "POLAR_CUB", Pos(2, 4), Direction.UP),
                         Buddy("fox_1", "ARCTIC_FOX", Pos(2, 2), Direction.UP, cageColor = "gold"),
-                        Buddy("penguin_1", "PENGUIN", Pos(4, 2), Direction.LEFT, keyColor = "gold")
+                        Buddy("penguin_1", "PENGUIN", Pos(1, 2), Direction.LEFT, keyColor = "gold")
                     ),
                     world = 4,
                     index = 2,
@@ -297,7 +297,7 @@ object HandcraftedTutorials {
                     buddies = listOf(
                         Buddy("fennec_1", "FENNEC_FOX", Pos(2, 5), Direction.UP, keyColor = "gold"),
                         Buddy("camel_1", "CAMEL", Pos(1, 2), Direction.RIGHT),
-                        Buddy("meerkat_1", "MEERKAT", Pos(4, 3), Direction.UP, cageColor = "gold")
+                        Buddy("meerkat_1", "MEERKAT", Pos(4, 2), Direction.UP, cageColor = "gold")
                     ),
                     world = 7,
                     index = 2,
@@ -311,7 +311,7 @@ object HandcraftedTutorials {
                     buddies = listOf(
                         Buddy("meerkat_1", "MEERKAT", Pos(2, 4), Direction.UP, sleepy = true),
                         Buddy("camel_1", "CAMEL", Pos(2, 5), Direction.UP),
-                        Buddy("fennec_1", "FENNEC_FOX", Pos(3, 2), Direction.RIGHT)
+                        Buddy("fennec_1", "FENNEC_FOX", Pos(3, 4), Direction.RIGHT)
                     ),
                     world = 7,
                     index = 3,

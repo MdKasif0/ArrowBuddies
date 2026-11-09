@@ -32,5 +32,8 @@ sealed interface Route {
 
     @Serializable
     data object BuddyGallery : Route
+
+    @Serializable
+    data object LevelLab : Route
 }
 

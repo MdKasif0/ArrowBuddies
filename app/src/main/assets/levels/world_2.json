@@ -1,0 +1,3497 @@
+[
+    {
+        "id": "w2-l01",
+        "world": 2,
+        "index": 1,
+        "cols": 4,
+        "rows": 5,
+        "grid": [
+            "....",
+            "....",
+            ".M..",
+            "....",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 1: Mud squelch! Entering mud stops a buddy safely without losing a heart."
+    },
+    {
+        "id": "w2-l02",
+        "world": 2,
+        "index": 2,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            "..M..",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 2: Mud pit stop. Use mud as a stepping stone to escape in two taps."
+    },
+    {
+        "id": "w2-l03",
+        "world": 2,
+        "index": 3,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            "..M..",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 3: Mud roadblock. A buddy resting on mud blocks others until rescued."
+    },
+    {
+        "id": "w2-l04",
+        "world": 2,
+        "index": 4,
+        "cols": 4,
+        "rows": 5,
+        "grid": [
+            "....",
+            "....",
+            "....",
+            ".M..",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l05",
+        "world": 2,
+        "index": 5,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            "...M.",
+            "..M..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l06",
+        "world": 2,
+        "index": 6,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "....R",
+            ".....",
+            "..M..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l07",
+        "world": 2,
+        "index": 7,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "...M.",
+            ".....",
+            "...M.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l08",
+        "world": 2,
+        "index": 8,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            "..R..",
+            ".....",
+            "...M.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l09",
+        "world": 2,
+        "index": 9,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "R....",
+            ".M...",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l10",
+        "world": 2,
+        "index": 10,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "....R.",
+            "......",
+            "......",
+            "......",
+            "...MM.",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l11",
+        "world": 2,
+        "index": 11,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".M.M.",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l12",
+        "world": 2,
+        "index": 12,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            "...R.",
+            ".....",
+            ".M...",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l13",
+        "world": 2,
+        "index": 13,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            ".M....",
+            "......",
+            ".M....",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l14",
+        "world": 2,
+        "index": 14,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "...R..",
+            "..M...",
+            "....M.",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l15",
+        "world": 2,
+        "index": 15,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "....R.",
+            "......",
+            "......",
+            ".M....",
+            "..M...",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l16",
+        "world": 2,
+        "index": 16,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "...M.",
+            "..M..",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l17",
+        "world": 2,
+        "index": 17,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "....R.",
+            "..M...",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l18",
+        "world": 2,
+        "index": 18,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "R.M...",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l19",
+        "world": 2,
+        "index": 19,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "....M.",
+            "......",
+            "..R...",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l20",
+        "world": 2,
+        "index": 20,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "...M..",
+            "..R...",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l21",
+        "world": 2,
+        "index": 21,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "..R...",
+            "......",
+            "......",
+            ".M....",
+            ".M....",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l22",
+        "world": 2,
+        "index": 22,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            "....MR.",
+            "...M...",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l23",
+        "world": 2,
+        "index": 23,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            "....M..",
+            ".......",
+            ".......",
+            ".......",
+            ".M....R",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l24",
+        "world": 2,
+        "index": 24,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            "...R...",
+            "..M....",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l25",
+        "world": 2,
+        "index": 25,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "R..M..",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l26",
+        "world": 2,
+        "index": 26,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".MM....",
+            ".......",
+            "......R",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l27",
+        "world": 2,
+        "index": 27,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".....M.",
+            ".......",
+            "......R",
+            "..R..R.",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l28",
+        "world": 2,
+        "index": 28,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "...M...",
+            ".......",
+            "..R...."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 7,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 7,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l29",
+        "world": 2,
+        "index": 29,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".....M.",
+            "...M...",
+            ".......",
+            ".......",
+            ".......",
+            "....R.."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 7,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "L",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "PUPPY",
+                "id": "puppy_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "LAMB",
+                "id": "lamb_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "U",
+                "s": "CALF",
+                "id": "calf_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w2-l30",
+        "world": 2,
+        "index": 30,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".M.....",
+            ".R.....",
+            ".......",
+            ".......",
+            "R......",
+            ".....M.",
+            ".....R."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 3,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "R",
+                "s": "CALF",
+                "id": "calf_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 7,
+                "d": "R",
+                "s": "PUPPY",
+                "id": "puppy_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 7,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 7,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "LAMB",
+                "id": "lamb_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "CALF",
+                "id": "calf_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "D",
+                "s": "PUPPY",
+                "id": "puppy_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 7,
+                "d": "D",
+                "s": "LAMB",
+                "id": "lamb_17",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 7,
+                "d": "L",
+                "s": "CALF",
+                "id": "calf_18",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    }
+]

@@ -26,6 +26,14 @@ tasks.jacocoTestReport {
     }
 }
 
+tasks.register<JavaExec>("bakeLevels") {
+    group = "application"
+    description = "Bakes 240 deterministic levels across all 8 worlds and outputs difficulty report"
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.kasif.arrowbuddies.engine.generator.LevelPackBaker")
+    workingDir = rootDir
+}
+
 dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.json)

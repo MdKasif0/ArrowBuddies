@@ -1,0 +1,3509 @@
+[
+    {
+        "id": "w6-l01",
+        "world": 6,
+        "index": 1,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 1: Wake up, sleepyhead! A sleeping buddy awakens when an adjacent neighbor departs."
+    },
+    {
+        "id": "w6-l02",
+        "world": 6,
+        "index": 2,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 2: Morning alarm! Tap friends next to sleepy buddies to awaken them."
+    },
+    {
+        "id": "w6-l03",
+        "world": 6,
+        "index": 3,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 3: Domino wake-up! One departure can awaken friends in a chain."
+    },
+    {
+        "id": "w6-l04",
+        "world": 6,
+        "index": 4,
+        "cols": 4,
+        "rows": 5,
+        "grid": [
+            "....",
+            ".R..",
+            "....",
+            "....",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 3,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l05",
+        "world": 6,
+        "index": 5,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "R....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l06",
+        "world": 6,
+        "index": 6,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".R...",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l07",
+        "world": 6,
+        "index": 7,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".R...",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l08",
+        "world": 6,
+        "index": 8,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "R....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l09",
+        "world": 6,
+        "index": 9,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".....",
+            "..R..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l10",
+        "world": 6,
+        "index": 10,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "....R.",
+            "......",
+            "......",
+            ".R....",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l11",
+        "world": 6,
+        "index": 11,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "..R..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l12",
+        "world": 6,
+        "index": 12,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            "....R",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l13",
+        "world": 6,
+        "index": 13,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            ".....R",
+            "......",
+            "....R.",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l14",
+        "world": 6,
+        "index": 14,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            ".....R",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 3,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l15",
+        "world": 6,
+        "index": 15,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "......",
+            "...R..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l16",
+        "world": 6,
+        "index": 16,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "..R..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l17",
+        "world": 6,
+        "index": 17,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "..R...",
+            "......",
+            "......",
+            "...R..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l18",
+        "world": 6,
+        "index": 18,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            ".....R",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l19",
+        "world": 6,
+        "index": 19,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            ".R....",
+            ".....R",
+            "R.....",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l20",
+        "world": 6,
+        "index": 20,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "R.....",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l21",
+        "world": 6,
+        "index": 21,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "R.....",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l22",
+        "world": 6,
+        "index": 22,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            "....R..",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l23",
+        "world": 6,
+        "index": 23,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            "...R...",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l24",
+        "world": 6,
+        "index": 24,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "R..R...",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l25",
+        "world": 6,
+        "index": 25,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            ".....R",
+            "....R.",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l26",
+        "world": 6,
+        "index": 26,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            "....R..",
+            ".......",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 6,
+                "y": 5,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l27",
+        "world": 6,
+        "index": 27,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".R.R...",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 3,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 7,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 7,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 7,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l28",
+        "world": 6,
+        "index": 28,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".R....R",
+            ".......",
+            "...R..R",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 7,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 7,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l29",
+        "world": 6,
+        "index": 29,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            "R..R...",
+            ".......",
+            "......R",
+            ".R.....",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 7,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 7,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w6-l30",
+        "world": 6,
+        "index": 30,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".R.....",
+            ".......",
+            ".......",
+            ".......",
+            "RR....R",
+            ".......",
+            ".......",
+            ".R....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "RACCOON",
+                "id": "raccoon_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "OWL",
+                "id": "owl_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "L",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "RACCOON",
+                "id": "raccoon_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "U",
+                "s": "OWL",
+                "id": "owl_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 7,
+                "d": "D",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "D",
+                "s": "RACCOON",
+                "id": "raccoon_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "OWL",
+                "id": "owl_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "R",
+                "s": "HEDGEHOG",
+                "id": "hedgehog_17",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "R",
+                "s": "RACCOON",
+                "id": "raccoon_18",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    }
+]

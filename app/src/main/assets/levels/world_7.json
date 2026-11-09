@@ -1,0 +1,3499 @@
+[
+    {
+        "id": "w7-l01",
+        "world": 7,
+        "index": 1,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            "..TM.",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 1: Oasis crossing! Spin on turntables and slide through mud."
+    },
+    {
+        "id": "w7-l02",
+        "world": 7,
+        "index": 2,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "..T..",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_1",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 2: Desert key carrier! Direct keys through turntables to reach cages."
+    },
+    {
+        "id": "w7-l03",
+        "world": 7,
+        "index": 3,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            "..M..",
+            ".R...",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 3: Desert expedition! Master sleeping and mud together."
+    },
+    {
+        "id": "w7-l04",
+        "world": 7,
+        "index": 4,
+        "cols": 4,
+        "rows": 5,
+        "grid": [
+            "....",
+            "....",
+            ".T..",
+            "....",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l05",
+        "world": 7,
+        "index": 5,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "..T..",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l06",
+        "world": 7,
+        "index": 6,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "...T.",
+            "..M..",
+            "..M..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l07",
+        "world": 7,
+        "index": 7,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".M...",
+            "...T.",
+            ".M...",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l08",
+        "world": 7,
+        "index": 8,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".T...",
+            ".M.M.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l09",
+        "world": 7,
+        "index": 9,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".M...",
+            "...T.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l10",
+        "world": 7,
+        "index": 10,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "..R...",
+            "..MT..",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l11",
+        "world": 7,
+        "index": 11,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "..T..",
+            "...T.",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l12",
+        "world": 7,
+        "index": 12,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".T...",
+            ".....",
+            ".....",
+            "...M.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l13",
+        "world": 7,
+        "index": 13,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "....T.",
+            "......",
+            "......",
+            "...T..",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l14",
+        "world": 7,
+        "index": 14,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "...T..",
+            "..MTM.",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l15",
+        "world": 7,
+        "index": 15,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            ".T..M.",
+            "......",
+            "......",
+            "...R..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l16",
+        "world": 7,
+        "index": 16,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".T...",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l17",
+        "world": 7,
+        "index": 17,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            ".T....",
+            "......",
+            "...T..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l18",
+        "world": 7,
+        "index": 18,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "...M..",
+            "...MT.",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l19",
+        "world": 7,
+        "index": 19,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            ".MM...",
+            "......",
+            "......",
+            "....T.",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l20",
+        "world": 7,
+        "index": 20,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "...M..",
+            "......",
+            "R.T...",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l21",
+        "world": 7,
+        "index": 21,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "...T..",
+            "......",
+            "......",
+            "..MT..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l22",
+        "world": 7,
+        "index": 22,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            "....M..",
+            ".......",
+            ".....T.",
+            ".......",
+            "...R...",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l23",
+        "world": 7,
+        "index": 23,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "..T.M..",
+            "..M..T.",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l24",
+        "world": 7,
+        "index": 24,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            "...M...",
+            "....T..",
+            "....M..",
+            "...T...",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l25",
+        "world": 7,
+        "index": 25,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "...T..",
+            "......",
+            "......",
+            "....M.",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 1,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l26",
+        "world": 7,
+        "index": 26,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            "..R..T.",
+            ".......",
+            ".......",
+            ".....M.",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l27",
+        "world": 7,
+        "index": 27,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            "..T....",
+            ".......",
+            "....M..",
+            ".......",
+            ".T...M.",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 7,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_14",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l28",
+        "world": 7,
+        "index": 28,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".....T.",
+            "...R...",
+            ".......",
+            ".......",
+            ".....M.",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 2,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "U",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_13",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 7,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l29",
+        "world": 7,
+        "index": 29,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".T.....",
+            "....T..",
+            "....M.R",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 7,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_15",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 7,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w7-l30",
+        "world": 7,
+        "index": 30,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            "R......",
+            "..T..T.",
+            "...M...",
+            ".......",
+            ".....M.",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 5,
+                "d": "U",
+                "s": "CAMEL",
+                "id": "camel_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "MEERKAT",
+                "id": "meerkat_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "CAMEL",
+                "id": "camel_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_14",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "MEERKAT",
+                "id": "meerkat_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "CAMEL",
+                "id": "camel_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "U",
+                "s": "FENNEC_FOX",
+                "id": "fennec_fox_17",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 7,
+                "d": "L",
+                "s": "MEERKAT",
+                "id": "meerkat_18",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    }
+]

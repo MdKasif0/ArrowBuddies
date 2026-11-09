@@ -1,0 +1,3511 @@
+[
+    {
+        "id": "w8-l01",
+        "world": 8,
+        "index": 1,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            "..T..",
+            "..1..",
+            ".....",
+            "..1..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 1: Sky transit! Warp through portals directly into turntables."
+    },
+    {
+        "id": "w8-l02",
+        "world": 8,
+        "index": 2,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_1",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 2: Sleeping guardian! Wake the sleepy buddy to claim the golden key."
+    },
+    {
+        "id": "w8-l03",
+        "world": 8,
+        "index": 3,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "...1..",
+            "......",
+            "..M...",
+            ".1....",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "panda_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 3: Grand sky flight! All mechanics together in harmony."
+    },
+    {
+        "id": "w8-l04",
+        "world": 8,
+        "index": 4,
+        "cols": 4,
+        "rows": 5,
+        "grid": [
+            "....",
+            "....",
+            "..T.",
+            "....",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l05",
+        "world": 8,
+        "index": 5,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            "..T..",
+            "..T..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l06",
+        "world": 8,
+        "index": 6,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".T.M.",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 0,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l07",
+        "world": 8,
+        "index": 7,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "..T..",
+            ".....",
+            ".M.M.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l08",
+        "world": 8,
+        "index": 8,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".M...",
+            ".T...",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l09",
+        "world": 8,
+        "index": 9,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            ".....",
+            "..TM.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l10",
+        "world": 8,
+        "index": 10,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            ".TM...",
+            "...TM.",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l11",
+        "world": 8,
+        "index": 11,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "..T..",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l12",
+        "world": 8,
+        "index": 12,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".T...",
+            ".....",
+            ".....",
+            "...T.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l13",
+        "world": 8,
+        "index": 13,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            ".T....",
+            ".T....",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l14",
+        "world": 8,
+        "index": 14,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "..M.M.",
+            "...T..",
+            "......",
+            "....T.",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l15",
+        "world": 8,
+        "index": 15,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "R.....",
+            "......",
+            ".T.M..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": true
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l16",
+        "world": 8,
+        "index": 16,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            "..T..",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l17",
+        "world": 8,
+        "index": 17,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            ".T....",
+            "......",
+            ".T....",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l18",
+        "world": 8,
+        "index": 18,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "...M..",
+            "....M.",
+            "......",
+            ".T....",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l19",
+        "world": 8,
+        "index": 19,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "...TT.",
+            "......",
+            "..M...",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l20",
+        "world": 8,
+        "index": 20,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "...M..",
+            "......",
+            "..TM..",
+            "...T..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l21",
+        "world": 8,
+        "index": 21,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "..M...",
+            "......",
+            "..M...",
+            "..T...",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l22",
+        "world": 8,
+        "index": 22,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            "....TT.",
+            "....M..",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l23",
+        "world": 8,
+        "index": 23,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".M..T..",
+            ".......",
+            ".......",
+            ".......",
+            ".M..R..",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l24",
+        "world": 8,
+        "index": 24,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".T.....",
+            "..M.T..",
+            ".......",
+            "...M...",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 3,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l25",
+        "world": 8,
+        "index": 25,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            ".M....",
+            "......",
+            "......",
+            ".T....",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l26",
+        "world": 8,
+        "index": 26,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            "..T....",
+            ".......",
+            ".......",
+            ".....M.",
+            "..R...."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l27",
+        "world": 8,
+        "index": 27,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".T..R..",
+            ".....T.",
+            ".......",
+            "....M..",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_13",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l28",
+        "world": 8,
+        "index": 28,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            "..R....",
+            ".......",
+            ".......",
+            ".T.....",
+            ".......",
+            "..MT...",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 7,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 7,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 7,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_15",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l29",
+        "world": 8,
+        "index": 29,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".MT....",
+            "R...M..",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": "silver",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": "silver",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "PEACOCK",
+                "id": "peacock_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w8-l30",
+        "world": 8,
+        "index": 30,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".M...T.",
+            "....R..",
+            ".......",
+            ".......",
+            ".T...M.",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "R",
+                "s": "RED_PANDA",
+                "id": "red_panda_4",
+                "cageColor": "gold",
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "L",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": true,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_12",
+                "cageColor": null,
+                "keyColor": "gold",
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "RED_PANDA",
+                "id": "red_panda_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 7,
+                "d": "D",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "D",
+                "s": "PEACOCK",
+                "id": "peacock_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "U",
+                "s": "RED_PANDA",
+                "id": "red_panda_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "R",
+                "s": "ELEPHANT_CALF",
+                "id": "elephant_calf_17",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "PEACOCK",
+                "id": "peacock_18",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    }
+]

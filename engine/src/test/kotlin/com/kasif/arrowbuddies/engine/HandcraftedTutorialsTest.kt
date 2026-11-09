@@ -15,9 +15,6 @@ class HandcraftedTutorialsTest {
                 val level = HandcraftedTutorials.getTutorialLevel(world, index)
                 assertNotNull("Tutorial comment must not be null", level.comment)
                 val result = LevelSolver.solve(level)
-                if (!result.solvable) {
-                    println("FAILED TUTORIAL: w$world-l0$index: ${level.comment}")
-                }
                 assertTrue("Tutorial level w$world-l0$index must be solvable: ${level.comment}", result.solvable)
                 assertTrue("Shortest solution must not be empty", result.shortestSolution.isNotEmpty())
             }

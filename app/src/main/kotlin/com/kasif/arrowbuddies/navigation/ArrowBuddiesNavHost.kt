@@ -18,6 +18,8 @@ import com.kasif.arrowbuddies.feature.game.GameScreen
 import com.kasif.arrowbuddies.feature.game.GameViewModel
 import com.kasif.arrowbuddies.feature.home.HomeScreen
 import com.kasif.arrowbuddies.feature.home.HomeViewModel
+import com.kasif.arrowbuddies.feature.levellab.LevelLabScreen
+import com.kasif.arrowbuddies.feature.levellab.LevelLabViewModel
 import com.kasif.arrowbuddies.feature.map.WorldMapScreen
 import com.kasif.arrowbuddies.feature.map.WorldMapViewModel
 import com.kasif.arrowbuddies.feature.sanctuary.SanctuaryScreen
@@ -154,6 +156,9 @@ fun ArrowBuddiesNavHost(
                 },
                 onNavigateToGallery = {
                     navController.navigate(Route.BuddyGallery)
+                },
+                onNavigateToLevelLab = {
+                    navController.navigate(Route.LevelLab)
                 }
             )
         }
@@ -168,6 +173,22 @@ fun ArrowBuddiesNavHost(
 
         composable<Route.BuddyGallery> {
             com.kasif.arrowbuddies.feature.gallery.BuddyGalleryScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<Route.LevelLab> {
+            val viewModel: LevelLabViewModel = hiltViewModel()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+            LevelLabScreen(
+                uiState = uiState,
+                onEvent = viewModel::onEvent,
+                onPlayLevel = { levelId ->
+                    val customId = viewModel.prepareForPlay() ?: levelId
+                    navController.navigate(Route.Game(levelId = customId))
+                },
                 onNavigateBack = {
                     navController.popBackStack()
                 }

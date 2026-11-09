@@ -21,7 +21,8 @@ fun SettingsScreen(
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     onNavigateToCatalog: (() -> Unit)? = null,
-    onNavigateToGallery: (() -> Unit)? = null
+    onNavigateToGallery: (() -> Unit)? = null,
+    onNavigateToLevelLab: (() -> Unit)? = null
 ) {
     ArrowBuddiesScreenScaffold(
         title = stringResource(R.string.screen_settings),
@@ -61,6 +62,14 @@ fun SettingsScreen(
                     text = "🎨 Design System Catalog",
                     variant = CandyButtonVariant.Secondary,
                     onClick = onNavigateToCatalog
+                )
+            }
+            if (onNavigateToLevelLab != null) {
+                Spacer(modifier = Modifier.height(8.dp))
+                CandyButton(
+                    text = "🔬 Level Lab (Generator & Solver)",
+                    variant = CandyButtonVariant.Primary,
+                    onClick = onNavigateToLevelLab
                 )
             }
         }

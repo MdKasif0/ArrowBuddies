@@ -1,0 +1,3484 @@
+[
+    {
+        "id": "w1-l01",
+        "world": 1,
+        "index": 1,
+        "cols": 4,
+        "rows": 4,
+        "grid": [
+            "....",
+            "....",
+            "....",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 1: Tap a buddy to dash to the edge and escape to safety!"
+    },
+    {
+        "id": "w1-l02",
+        "world": 1,
+        "index": 2,
+        "cols": 4,
+        "rows": 4,
+        "grid": [
+            "....",
+            "....",
+            "....",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 2: Order matters! Free the buddy in front first so the way is clear."
+    },
+    {
+        "id": "w1-l03",
+        "world": 1,
+        "index": 3,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "..R..",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 3: Watch out for Rocks! They block your path and cause a bonk."
+    },
+    {
+        "id": "w1-l04",
+        "world": 1,
+        "index": 4,
+        "cols": 4,
+        "rows": 5,
+        "grid": [
+            "....",
+            "R...",
+            "....",
+            "....",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l05",
+        "world": 1,
+        "index": 5,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "...R.",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l06",
+        "world": 1,
+        "index": 6,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".R...",
+            "...R.",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l07",
+        "world": 1,
+        "index": 7,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".R...",
+            "R....",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l08",
+        "world": 1,
+        "index": 8,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            "...R.",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l09",
+        "world": 1,
+        "index": 9,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".R...",
+            "..R..",
+            ".....",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l10",
+        "world": 1,
+        "index": 10,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "...R..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l11",
+        "world": 1,
+        "index": 11,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "R....",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l12",
+        "world": 1,
+        "index": 12,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            "R....",
+            ".....",
+            ".R...",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 5,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l13",
+        "world": 1,
+        "index": 13,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "..R...",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l14",
+        "world": 1,
+        "index": 14,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "...R..",
+            "......",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l15",
+        "world": 1,
+        "index": 15,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "R.....",
+            "..R...",
+            "......",
+            "...R.."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 3,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l16",
+        "world": 1,
+        "index": 16,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "....R",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l17",
+        "world": 1,
+        "index": 17,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "...R..",
+            "......",
+            "...R.."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l18",
+        "world": 1,
+        "index": 18,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            ".R....",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l19",
+        "world": 1,
+        "index": 19,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            ".....R",
+            "......",
+            "......",
+            "......",
+            "....R."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l20",
+        "world": 1,
+        "index": 20,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "......",
+            "......",
+            "..R...",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l21",
+        "world": 1,
+        "index": 21,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            ".....R",
+            "......",
+            "......",
+            "......",
+            "..R...",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l22",
+        "world": 1,
+        "index": 22,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            "...R...",
+            ".......",
+            ".R.....",
+            "..R....",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l23",
+        "world": 1,
+        "index": 23,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".....R.",
+            ".......",
+            ".R....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l24",
+        "world": 1,
+        "index": 24,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            "....R..",
+            "....R..",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l25",
+        "world": 1,
+        "index": 25,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "..R...",
+            "......",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l26",
+        "world": 1,
+        "index": 26,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".R....R",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 5,
+                "y": 0,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l27",
+        "world": 1,
+        "index": 27,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            "R...R..",
+            ".......",
+            ".......",
+            ".......",
+            "......R",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 7,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l28",
+        "world": 1,
+        "index": 28,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "....R.."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 7,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l29",
+        "world": 1,
+        "index": 29,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".R.....",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".....R."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "U",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 7,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w1-l30",
+        "world": 1,
+        "index": 30,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "R......",
+            ".......",
+            "....R.."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "PIGLET",
+                "id": "piglet_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "R",
+                "s": "BUNNY",
+                "id": "bunny_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "CHICK",
+                "id": "chick_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "D",
+                "s": "BUNNY",
+                "id": "bunny_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "D",
+                "s": "PIGLET",
+                "id": "piglet_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "BUNNY",
+                "id": "bunny_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "CHICK",
+                "id": "chick_17",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "PIGLET",
+                "id": "piglet_18",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    }
+]

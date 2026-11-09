@@ -1,0 +1,3486 @@
+[
+    {
+        "id": "w3-l01",
+        "world": 3,
+        "index": 1,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            "..T..",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 1: Wheee! A turntable spins the buddy 90 degrees clockwise as it enters."
+    },
+    {
+        "id": "w3-l02",
+        "world": 3,
+        "index": 2,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "..R..",
+            ".....",
+            "..T..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 4,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 2: Spin around obstacles! Turntables redirect buddies safely away from rocks."
+    },
+    {
+        "id": "w3-l03",
+        "world": 3,
+        "index": 3,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".T...",
+            ".....",
+            "...T.",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": "Tutorial 3: Multi-turn maze. Chart the spin before you tap!"
+    },
+    {
+        "id": "w3-l04",
+        "world": 3,
+        "index": 4,
+        "cols": 4,
+        "rows": 5,
+        "grid": [
+            "....",
+            "....",
+            "....",
+            "..T.",
+            "...."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l05",
+        "world": 3,
+        "index": 5,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "..T..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l06",
+        "world": 3,
+        "index": 6,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".T...",
+            "....R",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l07",
+        "world": 3,
+        "index": 7,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "...R.",
+            ".....",
+            "..T..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l08",
+        "world": 3,
+        "index": 8,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            ".....",
+            "..R..",
+            ".T...",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 5,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l09",
+        "world": 3,
+        "index": 9,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            ".....",
+            ".....",
+            "R....",
+            ".....",
+            ".T...",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l10",
+        "world": 3,
+        "index": 10,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            ".RTT..",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l11",
+        "world": 3,
+        "index": 11,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            ".T...",
+            ".....",
+            ".T...",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 3,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l12",
+        "world": 3,
+        "index": 12,
+        "cols": 5,
+        "rows": 6,
+        "grid": [
+            "..R..",
+            ".....",
+            ".....",
+            ".....",
+            "..T..",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 3,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l13",
+        "world": 3,
+        "index": 13,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            ".TT...",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l14",
+        "world": 3,
+        "index": 14,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "...R..",
+            "......",
+            "......",
+            "......",
+            ".R.T..",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l15",
+        "world": 3,
+        "index": 15,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            ".R....",
+            ".T....",
+            "......",
+            "......",
+            ".R....",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 3,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l16",
+        "world": 3,
+        "index": 16,
+        "cols": 5,
+        "rows": 5,
+        "grid": [
+            ".....",
+            "..T..",
+            ".....",
+            ".....",
+            "....."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l17",
+        "world": 3,
+        "index": 17,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "......",
+            "..T...",
+            "....R."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l18",
+        "world": 3,
+        "index": 18,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "...T..",
+            "......",
+            "......",
+            "..R..."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 2,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l19",
+        "world": 3,
+        "index": 19,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "....R.",
+            "......",
+            "....T.",
+            "......",
+            "......",
+            "...T..",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 4,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l20",
+        "world": 3,
+        "index": 20,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "......",
+            ".RT...",
+            "......",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l21",
+        "world": 3,
+        "index": 21,
+        "cols": 6,
+        "rows": 7,
+        "grid": [
+            "......",
+            "...R..",
+            "..T...",
+            "..T...",
+            "......",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 2,
+                "y": 1,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l22",
+        "world": 3,
+        "index": 22,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            "...T.R.",
+            "...T...",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 4,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l23",
+        "world": 3,
+        "index": 23,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".R.....",
+            "...T...",
+            ".......",
+            "...T...",
+            ".......",
+            "R......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 5,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 5,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 5,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 5,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l24",
+        "world": 3,
+        "index": 24,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            "..R....",
+            ".......",
+            "..T....",
+            ".......",
+            "....T.R",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 6,
+                "y": 3,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 4,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l25",
+        "world": 3,
+        "index": 25,
+        "cols": 6,
+        "rows": 6,
+        "grid": [
+            "......",
+            "......",
+            "......",
+            "..RT..",
+            "......",
+            "......"
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 4,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 4,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l26",
+        "world": 3,
+        "index": 26,
+        "cols": 7,
+        "rows": 7,
+        "grid": [
+            ".......",
+            "....TR.",
+            "...T...",
+            ".......",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 2,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 1,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 1,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 6,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l27",
+        "world": 3,
+        "index": 27,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "...T...",
+            "..R...."
+        ],
+        "buddies": [
+            {
+                "x": 1,
+                "y": 3,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 3,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 3,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 7,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 0,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l28",
+        "world": 3,
+        "index": 28,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            ".......",
+            "...RT..",
+            ".RT....",
+            ".......",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 4,
+                "y": 4,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 0,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 3,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 1,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 0,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 3,
+                "d": "L",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 2,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 1,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l29",
+        "world": 3,
+        "index": 29,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            "....R..",
+            ".....T.",
+            ".......",
+            ".......",
+            ".......",
+            ".......",
+            "...T...",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 0,
+                "y": 5,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 0,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 6,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 0,
+                "y": 7,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 7,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 6,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 7,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "U",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 3,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 3,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 3,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 6,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 1,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 5,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    },
+    {
+        "id": "w3-l30",
+        "world": 3,
+        "index": 30,
+        "cols": 7,
+        "rows": 8,
+        "grid": [
+            ".......",
+            ".......",
+            "...R...",
+            ".......",
+            "..R....",
+            "...T...",
+            ".......",
+            "......."
+        ],
+        "buddies": [
+            {
+                "x": 3,
+                "y": 3,
+                "d": "D",
+                "s": "MONKEY",
+                "id": "monkey_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 4,
+                "d": "D",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": true
+            },
+            {
+                "x": 1,
+                "y": 5,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_3",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 7,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_4",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 7,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_5",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 7,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_6",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 7,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_7",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 6,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_8",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 0,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_9",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 7,
+                "d": "U",
+                "s": "MONKEY",
+                "id": "monkey_10",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 0,
+                "d": "U",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_11",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 1,
+                "d": "L",
+                "s": "PARROT",
+                "id": "parrot_12",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 3,
+                "y": 6,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_13",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 2,
+                "d": "R",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_14",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 2,
+                "d": "D",
+                "s": "PARROT",
+                "id": "parrot_15",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 5,
+                "y": 6,
+                "d": "R",
+                "s": "MONKEY",
+                "id": "monkey_16",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 4,
+                "y": 1,
+                "d": "L",
+                "s": "TIGER_CUB",
+                "id": "tiger_cub_17",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "d": "R",
+                "s": "PARROT",
+                "id": "parrot_18",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            }
+        ],
+        "comment": null
+    }
+]
