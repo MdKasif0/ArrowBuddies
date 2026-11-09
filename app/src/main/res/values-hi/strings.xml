@@ -27,8 +27,20 @@
 
     <!-- Content Descriptions & Placeholders -->
     <string name="desc_splash_logo">ArrowBuddies लोगो</string>
-    <string name="placeholder_game_instruction">गेमप्ले चरण 5 में बनाया जाएगा</string>
+    <string name="placeholder_game_instruction">साथी को छुड़ाने के लिए टैप करें। बाधाओं और अवरोधकों से बचें!</string>
     <string name="placeholder_current_level">वर्तमान स्तर: %1$s</string>
+
+    <!-- Game Screen HUD & Dialogs -->
+    <string name="game_rescued_count">%1$d / %2$d</string>
+    <string name="game_undo">वापस</string>
+    <string name="game_restart">पुनः प्रारंभ</string>
+    <string name="game_level_complete">स्तर पूरा हुआ!</string>
+    <string name="game_level_complete_subtitle">सभी साथी सुरक्षित बचा लिए गए!</string>
+    <string name="game_level_failed">दिल समाप्त हो गए!</string>
+    <string name="game_level_failed_subtitle">चिंता न करें, पुनः प्रयास करें!</string>
+    <string name="game_try_again">पुनः प्रयास</string>
+    <string name="game_next_level">अगला स्तर</string>
+    <string name="game_dev_level_chip">डेव %1$s</string>
 
     <!-- Buddy Gallery Controls -->
     <string name="gallery_expression_label">भाव-भंगिमा</string>

@@ -27,8 +27,20 @@
 
     <!-- Content Descriptions & Placeholders -->
     <string name="desc_splash_logo">ArrowBuddies Logo</string>
-    <string name="placeholder_game_instruction">Gameplay will be built in Step 5</string>
+    <string name="placeholder_game_instruction">Tap a buddy to rescue it. Avoid obstacles and blockers!</string>
     <string name="placeholder_current_level">Current Level: %1$s</string>
+
+    <!-- Game Screen HUD & Dialogs -->
+    <string name="game_rescued_count">%1$d / %2$d</string>
+    <string name="game_undo">Undo</string>
+    <string name="game_restart">Restart</string>
+    <string name="game_level_complete">Level Complete!</string>
+    <string name="game_level_complete_subtitle">All buddies safely rescued!</string>
+    <string name="game_level_failed">Out of Hearts!</string>
+    <string name="game_level_failed_subtitle">Don\'t worry, you can try again!</string>
+    <string name="game_try_again">Try Again</string>
+    <string name="game_next_level">Next Level</string>
+    <string name="game_dev_level_chip">Dev %1$s</string>
 
     <!-- Buddy Gallery Controls -->
     <string name="gallery_expression_label">Expression</string>
