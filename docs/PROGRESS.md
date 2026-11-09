@@ -3,8 +3,8 @@
 ## Roadmap (Steps 1-10)
 - [x] **Step 1: Project Foundation** — Gradle setup, multi-module (:engine, :app), architecture skeleton, navigation routes, theme tokens, release/debug builds, tests.
 - [x] **Step 2: Premium Design System** — Soft-toy / clay tactile UI tokens, 3D candy buttons, Baloo 2 typography, 8 WorldTheme biomes, spring physics, squishy components, particle burst system, Design Catalog showcase screen.
-- [ ] **Step 3: Pure Kotlin Game Engine & Solver** — Board representation, buddy movement, collisions, obstacle mechanics (rock, mud, turntable, cage/key, portal, sleepy), solver, test suite.
-- [ ] **Step 4: Procedural Vector Buddies** — 24 procedural vector buddies (no bitmaps), clay look, eyes with dual highlights, blush cheeks, accessory slots.
+- [x] **Step 3: Buddy Characters (Procedural Vector Buddies)** — 24 procedural species in code, distinct silhouettes, 8 expressions, directional arrow badge, drawWithCache performance optimization (60 fps), life & charm idle physics, BuddyGalleryScreen.
+- [ ] **Step 4: Pure Kotlin Game Engine & Solver** — Board representation, buddy movement, collisions, obstacle mechanics (rock, mud, turntable, cage/key, portal, sleepy), solver, test suite.
 - [ ] **Step 5: Level Generator & Catalog** — 240 level generator with sawtooth difficulty, solvability validator, Daily Rescue seed generator, JSON/binary level serialisation.
 - [ ] **Step 6: Core Gameplay Screen** — Interactive board, tap dashing, path peek, bonk bounce, escape animations, HUD (hearts, pause, boosters), 60fps budget optimization.
 - [ ] **Step 7: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
@@ -93,6 +93,56 @@
 
 ---
 
+### Step 3: Buddy Characters Architecture & Procedural Rendering Notes
+
+1. **Direction in Engine (`com.kasif.arrowbuddies.engine.model.Direction`)**:
+   - Pure Kotlin enum (`UP`, `RIGHT`, `DOWN`, `LEFT`) with grid coordinate deltas (`dx`, `dy`), angle in degrees (`0f`, `90f`, `180f`, `270f`), and rotation helpers (`turnClockwise90`, `turnCounterClockwise90`, `opposite`).
+
+2. **24 Species Morphological Architecture (`BuddySpecies.kt`)**:
+   - Exactly 3 species per world for all 8 worlds with individual palettes, display names in English and Hindi, and distinct silhouette properties:
+     - *World 1 (Sunny Meadow)*: **Bunny** (tall curved ears with pink inner pads, puff tail), **Chick** (3-tuft crest, triangle orange beak), **Piglet** (snout with dual nostrils, curly tail).
+     - *World 2 (Happy Farm)*: **Puppy** (long floppy ears, wag tail), **Lamb** (fluffy wool crown, soft floppy ears), **Calf** (nub horns, broad snout, cow spot).
+     - *World 3 (Jungle Ruins)*: **Monkey** (round cupped ears, long curl tail), **Tiger Cub** (cheek stripes, pointy ears), **Parrot** (downward curved hook beak, feather plume).
+     - *World 4 (Snowy Peaks)*: **Penguin** (tuxedo cowl, white belly, orange beak), **Polar Cub** (round bear ears, soft blue accent), **Arctic Fox** (tall pointy ears with slate tips, bushy brush tail).
+     - *World 5 (Coral Coast)*: **Turtle** (domed scute shell, flipper paddles), **Otter** (round ears, tapered swimmer tail), **Crab** (raised dual pincers/claws, top eyestalks).
+     - *World 6 (Moonlit Forest)*: **Owl** (feather crest horns, spectacle rings around eyes, yellow beak), **Hedgehog** (radiating crown of rounded quills), **Raccoon** (horizontal bandit eye mask, ringed tail).
+     - *World 7 (Desert Oasis)*: **Camel** (curved dorsal hump, drooping ears), **Fennec Fox** (enormous signature triangular ears, peach interior), **Meerkat** (dark sunglasses eye rings, alert posture).
+     - *World 8 (Sky Islands)*: **Red Panda** (white cheek markings, brow dots, ringed tail), **Elephant Calf** (wide fan ears, upward curled trunk), **Peacock** (3-bobble celestial crown crest, feather fan).
+
+3. **8 Emotional Expressions (`BuddyExpression.kt`)**:
+   - `IDLE`: Normal eyes with dual specular highlight dots, sweet smile, periodic blinks, breathing bob.
+   - `WORRIED`: Wavy raised eyebrows, nervous eyes, small cyan sweat bead on brow.
+   - `READY`: Confident angled brows (\ /), bright determined eyes, focused smile.
+   - `DASHING`: Focused squint eyes, motion squash along movement axis, trailing speed streaks.
+   - `BONKED`: Cartoon spiral swirly eyes (@ @), wavy dizzy mouth, 3 orbiting yellow 5-point stars.
+   - `HAPPY`: Upward crescent arc eyes (^_^), joyful smile, floating pink hearts.
+   - `SLEEPY`: Closed peaceful flat sleeping lines, nightcap/peaceful face, floating "Zzz" letters.
+   - `CAGED`: Sad downturned watery eyes with large glossy tear pool shimmer, downturned mouth.
+
+4. **Direction Badge (Gameplay Primary Indicator)**:
+   - 3D circular accent badge anchored to the active movement edge (`UP`, `RIGHT`, `DOWN`, `LEFT`).
+   - Dark `#2B2240` outline, soft drop shadow, bold crisp white arrow.
+   - Accessible & color-blind friendly: purely shape-driven, readable at 36dp.
+   - The body leans 6 degrees in the travel direction, and the pupils shift toward the edge.
+   - Spins smoothly to new directions with shortest-path spring physics.
+
+5. **Life & Charm Idle Physics**:
+   - Breathing scale oscillating between `1.00f` and `1.03f` with sinusoidal curve ($\approx 2600\text{ms}$).
+   - Subtle vertical bob ($\approx 1.5\%\text{ of size}$).
+   - Blinking: every $3800\text{ms}$, eyelids close into gentle arcs for $140\text{ms}$.
+   - Ear twitch: subtle 5-degree twitch every $4400\text{ms}$ for $160\text{ms}$.
+   - Unique phase seed per buddy so 40 buddies on a grid never breathe, bob, or blink in sync.
+   - Performance: `drawWithCache` builds geometry paths and brushes once per size. Animation time is read exclusively in the Draw phase.
+
+6. **Buddy Gallery Debug Screen (`BuddyGalleryScreen.kt`)**:
+   - Registered at `Route.BuddyGallery` and reachable from Settings.
+   - Direction filter chips (`Up`, `Right`, `Down`, `Left`) + "Spin 90° ↻" button.
+   - Expression selector chips for all 8 expressions.
+   - Avatar size slider ($32\text{dp}$ to $160\text{dp}$) with quick presets ($36\text{dp}$ Cell, $64\text{dp}$ Standard, $96\text{dp}$ Card, $128\text{dp}$ Hero).
+   - Grouped grid showcasing all 24 species with English + Hindi labels and feature tags.
+
+---
+
 ## Visual Verification & Screen Captures
 
 Screenshots captured from live Android emulator execution on API 35:
@@ -102,6 +152,15 @@ Screenshots captured from live Android emulator execution on API 35:
 - `docs/screens/design_catalog_2.png`: Star Row with sequential chime fills, Jelly Progress Bar with squishy wobble, Speech Bubble with pointer tail, Chunky 3D Toggles.
 - `docs/screens/design_catalog_3.png`: Particle Burst triggers (Confetti & Sparkle) and Modal Dialog triggers.
 - `docs/screens/design_catalog_dialog.png`: 3D Game Dialog with API 31+ blurred backdrop, star celebration, and 3D action button.
+- `docs/screens/buddy_gallery_top.png`: Buddy Gallery header, direction controls, expression filters, and size slider.
+- `docs/screens/buddy_gallery_worlds1_2.png`: World 1 (Bunny, Chick, Piglet) and World 2 (Puppy, Lamb, Calf) procedural avatars.
+- `docs/screens/buddy_gallery_worlds3_5.png`: World 3 (Monkey, Tiger Cub, Parrot) and World 4 (Penguin, Polar Cub, Arctic Fox) avatars.
+- `docs/screens/buddy_gallery_worlds6_8.png`: World 5 (Turtle, Otter, Crab) and World 6 (Owl, Hedgehog, Raccoon) avatars.
+- `docs/screens/buddy_gallery_worlds7_8.png`: World 7 (Camel, Fennec Fox, Meerkat) and World 8 (Red Panda, Elephant Calf, Peacock) avatars.
+- `docs/screens/buddy_gallery_world8.png`: World 8 Sky Islands finale species in detail.
+- `docs/screens/buddy_gallery_worried_turned.png`: Interactive direction turning (90° spring spin) and Worried expression (sweat drop + raised brows).
+- `docs/screens/buddy_gallery_hero_size.png`: 128dp Hero card size inspection.
+- `docs/screens/buddy_gallery_cell_size.png`: 36dp small grid cell size readability verification.
 
 ---
 
