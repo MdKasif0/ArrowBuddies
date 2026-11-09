@@ -53,7 +53,18 @@ object LevelCodec {
      */
     fun decode(jsonString: String): LevelDef {
         val dto = json.decodeFromString<LevelDto>(jsonString)
+        return fromDto(dto)
+    }
 
+    /**
+     * Parses a JSON string containing an array of level objects into validated [LevelDef]s.
+     */
+    fun decodeList(jsonString: String): List<LevelDef> {
+        val list = json.decodeFromString<List<LevelDto>>(jsonString)
+        return list.map { fromDto(it) }
+    }
+
+    private fun fromDto(dto: LevelDto): LevelDef {
         // 1. Validate board dimensions (Spec: 4x4 up to 7 cols x 9 rows)
         require(dto.cols in 1..7) {
             "Invalid grid columns: ${dto.cols}. ArrowBuddies boards must have between 1 and 7 columns."
@@ -141,10 +152,7 @@ object LevelCodec {
         )
     }
 
-    /**
-     * Serializes a [LevelDef] to formatted JSON.
-     */
-    fun encode(level: LevelDef): String {
+    private fun toDto(level: LevelDef): LevelDto {
         val gridRows = (0 until level.rows).map { y ->
             (0 until level.cols).map { x ->
                 val pos = Pos(x, y)
@@ -178,7 +186,7 @@ object LevelCodec {
             )
         }
 
-        val dto = LevelDto(
+        return LevelDto(
             id = level.id,
             world = level.world,
             index = level.index,
@@ -188,8 +196,20 @@ object LevelCodec {
             buddies = buddiesDto,
             comment = level.comment
         )
+    }
 
-        return json.encodeToString(dto)
+    /**
+     * Serializes a [LevelDef] to formatted JSON.
+     */
+    fun encode(level: LevelDef): String {
+        return json.encodeToString(toDto(level))
+    }
+
+    /**
+     * Serializes a list of [LevelDef]s to formatted JSON.
+     */
+    fun encodeList(levels: List<LevelDef>): String {
+        return json.encodeToString(levels.map { toDto(it) })
     }
 }
 
