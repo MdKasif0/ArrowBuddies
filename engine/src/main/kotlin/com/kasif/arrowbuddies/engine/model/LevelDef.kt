@@ -21,7 +21,8 @@ data class LevelDef(
     val tiles: Map<Pos, Tile>,
     val buddies: List<Buddy>,
     val world: Int,
-    val index: Int
+    val index: Int,
+    val comment: String? = null
 ) {
     /**
      * Checks if [pos] falls within the grid boundaries.

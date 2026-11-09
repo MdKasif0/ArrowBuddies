@@ -17,7 +17,8 @@ internal data class LevelDto(
     val cols: Int,
     val rows: Int,
     val grid: List<String>,
-    val buddies: List<BuddyDto>
+    val buddies: List<BuddyDto>,
+    val comment: String? = null
 )
 
 @Serializable
@@ -29,7 +30,8 @@ internal data class BuddyDto(
     val id: String? = null,
     val cageColor: String? = null,
     val keyColor: String? = null,
-    val sleepy: Boolean = false
+    val sleepy: Boolean = false,
+    val isGolden: Boolean = false
 )
 
 /**
@@ -122,7 +124,8 @@ object LevelCodec {
                 dir = dir,
                 cageColor = bDto.cageColor,
                 keyColor = bDto.keyColor,
-                sleepy = bDto.sleepy
+                sleepy = bDto.sleepy,
+                isGolden = bDto.isGolden
             )
         }
 
@@ -133,7 +136,8 @@ object LevelCodec {
             tiles = tilesMap,
             buddies = buddies,
             world = dto.world,
-            index = dto.index
+            index = dto.index,
+            comment = dto.comment
         )
     }
 
@@ -169,7 +173,8 @@ object LevelCodec {
                 id = buddy.id,
                 cageColor = buddy.cageColor,
                 keyColor = buddy.keyColor,
-                sleepy = buddy.sleepy
+                sleepy = buddy.sleepy,
+                isGolden = buddy.isGolden
             )
         }
 
@@ -180,7 +185,8 @@ object LevelCodec {
             cols = level.cols,
             rows = level.rows,
             grid = gridRows,
-            buddies = buddiesDto
+            buddies = buddiesDto,
+            comment = level.comment
         )
 
         return json.encodeToString(dto)

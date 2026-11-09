@@ -22,7 +22,8 @@ data class Buddy(
     val dir: Direction,
     val cageColor: String? = null,
     val keyColor: String? = null,
-    val sleepy: Boolean = false
+    val sleepy: Boolean = false,
+    val isGolden: Boolean = false
 ) {
     /**
      * True if the buddy is currently immobilized (caged or asleep).

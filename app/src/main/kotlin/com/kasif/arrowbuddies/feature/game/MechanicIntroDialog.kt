@@ -267,3 +267,4 @@ private fun MiniDemoCanvas(mechanic: MechanicType) {
         }
     }
 }
+
