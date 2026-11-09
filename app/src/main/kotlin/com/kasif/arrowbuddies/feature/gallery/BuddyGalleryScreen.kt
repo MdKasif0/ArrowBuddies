@@ -67,6 +67,8 @@ import com.kasif.arrowbuddies.core.designsystem.modifier.bounceClick
 import com.kasif.arrowbuddies.core.designsystem.theme.AllWorldThemes
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesTheme
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
+import com.kasif.arrowbuddies.core.designsystem.theme.Cream
+import com.kasif.arrowbuddies.core.designsystem.theme.Ink
 import com.kasif.arrowbuddies.core.designsystem.theme.WhitePure
 import com.kasif.arrowbuddies.engine.model.Direction
 
@@ -110,12 +112,12 @@ fun BuddyGalleryScreen(
                             Text(
                                 text = stringResource(R.string.screen_buddy_gallery),
                                 style = ArrowBuddiesThemeTokens.typography.title,
-                                color = ArrowBuddiesThemeTokens.colors.ink
+                                color = ArrowBuddiesThemeTokens.colors.textPrimary
                             )
                             Text(
                                 text = "24 Species • 8 Worlds • Pure Vector Compose",
                                 style = ArrowBuddiesThemeTokens.typography.caption,
-                                color = ArrowBuddiesThemeTokens.colors.ink.copy(alpha = 0.7f)
+                                color = ArrowBuddiesThemeTokens.colors.textSecondary
                             )
                         }
                     },
@@ -127,16 +129,16 @@ fun BuddyGalleryScreen(
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = stringResource(R.string.action_back),
-                                tint = ArrowBuddiesThemeTokens.colors.ink
+                                tint = ArrowBuddiesThemeTokens.colors.textPrimary
                             )
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = ArrowBuddiesThemeTokens.colors.cream
+                        containerColor = ArrowBuddiesThemeTokens.colors.background
                     )
                 )
             },
-            containerColor = ArrowBuddiesThemeTokens.colors.cream,
+            containerColor = ArrowBuddiesThemeTokens.colors.background,
             modifier = modifier.fillMaxSize()
         ) { paddingValues ->
             LazyColumn(
@@ -165,7 +167,7 @@ fun BuddyGalleryScreen(
                                 Text(
                                     text = "Direction:",
                                     style = ArrowBuddiesThemeTokens.typography.subtitle,
-                                    color = ArrowBuddiesThemeTokens.colors.ink
+                                    color = ArrowBuddiesThemeTokens.colors.textPrimary
                                 )
                                 CandyButton(
                                     text = "Spin 90° ↻",
@@ -194,8 +196,8 @@ fun BuddyGalleryScreen(
                                         onClick = { selectedDirection = dir },
                                         label = { Text(arrowGlyph, fontWeight = FontWeight.Bold) },
                                         colors = FilterChipDefaults.filterChipColors(
-                                            selectedContainerColor = ArrowBuddiesThemeTokens.colors.mango,
-                                            selectedLabelColor = ArrowBuddiesThemeTokens.colors.ink
+                                            selectedContainerColor = ArrowBuddiesThemeTokens.colors.mango.main,
+                                            selectedLabelColor = Ink
                                         ),
                                         modifier = Modifier.weight(1f)
                                     )
@@ -206,7 +208,7 @@ fun BuddyGalleryScreen(
                             Text(
                                 text = "Expression:",
                                 style = ArrowBuddiesThemeTokens.typography.subtitle,
-                                color = ArrowBuddiesThemeTokens.colors.ink
+                                color = ArrowBuddiesThemeTokens.colors.textPrimary
                             )
                             Row(
                                 modifier = Modifier
@@ -221,8 +223,8 @@ fun BuddyGalleryScreen(
                                         onClick = { selectedExpression = expr },
                                         label = { Text(stringResource(expr.labelRes)) },
                                         colors = FilterChipDefaults.filterChipColors(
-                                            selectedContainerColor = ArrowBuddiesThemeTokens.colors.mint,
-                                            selectedLabelColor = ArrowBuddiesThemeTokens.colors.ink
+                                            selectedContainerColor = ArrowBuddiesThemeTokens.colors.mint.main,
+                                            selectedLabelColor = Ink
                                         )
                                     )
                                 }
@@ -237,7 +239,7 @@ fun BuddyGalleryScreen(
                                 Text(
                                     text = "Avatar Size: ${avatarSizeDp.toInt()}dp",
                                     style = ArrowBuddiesThemeTokens.typography.subtitle,
-                                    color = ArrowBuddiesThemeTokens.colors.ink
+                                    color = ArrowBuddiesThemeTokens.colors.textPrimary
                                 )
 
                                 // Preset size buttons
@@ -246,7 +248,7 @@ fun BuddyGalleryScreen(
                                         Box(
                                             modifier = Modifier
                                                 .background(
-                                                    color = if (avatarSizeDp.toInt() == preset) ArrowBuddiesThemeTokens.colors.sky else Color(0xFFECEFF1),
+                                                    color = if (avatarSizeDp.toInt() == preset) ArrowBuddiesThemeTokens.colors.sky.main else Color(0xFFECEFF1),
                                                     shape = CircleShape
                                                 )
                                                 .clickable { avatarSizeDp = preset.toFloat() }
@@ -256,7 +258,7 @@ fun BuddyGalleryScreen(
                                             Text(
                                                 text = "${preset}p",
                                                 style = ArrowBuddiesThemeTokens.typography.caption,
-                                                color = ArrowBuddiesThemeTokens.colors.ink,
+                                                color = Ink,
                                                 fontWeight = FontWeight.Bold
                                             )
                                         }
@@ -269,8 +271,8 @@ fun BuddyGalleryScreen(
                                 onValueChange = { avatarSizeDp = it },
                                 valueRange = 32f..160f,
                                 colors = SliderDefaults.colors(
-                                    thumbColor = ArrowBuddiesThemeTokens.colors.mango,
-                                    activeTrackColor = ArrowBuddiesThemeTokens.colors.mango
+                                    thumbColor = ArrowBuddiesThemeTokens.colors.mango.main,
+                                    activeTrackColor = ArrowBuddiesThemeTokens.colors.mango.main
                                 )
                             )
                         }
@@ -295,7 +297,7 @@ fun BuddyGalleryScreen(
                             Text(
                                 text = "World ${world.id}: ${world.name}",
                                 style = ArrowBuddiesThemeTokens.typography.title,
-                                color = ArrowBuddiesThemeTokens.colors.ink
+                                color = ArrowBuddiesThemeTokens.colors.textPrimary
                             )
                         }
                     }
@@ -340,7 +342,7 @@ fun BuddyGalleryScreen(
                                         Text(
                                             text = stringResource(species.nameRes),
                                             style = ArrowBuddiesThemeTokens.typography.subtitle,
-                                            color = ArrowBuddiesThemeTokens.colors.ink,
+                                            color = ArrowBuddiesThemeTokens.colors.textPrimary,
                                             textAlign = TextAlign.Center
                                         )
 
@@ -348,7 +350,7 @@ fun BuddyGalleryScreen(
                                         Text(
                                             text = "Ear: ${species.earType.name.lowercase()} • Tail: ${species.tailType.name.lowercase()}",
                                             style = ArrowBuddiesThemeTokens.typography.caption.copy(fontSize = 11.sp),
-                                            color = ArrowBuddiesThemeTokens.colors.ink.copy(alpha = 0.6f),
+                                            color = ArrowBuddiesThemeTokens.colors.textSecondary,
                                             textAlign = TextAlign.Center
                                         )
                                     }
