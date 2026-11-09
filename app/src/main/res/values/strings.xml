@@ -270,4 +270,18 @@
     <string name="reminder_channel_desc">Reminds you when a new Daily Rescue puzzle is ready</string>
     <string name="reminder_setting_title">Daily Reminder (6:00 PM)</string>
     <string name="reminder_setting_subtitle">Get notified when a new puzzle is ready</string>
+
+    <!-- Accessibility & TalkBack -->
+    <string name="talkback_buddy_desc">%1$s, facing %2$s, row %3$d, column %4$d</string>
+    <string name="talkback_dir_up">up</string>
+    <string name="talkback_dir_down">down</string>
+    <string name="talkback_dir_left">left</string>
+    <string name="talkback_dir_right">right</string>
+    <string name="talkback_action_help_escape">Help escape</string>
+    <string name="talkback_hud_hearts">%1$d hearts remaining</string>
+    <string name="talkback_hud_rescued">%1$d of %2$d buddies rescued</string>
+    <string name="talkback_hud_undo">Undo move</string>
+    <string name="talkback_hud_restart">Restart level</string>
+    <string name="talkback_hud_hint">Use hint</string>
+    <string name="talkback_hud_pause">Pause game</string>
 </resources>

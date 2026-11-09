@@ -6,6 +6,8 @@ import com.kasif.arrowbuddies.core.audio.DefaultSoundManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.haptics.DefaultHapticsManager
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
+import com.kasif.arrowbuddies.core.monetization.DefaultMonetizationManager
+import com.kasif.arrowbuddies.core.monetization.MonetizationManager
 import com.kasif.arrowbuddies.data.db.AppDatabase
 import com.kasif.arrowbuddies.data.db.AppDatabaseMigrations
 import com.kasif.arrowbuddies.data.db.dao.AchievementDao
@@ -68,7 +70,9 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideSoundManager(): SoundManager = DefaultSoundManager()
+    fun provideSoundManager(
+        @ApplicationContext context: Context
+    ): SoundManager = DefaultSoundManager(context)
 }
 
 @Module
@@ -92,4 +96,10 @@ abstract class BindingModule {
     abstract fun bindLevelRepository(
         impl: DefaultLevelRepository
     ): LevelRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindMonetizationManager(
+        impl: DefaultMonetizationManager
+    ): MonetizationManager
 }

@@ -50,6 +50,10 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.CustomAccessibilityAction
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.kasif.arrowbuddies.R
@@ -558,6 +562,22 @@ fun GameBoard(
                     }
 
                     val isHinted = buddy.id == hintBuddyId
+                    val buddySpeciesName = stringResource(species.displayNameRes)
+                    val dirDescription = when (currentDir) {
+                        Direction.UP -> stringResource(R.string.talkback_dir_up)
+                        Direction.DOWN -> stringResource(R.string.talkback_dir_down)
+                        Direction.LEFT -> stringResource(R.string.talkback_dir_left)
+                        Direction.RIGHT -> stringResource(R.string.talkback_dir_right)
+                    }
+                    val buddyContentDesc = stringResource(
+                        R.string.talkback_buddy_desc,
+                        buddySpeciesName,
+                        dirDescription,
+                        buddy.pos.y + 1,
+                        buddy.pos.x + 1
+                    )
+                    val actionLabel = stringResource(R.string.talkback_action_help_escape)
+
                     Box(
                         modifier = Modifier
                             .size(cellSizeDp)
@@ -567,6 +587,15 @@ fun GameBoard(
                                 scaleX = currentScaleX * (if (isWakingUp) 1.15f else 1f)
                                 scaleY = currentScaleY * (if (isWakingUp) 1.15f else 1f)
                                 alpha = currentAlpha
+                            }
+                            .semantics(mergeDescendants = true) {
+                                contentDescription = buddyContentDesc
+                                customActions = listOf(
+                                    CustomAccessibilityAction(actionLabel) {
+                                        onTapBuddy(buddy.id)
+                                        true
+                                    }
+                                )
                             }
                     ) {
                         if (isHinted) {
@@ -1213,6 +1242,35 @@ private fun CagedBuddyOverlay(
             cornerRadius = CornerRadius(6f, 6f)
         )
 
+        // Colorblind identification symbol: Silver = Diamond, Ruby = Triangle, Gold = Circle
+        val symbolCy = lockCy - lockH * 0.22f
+        when (cageColor.lowercase()) {
+            "silver" -> {
+                val dSize = lockW * 0.14f
+                val diamond = Path().apply {
+                    moveTo(lockCx, symbolCy - dSize)
+                    lineTo(lockCx + dSize, symbolCy)
+                    lineTo(lockCx, symbolCy + dSize)
+                    lineTo(lockCx - dSize, symbolCy)
+                    close()
+                }
+                drawPath(diamond, color = Color(0xFF2B2240))
+            }
+            "ruby" -> {
+                val tSize = lockW * 0.14f
+                val triangle = Path().apply {
+                    moveTo(lockCx, symbolCy - tSize)
+                    lineTo(lockCx + tSize, symbolCy + tSize * 0.8f)
+                    lineTo(lockCx - tSize, symbolCy + tSize * 0.8f)
+                    close()
+                }
+                drawPath(triangle, color = Color(0xFF2B2240))
+            }
+            else -> {
+                drawCircle(color = Color(0xFF2B2240), radius = lockW * 0.10f, center = Offset(lockCx, symbolCy))
+            }
+        }
+
         // Keyhole
         drawCircle(color = Color(0xFF2B2240), radius = lockW * 0.12f, center = Offset(lockCx, lockCy - 1f))
         val keyholeSlot = Path().apply {
@@ -1262,6 +1320,34 @@ private fun KeyCarrierRibbon(
         drawCircle(color = keyTone, radius = keyR, center = Offset(keyX, keyY))
         drawCircle(color = keyOutline, radius = keyR, center = Offset(keyX, keyY), style = Stroke(width = 1.5f))
         drawCircle(color = WhitePure, radius = keyR * 0.42f, center = Offset(keyX, keyY))
+
+        // Colorblind matching symbol inside key loop
+        when (keyColor.lowercase()) {
+            "silver" -> {
+                val dSize = keyR * 0.28f
+                val diamond = Path().apply {
+                    moveTo(keyX, keyY - dSize)
+                    lineTo(keyX + dSize, keyY)
+                    lineTo(keyX, keyY + dSize)
+                    lineTo(keyX - dSize, keyY)
+                    close()
+                }
+                drawPath(diamond, color = keyOutline)
+            }
+            "ruby" -> {
+                val tSize = keyR * 0.28f
+                val triangle = Path().apply {
+                    moveTo(keyX, keyY - tSize)
+                    lineTo(keyX + tSize, keyY + tSize * 0.8f)
+                    lineTo(keyX - tSize, keyY + tSize * 0.8f)
+                    close()
+                }
+                drawPath(triangle, color = keyOutline)
+            }
+            else -> {
+                drawCircle(color = keyOutline, radius = keyR * 0.20f, center = Offset(keyX, keyY))
+            }
+        }
 
         // Key stem & teeth
         val stemEnd = Offset(keyX + keyR * 1.1f, keyY + keyR * 1.1f)

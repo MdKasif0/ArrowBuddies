@@ -270,4 +270,18 @@
     <string name="reminder_channel_desc">जब नया दैनिक बचाव पहेली तैयार हो तो आपको सूचित करता है</string>
     <string name="reminder_setting_title">दैनिक स्मरण (शाम 6:00 बजे)</string>
     <string name="reminder_setting_subtitle">जब नया पहेली तैयार हो तो सूचना पाएँ</string>
+
+    <!-- Accessibility & TalkBack -->
+    <string name="talkback_buddy_desc">%1$s, दिशा %2$s, पंक्ति %3$d, स्तंभ %4$d</string>
+    <string name="talkback_dir_up">ऊपर</string>
+    <string name="talkback_dir_down">नीचे</string>
+    <string name="talkback_dir_left">बाएं</string>
+    <string name="talkback_dir_right">दाएं</string>
+    <string name="talkback_action_help_escape">बचने में मदद करें</string>
+    <string name="talkback_hud_hearts">%1$d दिल बचे हैं</string>
+    <string name="talkback_hud_rescued">%1$d / %2$d साथी बचाए गए</string>
+    <string name="talkback_hud_undo">चाल पूर्ववत करें</string>
+    <string name="talkback_hud_restart">स्तर पुनः प्रारंभ करें</string>
+    <string name="talkback_hud_hint">संकेत का उपयोग करें</string>
+    <string name="talkback_hud_pause">खेल रोकें</string>
 </resources>

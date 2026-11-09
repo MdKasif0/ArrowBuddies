@@ -41,7 +41,8 @@ data class GameUiState(
     val newSpeciesUnlocked: BuddySpecies? = null,
     val goldenBerryBonus: Int = 0,
     val isTutorialLevel: Boolean = false,
-    val showReminderPromptDialog: Boolean = false
+    val showReminderPromptDialog: Boolean = false,
+    val reduceMotion: Boolean = false
 ) {
     val heartsRemaining: Int get() = gameState.hearts
     val rescuedCount: Int get() = gameState.rescuedIds.size

@@ -51,7 +51,17 @@ fun GameScreen(
     val soundManager: SoundManager? = LocalSound.current
 
     val particleSystemState = remember { ParticleSystemState() }
+    val boardShakeOffset = remember { Animatable(0f) }
     var bumpRescuedCount by remember { mutableIntStateOf(0) }
+
+    // Start background music for the world
+    LaunchedEffect(uiState.level.world, uiState.musicEnabled) {
+        if (uiState.musicEnabled) {
+            soundManager?.playMusic(uiState.level.world)
+        } else {
+            soundManager?.stopMusic()
+        }
+    }
 
     // Intercept back button to prompt "Leave this level?"
     BackHandler {
@@ -90,23 +100,35 @@ fun GameScreen(
 
                 is GameEffect.PlaySound -> {
                     when (effect.type) {
-                        SoundType.TAP -> soundManager?.playPop()
-                        SoundType.ESCAPE -> soundManager?.playChime()
-                        SoundType.BONK -> soundManager?.playBoing()
-                        SoundType.SQUELCH -> soundManager?.playPop()
-                        SoundType.WHOOSH -> soundManager?.playChime()
-                        SoundType.KEY_UNLOCK -> soundManager?.playChime()
-                        SoundType.CAGE_LOCKED -> soundManager?.playBoing()
-                        SoundType.SLEEPY_YAWN -> soundManager?.playPop()
-                        SoundType.WAKE_UP -> soundManager?.playPop()
+                        SoundType.TAP -> soundManager?.playTap()
+                        SoundType.ESCAPE -> soundManager?.playEscape(uiState.rescuedCount)
+                        SoundType.BONK -> soundManager?.playBonk()
+                        SoundType.SQUELCH -> soundManager?.playMudSquelch()
+                        SoundType.WHOOSH -> soundManager?.playPortalWhoosh()
+                        SoundType.KEY_UNLOCK -> soundManager?.playCageUnlock()
+                        SoundType.CAGE_LOCKED -> soundManager?.playBonk()
+                        SoundType.SLEEPY_YAWN -> soundManager?.playYawn()
+                        SoundType.WAKE_UP -> soundManager?.playTap()
                         SoundType.WIN -> {
-                            soundManager?.playChime()
-                            // Trigger victory confetti burst
-                            val screenWidth = view.width.toFloat().coerceAtLeast(400f)
-                            val screenHeight = view.height.toFloat().coerceAtLeast(600f)
-                            particleSystemState.spawnConfetti(screenWidth * 0.5f, screenHeight * 0.35f, count = 100)
+                            soundManager?.playStarPop()
+                            if (!uiState.reduceMotion) {
+                                // Trigger victory confetti burst
+                                val screenWidth = view.width.toFloat().coerceAtLeast(400f)
+                                val screenHeight = view.height.toFloat().coerceAtLeast(600f)
+                                particleSystemState.spawnConfetti(screenWidth * 0.5f, screenHeight * 0.35f, count = 100)
+                            }
                         }
-                        SoundType.LOSE -> soundManager?.playBoing()
+                        SoundType.LOSE -> soundManager?.playBonk()
+                    }
+                }
+
+                is GameEffect.ScreenShake -> {
+                    if (!uiState.reduceMotion) {
+                        val intensity = effect.intensityDp
+                        boardShakeOffset.animateTo(-intensity, tween(30))
+                        boardShakeOffset.animateTo(intensity, tween(30))
+                        boardShakeOffset.animateTo(-intensity * 0.5f, tween(30))
+                        boardShakeOffset.animateTo(0f, tween(40))
                     }
                 }
 
@@ -152,7 +174,8 @@ fun GameScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .offset(x = boardShakeOffset.value.dp),
                 contentAlignment = Alignment.Center
             ) {
                 GameBoard(

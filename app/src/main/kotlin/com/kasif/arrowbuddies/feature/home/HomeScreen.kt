@@ -58,6 +58,7 @@ import com.kasif.arrowbuddies.core.designsystem.component.AnimatedSkyBackground
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButton
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButtonVariant
 import com.kasif.arrowbuddies.core.designsystem.component.CounterPill
+import com.kasif.arrowbuddies.core.designsystem.modifier.LocalSound
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
 import com.kasif.arrowbuddies.core.designsystem.theme.Coral
 import com.kasif.arrowbuddies.core.designsystem.theme.Cream
@@ -83,6 +84,11 @@ fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
     val typography = ArrowBuddiesThemeTokens.typography
+    val soundManager = LocalSound.current
+
+    LaunchedEffect(Unit) {
+        soundManager.playMenuMusic()
+    }
 
     // Pulsing button animation
     val infiniteTransition = rememberInfiniteTransition(label = "homePulse")

@@ -33,6 +33,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -81,7 +83,7 @@ fun GameTopBar(
         RoundIconButton(
             icon = Icons.Default.Menu,
             onClick = onOpenPause,
-            contentDescription = stringResource(R.string.game_paused),
+            contentDescription = stringResource(R.string.talkback_hud_pause),
             size = 46.dp
         )
 
@@ -107,6 +109,7 @@ fun GameTopBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Rescued counter pill with tiny face emoji
+            val rescuedA11yLabel = stringResource(R.string.talkback_hud_rescued, rescuedCount, totalBuddies)
             Box(
                 modifier = Modifier
                     .graphicsLayer {
@@ -116,7 +119,8 @@ fun GameTopBar(
                     .shadow(elevation = 2.dp, shape = RoundedCornerShape(14.dp))
                     .background(Color(0xFFE8F8F2), RoundedCornerShape(14.dp))
                     .border(1.5.dp, Mint.copy(alpha = 0.6f), RoundedCornerShape(14.dp))
-                    .padding(horizontal = 10.dp, vertical = 5.dp),
+                    .padding(horizontal = 10.dp, vertical = 5.dp)
+                    .semantics { contentDescription = rescuedA11yLabel },
                 contentAlignment = Alignment.Center
             ) {
                 Row(
@@ -179,7 +183,7 @@ fun GameBottomControls(
                 onClick = onHint,
                 variant = CandyButtonVariant.Primary,
                 badgeCount = hintsCount,
-                contentDescription = stringResource(R.string.booster_hint),
+                contentDescription = stringResource(R.string.talkback_hud_hint),
                 size = 54.dp
             )
 
@@ -192,7 +196,7 @@ fun GameBottomControls(
                 enabled = true, // tapping at 0 opens purchase sheet
                 variant = CandyButtonVariant.Secondary,
                 badgeCount = undosCount,
-                contentDescription = stringResource(R.string.game_undo),
+                contentDescription = stringResource(R.string.talkback_hud_undo),
                 size = 54.dp
             )
 
@@ -203,7 +207,7 @@ fun GameBottomControls(
                 icon = Icons.Default.Refresh,
                 onClick = onRestart,
                 variant = CandyButtonVariant.Danger,
-                contentDescription = stringResource(R.string.game_restart),
+                contentDescription = stringResource(R.string.talkback_hud_restart),
                 size = 54.dp
             )
         }

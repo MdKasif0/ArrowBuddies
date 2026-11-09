@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Bunny Ears Shadows & Outlines -->
+    <path
+        android:fillColor="#2B2240"
+        android:pathData="M37,48 C34,36 32,24 41,20 C49,17 49,30 46,46 Z" />
+    <path
+        android:fillColor="#2B2240"
+        android:pathData="M62,46 C59,30 59,17 67,20 C76,24 74,36 71,48 Z" />
+
+    <!-- Left Bunny Ear (Outer Cream) -->
+    <path
+        android:fillColor="#FFFDF7"
+        android:pathData="M38,47 C35,36 34,25 41,22 C47,19 47,30 45,45 Z" />
+    <!-- Left Inner Ear (Rosy Pink) -->
+    <path
+        android:fillColor="#FF8DA1"
+        android:pathData="M39,43 C37,35 36,28 41,26 C45,24 45,31 43,41 Z" />
+
+    <!-- Right Bunny Ear (Outer Cream) -->
+    <path
+        android:fillColor="#FFFDF7"
+        android:pathData="M63,45 C61,30 61,19 67,22 C74,25 73,36 70,47 Z" />
+    <!-- Right Inner Ear (Rosy Pink) -->
+    <path
+        android:fillColor="#FF8DA1"
+        android:pathData="M65,41 C63,31 63,24 67,26 C72,28 71,35 69,43 Z" />
+
+    <!-- Bunny Head Drop Shadow -->
+    <path
+        android:fillColor="#2B2240"
+        android:pathData="M54,39 C40,39 30,50 30,66 C30,79 40,86 54,86 C68,86 78,79 78,66 C78,50 68,39 54,39 Z" />
+
+    <!-- Bunny Head (Soft Squashed Round Blob) -->
+    <path
+        android:fillColor="#FFFDF7"
+        android:pathData="M54,41 C41,41 32,51 32,65 C32,77 41,84 54,84 C67,84 76,77 76,65 C76,51 67,41 54,41 Z" />
+
+    <!-- Belly / Chin Patch -->
+    <path
+        android:fillColor="#F0EBE0"
+        android:pathData="M54,68 C46,68 40,73 40,81 C44,83 49,84 54,84 C59,84 64,83 68,81 C68,73 62,68 54,68 Z" />
+
+    <!-- Rosy Blushing Cheeks -->
+    <path
+        android:fillColor="#FF8DA1"
+        android:pathData="M38,68m-4,0a4,4 0 1,1 8,0a4,4 0 1,1 -8,0" />
+    <path
+        android:fillColor="#FF8DA1"
+        android:pathData="M70,68m-4,0a4,4 0 1,1 8,0a4,4 0 1,1 -8,0" />
+
+    <!-- Sweet Happy Eyes (Smiling Arcs) -->
+    <path
+        android:strokeColor="#2B2240"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M43,60 Q46,56 49,60" />
+    <path
+        android:strokeColor="#2B2240"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M59,60 Q62,56 65,60" />
+
+    <!-- Tiny Pink Bunny Nose & Mouth -->
+    <path
+        android:fillColor="#FF8DA1"
+        android:pathData="M54,64 L52,62 L56,62 Z" />
+    <path
+        android:strokeColor="#2B2240"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:pathData="M54,64 L54,66 M54,66 Q52,68 50,67 M54,66 Q56,68 58,67" />
+
+    <!-- Bold Rescue Directional Arrow (Facing Upwards) -->
+    <!-- Arrow Shadow -->
+    <path
+        android:fillColor="#151220"
+        android:pathData="M54,16 L68,34 L60,34 L60,50 L48,50 L48,34 L40,34 Z" />
+    <!-- Arrow Body (Deep Ink) -->
+    <path
+        android:fillColor="#2B2240"
+        android:pathData="M54,14 L67,31 L60,31 L60,47 L48,47 L48,31 L41,31 Z" />
+    <!-- Arrow Crisp Top Highlight -->
+    <path
+        android:fillColor="#FFD54F"
+        android:pathData="M54,17 L62,28 L57,28 L57,33 L51,33 L51,28 L46,28 Z" />
+
+</vector>

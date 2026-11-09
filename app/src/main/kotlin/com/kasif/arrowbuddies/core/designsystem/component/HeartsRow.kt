@@ -19,9 +19,13 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.kasif.arrowbuddies.R
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesTheme
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
 
@@ -36,8 +40,9 @@ fun HeartsRow(
     totalHearts: Int = 3,
     heartSize: Dp = 32.dp
 ) {
+    val heartsLabel = stringResource(R.string.talkback_hud_hearts, heartsRemaining)
     Row(
-        modifier = modifier,
+        modifier = modifier.semantics { contentDescription = heartsLabel },
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

@@ -52,4 +52,19 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        soundManager.resumeAll()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        soundManager.pauseAll()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        soundManager.release()
+    }
 }

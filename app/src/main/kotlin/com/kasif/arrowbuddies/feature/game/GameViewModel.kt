@@ -96,6 +96,7 @@ class GameViewModel @Inject constructor(
             launch { gameRepository.soundEnabled.collect { s -> _uiState.update { it.copy(soundEnabled = s) } } }
             launch { gameRepository.musicEnabled.collect { m -> _uiState.update { it.copy(musicEnabled = m) } } }
             launch { gameRepository.hapticsEnabled.collect { h -> _uiState.update { it.copy(hapticsEnabled = h) } } }
+            launch { gameRepository.reduceMotion.collect { r -> _uiState.update { it.copy(reduceMotion = r) } } }
         }
 
         checkMechanicIntro(levelDef)

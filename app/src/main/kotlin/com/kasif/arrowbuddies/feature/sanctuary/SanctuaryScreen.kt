@@ -51,6 +51,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import com.kasif.arrowbuddies.core.designsystem.modifier.LocalSound
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -95,6 +96,11 @@ fun SanctuaryScreen(
     onEvent: (SanctuaryUiEvent) -> Unit = {}
 ) {
     val typography = ArrowBuddiesThemeTokens.typography
+    val soundManager = LocalSound.current
+
+    LaunchedEffect(Unit) {
+        soundManager.playMenuMusic()
+    }
     val scrollState = rememberScrollState()
     val scope = rememberCoroutineScope()
     val density = LocalDensity.current
