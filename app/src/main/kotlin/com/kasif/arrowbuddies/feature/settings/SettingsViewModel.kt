@@ -20,10 +20,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val repository: GameRepository,
     private val soundManager: SoundManager,
-    private val hapticsManager: HapticsManager
+    private val hapticsManager: HapticsManager,
+    @ApplicationContext private val context: Context? = null
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SettingsUiState())
@@ -74,10 +74,12 @@ class SettingsViewModel @Inject constructor(
                 is SettingsUiEvent.ToggleReduceMotion -> repository.setReduceMotion(event.enabled)
                 is SettingsUiEvent.ToggleDailyReminder -> {
                     repository.setDailyReminderEnabled(event.enabled)
-                    if (event.enabled) {
-                        DailyReminderScheduler.scheduleDailyReminder(context)
-                    } else {
-                        DailyReminderScheduler.cancelDailyReminder(context)
+                    context?.let { ctx ->
+                        if (event.enabled) {
+                            DailyReminderScheduler.scheduleDailyReminder(ctx)
+                        } else {
+                            DailyReminderScheduler.cancelDailyReminder(ctx)
+                        }
                     }
                 }
                 is SettingsUiEvent.SetLanguage -> {

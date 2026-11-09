@@ -35,6 +35,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -263,7 +264,8 @@ fun SanctuaryScreen(
             // Berry counter pill
             CounterPill(
                 count = uiState.berries,
-                icon = "🫐"
+                icon = Icons.Default.Star,
+                iconTint = Mango
             )
         }
 

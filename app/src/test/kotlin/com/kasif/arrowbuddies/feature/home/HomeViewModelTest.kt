@@ -58,6 +58,38 @@ class HomeViewModelTest {
         override suspend fun resetTutorial() {}
         override fun isMechanicSeen(mechanic: String): Flow<Boolean> = kotlinx.coroutines.flow.flowOf(true)
         override suspend fun setMechanicSeen(mechanic: String) {}
+
+        override val playerProfile: Flow<com.kasif.arrowbuddies.data.db.entity.PlayerProfile> = kotlinx.coroutines.flow.flowOf(com.kasif.arrowbuddies.data.db.entity.PlayerProfile())
+        override val speciesProgressList: Flow<List<com.kasif.arrowbuddies.data.db.entity.SpeciesProgress>> = kotlinx.coroutines.flow.flowOf(emptyList())
+        override val decorItems: Flow<List<com.kasif.arrowbuddies.data.db.entity.DecorItem>> = kotlinx.coroutines.flow.flowOf(emptyList())
+        override val achievements: Flow<List<com.kasif.arrowbuddies.data.db.entity.Achievement>> = kotlinx.coroutines.flow.flowOf(emptyList())
+        override val dailyReminderEnabled: Flow<Boolean> = kotlinx.coroutines.flow.flowOf(false)
+        override val reminderPromptShown: Flow<Boolean> = kotlinx.coroutines.flow.flowOf(false)
+
+        override fun getDailyRecord(date: String): Flow<com.kasif.arrowbuddies.data.db.entity.DailyRecord?> = kotlinx.coroutines.flow.flowOf(null)
+
+        override suspend fun completeLevel(
+            levelId: String,
+            stars: Int,
+            mistakes: Int,
+            rescuedSpeciesList: List<String>,
+            isGoldenBuddyRescued: Boolean
+        ): com.kasif.arrowbuddies.domain.usecase.LevelCompletionResult = com.kasif.arrowbuddies.domain.usecase.LevelCompletionResult(
+            berriesEarned = 10 + 5 * stars,
+            isFirstClear = true,
+            stars = stars,
+            tierUpEvents = emptyList(),
+            unlockedAchievements = emptyList()
+        )
+
+        override suspend fun claimTreatTime(todayDate: String): Boolean = true
+        override suspend fun claimDailyStreak(today: java.time.LocalDate): com.kasif.arrowbuddies.domain.usecase.StreakClaimResult =
+            com.kasif.arrowbuddies.domain.usecase.StreakClaimResult(success = true, streakDays = 1, berriesAwarded = 20, day7DecorUnlocked = false)
+        override suspend fun equipAccessory(species: String, accessory: com.kasif.arrowbuddies.core.model.BuddyAccessory): Boolean = true
+        override suspend fun buyDecor(decorId: String): Boolean = true
+        override suspend fun recordDailyCompletion(date: String, stars: Int, mistakes: Int) {}
+        override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
+        override suspend fun setReminderPromptShown(shown: Boolean) {}
     }
 
     @Before

@@ -108,6 +108,38 @@ class GameViewModelTest {
         override suspend fun setMechanicSeen(mechanic: String) {
             seenMechanics.add(mechanic)
         }
+
+        override val playerProfile: Flow<com.kasif.arrowbuddies.data.db.entity.PlayerProfile> = flowOf(com.kasif.arrowbuddies.data.db.entity.PlayerProfile())
+        override val speciesProgressList: Flow<List<com.kasif.arrowbuddies.data.db.entity.SpeciesProgress>> = flowOf(emptyList())
+        override val decorItems: Flow<List<com.kasif.arrowbuddies.data.db.entity.DecorItem>> = flowOf(emptyList())
+        override val achievements: Flow<List<com.kasif.arrowbuddies.data.db.entity.Achievement>> = flowOf(emptyList())
+        override val dailyReminderEnabled: Flow<Boolean> = flowOf(false)
+        override val reminderPromptShown: Flow<Boolean> = flowOf(false)
+
+        override fun getDailyRecord(date: String): Flow<com.kasif.arrowbuddies.data.db.entity.DailyRecord?> = flowOf(null)
+
+        override suspend fun completeLevel(
+            levelId: String,
+            stars: Int,
+            mistakes: Int,
+            rescuedSpeciesList: List<String>,
+            isGoldenBuddyRescued: Boolean
+        ): com.kasif.arrowbuddies.domain.usecase.LevelCompletionResult = com.kasif.arrowbuddies.domain.usecase.LevelCompletionResult(
+            berriesEarned = 10 + 5 * stars,
+            isFirstClear = true,
+            stars = stars,
+            tierUpEvents = emptyList(),
+            unlockedAchievements = emptyList()
+        )
+
+        override suspend fun claimTreatTime(todayDate: String): Boolean = true
+        override suspend fun claimDailyStreak(today: java.time.LocalDate): com.kasif.arrowbuddies.domain.usecase.StreakClaimResult =
+            com.kasif.arrowbuddies.domain.usecase.StreakClaimResult(success = true, streakDays = 1, berriesAwarded = 20, day7DecorUnlocked = false)
+        override suspend fun equipAccessory(species: String, accessory: com.kasif.arrowbuddies.core.model.BuddyAccessory): Boolean = true
+        override suspend fun buyDecor(decorId: String): Boolean = true
+        override suspend fun recordDailyCompletion(date: String, stars: Int, mistakes: Int) {}
+        override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
+        override suspend fun setReminderPromptShown(shown: Boolean) {}
     }
 
     private class FakeHapticsManager : HapticsManager {

@@ -39,12 +39,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GameViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val levelRepository: LevelRepository,
     private val gameRepository: GameRepository,
     private val savedStateHandle: SavedStateHandle,
     private val hapticsManager: HapticsManager,
-    private val soundManager: SoundManager
+    private val soundManager: SoundManager,
+    @ApplicationContext private val context: Context? = null
 ) : ViewModel() {
 
     private val json = Json {
@@ -132,7 +132,7 @@ class GameViewModel @Inject constructor(
                 viewModelScope.launch {
                     gameRepository.setDailyReminderEnabled(true)
                     gameRepository.setReminderPromptShown(true)
-                    DailyReminderScheduler.scheduleDailyReminder(context)
+                    context?.let { DailyReminderScheduler.scheduleDailyReminder(it) }
                     _uiState.update { it.copy(showReminderPromptDialog = false, showLevelCompleteDialog = true) }
                 }
             }

@@ -166,6 +166,7 @@ fun ArrowBuddiesNavHost(
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             AlbumScreen(
                 uiState = uiState,
+                onEvent = viewModel::onEvent,
                 onNavigateBack = {
                     navController.popBackStack()
                 }
@@ -177,6 +178,10 @@ fun ArrowBuddiesNavHost(
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             DailyRescueScreen(
                 uiState = uiState,
+                onEvent = viewModel::onEvent,
+                onPlayDailyLevel = { levelId ->
+                    navController.navigate(Route.Game(levelId = levelId))
+                },
                 onNavigateBack = {
                     navController.popBackStack()
                 }
