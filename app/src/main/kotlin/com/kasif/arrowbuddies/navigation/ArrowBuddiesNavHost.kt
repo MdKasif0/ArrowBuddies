@@ -96,8 +96,10 @@ fun ArrowBuddiesNavHost(
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             GameScreen(
                 uiState = uiState,
+                effects = viewModel.effects,
+                onEvent = viewModel::onEvent,
                 onNavigateNextLevel = { nextLevelId ->
-                    navController.navigate(Route.Game(levelId = nextLevelId))
+                    viewModel.onEvent(com.kasif.arrowbuddies.feature.game.GameUiEvent.LoadLevel(nextLevelId))
                 },
                 onNavigateBack = {
                     navController.popBackStack()

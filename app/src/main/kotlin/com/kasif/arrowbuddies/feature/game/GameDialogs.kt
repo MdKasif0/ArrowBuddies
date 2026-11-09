@@ -18,6 +18,7 @@ import com.kasif.arrowbuddies.core.designsystem.component.CandyButton
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButtonVariant
 import com.kasif.arrowbuddies.core.designsystem.component.GameDialog
 import com.kasif.arrowbuddies.core.designsystem.component.StarRow
+import com.kasif.arrowbuddies.core.designsystem.component.ToyPanel
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
 
 @Composable
@@ -32,44 +33,56 @@ fun LevelCompleteDialog(
     val colors = ArrowBuddiesThemeTokens.colors
 
     GameDialog(
-        title = stringResource(R.string.game_level_complete),
+        visible = true,
         onDismissRequest = onDismiss,
         modifier = modifier
     ) {
-        Column(
+        ToyPanel(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(horizontal = 24.dp)
         ) {
-            StarRow(
-                filledStars = stars.coerceIn(1, 3),
-                totalStars = 3
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.game_level_complete),
+                    style = typography.title,
+                    color = colors.textPrimary,
+                    textAlign = TextAlign.Center
+                )
 
-            Text(
-                text = stringResource(R.string.game_level_complete_subtitle),
-                style = typography.body,
-                color = colors.textSecondary,
-                textAlign = TextAlign.Center
-            )
+                StarRow(
+                    starsEarned = stars.coerceIn(1, 3)
+                )
 
-            Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = stringResource(R.string.game_level_complete_subtitle),
+                    style = typography.body,
+                    color = colors.textSecondary,
+                    textAlign = TextAlign.Center
+                )
 
-            CandyButton(
-                label = stringResource(R.string.game_next_level),
-                onClick = onNextLevel,
-                variant = CandyButtonVariant.Primary,
-                modifier = Modifier.fillMaxWidth()
-            )
+                Spacer(modifier = Modifier.height(4.dp))
 
-            CandyButton(
-                label = stringResource(R.string.game_restart),
-                onClick = onRestart,
-                variant = CandyButtonVariant.Secondary,
-                modifier = Modifier.fillMaxWidth()
-            )
+                CandyButton(
+                    label = stringResource(R.string.game_next_level),
+                    onClick = onNextLevel,
+                    variant = CandyButtonVariant.Primary,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                CandyButton(
+                    label = stringResource(R.string.game_restart),
+                    onClick = onRestart,
+                    variant = CandyButtonVariant.Secondary,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }
@@ -84,32 +97,45 @@ fun LevelFailedDialog(
     val colors = ArrowBuddiesThemeTokens.colors
 
     GameDialog(
-        title = stringResource(R.string.game_level_failed),
+        visible = true,
         onDismissRequest = onDismiss,
         modifier = modifier
     ) {
-        Column(
+        ToyPanel(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(horizontal = 24.dp)
         ) {
-            Text(
-                text = stringResource(R.string.game_level_failed_subtitle),
-                style = typography.body,
-                color = colors.textSecondary,
-                textAlign = TextAlign.Center
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.game_level_failed),
+                    style = typography.title,
+                    color = colors.textPrimary,
+                    textAlign = TextAlign.Center
+                )
 
-            Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = stringResource(R.string.game_level_failed_subtitle),
+                    style = typography.body,
+                    color = colors.textSecondary,
+                    textAlign = TextAlign.Center
+                )
 
-            CandyButton(
-                label = stringResource(R.string.game_try_again),
-                onClick = onRestart,
-                variant = CandyButtonVariant.Primary,
-                modifier = Modifier.fillMaxWidth()
-            )
+                Spacer(modifier = Modifier.height(4.dp))
+
+                CandyButton(
+                    label = stringResource(R.string.game_try_again),
+                    onClick = onRestart,
+                    variant = CandyButtonVariant.Primary,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }

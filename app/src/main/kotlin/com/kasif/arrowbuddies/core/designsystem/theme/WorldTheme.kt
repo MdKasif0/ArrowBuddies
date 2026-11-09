@@ -132,3 +132,6 @@ val AllWorldThemes = listOf(
     World8SkyIslands
 )
 
+fun worldThemeFor(worldId: Int): WorldTheme = AllWorldThemes.getOrElse((worldId - 1).coerceAtLeast(0)) { World1SunnyMeadow }
+
+
