@@ -56,7 +56,7 @@ fun ToggleSwitch(
 
     val thumbOffset by animateDpAsState(
         targetValue = if (checked) maxOffset else 0.dp,
-        animationSpec = ArrowBuddiesMotion.Bouncy,
+        animationSpec = ArrowBuddiesMotion.BouncyDp,
         label = "toggleThumbOffset"
     )
 

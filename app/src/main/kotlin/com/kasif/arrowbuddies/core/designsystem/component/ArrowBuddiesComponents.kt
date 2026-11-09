@@ -80,8 +80,8 @@ fun ArrowBuddiesNavButton(
             .height(spacing.huge),
         shape = RoundedCornerShape(radius.medium),
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (isPrimary) colors.primary else colors.surface,
-            contentColor = if (isPrimary) colors.onPrimary else colors.textPrimary
+            containerColor = if (isPrimary) colors.primary.main else colors.surface,
+            contentColor = if (isPrimary) colors.primary.onColor else colors.textPrimary
         ),
         elevation = ButtonDefaults.buttonElevation(
             defaultElevation = spacing.extraSmall

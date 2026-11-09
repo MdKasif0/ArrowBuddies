@@ -26,6 +26,16 @@ object ArrowBuddiesMotion {
         stiffness = Spring.StiffnessLow
     )
 
+    val BouncyDp: SpringSpec<androidx.compose.ui.unit.Dp> = spring(
+        dampingRatio = 0.5f,
+        stiffness = Spring.StiffnessMedium
+    )
+
+    val SnappyDp: SpringSpec<androidx.compose.ui.unit.Dp> = spring(
+        dampingRatio = 0.75f,
+        stiffness = Spring.StiffnessHigh
+    )
+
     fun <T> bouncy(): SpringSpec<T> = spring(
         dampingRatio = 0.5f,
         stiffness = Spring.StiffnessMedium

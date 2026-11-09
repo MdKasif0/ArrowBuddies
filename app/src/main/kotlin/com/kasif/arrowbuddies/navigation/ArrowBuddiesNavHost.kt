@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kasif.arrowbuddies.feature.album.AlbumScreen
 import com.kasif.arrowbuddies.feature.album.AlbumViewModel
+import com.kasif.arrowbuddies.feature.catalog.DesignCatalogScreen
 import com.kasif.arrowbuddies.feature.daily.DailyRescueScreen
 import com.kasif.arrowbuddies.feature.daily.DailyRescueViewModel
 import com.kasif.arrowbuddies.feature.game.GameScreen
@@ -145,9 +146,19 @@ fun ArrowBuddiesNavHost(
                 onEvent = viewModel::onEvent,
                 onNavigateBack = {
                     navController.popBackStack()
+                },
+                onNavigateToCatalog = {
+                    navController.navigate(Route.DesignCatalog)
+                }
+            )
+        }
+
+        composable<Route.DesignCatalog> {
+            DesignCatalogScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
                 }
             )
         }
     }
 }
-

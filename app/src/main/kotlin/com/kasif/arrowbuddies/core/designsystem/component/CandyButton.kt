@@ -104,7 +104,7 @@ fun CandyButton(
     val lipHeight = 6.dp
     val pressOffsetY by animateDpAsState(
         targetValue = if (isPressed && enabled) 5.dp else 0.dp,
-        animationSpec = if (isPressed) ArrowBuddiesMotion.Snappy else ArrowBuddiesMotion.Bouncy,
+        animationSpec = if (isPressed) ArrowBuddiesMotion.SnappyDp else ArrowBuddiesMotion.BouncyDp,
         label = "candyButtonOffsetY"
     )
 
