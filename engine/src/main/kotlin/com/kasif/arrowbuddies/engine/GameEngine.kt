@@ -79,7 +79,7 @@ object GameEngine {
 
             // B. Collision check: Is another buddy occupying nextPos?
             val blockerBuddy = state.buddyAt(nextPos)
-            if (blockerBuddy != null) {
+            if (blockerBuddy != null && blockerBuddy.id != buddy.id) {
                 return executeBonk(
                     state = state,
                     path = path,

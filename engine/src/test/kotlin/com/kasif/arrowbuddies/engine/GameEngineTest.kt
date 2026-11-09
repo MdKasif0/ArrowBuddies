@@ -302,14 +302,15 @@ class GameEngineTest {
 
     @Test
     fun `turntable loop triggers loop guard bonk`() {
-        // 4 turntables arranged in a ring creating an infinite loop
+        // 4 turntables arranged in a closed 2x2 cycle
         val tiles = mapOf(
             Pos(1, 1) to Tile.Turntable,
             Pos(2, 1) to Tile.Turntable,
             Pos(2, 2) to Tile.Turntable,
             Pos(1, 2) to Tile.Turntable
         )
-        val buddy = Buddy(id = "b1", species = "MONKEY", pos = Pos(0, 1), dir = Direction.RIGHT)
+        // Buddy starts at (1, 1) facing RIGHT, circulating (1,1)->(2,1)->(2,2)->(1,2)->(1,1)
+        val buddy = Buddy(id = "b1", species = "MONKEY", pos = Pos(1, 1), dir = Direction.RIGHT)
         val state = GameState.fromLevel(createEmptyLevel(tiles = tiles, buddies = listOf(buddy)))
 
         val outcome = GameEngine.tap(state, "b1")
