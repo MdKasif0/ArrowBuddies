@@ -70,14 +70,14 @@ fun LevelCompleteDialog(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 CandyButton(
-                    label = stringResource(R.string.game_next_level),
+                    text = stringResource(R.string.game_next_level),
                     onClick = onNextLevel,
                     variant = CandyButtonVariant.Primary,
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 CandyButton(
-                    label = stringResource(R.string.game_restart),
+                    text = stringResource(R.string.game_restart),
                     onClick = onRestart,
                     variant = CandyButtonVariant.Secondary,
                     modifier = Modifier.fillMaxWidth()
@@ -130,7 +130,7 @@ fun LevelFailedDialog(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 CandyButton(
-                    label = stringResource(R.string.game_try_again),
+                    text = stringResource(R.string.game_try_again),
                     onClick = onRestart,
                     variant = CandyButtonVariant.Primary,
                     modifier = Modifier.fillMaxWidth()

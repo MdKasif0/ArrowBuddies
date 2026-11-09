@@ -110,8 +110,11 @@ fun GameScreen(
         modifier = modifier.fillMaxSize()
     ) {
         // Living animated sky backdrop for the current world biome
+        val worldTheme = remember(uiState.level.world) {
+            com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor(uiState.level.world)
+        }
         AnimatedSkyBackground(
-            worldIndex = uiState.level.world,
+            worldTheme = worldTheme,
             modifier = Modifier.fillMaxSize()
         )
 

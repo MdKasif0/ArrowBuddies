@@ -46,6 +46,7 @@ class DefaultHapticsManager @Inject constructor(
             } else {
                 HapticFeedbackConstants.KEYBOARD_TAP
             }
+            @Suppress("DEPRECATION")
             handled = view.performHapticFeedback(feedback, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING)
         }
         if (!handled) {
@@ -81,6 +82,7 @@ class DefaultHapticsManager @Inject constructor(
             } else {
                 HapticFeedbackConstants.KEYBOARD_TAP
             }
+            @Suppress("DEPRECATION")
             handled = view.performHapticFeedback(feedback, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING)
         }
         if (!handled) {
@@ -108,6 +110,7 @@ class DefaultHapticsManager @Inject constructor(
             } else {
                 HapticFeedbackConstants.LONG_PRESS
             }
+            @Suppress("DEPRECATION")
             handled = view.performHapticFeedback(feedback, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING)
         }
         if (!handled) {

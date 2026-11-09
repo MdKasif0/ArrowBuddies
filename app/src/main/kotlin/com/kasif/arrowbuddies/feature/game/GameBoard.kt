@@ -7,12 +7,12 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
@@ -34,23 +34,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalViewConfiguration
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.kasif.arrowbuddies.core.buddies.BuddyAvatar
 import com.kasif.arrowbuddies.core.buddies.model.BuddyExpression
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.core.designsystem.component.ParticleBurst
 import com.kasif.arrowbuddies.core.designsystem.component.ParticleSystemState
-import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
-import com.kasif.arrowbuddies.core.designsystem.theme.Mint
 import com.kasif.arrowbuddies.core.designsystem.theme.WhitePure
-import com.kasif.arrowbuddies.core.designsystem.theme.WorldThemes
+import com.kasif.arrowbuddies.core.designsystem.theme.WorldTheme
+import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 import com.kasif.arrowbuddies.engine.model.Buddy
 import com.kasif.arrowbuddies.engine.model.Direction
 import com.kasif.arrowbuddies.engine.model.LevelDef
@@ -88,7 +85,7 @@ fun GameBoard(
 ) {
     val density = LocalDensity.current
     val viewConfig = LocalViewConfiguration.current
-    val worldTheme = remember(level.world) { WorldThemes.forWorld(level.world) }
+    val worldTheme = remember(level.world) { worldThemeFor(level.world) }
 
     // Screen shake animatable (4dp, 180ms)
     val screenShakeX = remember { Animatable(0f) }
@@ -180,8 +177,6 @@ fun GameBoard(
 
         val trayWidthDp = boardWidthDp + rimPaddingDp * 2
         val trayHeightDp = boardHeightDp + rimPaddingDp * 2
-        val trayWidthPx = with(density) { trayWidthDp.toPx() }
-        val trayHeightPx = with(density) { trayHeightDp.toPx() }
 
         // Drive Active Escape Animation
         LaunchedEffect(activeEscapeBuddy) {
@@ -226,7 +221,7 @@ fun GameBoard(
             // 3. Leaves board edge -> Arcs up toward HUD rescued counter (320ms)
             esc.expression.value = BuddyExpression.HAPPY
             val hudTargetX = boardWidthPx * 0.85f / cellSizePx
-            val hudTargetY = -1.5f // Above board
+            val hudTargetY = -1.5f
             launch { esc.scaleX.animateTo(0.4f, tween(320, easing = FastOutSlowInEasing)) }
             launch { esc.scaleY.animateTo(0.4f, tween(320, easing = FastOutSlowInEasing)) }
             launch { esc.alpha.animateTo(0f, tween(320, easing = FastOutLinearInEasing)) }
@@ -302,7 +297,7 @@ fun GameBoard(
                         if (buddy != null) {
                             onBuddyPressed(buddy.id)
                             val longPressTimeout = viewConfig.longPressTimeoutMillis
-                            val upOrCancel = kotlinx.coroutines.withTimeoutOrNull(longPressTimeout) {
+                            val upOrCancel = withTimeoutOrNull(longPressTimeout) {
                                 waitForUpOrCancellation()
                             }
                             if (upOrCancel != null) {
@@ -321,7 +316,7 @@ fun GameBoard(
                 }
         ) {
             // LAYER (A): 3D Toy Tray + Checkered Tiles + Rocks (drawWithCache for 60fps)
-            Canvas(
+            Spacer(
                 modifier = Modifier
                     .fillMaxSize()
                     .drawWithCache {
@@ -346,17 +341,11 @@ fun GameBoard(
                     .size(boardWidthDp, boardHeightDp)
                     .offset(rimPaddingDp, rimPaddingDp)
             ) {
-                // Render buddies on the board
                 for (buddy in buddies) {
                     val isEscaping = activeEscapeBuddy?.buddy?.id == buddy.id
                     val isBonking = activeBonkBuddy?.buddy?.id == buddy.id
                     val isPressed = pressedBuddyId == buddy.id
 
-                    // Derive expression:
-                    // 1. Actively animating -> animation expression
-                    // 2. Pressed -> Ready
-                    // 3. Clear path -> Idle
-                    // 4. Blocked/Trapped -> Worried
                     val currentExpression = when {
                         isEscaping -> activeEscapeBuddy?.expression?.value ?: BuddyExpression.HAPPY
                         isBonking -> activeBonkBuddy?.expression?.value ?: BuddyExpression.BONKED
@@ -528,7 +517,7 @@ private fun DrawScope.drawToyTray(
     cols: Int,
     rows: Int,
     cellSize: Float,
-    worldTheme: com.kasif.arrowbuddies.core.designsystem.theme.WorldTheme,
+    worldTheme: WorldTheme,
     level: LevelDef
 ) {
     val cornerRadius = 24f
@@ -536,7 +525,7 @@ private fun DrawScope.drawToyTray(
     // 1. Freedom glow outside rim
     drawRoundRect(
         brush = Brush.radialGradient(
-            colors = listOf(worldTheme.accent.copy(alpha = 0.28f), Color.Transparent),
+            colors = listOf(worldTheme.accent.main.copy(alpha = 0.28f), Color.Transparent),
             center = Offset(trayWidth * 0.5f, trayHeight * 0.5f),
             radius = maxOf(trayWidth, trayHeight) * 0.6f
         ),
@@ -546,7 +535,7 @@ private fun DrawScope.drawToyTray(
     )
 
     // 2. Tiny decorative freedom flowers outside rim
-    drawFreedomFlowers(trayWidth, trayHeight, rimPadding, worldTheme.accent)
+    drawFreedomFlowers(trayWidth, trayHeight, rimPadding, worldTheme.accent.main)
 
     // 3. Tray 3D raised rim shadow / lip
     val lipDepth = 6f
@@ -586,7 +575,7 @@ private fun DrawScope.drawToyTray(
         for (c in 0 until cols) {
             val tileLeft = rimPadding + c * cellSize
             val tileTop = rimPadding + r * cellSize
-            val tileColor = if ((c + r) % 2 == 0) worldTheme.tileCheckA else worldTheme.tileCheckB
+            val tileColor = if ((c + r) % 2 == 0) worldTheme.tileCheckerA else worldTheme.tileCheckerB
 
             drawRoundRect(
                 color = tileColor,
@@ -601,7 +590,7 @@ private fun DrawScope.drawToyTray(
                     cx = tileLeft + cellSize * 0.5f,
                     cy = tileTop + cellSize * 0.5f,
                     radius = cellSize * 0.38f,
-                    accent = worldTheme.accent
+                    accent = worldTheme.accent.main
                 )
             }
         }
@@ -700,12 +689,10 @@ private fun DrawScope.drawFreedomFlowers(trayWidth: Float, trayHeight: Float, ri
         val petalColor = WhitePure
         val centerColor = Color(0xFFFFD54F)
 
-        // 4 petals
         drawCircle(petalColor, petalRadius, Offset(pos.x - petalRadius, pos.y))
         drawCircle(petalColor, petalRadius, Offset(pos.x + petalRadius, pos.y))
         drawCircle(petalColor, petalRadius, Offset(pos.x, pos.y - petalRadius))
         drawCircle(petalColor, petalRadius, Offset(pos.x, pos.y + petalRadius))
-        // Center yellow dot
         drawCircle(centerColor, petalRadius * 0.9f, pos)
     }
 }
