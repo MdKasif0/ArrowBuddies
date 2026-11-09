@@ -133,7 +133,7 @@ class SanctuaryViewModelTest {
     fun `sanctuary initializes with unlocked zones and roaming buddies`() = runTest(testDispatcher) {
         val repo = FakeGameRepository()
         val viewModel = SanctuaryViewModel(repo, FakeSoundManager(), FakeHapticsManager())
-        testScheduler.advanceUntilIdle()
+        testScheduler.runCurrent()
 
         val state = viewModel.uiState.value
         // Level 35 = World 2 unlocked => 2 zones unlocked
@@ -151,7 +151,7 @@ class SanctuaryViewModelTest {
         val repo = FakeGameRepository()
         val viewModel = SanctuaryViewModel(repo, FakeSoundManager(), FakeHapticsManager())
 
-        testScheduler.advanceUntilIdle()
+        testScheduler.runCurrent()
         val firstBuddyId = viewModel.uiState.value.buddies.first().id
 
         viewModel.onEvent(SanctuaryUiEvent.TapBuddy(firstBuddyId))
@@ -168,11 +168,11 @@ class SanctuaryViewModelTest {
         val repo = FakeGameRepository()
         val viewModel = SanctuaryViewModel(repo, FakeSoundManager(), FakeHapticsManager())
 
-        testScheduler.advanceUntilIdle()
+        testScheduler.runCurrent()
         assertThat(viewModel.uiState.value.isTreatTimeAvailable).isTrue()
 
         viewModel.onEvent(SanctuaryUiEvent.TapTreatBasket)
-        testScheduler.advanceUntilIdle()
+        testScheduler.runCurrent()
 
         assertThat(repo.claimedTreatDate).isNotNull()
         assertThat(viewModel.uiState.value.isTreatScatterActive).isTrue()
@@ -184,12 +184,12 @@ class SanctuaryViewModelTest {
         val repo = FakeGameRepository()
         val viewModel = SanctuaryViewModel(repo, FakeSoundManager(), FakeHapticsManager())
 
-        testScheduler.advanceUntilIdle()
+        testScheduler.runCurrent()
         viewModel.onEvent(SanctuaryUiEvent.ClickDecorSlot("decor_pond_1"))
         assertThat(viewModel.uiState.value.selectedDecorToBuy?.id).isEqualTo("decor_pond_1")
 
         viewModel.onEvent(SanctuaryUiEvent.ConfirmBuyDecor("decor_pond_1"))
-        testScheduler.advanceUntilIdle()
+        testScheduler.runCurrent()
 
         assertThat(repo.boughtDecorId).isEqualTo("decor_pond_1")
         assertThat(viewModel.uiState.value.selectedDecorToBuy).isNull()
