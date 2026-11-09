@@ -191,6 +191,52 @@
 
 ---
 
+### Step 6: Mechanics (Mud, Turntable, Cage + Key, Portal, Sleepy) Architecture Notes
+
+#### 1. One-Line Rule Summary for Each Shipped Mechanic
+- **Mud (World 2)**: A buddy entering a mud cell stops on it without losing a heart, blocks others, and continues in the same direction on the next tap.
+- **Turntable (World 3)**: A buddy entering a turntable rotates 90 degrees clockwise, keeps moving, and bonks if caught in an infinite loop.
+- **Cage + Key (World 4)**: A caged buddy cannot move until a key-carrier buddy of the matching color escapes, popping open all matching cages on the board.
+- **Portal Pair (World 5)**: A buddy entering portal A instantly teleports out of portal B in the same direction (bonking if the exit portal is occupied).
+- **Sleepy (World 6)**: A sleeping buddy cannot move until any orthogonally adjacent neighbor departs its cell (either by escaping or by moving onto mud).
+
+#### 2. Visuals & Tactile Animation Polish
+- **Mud Puddle (`Tile.Mud`)**: Rendered in `drawToyTray` with dark organic rim (`#4A2E12`), chocolate gradient (`#7A4B24` to `#5A3314`), glossy mud bubbles with highlight dots, and specular shine. Buddies on mud sink slightly (+3dp) and display cute mud splatters on their feet.
+- **Turntable Disc (`Tile.Turntable`)**: 3D cedar/teak disc (`#C18C5D`) with bottom depth lip (`#6D431F`), carved clockwise curved arrow, and center brass rivet (`#E6A119`). During movement, the buddy spins 90 degrees clockwise and its directional arrow badge springs to the new facing direction.
+- **Portals (`Tile.Portal`)**: Glowing swirling neon vortex rings with distinct colorblind-friendly inner symbols:
+  - Pair 1 (Cyan `#00E5FF`): Circle symbol.
+  - Pair 2 (Magenta `#E040FB`): Diamond symbol.
+  - Pair 3 (Amber `#FFAB00`): Star symbol.
+  During dash, buddies shrink down into portal A (60ms), jump to portal B, and pop out with a sparkle burst.
+- **Cages & Keys (`Buddy.cageColor`, `Buddy.keyColor`)**:
+  - Caged buddy: rounded cage bars (`#8E9AAF`) with colored padlock (Gold, Silver, Ruby) and downturned sad expression (`BuddyExpression.CAGED`).
+  - Key carrier: chest ribbon sash with dangling golden/silver/ruby key.
+  - On key buddy escape: flying key arc to each matching padlock, locks pop open with sparkle burst, bars lift, and freed buddies cheer (`BuddyExpression.HAPPY`).
+  - Tapping caged buddy: gentle refusal shake (wiggle) and tactile "Needs a key!" speech bubble popup (`R.string.bubble_needs_key`).
+- **Sleepy Buddies (`Buddy.sleepy`)**:
+  - Closed sleeping eyes, nightcap with white pompom, and floating "Zzz" letters.
+  - Tapping sleepy buddy: gentle refusal shake and "Zzz..." speech bubble popup (`R.string.bubble_sleepy_mumble`).
+  - Waking up: when an orthogonal neighbor departs, the nightcap pops off upward with a puff of dust, the buddy stretches (scale 1.15f), and eyes open wide (`BuddyExpression.READY`).
+
+#### 3. First-Time Intro Card System (`MechanicIntroDialog.kt`)
+- When the player encounters an unseen mechanic for the first time in any level, the board pauses and presents a tactile `ToyPanel` / `GameDialog` featuring a 3x3 animated vector mini-demo and a 1-sentence child-friendly explanation.
+- Persisted via DataStore Preferences (`isMechanicSeen` / `setMechanicSeen`) so players see each tutorial card exactly once.
+- Full localization parity in English and Hindi (`strings.xml` and `values-hi/strings.xml`).
+
+#### 4. Dev Level Suite (Dev 1 through Dev 9)
+- `w1-l01-dev` (1): Meadow basics (Bunny, Chick)
+- `w1-l02-dev` (2): Static rock obstacles (Bunny, Chick, Piglet)
+- `w1-l03-dev` (3): Tricky 5x5 obstacle maze
+- `w2-l04-dev` (4): Mud stopping showcase
+- `w3-l05-dev` (5): Turntable 90-degree clockwise turning showcase
+- `w4-l06-dev` (6): Cage and Key carrier unlocking showcase
+- `w5-l07-dev` (7): Portal teleportation showcase
+- `w6-l08-dev` (8): Sleepy buddy wake-up showcase
+- `w7-l09-dev` (9): Cross-mechanic integration showcase (Mud + Turntable + Portal + Cage + Sleepy)
+- Scrollable dev chips in `GameBottomControls` for instant live navigation across all 9 dev levels.
+
+---
+
 ## Visual Verification & Screen Captures
 
 Screenshots captured from live Android emulator execution on API 35:
