@@ -115,6 +115,60 @@ class ParticleSystemState {
         hasActiveParticles = true
     }
 
+    fun spawnDustPuff(originX: Float, originY: Float, count: Int = 8) {
+        val toSpawn = count.coerceAtMost(MAX_PARTICLES)
+        var spawned = 0
+        for (p in pool) {
+            if (!p.active) {
+                p.active = true
+                p.x = originX + (random.nextFloat() - 0.5f) * 16f
+                p.y = originY + (random.nextFloat() - 0.5f) * 16f
+                val angle = random.nextFloat() * Math.PI * 2
+                val speed = 30f + random.nextFloat() * 60f
+                p.vx = (cos(angle) * speed).toFloat()
+                p.vy = (sin(angle) * speed).toFloat() - 20f
+                p.vr = (random.nextFloat() - 0.5f) * 120f
+                p.rotation = random.nextFloat() * 360f
+                p.size = 12f + random.nextFloat() * 10f
+                p.color = Color(0xCCFFF7EC) // Soft cream puff
+                p.shape = 2 // Circle
+                p.life = 0f
+                p.maxLife = 0.35f + random.nextFloat() * 0.2f
+                p.gravity = -30f // floats gently up
+                spawned++
+                if (spawned >= toSpawn) break
+            }
+        }
+        hasActiveParticles = true
+    }
+
+    fun spawnHeartPop(originX: Float, originY: Float, count: Int = 10) {
+        val toSpawn = count.coerceAtMost(MAX_PARTICLES)
+        var spawned = 0
+        for (p in pool) {
+            if (!p.active) {
+                p.active = true
+                p.x = originX
+                p.y = originY
+                val angle = -Math.PI / 2 + (random.nextFloat() - 0.5f) * (Math.PI / 2) // upward cone
+                val speed = 80f + random.nextFloat() * 140f
+                p.vx = (cos(angle) * speed).toFloat()
+                p.vy = (sin(angle) * speed).toFloat()
+                p.vr = (random.nextFloat() - 0.5f) * 180f
+                p.rotation = random.nextFloat() * 360f
+                p.size = 10f + random.nextFloat() * 8f
+                p.color = Coral // Soft pink/coral
+                p.shape = 2 // Circle (tiny heart dot)
+                p.life = 0f
+                p.maxLife = 0.5f + random.nextFloat() * 0.3f
+                p.gravity = 50f
+                spawned++
+                if (spawned >= toSpawn) break
+            }
+        }
+        hasActiveParticles = true
+    }
+
     fun update(dt: Float) {
         var anyActive = false
         for (p in pool) {
