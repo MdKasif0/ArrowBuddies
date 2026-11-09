@@ -27,3 +27,4 @@ interface LevelProgressDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdate(progress: LevelProgress)
 }
+

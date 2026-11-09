@@ -30,3 +30,4 @@ object EconomyConfig {
     const val INITIAL_HINTS = 3
     const val INITIAL_UNDOS = 3
 }
+

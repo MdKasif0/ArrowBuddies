@@ -30,3 +30,4 @@ interface DecorDao {
     @Query("UPDATE decor_item SET owned = 1 WHERE id = :id")
     suspend fun markOwned(id: String)
 }
+

@@ -30,3 +30,4 @@ interface AchievementDao {
     @Query("UPDATE achievement SET progress = :progress WHERE id = :id AND unlockedAt = 0")
     suspend fun updateProgress(id: String, progress: Int)
 }
+

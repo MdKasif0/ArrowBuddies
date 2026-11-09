@@ -87,3 +87,4 @@ class ClaimDailyRewardUseCase @Inject constructor(
         )
     }
 }
+

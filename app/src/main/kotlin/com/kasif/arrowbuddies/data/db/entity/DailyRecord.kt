@@ -11,3 +11,4 @@ data class DailyRecord(
     val mistakes: Int = 0,
     val completedAt: Long = 0L
 )
+

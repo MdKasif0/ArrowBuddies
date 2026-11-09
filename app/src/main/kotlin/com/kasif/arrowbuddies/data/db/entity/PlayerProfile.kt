@@ -18,3 +18,4 @@ data class PlayerProfile(
     val lastStreakDate: String? = null,
     val lastTreatTimeDate: String? = null
 )
+

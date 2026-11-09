@@ -34,3 +34,4 @@ interface PlayerProfileDao {
     @Query("UPDATE player_profile SET undos = undos - 1 WHERE id = 1 AND undos > 0")
     suspend fun useUndo(): Int
 }
+

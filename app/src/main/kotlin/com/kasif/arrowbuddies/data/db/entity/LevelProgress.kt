@@ -10,3 +10,4 @@ data class LevelProgress(
     val bestMistakes: Int,
     val completedAt: Long = System.currentTimeMillis()
 )
+

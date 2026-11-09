@@ -31,3 +31,4 @@ interface SpeciesProgressDao {
     @Query("UPDATE species_progress SET equippedAccessory = :accessory WHERE species = :species")
     suspend fun equipAccessory(species: String, accessory: BuddyAccessory)
 }
+

@@ -11,3 +11,4 @@ data class DecorItem(
     val zoneId: Int, // 1 to 8
     val costBerries: Int
 )
+

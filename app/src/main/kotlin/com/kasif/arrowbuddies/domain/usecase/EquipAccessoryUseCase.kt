@@ -28,3 +28,4 @@ class EquipAccessoryUseCase @Inject constructor(
         return false
     }
 }
+

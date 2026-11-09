@@ -13,3 +13,4 @@ data class SpeciesProgress(
     val equippedAccessory: BuddyAccessory = BuddyAccessory.NONE,
     val firstRescuedAt: Long = 0L
 )
+

@@ -12,3 +12,4 @@ data class Achievement(
 ) {
     val isUnlocked: Boolean get() = unlockedAt > 0L
 }
+

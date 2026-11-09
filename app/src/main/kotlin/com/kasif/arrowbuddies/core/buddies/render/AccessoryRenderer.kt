@@ -202,3 +202,4 @@ object AccessoryRenderer {
         drawCircle(color = WhitePure.copy(alpha = 0.8f * shimmer), radius = 2f, center = Offset(cx - 1.5f, baseTop - crownH * 1.15f - 1.5f))
     }
 }
+

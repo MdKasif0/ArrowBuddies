@@ -340,3 +340,4 @@ private fun DrawScope.drawRangoliAndMangoTree(w: Float, h: Float, timeMs: Long) 
     drawCircle(color = Mango, radius = 12f, center = Offset(rx, ry))
     drawCircle(color = WhitePure, radius = 6f, center = Offset(rx, ry))
 }
+

@@ -57,3 +57,4 @@ enum class AchievementType(
         fun fromId(id: String): AchievementType? = entries.firstOrNull { it.id == id }
     }
 }
+
