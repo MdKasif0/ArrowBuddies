@@ -24,6 +24,8 @@ android {
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // English-only game: drop other languages bundled by AndroidX libraries too
+        resourceConfigurations += listOf("en")
         vectorDrawables {
             useSupportLibrary = true
         }
