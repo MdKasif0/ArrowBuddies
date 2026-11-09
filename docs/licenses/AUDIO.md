@@ -45,3 +45,4 @@ All music tracks are seamless 4.0-second loops with custom crossfaded loop point
 | `music_world_6.ogg` | World 6: Moonlit Forest | A Minor Lullaby | Soothing nighttime forest chimes. |
 | `music_world_7.ogg` | World 7: Desert Oasis | B Minor Dune | Exotic mystic warm oasis plucked strings. |
 | `music_world_8.ogg` | World 8: Sky Islands | C Major Festival | Uplifting celebratory aerial melody. |
+

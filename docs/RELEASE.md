@@ -178,3 +178,4 @@ The output AAB bundle will be located at:
 ```
 The output APK will be located at:
 `app/build/outputs/apk/release/app-release.apk`
+

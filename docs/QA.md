@@ -76,3 +76,4 @@ This comprehensive QA test checklist verifies the release readiness of **ArrowBu
 - [ ] All 24 animal species names display authentic Hindi equivalents (e.g., *खरगोश, गिलहरी, लोमड़ी, मोर, हाथी का बच्चा*).
 - [ ] Animal fun facts in the Buddy Album have verified Hindi translations.
 - [ ] All tutorial bubbles, dialog prompts, settings toggles, and button labels render naturally with zero placeholder English text when Hindi locale is selected.
+
