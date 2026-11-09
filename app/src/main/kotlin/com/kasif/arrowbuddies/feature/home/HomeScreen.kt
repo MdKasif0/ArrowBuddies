@@ -58,7 +58,6 @@ import com.kasif.arrowbuddies.core.designsystem.component.AnimatedSkyBackground
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButton
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButtonVariant
 import com.kasif.arrowbuddies.core.designsystem.component.CounterPill
-import com.kasif.arrowbuddies.core.designsystem.component.CounterPillType
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
 import com.kasif.arrowbuddies.core.designsystem.theme.Coral
 import com.kasif.arrowbuddies.core.designsystem.theme.Cream
@@ -68,6 +67,7 @@ import com.kasif.arrowbuddies.core.designsystem.theme.Mango
 import com.kasif.arrowbuddies.core.designsystem.theme.Mint
 import com.kasif.arrowbuddies.core.designsystem.theme.Sky
 import com.kasif.arrowbuddies.core.designsystem.theme.WhitePure
+import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 import com.kasif.arrowbuddies.engine.model.Direction
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -111,8 +111,7 @@ fun HomeScreen(
         // Live Sanctuary Sky Background
         AnimatedSkyBackground(
             modifier = Modifier.fillMaxSize(),
-            skyTop = Sky.copy(alpha = 0.45f),
-            skyBottom = Cream
+            worldTheme = worldThemeFor(1)
         )
 
         Column(
@@ -132,7 +131,8 @@ fun HomeScreen(
             ) {
                 CounterPill(
                     count = uiState.berries,
-                    type = CounterPillType.Berries,
+                    icon = Icons.Default.Star,
+                    iconTint = Mango,
                     modifier = Modifier.clickable { /* Future Shop hook */ }
                 )
 

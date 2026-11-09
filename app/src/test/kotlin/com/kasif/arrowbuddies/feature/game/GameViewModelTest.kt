@@ -33,6 +33,9 @@ class GameViewModelTest {
 
     private class FakeLevelRepository : LevelRepository {
         override fun loadLevel(levelId: String): LevelDef {
+            if (levelId == "w1-l01") return com.kasif.arrowbuddies.engine.generator.HandcraftedTutorials.getTutorialLevel(1, 1)
+            if (levelId == "w1-l02") return com.kasif.arrowbuddies.engine.generator.HandcraftedTutorials.getTutorialLevel(1, 2)
+            if (levelId == "w1-l03") return com.kasif.arrowbuddies.engine.generator.HandcraftedTutorials.getTutorialLevel(1, 3)
             val json = when (levelId) {
                 "2", "w1-l02-dev" -> DefaultLevelRepository.DEV_02_JSON
                 "3", "w1-l03-dev" -> DefaultLevelRepository.DEV_03_JSON
@@ -66,17 +69,42 @@ class GameViewModelTest {
         val seenMechanics = mutableSetOf<String>()
 
         override val totalRescued: Flow<Int> = MutableStateFlow(0)
-        override val berries: Flow<Int> = MutableStateFlow(0)
+        override val berries: Flow<Int> = MutableStateFlow(100)
         override val soundEnabled: Flow<Boolean> = MutableStateFlow(true)
         override val musicEnabled: Flow<Boolean> = MutableStateFlow(true)
         override val hapticsEnabled: Flow<Boolean> = MutableStateFlow(true)
+        override val reduceMotion: Flow<Boolean> = MutableStateFlow(false)
+        override val tutorialCompleted: Flow<Boolean> = MutableStateFlow(true)
+        override val currentLevelIndex: Flow<Int> = MutableStateFlow(1)
+        override val highestUnlockedLevel: Flow<Int> = MutableStateFlow(1)
+        override val hintsCount: Flow<Int> = MutableStateFlow(3)
+        override val undosCount: Flow<Int> = MutableStateFlow(3)
+        override val rescuedSpecies: Flow<Set<String>> = MutableStateFlow(emptySet())
 
+        override fun getLevelStars(levelId: String): Flow<Int> = flowOf(0)
         override fun isMechanicSeen(mechanic: String): Flow<Boolean> =
             flowOf(seenMechanics.contains(mechanic))
 
         override suspend fun setSoundEnabled(enabled: Boolean) {}
         override suspend fun setMusicEnabled(enabled: Boolean) {}
         override suspend fun setHapticsEnabled(enabled: Boolean) {}
+        override suspend fun setReduceMotion(enabled: Boolean) {}
+        override suspend fun setTutorialCompleted(completed: Boolean) {}
+        override suspend fun setCurrentLevelIndex(index: Int) {}
+        override suspend fun addBerries(amount: Int) {}
+        override suspend fun spendBerries(amount: Int): Boolean = true
+        override suspend fun useHint(): Boolean = true
+        override suspend fun buyHintWithBerries(price: Int): Boolean = true
+        override suspend fun useUndo(): Boolean = true
+        override suspend fun buyUndoWithBerries(price: Int): Boolean = true
+        override suspend fun recordLevelWin(
+            levelId: String,
+            stars: Int,
+            berriesEarned: Int,
+            rescuedCount: Int,
+            newSpecies: List<String>
+        ) {}
+        override suspend fun resetTutorial() {}
         override suspend fun setMechanicSeen(mechanic: String) {
             seenMechanics.add(mechanic)
         }
@@ -397,5 +425,69 @@ class GameViewModelTest {
             advanceUntilIdle()
             assertThat(viewModel.uiState.value.level.id).isEqualTo(id)
         }
+    }
+
+    @Test
+    fun `level 1 starts with tutorial hand pointer and friendly speech bubble`() = runTest {
+        Dispatchers.setMain(StandardTestDispatcher(testScheduler))
+        val savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l01"))
+        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+
+        val state = viewModel.uiState.value
+        assertThat(state.isTutorialLevel).isTrue()
+        assertThat(state.tutorialHandPos).isEqualTo(Pos(1, 1))
+        assertThat(state.tutorialSpeechBubble).isEqualTo("Tap me to help me escape!")
+    }
+
+    @Test
+    fun `level 2 tutorial protects hearts on bonk and shows helpful speech bubble`() = runTest {
+        Dispatchers.setMain(StandardTestDispatcher(testScheduler))
+        val savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l02"))
+        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+
+        // Blocked buddy bonks into blocker
+        viewModel.onEvent(GameUiEvent.TapBuddy("piglet_1"))
+        advanceUntilIdle()
+
+        // Hearts remain intact during tutorial!
+        assertThat(viewModel.uiState.value.heartsRemaining).isEqualTo(3)
+        assertThat(viewModel.uiState.value.tutorialSpeechBubble).isEqualTo("Oops! Free your friend first!")
+    }
+
+    @Test
+    fun `request hint highlights solvable buddy and points hand`() = runTest {
+        Dispatchers.setMain(StandardTestDispatcher(testScheduler))
+        val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
+        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle()
+
+        viewModel.onEvent(GameUiEvent.RequestHint)
+        advanceTimeBy(50)
+
+        val state = viewModel.uiState.value
+        assertThat(state.hintBuddyId).isNotNull()
+        assertThat(state.tutorialHandPos).isNotNull()
+
+        advanceTimeBy(2100)
+        assertThat(viewModel.uiState.value.hintBuddyId).isNull()
+    }
+
+    @Test
+    fun `pause and leave level dialog events toggle visibility correctly`() = runTest {
+        Dispatchers.setMain(StandardTestDispatcher(testScheduler))
+        val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
+        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+
+        viewModel.onEvent(GameUiEvent.OpenPauseSheet)
+        assertThat(viewModel.uiState.value.showPauseSheet).isTrue()
+
+        viewModel.onEvent(GameUiEvent.DismissPauseSheet)
+        assertThat(viewModel.uiState.value.showPauseSheet).isFalse()
+
+        viewModel.onEvent(GameUiEvent.RequestLeaveLevel)
+        assertThat(viewModel.uiState.value.showLeaveLevelDialog).isTrue()
+
+        viewModel.onEvent(GameUiEvent.DismissLeaveLevel)
+        assertThat(viewModel.uiState.value.showLeaveLevelDialog).isFalse()
     }
 }

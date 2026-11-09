@@ -8,7 +8,8 @@
 - [x] **Step 5: Playable Board + Juice** — Interactive 60fps board in app/feature/game, GameViewModel with UDF and SavedStateHandle process death survival, 3-layer rendering (drawWithCache tray/checkers/rocks, graphicsLayer avatar movements, particle overlay), immediate feedback (<50ms), escape dash + HUD arc, bonk squash + blocker jiggle + screen shake, dynamic trapped Worried face, long-press Path Peek, Undo, Haptics via performHapticFeedback, all 3 dev levels fully playable.
 - [x] **Step 6: Mechanics (Mud, Turntable, Cage + Key, Portal, Sleepy)** — All 5 mechanics implemented with (A) pure Kotlin engine rules, (B) comprehensive unit tests, (C) tactile visuals & 60fps animations (mud puddles/splashes, wooden turntable disc spin, colorblind-safe portals, cage bars/key ribbons, nightcaps, refusal speech bubbles), (D) dev showcase levels (dev 4–9), 3x3 animated mini-demo intro cards with DataStore persistence, and cross-mechanic interaction validation.
 - [x] **Step 7: Level Generator & Catalog (240 Levels)** — Solver + Procedural Generator + Level Packs in `:engine`. Deterministic reverse construction generator with FNV-1a seeds, LevelSolver with heuristic PQ search (<4ms for 20 buddies), DifficultyCalculator scoring, 24 handcrafted tutorial levels with lessons, 240 baked levels across 8 worlds with sawtooth difficulty curve, Big Rescue levels 15 & 30 with Golden Buddies, DailyRescue date-seeded puzzles (Asia/Kolkata), endless RescueRun with background prefetching, Level Lab debug screen, and level report.
-- [ ] **Step 8: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
+- [x] **Step 8: Complete Game Flow** — End-to-end user journey: SplashScreen API + 1.2s bouncy letter branded intro with peeking/waving buddies; First-Time Experience (L1 pointing hand, L2 funny non-lethal bonk, L3 win celebration to Home); Home screen with live Sanctuary background, total rescued counter, pulsing Play button, Daily Rescue & Rescue Run cards; World Map with 240-level winding road, world banners, stars, padlock nodes, and Big Rescue gates; In-Game HUD with Pause, level pill, rescued counter, and HeartsRow; Bottom controls with Hint, Undo, and Restart; Win celebration sheet with dancing buddies, sequential star chimes, and New Friend flip card; Gentle Fail sheet with Try Again and +1 Heart revive; Leave level confirmation; Settings with sound, music, vibration, reduce motion, language switcher (English / Hindi via AppCompatDelegate), privacy policy, and credits; full authentic Hindi parity.
+- [ ] **Step 9: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
 - [ ] **Step 9: Buddy Album & Friendship System** — 24 species album, silhouettes, Bronze/Silver/Gold tiers, cosmetics, berry shop.
 - [ ] **Step 10: Final Polish, Hindi Localization & Release Verification** — Full Hindi translations, R8 shrink verification (<25MB), offline verification, performance profiling on 60fps budget targets.
 
@@ -316,6 +317,99 @@
 - Live Solver metrics panel: Solvability status, Difficulty score, Dependency depth, Dead ends, Initial free moves, Explored nodes, Shortest solution sequence, and Execution time.
 - Direct "Play" integration: Registers custom `LevelDef` in `LevelRepository` and launches `GameScreen` immediately.
 - "Copy JSON" one-tap clipboard export.
+
+---
+
+### Step 8: Complete Game Flow Architecture Notes
+
+#### 1. Splash & First-Time Launch Experience (`SplashScreen.kt`)
+- Official Android 12+ SplashScreen API integration (`androidx.core.splashscreen.SplashScreen`).
+- 1.2s branded intro:
+  - Letters of "ArrowBuddies" drop and bounce in sequentially with staggered spring physics (`dampingRatio = 0.5f`).
+  - 3 buddy characters (Bunny, Chick, Piglet) peek up from the bottom with animated waves.
+  - Interactive tap-to-skip instantly completes animations.
+- Intelligent routing via `GamePreferencesDataStore`:
+  - First-time launch (`tutorialCompleted == false`) routes directly to Level 1 (`w1-l01`).
+  - Returning launches route directly to the Home screen (`Route.Home`).
+
+#### 2. First-Time 60-Second Hook (`w1-l01`, `w1-l02`, `w1-l03`)
+- **Level 1 (3x3 grid, 1 buddy)**:
+  - Cartoon pointing hand (`TutorialHandOverlay.kt`) bobs towards the buddy with animated glow ripple.
+  - Speech bubble reads: "Tap me to help me escape!".
+  - Tapping rescues the buddy, triggering an instant joyful win celebration.
+- **Level 2 (4x4 grid, 2 buddies)**:
+  - Piglet blocks Bunny. If the player taps Piglet first, it safely dashes, bonks gently into Bunny with funny cartoon spiral eyes and boing sound.
+  - Speech bubble pops up: "Oops! Free your friend first!".
+  - Zero hearts lost during tutorial levels (`hearts = 3` preserved in `GameViewModel`).
+- **Level 3 (4x4 grid, 4 buddies)**:
+  - No hand pointer. Player uses what they learned to free everyone in order.
+  - Win celebration triggers first rescue sequence and lands the player on Home with the Sanctuary populated.
+
+#### 3. Home Screen (`HomeScreen.kt`)
+- **Live Backdrop**: Dynamic `AnimatedSkyBackground` with gentle cloud drift and wandering pasture buddies.
+- **Hero Counters & CTA**:
+  - Total rescued counter pill (`🐾 128 Buddies Rescued`).
+  - Top bar berry balance (`🫐 100`) and quick Settings icon button.
+  - Enormous pulsing 3D `CandyButton` ("Play · Level X") displaying the next species avatar to rescue.
+- **Interactive Feature Cards**:
+  - *Daily Rescue*: Countdown timer to midnight Asia/Kolkata (`HH:mm:ss`) and 100 🫐 bonus badge.
+  - *Rescue Run*: Endless mode card (locked with padlock until World 2 is reached).
+  - *World Map*: Quick-launch card showing current world and level progress.
+  - *Buddy Album*: Quick link to the species collection.
+
+#### 4. World Map (`WorldMapScreen.kt`)
+- Continuous winding Canvas road path mathematically plotted using harmonic sine curves ($x = \text{centerX} + \sin(i \times 0.65) \times \text{amplitude}$).
+- 240 distinct level nodes across 8 worlds:
+  - Completed nodes: 1–3 golden stars and green grass rim.
+  - Current node: glowing animated aura with the next buddy's avatar bouncing on top.
+  - Locked nodes: grey stone with 3D brass padlock.
+  - Big Rescue nodes (Levels 15 & 30): larger 64dp golden ring nodes with Golden Buddy preview.
+- World section banners ("World 1 · Sunny Meadow", "World 2 · Happy Farm", etc.).
+- Auto-scrolls smoothly on launch to focus directly on the player's current level.
+- World Unlock Gate modal previewing the 3 silhouette species awaiting rescue in the next biome.
+
+#### 5. In-Game HUD & Tactical Boosters (`GameHud.kt`)
+- **Top Bar**:
+  - Menu/Pause round button (46dp).
+  - Tactile Level pill ("Level 12").
+  - Dynamic Rescued Counter ("🐾 4/9") with bounce scale trigger.
+  - Tactile `HeartsRow` (3 hearts).
+- **Bottom Bar**:
+  - **Hint Booster**: Round 3D button with inventory badge. Highlights candidate buddy with golden pulsing aura, pulses arrow badge, and shows pointing hand for 2s. If inventory is 0, opens berry purchase dialog (30 🫐).
+  - **Undo Booster**: Round 3D button with inventory badge. Restores prior board state while preserving hearts. If 0, offers berry purchase (20 🫐).
+  - **Restart**: Instant level reset button.
+
+#### 6. Complete Dialog Sheets (`GameDialogs.kt`)
+- **Level Win Sheet (`LevelWinSheet`)**:
+  - Rescued buddies dancing and hopping on top of the toy panel.
+  - Sequential star filling animation with rising pitch chime audio hooks.
+  - Berry reward counter (+10 base, +5/star, +25 Golden Buddy bonus).
+  - "New Friend!" 3D flip card when discovering a new species for the first time.
+  - NEXT (primary, auto-focused), Replay, and Map buttons.
+- **Level Fail Sheet (`LevelFailSheet`)**:
+  - Gentle, non-shaming copy: "Oh no! The buddies need one more try."
+  - Primary free "Try Again" button.
+  - "+1 Heart & Continue" button (40 berries).
+  - Named hook for future rewarded video ads.
+- **In-Game Pause Sheet (`PauseSheet`)**:
+  - Inline tactile 3D switches for Sound, Music, and Haptics.
+  - Resume, Restart, and Map buttons.
+- **Leave Level Dialog (`LeaveLevelDialog`)**:
+  - Modal confirmation: "Leave this level? Your level progress will be lost if you leave now."
+  - System back button intercepted cleanly via `BackHandler`.
+
+#### 7. Settings & Authentic Localization (`SettingsScreen.kt`)
+- Toggles for Sound Effects, Music, Haptic Vibration, and Reduce Motion.
+- Per-app language switcher between English and Hindi using `AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(langCode))`.
+- "Replay Tutorial" button that resets tutorial state in DataStore and routes to Level 1.
+- Offline-first Privacy Policy dialog and Credits modal.
+- Debug Developer Tools panel (Buddy Characters Gallery, Design System Catalog, Level Lab) when `BuildConfig.DEBUG` is true.
+- 100% translation parity in `values-hi/strings.xml` using natural, everyday conversational Hindi.
+
+#### 8. Navigation Transitions (`ArrowBuddiesNavHost.kt`)
+- Map $\to$ Game zoom + fade (`scaleIn(0.85f)` + `fadeIn(220ms)`).
+- Crossfade and soft scale across screen transitions.
+- Dialog sheets springing in smoothly from bottom.
 
 ---
 

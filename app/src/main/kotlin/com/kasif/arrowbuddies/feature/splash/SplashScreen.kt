@@ -48,6 +48,7 @@ import com.kasif.arrowbuddies.core.designsystem.theme.Ink
 import com.kasif.arrowbuddies.core.designsystem.theme.Mango
 import com.kasif.arrowbuddies.core.designsystem.theme.Mint
 import com.kasif.arrowbuddies.core.designsystem.theme.Sky
+import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 import com.kasif.arrowbuddies.engine.model.Direction
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -128,8 +129,7 @@ fun SplashScreen(
     ) {
         AnimatedSkyBackground(
             modifier = Modifier.fillMaxSize(),
-            skyTop = Cream,
-            skyBottom = Cream
+            worldTheme = worldThemeFor(1)
         )
 
         // Center: Bouncing "ArrowBuddies" Title
@@ -196,7 +196,7 @@ fun SplashScreen(
             BuddyAvatar(
                 species = BuddySpecies.CHICK,
                 direction = Direction.UP,
-                expression = BuddyExpression.WINK,
+                expression = BuddyExpression.READY,
                 size = 76.dp,
                 modifier = Modifier.graphicsLayer { rotationZ = -waveRotation }
             )

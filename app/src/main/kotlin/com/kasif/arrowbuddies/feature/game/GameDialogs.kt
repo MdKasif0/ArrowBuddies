@@ -202,7 +202,7 @@ fun LevelWinSheet(
                                 BuddyAvatar(
                                     species = species,
                                     direction = Direction.UP,
-                                    expression = BuddyExpression.WINK,
+                                    expression = BuddyExpression.HAPPY,
                                     size = 52.dp
                                 )
                                 Column {
@@ -213,7 +213,7 @@ fun LevelWinSheet(
                                         fontWeight = FontWeight.Bold
                                     )
                                     Text(
-                                        text = species.displayName,
+                                        text = stringResource(species.nameRes),
                                         style = typography.title.copy(fontSize = 18.sp),
                                         color = Ink
                                     )

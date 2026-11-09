@@ -26,6 +26,7 @@ class SettingsViewModelTest {
         val soundFlow = MutableStateFlow(true)
         val musicFlow = MutableStateFlow(true)
         val hapticsFlow = MutableStateFlow(true)
+        val reduceMotionFlow = MutableStateFlow(false)
         val rescuedFlow = MutableStateFlow(0)
         val berriesFlow = MutableStateFlow(0)
 
@@ -34,6 +35,15 @@ class SettingsViewModelTest {
         override val soundEnabled: Flow<Boolean> = soundFlow
         override val musicEnabled: Flow<Boolean> = musicFlow
         override val hapticsEnabled: Flow<Boolean> = hapticsFlow
+        override val reduceMotion: Flow<Boolean> = reduceMotionFlow
+        override val tutorialCompleted: Flow<Boolean> = MutableStateFlow(true)
+        override val currentLevelIndex: Flow<Int> = MutableStateFlow(1)
+        override val highestUnlockedLevel: Flow<Int> = MutableStateFlow(1)
+        override val hintsCount: Flow<Int> = MutableStateFlow(3)
+        override val undosCount: Flow<Int> = MutableStateFlow(3)
+        override val rescuedSpecies: Flow<Set<String>> = MutableStateFlow(emptySet())
+
+        override fun getLevelStars(levelId: String): Flow<Int> = kotlinx.coroutines.flow.flowOf(0)
         override fun isMechanicSeen(mechanic: String): Flow<Boolean> = kotlinx.coroutines.flow.flowOf(true)
 
         override suspend fun setSoundEnabled(enabled: Boolean) {
@@ -48,6 +58,26 @@ class SettingsViewModelTest {
             hapticsFlow.value = enabled
         }
 
+        override suspend fun setReduceMotion(enabled: Boolean) {
+            reduceMotionFlow.value = enabled
+        }
+
+        override suspend fun setTutorialCompleted(completed: Boolean) {}
+        override suspend fun setCurrentLevelIndex(index: Int) {}
+        override suspend fun addBerries(amount: Int) {}
+        override suspend fun spendBerries(amount: Int): Boolean = true
+        override suspend fun useHint(): Boolean = true
+        override suspend fun buyHintWithBerries(price: Int): Boolean = true
+        override suspend fun useUndo(): Boolean = true
+        override suspend fun buyUndoWithBerries(price: Int): Boolean = true
+        override suspend fun recordLevelWin(
+            levelId: String,
+            stars: Int,
+            berriesEarned: Int,
+            rescuedCount: Int,
+            newSpecies: List<String>
+        ) {}
+        override suspend fun resetTutorial() {}
         override suspend fun setMechanicSeen(mechanic: String) {}
     }
 
@@ -118,6 +148,73 @@ class SettingsViewModelTest {
             val updated = awaitItem()
             assertThat(updated.hapticsEnabled).isFalse()
             assertThat(hapticsManager.currentHaptics).isFalse()
+        }
+    }
+
+    @Test
+    fun togglingReduceMotionUpdatesState() = runTest(testDispatcher) {
+        val repository = FakeGameRepository()
+        val soundManager = FakeSoundManager()
+        val hapticsManager = FakeHapticsManager()
+        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
+
+        viewModel.uiState.test {
+            val initial = awaitItem()
+            assertThat(initial.reduceMotion).isFalse()
+
+            viewModel.onEvent(SettingsUiEvent.ToggleReduceMotion(true))
+            testScheduler.advanceUntilIdle()
+
+            val updated = awaitItem()
+            assertThat(updated.reduceMotion).isTrue()
+        }
+    }
+
+    @Test
+    fun changingLanguageUpdatesState() = runTest(testDispatcher) {
+        val repository = FakeGameRepository()
+        val soundManager = FakeSoundManager()
+        val hapticsManager = FakeHapticsManager()
+        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
+
+        viewModel.uiState.test {
+            val initial = awaitItem()
+
+            viewModel.onEvent(SettingsUiEvent.SetLanguage("hi"))
+            testScheduler.advanceUntilIdle()
+
+            val updated = awaitItem()
+            assertThat(updated.currentLanguage).isEqualTo("hi")
+        }
+    }
+
+    @Test
+    fun dialogTogglesWork() = runTest(testDispatcher) {
+        val repository = FakeGameRepository()
+        val soundManager = FakeSoundManager()
+        val hapticsManager = FakeHapticsManager()
+        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
+
+        viewModel.uiState.test {
+            val initial = awaitItem()
+            assertThat(initial.showPrivacyPolicyDialog).isFalse()
+            assertThat(initial.showCreditsDialog).isFalse()
+
+            viewModel.onEvent(SettingsUiEvent.OpenPrivacyPolicy)
+            val policyOpened = awaitItem()
+            assertThat(policyOpened.showPrivacyPolicyDialog).isTrue()
+
+            viewModel.onEvent(SettingsUiEvent.DismissPrivacyPolicy)
+            val policyDismissed = awaitItem()
+            assertThat(policyDismissed.showPrivacyPolicyDialog).isFalse()
+
+            viewModel.onEvent(SettingsUiEvent.OpenCredits)
+            val creditsOpened = awaitItem()
+            assertThat(creditsOpened.showCreditsDialog).isTrue()
+
+            viewModel.onEvent(SettingsUiEvent.DismissCredits)
+            val creditsDismissed = awaitItem()
+            assertThat(creditsDismissed.showCreditsDialog).isFalse()
         }
     }
 }
