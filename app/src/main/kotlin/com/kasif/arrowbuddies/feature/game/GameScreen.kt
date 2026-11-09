@@ -86,6 +86,12 @@ fun GameScreen(
                         SoundType.TAP -> soundManager?.playPop()
                         SoundType.ESCAPE -> soundManager?.playChime()
                         SoundType.BONK -> soundManager?.playBoing()
+                        SoundType.SQUELCH -> soundManager?.playPop()
+                        SoundType.WHOOSH -> soundManager?.playChime()
+                        SoundType.KEY_UNLOCK -> soundManager?.playChime()
+                        SoundType.CAGE_LOCKED -> soundManager?.playBoing()
+                        SoundType.SLEEPY_YAWN -> soundManager?.playPop()
+                        SoundType.WAKE_UP -> soundManager?.playPop()
                         SoundType.WIN -> {
                             soundManager?.playChime()
                             // Trigger victory confetti burst
@@ -195,6 +201,14 @@ fun GameScreen(
                     onEvent(GameUiEvent.RestartLevel)
                 },
                 onDismiss = { onEvent(GameUiEvent.DismissDialog) }
+            )
+        }
+
+        // First-time Mechanic Introduction Dialog
+        if (uiState.activeMechanicIntro != null) {
+            MechanicIntroDialog(
+                mechanic = uiState.activeMechanicIntro,
+                onDismiss = { onEvent(GameUiEvent.DismissMechanicIntro) }
             )
         }
     }
