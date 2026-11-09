@@ -9,6 +9,7 @@
     <string name="screen_sanctuary">अभयारण्य</string>
     <string name="screen_album">साथी एल्बम</string>
     <string name="screen_daily">दैनिक बचाव</string>
+    <string name="screen_rescue_run">रेस्क्यू रन</string>
     <string name="screen_settings">सेटिंग्स</string>
     <string name="screen_design_catalog">डिज़ाइन कैटलॉग</string>
     <string name="screen_buddy_gallery">साथी पात्र गैलरी</string>
@@ -22,8 +23,16 @@
     <string name="action_settings">सेटिंग्स</string>
     <string name="action_back">वापस</string>
     <string name="action_next_level">अगला स्तर</string>
+    <string name="action_cancel">रद्द करें</string>
+    <string name="action_ok">ठीक है</string>
+    <string name="action_tap_to_skip">आगे बढ़ने के लिए टैप करें</string>
     <string name="action_design_catalog">🎨 डिज़ाइन सिस्टम कैटलॉग</string>
     <string name="action_buddy_gallery">🐾 साथी पात्र गैलरी</string>
+
+    <!-- Splash & Home -->
+    <string name="splash_tagline">हर टैप से प्यारे साथियों को आज़ाद करें!</string>
+    <string name="home_total_rescued_subtitle">साथी बचाए गए</string>
+    <string name="home_play_level">खेलें · स्तर %1$s</string>
 
     <!-- Content Descriptions & Placeholders -->
     <string name="desc_splash_logo">ArrowBuddies लोगो</string>
@@ -36,11 +45,42 @@
     <string name="game_restart">पुनः प्रारंभ</string>
     <string name="game_level_complete">स्तर पूरा हुआ!</string>
     <string name="game_level_complete_subtitle">सभी साथी सुरक्षित बचा लिए गए!</string>
+    <string name="game_all_buddies_rescued">सभी साथी बचा लिए गए!</string>
+    <string name="game_new_friend_unlocked">नया साथी मिला!</string>
+    <string name="game_replay">फिर से खेलें</string>
     <string name="game_level_failed">दिल समाप्त हो गए!</string>
-    <string name="game_level_failed_subtitle">चिंता न करें, पुनः प्रयास करें!</string>
+    <string name="game_level_failed_title">अरे नहीं! पुनः प्रयास करें?</string>
+    <string name="game_level_failed_subtitle">साथियों को बाहर निकलने के लिए एक और कोशिश चाहिए!</string>
     <string name="game_try_again">पुनः प्रयास</string>
     <string name="game_next_level">अगला स्तर</string>
+    <string name="game_revive_heart_button">+1 दिल और जारी रखें (40 🫐)</string>
+    <string name="game_paused">रुकें</string>
+    <string name="game_resume">जारी रखें</string>
+    <string name="game_leave_level_title">क्या आप यह स्तर छोड़ना चाहते हैं?</string>
+    <string name="game_leave_level_subtitle">यदि आप अभी बाहर जाते हैं तो इस स्तर की प्रगति समाप्त हो जाएगी।</string>
+    <string name="game_leave_level_stay">खेलते रहें</string>
+    <string name="game_leave_level_confirm">स्तर छोड़ें</string>
     <string name="game_dev_level_chip">डेव %1$s</string>
+
+    <!-- Boosters -->
+    <string name="booster_hint">संकेत</string>
+    <string name="booster_need_hint">संकेत चाहिए?</string>
+    <string name="booster_need_undo">वापसी (Undo) चाहिए?</string>
+    <string name="booster_need_heart">दिल चाहिए?</string>
+
+    <!-- Settings -->
+    <string name="settings_audio_vibration">ध्वनि और कंपन</string>
+    <string name="settings_sound_effects">ध्वनि प्रभाव</string>
+    <string name="settings_music">संगीत</string>
+    <string name="settings_vibration">स्पर्श कंपन</string>
+    <string name="settings_reduce_motion">गति कम करें</string>
+    <string name="settings_language">भाषा / Language</string>
+    <string name="settings_general">सामान्य</string>
+    <string name="settings_privacy_policy">गोपनीयता नीति</string>
+    <string name="settings_privacy_policy_body">ArrowBuddies पूरी तरह से ऑफ़लाइन और सभी के लिए सुरक्षित है। हम कोई भी व्यक्तिगत डेटा, विश्लेषण या पहचानकर्ता एकत्र नहीं करते। आपकी सारी प्रगति, जामुन (berries) और सितारे केवल आपके फ़ोन पर सुरक्षित रहते हैं।</string>
+    <string name="settings_credits">क्रेडिट</string>
+    <string name="settings_credits_body">ArrowBuddies — पशु प्रेमियों और जिज्ञासु खिलाड़ियों के लिए प्यार से बनाया गया।\n\nBaloo 2 फ़ॉन्ट: Ek Type (SIL Open Font License)।\nसंतुष्टि और आनंद के लिए विशेष ध्वनि एवं स्पर्श डिज़ाइन।</string>
+    <string name="settings_replay_tutorial">ट्यूटोरियल फिर से खेलें</string>
 
     <!-- Mechanic Intro Dialogs & Bubbles -->
     <string name="mechanic_intro_title">नया तत्व!</string>

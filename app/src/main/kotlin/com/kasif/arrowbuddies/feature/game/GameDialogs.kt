@@ -43,8 +43,6 @@ import com.kasif.arrowbuddies.core.buddies.model.BuddyExpression
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButton
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButtonVariant
-import com.kasif.arrowbuddies.core.designsystem.component.CounterPill
-import com.kasif.arrowbuddies.core.designsystem.component.CounterPillType
 import com.kasif.arrowbuddies.core.designsystem.component.GameDialog
 import com.kasif.arrowbuddies.core.designsystem.component.StarRow
 import com.kasif.arrowbuddies.core.designsystem.component.ToggleSwitch
