@@ -29,7 +29,7 @@ class SplashViewModel @Inject constructor(
             _uiState.update {
                 it.copy(
                     isReady = true,
-                    isFirstLaunch = !tutorialDone && currentIndex == 1,
+                    isFirstLaunch = !tutorialDone,
                     initialLevelId = levelId
                 )
             }
