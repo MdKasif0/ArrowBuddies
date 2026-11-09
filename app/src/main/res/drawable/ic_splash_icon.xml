@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background circle in Mango (#FFB627) -->
+    <path
+        android:fillColor="#FFB627"
+        android:pathData="M54,14 A40,40 0 1,1 53.99,14 Z" />
+    <!-- Playful Arrow Badge in Ink (#2B2240) -->
+    <path
+        android:fillColor="#2B2240"
+        android:pathData="M54,28 L74,54 L62,54 L62,78 L46,78 L46,54 L34,54 Z" />
+    <!-- Eye highlights for child-friendly buddy look -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,44 A4,4 0 1,1 49.99,44 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M58,44 A4,4 0 1,1 57.99,44 Z" />
+</vector>
+
