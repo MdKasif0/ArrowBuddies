@@ -562,7 +562,7 @@ fun GameBoard(
                     }
 
                     val isHinted = buddy.id == hintBuddyId
-                    val buddySpeciesName = stringResource(species.displayNameRes)
+                    val buddySpeciesName = stringResource(species.nameRes)
                     val dirDescription = when (currentDir) {
                         Direction.UP -> stringResource(R.string.talkback_dir_up)
                         Direction.DOWN -> stringResource(R.string.talkback_dir_down)
@@ -592,7 +592,7 @@ fun GameBoard(
                                 contentDescription = buddyContentDesc
                                 customActions = listOf(
                                     CustomAccessibilityAction(actionLabel) {
-                                        onTapBuddy(buddy.id)
+                                        onBuddyTap(buddy.id)
                                         true
                                     }
                                 )
