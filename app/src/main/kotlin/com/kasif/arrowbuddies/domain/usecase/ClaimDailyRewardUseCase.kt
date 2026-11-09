@@ -69,6 +69,12 @@ class ClaimDailyRewardUseCase @Inject constructor(
         if (unlockedDecor) {
             decorDao.markOwned(EconomyConfig.DAY_7_STREAK_DECOR_ID)
             achievementDao.unlock(AchievementType.STREAK_7.id)
+            // The gifted decoration counts toward the Decorator achievement like a bought one
+            val ownedCount = decorDao.getAllDecorItemsOnce().count { it.owned }
+            achievementDao.updateProgress(AchievementType.DECORATOR.id, ownedCount)
+            if (ownedCount >= AchievementType.DECORATOR.maxProgress) {
+                achievementDao.unlock(AchievementType.DECORATOR.id)
+            }
         }
 
         profileDao.insertOrUpdate(

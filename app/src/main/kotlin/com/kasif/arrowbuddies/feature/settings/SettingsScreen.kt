@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.feature.settings
 
+import com.kasif.arrowbuddies.core.notification.rememberNotificationPermissionRequester
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -55,6 +56,10 @@ fun SettingsScreen(
     onNavigateToGallery: (() -> Unit)? = null,
     onNavigateToLevelLab: (() -> Unit)? = null
 ) {
+    // Reminders only work if the app may post notifications (runtime permission on Android 13+)
+    val requestNotificationPermission = rememberNotificationPermissionRequester { granted ->
+        if (granted) onEvent(SettingsUiEvent.ToggleDailyReminder(true))
+    }
     val typography = ArrowBuddiesThemeTokens.typography
     val colors = ArrowBuddiesThemeTokens.colors
     val worldTheme = worldThemeFor(1) // Sunny Meadow theme for settings
@@ -222,49 +227,13 @@ fun SettingsScreen(
                             }
                             ToggleSwitch(
                                 checked = uiState.dailyReminderEnabled,
-                                onCheckedChange = { onEvent(SettingsUiEvent.ToggleDailyReminder(it)) }
-                            )
-                        }
-                    }
-                }
-
-                // Language Switcher Card
-                ToyPanel(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .widthIn(max = 480.dp)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.settings_language),
-                            style = typography.title.copy(fontSize = 17.sp, fontWeight = FontWeight.Bold),
-                            color = Ink
-                        )
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(10.dp)
-                        ) {
-                            val isEn = uiState.currentLanguage == "en"
-                            val isHi = uiState.currentLanguage == "hi"
-
-                            CandyButton(
-                                text = "English 🇬🇧",
-                                onClick = { onEvent(SettingsUiEvent.SetLanguage("en")) },
-                                variant = if (isEn) CandyButtonVariant.Primary else CandyButtonVariant.Secondary,
-                                modifier = Modifier.weight(1f)
-                            )
-
-                            CandyButton(
-                                text = "हिंदी 🇮🇳",
-                                onClick = { onEvent(SettingsUiEvent.SetLanguage("hi")) },
-                                variant = if (isHi) CandyButtonVariant.Primary else CandyButtonVariant.Secondary,
-                                modifier = Modifier.weight(1f)
+                                onCheckedChange = { enabled ->
+                                    if (enabled) {
+                                        requestNotificationPermission()
+                                    } else {
+                                        onEvent(SettingsUiEvent.ToggleDailyReminder(false))
+                                    }
+                                }
                             )
                         }
                     }

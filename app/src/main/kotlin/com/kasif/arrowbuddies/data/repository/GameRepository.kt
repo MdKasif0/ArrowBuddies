@@ -120,7 +120,7 @@ class DefaultGameRepository @Inject constructor(
         // Ensure default player profile exists
         val currentProfile = profileDao.getPlayerProfileOnce()
         if (currentProfile == null) {
-            profileDao.insertOrUpdate(PlayerProfile())
+            profileDao.insertIfMissing(PlayerProfile())
         } else if (currentProfile.currentLevelIndex > 100) {
             // Repair any corrupted level index from previous digit filter bug (e.g. "w1-l01" -> 101 -> 102)
             val allProgress = levelDao.getAllProgressOnce()
@@ -133,7 +133,6 @@ class DefaultGameRepository @Inject constructor(
                         highestUnlockedLevel = maxOf(repairedIndex, maxCompletedFlat + 1)
                     )
                 )
-                preferences.setCurrentLevelIndex(repairedIndex)
             }
         }
 
@@ -192,60 +191,48 @@ class DefaultGameRepository @Inject constructor(
     override suspend fun setMusicEnabled(enabled: Boolean) = preferences.setMusicEnabled(enabled)
     override suspend fun setHapticsEnabled(enabled: Boolean) = preferences.setHapticsEnabled(enabled)
     override suspend fun setReduceMotion(enabled: Boolean) = preferences.setReduceMotion(enabled)
+    // All profile mutations below are single atomic SQL UPDATEs (no read-modify-write races).
+    // The profile row is created first in case the async initDefaults() hasn't run yet.
+    private suspend fun ensureProfile() = profileDao.insertIfMissing(PlayerProfile())
+
     override suspend fun setTutorialCompleted(completed: Boolean) {
-        val p = profileDao.getPlayerProfileOnce() ?: PlayerProfile()
-        profileDao.insertOrUpdate(p.copy(tutorialDone = completed))
-        preferences.setTutorialCompleted(completed)
+        ensureProfile()
+        profileDao.setTutorialDone(completed)
     }
+
     override suspend fun setCurrentLevelIndex(index: Int) {
-        val p = profileDao.getPlayerProfileOnce() ?: PlayerProfile()
-        profileDao.insertOrUpdate(p.copy(currentLevelIndex = index, highestUnlockedLevel = maxOf(p.highestUnlockedLevel, index)))
-        preferences.setCurrentLevelIndex(index)
+        ensureProfile()
+        profileDao.setCurrentLevel(index.coerceIn(1, 240))
     }
 
     override suspend fun addBerries(amount: Int) {
+        ensureProfile()
         profileDao.addBerries(amount)
-        preferences.addBerries(amount)
     }
 
     override suspend fun spendBerries(amount: Int): Boolean {
-        val success = spendBerriesUseCase(amount)
-        if (success) preferences.spendBerries(amount)
-        return success
+        ensureProfile()
+        return spendBerriesUseCase(amount)
     }
 
     override suspend fun useHint(): Boolean {
-        val updated = profileDao.useHint()
-        val success = updated > 0
-        if (success) preferences.useHint()
-        return success
+        ensureProfile()
+        return profileDao.useHint() > 0
     }
 
     override suspend fun buyHintWithBerries(price: Int): Boolean {
-        val p = profileDao.getPlayerProfileOnce() ?: return false
-        if (p.berries >= price) {
-            profileDao.insertOrUpdate(p.copy(berries = p.berries - price, hints = p.hints + 1))
-            preferences.buyHintWithBerries(price)
-            return true
-        }
-        return false
+        ensureProfile()
+        return profileDao.buyHint(price) > 0
     }
 
     override suspend fun useUndo(): Boolean {
-        val updated = profileDao.useUndo()
-        val success = updated > 0
-        if (success) preferences.useUndo()
-        return success
+        ensureProfile()
+        return profileDao.useUndo() > 0
     }
 
     override suspend fun buyUndoWithBerries(price: Int): Boolean {
-        val p = profileDao.getPlayerProfileOnce() ?: return false
-        if (p.berries >= price) {
-            profileDao.insertOrUpdate(p.copy(berries = p.berries - price, undos = p.undos + 1))
-            preferences.buyUndoWithBerries(price)
-            return true
-        }
-        return false
+        ensureProfile()
+        return profileDao.buyUndo(price) > 0
     }
 
     override suspend fun recordLevelWin(
@@ -261,7 +248,6 @@ class DefaultGameRepository @Inject constructor(
             mistakes = (3 - stars).coerceAtLeast(0),
             rescuedSpeciesList = newSpecies
         )
-        preferences.recordLevelWin(levelId, stars, berriesEarned, rescuedCount, newSpecies)
     }
 
     override suspend fun completeLevel(
@@ -278,11 +264,6 @@ class DefaultGameRepository @Inject constructor(
             rescuedSpeciesList = rescuedSpeciesList,
             isGoldenBuddyRescued = isGoldenBuddyRescued
         )
-        preferences.recordLevelWin(levelId, stars, result.berriesEarned, rescuedSpeciesList.size, rescuedSpeciesList)
-        val flatIndex = LevelIdHelper.parseFlatIndex(levelId) ?: 1
-        if (flatIndex >= 3) {
-            preferences.setTutorialCompleted(true)
-        }
         return result
     }
 
@@ -300,6 +281,10 @@ class DefaultGameRepository @Inject constructor(
 
     override suspend fun recordDailyCompletion(date: String, stars: Int, mistakes: Int) {
         val existing = dailyDao.getDailyRecordOnce(date)
+        if (existing?.completed != true) {
+            // First clear of the day pays the Daily Rescue bonus advertised on Home
+            profileDao.addBerries(EconomyConfig.BERRIES_DAILY_RESCUE)
+        }
         dailyDao.insertOrUpdate(
             DailyRecord(
                 date = date,
@@ -315,9 +300,8 @@ class DefaultGameRepository @Inject constructor(
     }
 
     override suspend fun resetTutorial() {
-        val p = profileDao.getPlayerProfileOnce() ?: PlayerProfile()
-        profileDao.insertOrUpdate(p.copy(tutorialDone = false))
-        preferences.resetTutorial()
+        ensureProfile()
+        profileDao.setTutorialDone(false)
     }
 
     override suspend fun setMechanicSeen(mechanic: String) = preferences.setMechanicSeen(mechanic)

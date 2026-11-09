@@ -1,5 +1,7 @@
 package com.kasif.arrowbuddies.feature.sanctuary
 
+import com.kasif.arrowbuddies.R
+import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.core.model.BuddyAccessory
@@ -44,17 +46,17 @@ data class SanctuaryUiState(
     val showNotEnoughBerriesNotice: Boolean = false,
     val isTreatScatterActive: Boolean = false
 ) {
-    val activeZoneName: String
+    @get:StringRes
+    val activeZoneNameRes: Int
         get() = when (activeZoneIndex + 1) {
-            1 -> "Sunny Meadow"
-            2 -> "Sticky Bog"
-            3 -> "Clockwork Garden"
-            4 -> "Ancient Ruins"
-            5 -> "Mystic Forest"
-            6 -> "Cozy Burrow"
-            7 -> "Twilight Oasis"
-            8 -> "Celebration Grove"
-            else -> "Sunny Meadow"
+            2 -> R.string.ui_zone_name_2
+            3 -> R.string.ui_zone_name_3
+            4 -> R.string.ui_zone_name_4
+            5 -> R.string.ui_zone_name_5
+            6 -> R.string.ui_zone_name_6
+            7 -> R.string.ui_zone_name_7
+            8 -> R.string.ui_zone_name_8
+            else -> R.string.ui_zone_name_1
         }
 }
 

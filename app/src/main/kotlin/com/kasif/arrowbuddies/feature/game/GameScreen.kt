@@ -1,5 +1,11 @@
 package com.kasif.arrowbuddies.feature.game
 
+import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.ui.unit.IntOffset
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.rememberCoroutineScope
+import com.kasif.arrowbuddies.core.notification.rememberNotificationPermissionRequester
 import android.app.Activity
 import android.view.WindowManager
 import androidx.activity.compose.BackHandler
@@ -19,6 +25,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,7 +44,6 @@ import com.kasif.arrowbuddies.core.designsystem.modifier.LocalSound
 import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun GameScreen(
@@ -59,7 +65,8 @@ fun GameScreen(
     var bumpRescuedCount by remember { mutableIntStateOf(0) }
 
     // Start background music for the world
-    LaunchedEffect(uiState.level.world, uiState.musicEnabled) {
+    LaunchedEffect(uiState.level.world, uiState.musicEnabled, uiState.isLoading) {
+        if (uiState.isLoading) return@LaunchedEffect
         if (uiState.musicEnabled) {
             soundManager?.playMusic(uiState.level.world)
         } else {
@@ -90,10 +97,18 @@ fun GameScreen(
         }
     }
 
+    val currentOnNavigateBack by rememberUpdatedState(onNavigateBack)
+    // The effect collector below lives for the whole screen; read the latest state through this,
+    // otherwise Reduce Motion and the rescued count would be stuck at their first values.
+    val latestUiState by rememberUpdatedState(uiState)
+    val effectScope = rememberCoroutineScope()
+
     // Handle Haptics, Audio hooks, and Confetti from one-shot effects
     LaunchedEffect(effects) {
-        effects.collectLatest { effect ->
+        // collect (not collectLatest): a new effect must not cancel the one still animating
+        effects.collect { effect ->
             when (effect) {
+                is GameEffect.NavigateBack -> currentOnNavigateBack()
                 is GameEffect.TriggerHaptic -> {
                     when (effect.type) {
                         HapticType.TICK -> hapticsManager?.tick(view)
@@ -105,7 +120,7 @@ fun GameScreen(
                 is GameEffect.PlaySound -> {
                     when (effect.type) {
                         SoundType.TAP -> soundManager?.playTap()
-                        SoundType.ESCAPE -> soundManager?.playEscape(uiState.rescuedCount)
+                        SoundType.ESCAPE -> soundManager?.playEscape(latestUiState.rescuedCount)
                         SoundType.BONK -> soundManager?.playBonk()
                         SoundType.SQUELCH -> soundManager?.playMudSquelch()
                         SoundType.WHOOSH -> soundManager?.playPortalWhoosh()
@@ -115,7 +130,7 @@ fun GameScreen(
                         SoundType.WAKE_UP -> soundManager?.playTap()
                         SoundType.WIN -> {
                             soundManager?.playStarPop()
-                            if (!uiState.reduceMotion) {
+                            if (!latestUiState.reduceMotion) {
                                 // Trigger victory confetti burst
                                 val screenWidth = view.width.toFloat().coerceAtLeast(400f)
                                 val screenHeight = view.height.toFloat().coerceAtLeast(600f)
@@ -127,12 +142,15 @@ fun GameScreen(
                 }
 
                 is GameEffect.ScreenShake -> {
-                    if (!uiState.reduceMotion) {
+                    if (!latestUiState.reduceMotion) {
                         val intensity = effect.intensityDp
-                        boardShakeOffset.animateTo(-intensity, tween(30))
-                        boardShakeOffset.animateTo(intensity, tween(30))
-                        boardShakeOffset.animateTo(-intensity * 0.5f, tween(30))
-                        boardShakeOffset.animateTo(0f, tween(40))
+                        // Run apart from the collector so the haptic emitted right after doesn't wait/cancel it
+                        effectScope.launch {
+                            boardShakeOffset.animateTo(-intensity, tween(30))
+                            boardShakeOffset.animateTo(intensity, tween(30))
+                            boardShakeOffset.animateTo(-intensity * 0.5f, tween(30))
+                            boardShakeOffset.animateTo(0f, tween(40))
+                        }
                     }
                 }
 
@@ -179,29 +197,33 @@ fun GameScreen(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .offset(x = boardShakeOffset.value.dp),
+                    .offset { IntOffset(boardShakeOffset.value.dp.roundToPx(), 0) },
                 contentAlignment = Alignment.Center
             ) {
-                GameBoard(
-                    level = uiState.level,
-                    buddies = uiState.gameState.buddies,
-                    safeBuddyIds = uiState.safeBuddyIds,
-                    isInputLocked = uiState.isInputLocked,
-                    pressedBuddyId = uiState.pressedBuddyId,
-                    activePeekingPath = uiState.activePeekingPath,
-                    effects = effects,
-                    onBuddyTap = { buddyId -> onEvent(GameUiEvent.TapBuddy(buddyId)) },
-                    onBuddyPressed = { buddyId -> onEvent(GameUiEvent.PressBuddy(buddyId)) },
-                    onBuddyReleased = { onEvent(GameUiEvent.ReleaseBuddy) },
-                    onPathPeekStart = { buddyId -> onEvent(GameUiEvent.StartPathPeek(buddyId)) },
-                    onPathPeekEnd = { onEvent(GameUiEvent.EndPathPeek) },
-                    onRescuedBump = { bumpRescuedCount++ },
-                    particleSystemState = particleSystemState,
-                    hintBuddyId = uiState.hintBuddyId,
-                    tutorialHandPos = uiState.tutorialHandPos,
-                    tutorialSpeechBubble = uiState.tutorialSpeechBubble,
-                    modifier = Modifier.fillMaxSize()
-                )
+                if (uiState.isLoading) {
+                    CircularProgressIndicator(color = ArrowBuddiesThemeTokens.colors.textPrimary)
+                } else {
+                    GameBoard(
+                        level = uiState.level,
+                        buddies = uiState.gameState.buddies,
+                        safeBuddyIds = uiState.safeBuddyIds,
+                        isInputLocked = uiState.isInputLocked,
+                        pressedBuddyId = uiState.pressedBuddyId,
+                        activePeekingPath = uiState.activePeekingPath,
+                        effects = effects,
+                        onBuddyTap = { buddyId -> onEvent(GameUiEvent.TapBuddy(buddyId)) },
+                        onBuddyPressed = { buddyId -> onEvent(GameUiEvent.PressBuddy(buddyId)) },
+                        onBuddyReleased = { onEvent(GameUiEvent.ReleaseBuddy) },
+                        onPathPeekStart = { buddyId -> onEvent(GameUiEvent.StartPathPeek(buddyId)) },
+                        onPathPeekEnd = { onEvent(GameUiEvent.EndPathPeek) },
+                        onRescuedBump = { bumpRescuedCount++ },
+                        particleSystemState = particleSystemState,
+                        hintBuddyId = uiState.hintBuddyId,
+                        tutorialHandPos = uiState.tutorialHandPos,
+                        tutorialSpeechBubble = uiState.tutorialSpeechBubble?.let { stringResource(it) },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
 
             // Bottom Controls (Hint, Undo, Restart)
@@ -222,6 +244,7 @@ fun GameScreen(
             LevelWinSheet(
                 stars = uiState.starsEarned,
                 rescuedBuddies = uiState.level.buddies,
+                berriesEarned = uiState.berriesEarned,
                 goldenBonus = uiState.goldenBerryBonus,
                 newSpecies = uiState.newSpeciesUnlocked,
                 onNextLevel = {
@@ -313,8 +336,11 @@ fun GameScreen(
 
         // Daily Reminder Opt-in Dialog (Level 5+)
         if (uiState.showReminderPromptDialog) {
+            val requestNotificationPermission = rememberNotificationPermissionRequester { granted ->
+                onEvent(if (granted) GameUiEvent.AcceptDailyReminder else GameUiEvent.DismissDailyReminder)
+            }
             DailyReminderOptInDialog(
-                onAccept = { onEvent(GameUiEvent.AcceptDailyReminder) },
+                onAccept = requestNotificationPermission,
                 onDismiss = { onEvent(GameUiEvent.DismissDailyReminder) }
             )
         }

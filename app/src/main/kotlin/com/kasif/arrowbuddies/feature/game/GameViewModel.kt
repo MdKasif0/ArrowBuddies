@@ -1,5 +1,7 @@
 package com.kasif.arrowbuddies.feature.game
 
+import com.kasif.arrowbuddies.engine.runtime.DailyRescue
+import com.kasif.arrowbuddies.R
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -15,6 +17,7 @@ import com.kasif.arrowbuddies.engine.GameEngine
 import com.kasif.arrowbuddies.engine.model.GameState
 import com.kasif.arrowbuddies.engine.model.GameStatus
 import com.kasif.arrowbuddies.engine.model.LevelDef
+import com.kasif.arrowbuddies.engine.model.LevelIdHelper
 import com.kasif.arrowbuddies.engine.model.MoveResult
 import com.kasif.arrowbuddies.engine.model.Pos
 import com.kasif.arrowbuddies.engine.model.RefusalReason
@@ -22,7 +25,12 @@ import com.kasif.arrowbuddies.engine.model.Tile
 import com.kasif.arrowbuddies.navigation.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import com.kasif.arrowbuddies.core.economy.EconomyConfig
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -57,6 +65,14 @@ class GameViewModel @Inject constructor(
         ?: savedStateHandle.get<String>("levelId")
         ?: "1"
 
+    /** Dispatcher for CPU-heavy solver work (hints). Overridable in tests. */
+    internal var computeDispatcher: CoroutineDispatcher = Dispatchers.Default
+
+    /** The in-flight move animation; cancelled when the board is reset so it can't overwrite it. */
+    private var moveJob: Job? = null
+    private var hintJob: Job? = null
+    private var loadJob: Job? = null
+
     private val _effects = MutableSharedFlow<GameEffect>(extraBufferCapacity = 16)
     val effects: SharedFlow<GameEffect> = _effects.asSharedFlow()
 
@@ -68,25 +84,26 @@ class GameViewModel @Inject constructor(
             runCatching { json.decodeFromString(GameState.serializer(), it) }.getOrNull()
         }
 
-        val levelDef = levelRepository.loadLevel(initialLevelId)
-        val activeState = restoredState ?: GameState(level = levelDef, buddies = levelDef.buddies)
-        val safeIds = computeSafeBuddyIds(activeState)
-
-        val isTutorial = isTutorialLevelId(levelDef.id)
-        val initialHandPos = if (isTutorial && (levelDef.id == "w1-l01" || levelDef.id == "1")) Pos(1, 1) else null
-        val initialSpeech = if (isTutorial && (levelDef.id == "w1-l01" || levelDef.id == "1")) "Tap me to help me escape!" else null
-
+        // A level restored after process death carries its own definition: show it right away.
+        // Otherwise show a loading placeholder and load the level off the main thread.
+        val restoredLevel = restoredState?.level
+        val placeholder = restoredLevel ?: placeholderLevel(initialLevelId)
         _uiState = MutableStateFlow(
             GameUiState(
-                levelId = levelDef.id,
-                level = levelDef,
-                gameState = activeState,
-                safeBuddyIds = safeIds,
-                isTutorialLevel = isTutorial,
-                tutorialHandPos = initialHandPos,
-                tutorialSpeechBubble = initialSpeech
+                levelId = placeholder.id,
+                level = placeholder,
+                gameState = restoredState ?: GameState(level = placeholder, buddies = placeholder.buddies),
+                isLoading = restoredLevel == null
             )
         )
+        if (restoredState != null) {
+            showLevel(restoredState.level, restoredState)
+        } else {
+            loadJob = viewModelScope.launch {
+                val levelDef = levelRepository.loadLevelInBackground(initialLevelId)
+                showLevel(levelDef, GameState(level = levelDef, buddies = levelDef.buddies))
+            }
+        }
 
         // Observe repository state for inventory and preferences
         viewModelScope.launch {
@@ -99,7 +116,6 @@ class GameViewModel @Inject constructor(
             launch { gameRepository.reduceMotion.collect { r -> _uiState.update { it.copy(reduceMotion = r) } } }
         }
 
-        checkMechanicIntro(levelDef)
     }
 
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
@@ -160,6 +176,7 @@ class GameViewModel @Inject constructor(
 
     private fun handleBuddyTap(buddyId: String) {
         val currentState = _uiState.value
+        if (currentState.isLoading) return
         if (currentState.isInputLocked || currentState.gameState.status != GameStatus.PLAYING) return
 
         val buddy = currentState.gameState.findBuddy(buddyId) ?: return
@@ -187,7 +204,7 @@ class GameViewModel @Inject constructor(
                     )
                 }
 
-                viewModelScope.launch {
+                moveJob = viewModelScope.launch {
                     _effects.emit(GameEffect.PlayEscape(buddyId, result.path, result.exitSide, buddy))
                     _effects.emit(GameEffect.PlaySound(SoundType.ESCAPE))
 
@@ -247,7 +264,7 @@ class GameViewModel @Inject constructor(
                 }
 
                 val speechBubbleText = if (currentState.isTutorialLevel && (currentState.levelId == "w1-l02" || currentState.levelId == "2")) {
-                    "Oops! Free your friend first!"
+                    R.string.ui_tutorial_free_friend
                 } else null
 
                 val tutorialHandPos = if (currentState.isTutorialLevel && (currentState.levelId == "w1-l02" || currentState.levelId == "2")) {
@@ -256,7 +273,7 @@ class GameViewModel @Inject constructor(
 
                 _uiState.update { it.copy(isInputLocked = true, pressedBuddyId = null, activePeekingPath = null) }
 
-                viewModelScope.launch {
+                moveJob = viewModelScope.launch {
                     _effects.emit(GameEffect.PlayBonk(buddyId, result.path, result.blockerPos, result.blockerKind, buddy))
                     _effects.emit(GameEffect.PlaySound(SoundType.BONK))
 
@@ -291,7 +308,7 @@ class GameViewModel @Inject constructor(
 
                 _uiState.update { it.copy(isInputLocked = true, pressedBuddyId = null, activePeekingPath = null) }
 
-                viewModelScope.launch {
+                moveJob = viewModelScope.launch {
                     _effects.emit(GameEffect.PlayMudStop(buddyId, result.path, targetPos, buddy))
                     _effects.emit(GameEffect.PlaySound(SoundType.SQUELCH))
 
@@ -355,11 +372,14 @@ class GameViewModel @Inject constructor(
             )
 
             // If daily rescue, also record completion & streak
+            var dailyBonus = 0
             if (level.id.startsWith("daily")) {
                 val dateStr = level.id.removePrefix("daily-").ifEmpty {
-                    LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE)
+                    LocalDate.now(DailyRescue.TIME_ZONE).format(DateTimeFormatter.BASIC_ISO_DATE)
                 }
+                val firstDailyClear = gameRepository.getDailyRecord(dateStr).first()?.completed != true
                 gameRepository.recordDailyCompletion(dateStr, state.stars, state.mistakes)
+                if (firstDailyClear) dailyBonus = EconomyConfig.BERRIES_DAILY_RESCUE
             }
 
             if (_uiState.value.isTutorialLevel && (level.id == "w1-l03" || level.id == "3")) {
@@ -371,9 +391,10 @@ class GameViewModel @Inject constructor(
             val promptShown = gameRepository.reminderPromptShown.first()
             val shouldShowReminderPrompt = isLevel5 && !promptShown
 
+            // Only celebrate a "new friend" on a tier-up or the first clear, not on every replay
             val newSpeciesEnum = completionResult.tierUpEvents.firstOrNull()?.species?.let { s ->
                 runCatching { BuddySpecies.valueOf(s) }.getOrNull()
-            } ?: levelSpecies.firstOrNull()?.let {
+            } ?: levelSpecies.firstOrNull()?.takeIf { completionResult.isFirstClear }?.let {
                 runCatching { BuddySpecies.valueOf(it) }.getOrNull()
             }
 
@@ -383,7 +404,8 @@ class GameViewModel @Inject constructor(
                     showLevelCompleteDialog = !shouldShowReminderPrompt,
                     showReminderPromptDialog = shouldShowReminderPrompt,
                     newSpeciesUnlocked = newSpeciesEnum,
-                    goldenBerryBonus = if (hasGolden) 25 else 0
+                    goldenBerryBonus = if (hasGolden && completionResult.isFirstClear) EconomyConfig.BERRIES_GOLDEN_BUDDY_BONUS else 0,
+                    berriesEarned = completionResult.berriesEarned + dailyBonus
                 )
             }
         }
@@ -391,45 +413,52 @@ class GameViewModel @Inject constructor(
 
     private fun handleRequestHint() {
         val state = _uiState.value
-        if (state.hintsAvailable > 0) {
-            viewModelScope.launch {
-                gameRepository.useHint()
-                val hintBuddyId = GameEngine.findHint(state.gameState)
-                if (hintBuddyId != null) {
-                    val buddy = state.gameState.findBuddy(hintBuddyId)
-                    _uiState.update {
-                        it.copy(
-                            hintBuddyId = hintBuddyId,
-                            tutorialHandPos = buddy?.pos
-                        )
-                    }
-                    _effects.emit(GameEffect.TriggerHaptic(HapticType.CONFIRM))
-                    delay(2000L)
-                    _uiState.update {
-                        it.copy(
-                            hintBuddyId = null,
-                            tutorialHandPos = null
-                        )
-                    }
-                }
-            }
-        } else {
+        if (state.isLoading) return
+        if (state.isInputLocked || state.gameState.status != GameStatus.PLAYING) return
+        if (hintJob?.isActive == true) return
+        if (state.hintsAvailable <= 0) {
             _uiState.update { it.copy(showBoosterShop = BoosterType.Hint) }
+            return
+        }
+        hintJob = viewModelScope.launch {
+            // Solve off the main thread, and only spend a hint if one was actually found
+            val hintBuddyId = withContext(computeDispatcher) { GameEngine.findHint(state.gameState) }
+                ?: return@launch
+            if (_uiState.value.gameState != state.gameState) return@launch // board changed meanwhile
+            if (!gameRepository.useHint()) return@launch
+            val buddy = state.gameState.findBuddy(hintBuddyId)
+            _uiState.update {
+                it.copy(
+                    hintBuddyId = hintBuddyId,
+                    tutorialHandPos = buddy?.pos
+                )
+            }
+            _effects.emit(GameEffect.TriggerHaptic(HapticType.CONFIRM))
+            delay(2000L)
+            _uiState.update {
+                it.copy(
+                    hintBuddyId = null,
+                    tutorialHandPos = null
+                )
+            }
         }
     }
 
     private fun handleUndo() {
         val currentState = _uiState.value
         if (currentState.isInputLocked || currentState.gameState.status != GameStatus.PLAYING) return
+        // Nothing to undo: don't charge the player
+        val restored = GameEngine.undo(currentState.gameState) ?: return
 
-        if (currentState.undosAvailable > 0) {
-            viewModelScope.launch {
-                gameRepository.useUndo()
-            }
-            val restored = GameEngine.undo(currentState.gameState) ?: return
+        if (currentState.undosAvailable <= 0) {
+            _uiState.update { it.copy(showBoosterShop = BoosterType.Undo) }
+            return
+        }
+        viewModelScope.launch {
+            if (!gameRepository.useUndo()) return@launch
+            if (_uiState.value.gameState != currentState.gameState) return@launch
             persistGameState(restored)
             val safeIds = computeSafeBuddyIds(restored)
-
             _uiState.update {
                 it.copy(
                     gameState = restored,
@@ -438,21 +467,20 @@ class GameViewModel @Inject constructor(
                     pressedBuddyId = null
                 )
             }
-            viewModelScope.launch {
-                _effects.emit(GameEffect.TriggerHaptic(HapticType.TICK))
-            }
-        } else {
-            _uiState.update { it.copy(showBoosterShop = BoosterType.Undo) }
+            _effects.emit(GameEffect.TriggerHaptic(HapticType.TICK))
         }
     }
 
     private fun handleBuyBooster(type: BoosterType) {
         viewModelScope.launch {
             when (type) {
-                BoosterType.Hint -> gameRepository.buyHintWithBerries(30)
-                BoosterType.Undo -> gameRepository.buyUndoWithBerries(20)
+                BoosterType.Hint -> gameRepository.buyHintWithBerries(EconomyConfig.COST_HINT)
+                BoosterType.Undo -> gameRepository.buyUndoWithBerries(EconomyConfig.COST_UNDO)
                 BoosterType.ExtraHeart -> {
-                    if (gameRepository.spendBerries(40)) {
+                    // Hearts are already full: don't take berries for nothing
+                    if (_uiState.value.gameState.hearts < 3 &&
+                        gameRepository.spendBerries(EconomyConfig.COST_EXTRA_HEART)
+                    ) {
                         _uiState.update {
                             it.copy(
                                 gameState = it.gameState.copy(
@@ -471,7 +499,7 @@ class GameViewModel @Inject constructor(
 
     private fun handleReviveWithHeart() {
         viewModelScope.launch {
-            if (gameRepository.spendBerries(40)) {
+            if (gameRepository.spendBerries(EconomyConfig.COST_EXTRA_HEART)) {
                 _uiState.update {
                     it.copy(
                         gameState = it.gameState.copy(
@@ -516,7 +544,16 @@ class GameViewModel @Inject constructor(
         _uiState.update { it.copy(activePeekingPath = null) }
     }
 
+    private fun cancelPendingWork() {
+        moveJob?.cancel()
+        hintJob?.cancel()
+        moveJob = null
+        hintJob = null
+    }
+
     private fun handleRestart() {
+        if (_uiState.value.isLoading) return
+        cancelPendingWork()
         val currentLevel = _uiState.value.level
         val initialState = GameState(level = currentLevel, buddies = currentLevel.buddies)
         persistGameState(initialState)
@@ -531,7 +568,8 @@ class GameViewModel @Inject constructor(
                 showLevelCompleteDialog = false,
                 showLevelFailedDialog = false,
                 showPauseSheet = false,
-                safeBuddyIds = safeIds
+                safeBuddyIds = safeIds,
+                hintBuddyId = null
             )
         }
         viewModelScope.launch {
@@ -541,41 +579,36 @@ class GameViewModel @Inject constructor(
 
     private fun handleNextLevel() {
         val currentId = _uiState.value.level.id
-        val match = Regex("""w([1-8])-l([0-3][0-9])""").matchEntire(currentId)
-        val nextId = if (match != null) {
-            val world = match.groupValues[1].toInt()
-            val level = match.groupValues[2].toInt()
-            if (level < 30) {
-                "w$world-l${(level + 1).toString().padStart(2, '0')}"
-            } else if (world < 8) {
-                "w${world + 1}-l01"
-            } else {
-                "w1-l01"
-            }
-        } else {
-            val available = levelRepository.getAvailableDevLevelIds()
-            val currentIndex = available.indexOf(currentId).coerceAtLeast(0)
-            available[(currentIndex + 1) % available.size]
+        val nextId = nextLevelIdFor(currentId)
+        if (nextId == null) {
+            viewModelScope.launch { _effects.emit(GameEffect.NavigateBack) }
+            return
         }
         handleLoadLevel(nextId)
     }
 
+    private fun nextLevelIdFor(currentId: String): String? {
+        RESCUE_RUN_ID.matchEntire(currentId)?.let { match ->
+            return "rescuerun-${match.groupValues[1].toInt() + 1}"
+        }
+        if (currentId.startsWith("daily")) return null
+        if (LevelIdHelper.parseCampaignIndex(currentId) != null) {
+            return LevelIdHelper.nextCampaignLevelId(currentId)
+        }
+        // Dev / custom levels: cycle through the dev pack (debug builds only)
+        val available = levelRepository.getAvailableDevLevelIds()
+        if (available.isEmpty()) return null
+        val currentIndex = available.indexOf(currentId).coerceAtLeast(0)
+        return available[(currentIndex + 1) % available.size]
+    }
+
     private fun handleLoadLevel(levelId: String) {
-        val nextLevel = levelRepository.loadLevel(levelId)
-        val initialState = GameState(level = nextLevel, buddies = nextLevel.buddies)
-        persistGameState(initialState)
+        cancelPendingWork()
+        loadJob?.cancel()
         savedStateHandle["levelId"] = levelId
-        val safeIds = computeSafeBuddyIds(initialState)
-
-        val isTutorial = isTutorialLevelId(nextLevel.id)
-        val initialHandPos = if (isTutorial && (nextLevel.id == "w1-l01" || nextLevel.id == "1")) Pos(1, 1) else null
-        val initialSpeech = if (isTutorial && (nextLevel.id == "w1-l01" || nextLevel.id == "1")) "Tap me to help me escape!" else null
-
         _uiState.update {
             it.copy(
-                levelId = nextLevel.id,
-                level = nextLevel,
-                gameState = initialState,
+                isLoading = true,
                 isInputLocked = false,
                 pressedBuddyId = null,
                 activePeekingPath = null,
@@ -583,14 +616,54 @@ class GameViewModel @Inject constructor(
                 showLevelFailedDialog = false,
                 showPauseSheet = false,
                 showLeaveLevelDialog = false,
-                safeBuddyIds = safeIds,
-                isTutorialLevel = isTutorial,
-                tutorialHandPos = initialHandPos,
-                tutorialSpeechBubble = initialSpeech,
-                newSpeciesUnlocked = null
+                newSpeciesUnlocked = null,
+                hintBuddyId = null
             )
         }
-        checkMechanicIntro(nextLevel)
+        loadJob = viewModelScope.launch {
+            val nextLevel = levelRepository.loadLevelInBackground(levelId)
+            val initialState = GameState(level = nextLevel, buddies = nextLevel.buddies)
+            persistGameState(initialState)
+            showLevel(nextLevel, initialState)
+        }
+    }
+
+    /** Puts a loaded level on screen with [state] as the board, resetting per-level UI. */
+    private fun showLevel(levelDef: LevelDef, state: GameState) {
+        val safeIds = computeSafeBuddyIds(state)
+        val isTutorial = isTutorialLevelId(levelDef.id)
+        val isFirstTutorial = isTutorial && (levelDef.id == "w1-l01" || levelDef.id == "1")
+        _uiState.update {
+            it.copy(
+                levelId = levelDef.id,
+                level = levelDef,
+                gameState = state,
+                isLoading = false,
+                isInputLocked = false,
+                pressedBuddyId = null,
+                activePeekingPath = null,
+                safeBuddyIds = safeIds,
+                isTutorialLevel = isTutorial,
+                tutorialHandPos = if (isFirstTutorial) Pos(1, 1) else null,
+                tutorialSpeechBubble = if (isFirstTutorial) R.string.ui_tutorial_tap_me else null,
+                hintBuddyId = null
+            )
+        }
+        checkMechanicIntro(levelDef)
+    }
+
+    /** Empty stand-in shown for the instant a level is loading. */
+    private fun placeholderLevel(levelId: String): LevelDef {
+        val flat = LevelIdHelper.parseCampaignIndex(levelId)
+        return LevelDef(
+            id = levelId,
+            cols = 1,
+            rows = 1,
+            tiles = emptyMap(),
+            buddies = emptyList(),
+            world = flat?.let { (it - 1) / 30 + 1 } ?: 1,
+            index = flat?.let { (it - 1) % 30 + 1 } ?: 1
+        )
     }
 
     private fun handleDismissDialog() {
@@ -649,5 +722,6 @@ class GameViewModel @Inject constructor(
 
     companion object {
         const val KEY_SAVED_GAME_STATE = "saved_game_state"
+        private val RESCUE_RUN_ID = Regex("""rescuerun-(\d+)""")
     }
 }

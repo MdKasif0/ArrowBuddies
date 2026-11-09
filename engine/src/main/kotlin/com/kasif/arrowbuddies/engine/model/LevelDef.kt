@@ -70,6 +70,28 @@ object LevelIdHelper {
         return levelId.toIntOrNull()
     }
 
+    private val STRICT_CAMPAIGN_REGEX = Regex("""w([1-8])-l(0[1-9]|[12][0-9]|30)""")
+
+    /**
+     * Returns the 1-based flat campaign index (1..240) only for real campaign ids such as "w3-l07".
+     * Daily, Rescue Run, dev and custom ids return null, so they never advance campaign progress.
+     */
+    fun parseCampaignIndex(levelId: String): Int? {
+        val match = STRICT_CAMPAIGN_REGEX.matchEntire(levelId) ?: return null
+        val world = match.groupValues[1].toInt()
+        val index = match.groupValues[2].toInt()
+        return ((world - 1) * 30) + index
+    }
+
+    /**
+     * Returns the next campaign level id after [levelId], or null if [levelId] is the final level
+     * or not a campaign level.
+     */
+    fun nextCampaignLevelId(levelId: String): String? {
+        val flat = parseCampaignIndex(levelId) ?: return null
+        return if (flat >= 240) null else formatLevelId(flat + 1)
+    }
+
     /**
      * Formats a 1-based flat index (1..240) into the standard campaign level id format (e.g. "w1-l01").
      */

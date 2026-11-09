@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.feature.album
 
+import com.kasif.arrowbuddies.BuildConfig
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -165,7 +166,7 @@ fun AlbumScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "🐾 Buddies (${uiState.discoveredSpeciesCount}/24)",
+                        text = stringResource(R.string.ui_album_tab_buddies, uiState.discoveredSpeciesCount),
                         style = typography.caption.copy(
                             fontSize = 13.sp,
                             fontWeight = if (uiState.selectedTab == AlbumTab.BUDDIES) FontWeight.Bold else FontWeight.Medium
@@ -190,7 +191,7 @@ fun AlbumScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "🏆 Badges ($unlockedAchievementsCount/12)",
+                        text = stringResource(R.string.ui_album_tab_badges, unlockedAchievementsCount),
                         style = typography.caption.copy(
                             fontSize = 13.sp,
                             fontWeight = if (uiState.selectedTab == AlbumTab.ACHIEVEMENTS) FontWeight.Bold else FontWeight.Medium
@@ -245,62 +246,64 @@ fun AlbumScreen(
         // ----------------------------------------------------
         // FLOATING DEBUG PANEL TOGGLE (BOTTOM-RIGHT)
         // ----------------------------------------------------
-        Box(
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .navigationBarsPadding()
-                .padding(16.dp)
-        ) {
-            Column(
-                horizontalAlignment = Alignment.End,
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+        if (BuildConfig.DEBUG) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .navigationBarsPadding()
+                    .padding(16.dp)
             ) {
-                AnimatedVisibility(
-                    visible = uiState.showDebugPanel,
-                    enter = fadeIn(),
-                    exit = fadeOut()
+                Column(
+                    horizontalAlignment = Alignment.End,
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Column(
-                        modifier = Modifier
-                            .shadow(elevation = 6.dp, shape = RoundedCornerShape(16.dp))
-                            .background(WhitePure, RoundedCornerShape(16.dp))
-                            .border(1.5.dp, Color(0xFFE2D6C0), RoundedCornerShape(16.dp))
-                            .padding(10.dp),
-                        verticalArrangement = Arrangement.spacedBy(6.dp)
+                    AnimatedVisibility(
+                        visible = uiState.showDebugPanel,
+                        enter = fadeIn(),
+                        exit = fadeOut()
                     ) {
-                        Text(
-                            text = "🛠️ QA Debug Berries",
-                            style = typography.caption.copy(fontSize = 11.sp, fontWeight = FontWeight.Bold),
-                            color = Ink
-                        )
-                        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                            CandyButton(
-                                text = "+100 🫐",
-                                onClick = { onEvent(AlbumUiEvent.GrantDebugBerries(100)) },
-                                variant = CandyButtonVariant.Success,
-                                modifier = Modifier.height(34.dp)
+                        Column(
+                            modifier = Modifier
+                                .shadow(elevation = 6.dp, shape = RoundedCornerShape(16.dp))
+                                .background(WhitePure, RoundedCornerShape(16.dp))
+                                .border(1.5.dp, Color(0xFFE2D6C0), RoundedCornerShape(16.dp))
+                                .padding(10.dp),
+                            verticalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Text(
+                                text = "🛠️ QA Debug Berries",
+                                style = typography.caption.copy(fontSize = 11.sp, fontWeight = FontWeight.Bold),
+                                color = Ink
                             )
-                            CandyButton(
-                                text = "+500 🫐",
-                                onClick = { onEvent(AlbumUiEvent.GrantDebugBerries(500)) },
-                                variant = CandyButtonVariant.Primary,
-                                modifier = Modifier.height(34.dp)
-                            )
+                            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                CandyButton(
+                                    text = "+100 🫐",
+                                    onClick = { onEvent(AlbumUiEvent.GrantDebugBerries(100)) },
+                                    variant = CandyButtonVariant.Success,
+                                    modifier = Modifier.height(34.dp)
+                                )
+                                CandyButton(
+                                    text = "+500 🫐",
+                                    onClick = { onEvent(AlbumUiEvent.GrantDebugBerries(500)) },
+                                    variant = CandyButtonVariant.Primary,
+                                    modifier = Modifier.height(34.dp)
+                                )
+                            }
                         }
                     }
-                }
 
-                Box(
-                    modifier = Modifier
-                        .shadow(elevation = 4.dp, shape = CircleShape)
-                        .clip(CircleShape)
-                        .background(Cream)
-                        .border(1.dp, Color(0xFFD4C8B5), CircleShape)
-                        .clickable { onEvent(AlbumUiEvent.ToggleDebugPanel) }
-                        .padding(8.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(text = "🛠️", fontSize = 16.sp)
+                    Box(
+                        modifier = Modifier
+                            .shadow(elevation = 4.dp, shape = CircleShape)
+                            .clip(CircleShape)
+                            .background(Cream)
+                            .border(1.dp, Color(0xFFD4C8B5), CircleShape)
+                            .clickable { onEvent(AlbumUiEvent.ToggleDebugPanel) }
+                            .padding(8.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "🛠️", fontSize = 16.sp)
+                    }
                 }
             }
         }
@@ -369,7 +372,7 @@ private fun UnlockedSpeciesCard(
                     .padding(horizontal = 8.dp, vertical = 2.dp)
             ) {
                 Text(
-                    text = "Rescued: ${item.rescuedCount}",
+                    text = stringResource(R.string.ui_album_rescued, item.rescuedCount),
                     style = typography.caption.copy(fontSize = 11.sp, fontWeight = FontWeight.Bold),
                     color = Ink.copy(alpha = 0.8f)
                 )
@@ -404,7 +407,7 @@ private fun UnlockedSpeciesCard(
                         color = Ink.copy(alpha = 0.7f)
                     )
                     Text(
-                        text = if (tier == FriendshipTier.GOLD) "MAX 👑" else "${item.rescuedCount}/$nextTarget",
+                        text = if (tier == FriendshipTier.GOLD) stringResource(R.string.ui_album_max) else "${item.rescuedCount}/$nextTarget",
                         style = typography.caption.copy(fontSize = 10.sp),
                         color = Ink.copy(alpha = 0.6f)
                     )
@@ -489,12 +492,12 @@ private fun LockedSpeciesCard(
             ) {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = "Locked",
+                    contentDescription = stringResource(R.string.ui_cd_locked),
                     modifier = Modifier.size(12.dp),
                     tint = Color(0xFF8E82AA)
                 )
                 Text(
-                    text = "World ${species.worldIndex}",
+                    text = stringResource(R.string.ui_album_world, species.worldIndex),
                     style = typography.caption.copy(fontSize = 11.sp),
                     color = Color(0xFF8E82AA)
                 )
@@ -571,7 +574,7 @@ private fun SpeciesWardrobeModal(
                 ) {
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(
-                            text = "💡 Fun Buddy Fact:",
+                            text = stringResource(R.string.ui_album_fun_fact),
                             style = typography.caption.copy(fontSize = 11.sp, fontWeight = FontWeight.Bold),
                             color = Coral
                         )
@@ -585,7 +588,7 @@ private fun SpeciesWardrobeModal(
 
                 // Accessory Wardrobe Slots
                 Text(
-                    text = "Accessories Wardrobe ✨",
+                    text = stringResource(R.string.ui_album_wardrobe),
                     style = typography.caption.copy(fontSize = 13.sp, fontWeight = FontWeight.Bold),
                     color = Ink
                 )
@@ -596,7 +599,7 @@ private fun SpeciesWardrobeModal(
                 ) {
                     // Slot 1: None (Default)
                     AccessorySlot(
-                        title = "None",
+                        title = stringResource(R.string.ui_acc_none),
                         emoji = "🚫",
                         unlocked = true,
                         isEquipped = item.equippedAccessory == BuddyAccessory.NONE,
@@ -606,7 +609,7 @@ private fun SpeciesWardrobeModal(
                     // Slot 2: Bow (Bronze)
                     val isBowUnlocked = item.tier >= FriendshipTier.BRONZE
                     AccessorySlot(
-                        title = "Bow (10)",
+                        title = stringResource(R.string.ui_acc_bow),
                         emoji = "🎀",
                         unlocked = isBowUnlocked,
                         isEquipped = item.equippedAccessory == BuddyAccessory.BOW,
@@ -616,7 +619,7 @@ private fun SpeciesWardrobeModal(
                     // Slot 3: Scarf (Silver)
                     val isScarfUnlocked = item.tier >= FriendshipTier.SILVER
                     AccessorySlot(
-                        title = "Scarf (50)",
+                        title = stringResource(R.string.ui_acc_scarf),
                         emoji = "🧣",
                         unlocked = isScarfUnlocked,
                         isEquipped = item.equippedAccessory == BuddyAccessory.SCARF,
@@ -626,7 +629,7 @@ private fun SpeciesWardrobeModal(
                     // Slot 4: Crown (Gold)
                     val isCrownUnlocked = item.tier >= FriendshipTier.GOLD
                     AccessorySlot(
-                        title = "Crown (150)",
+                        title = stringResource(R.string.ui_acc_crown),
                         emoji = "👑",
                         unlocked = isCrownUnlocked,
                         isEquipped = item.equippedAccessory == BuddyAccessory.CROWN,
@@ -635,7 +638,7 @@ private fun SpeciesWardrobeModal(
                 }
 
                 CandyButton(
-                    text = "Done",
+                    text = stringResource(R.string.ui_album_done),
                     onClick = onDismiss,
                     variant = CandyButtonVariant.Primary,
                     modifier = Modifier.fillMaxWidth()
@@ -695,7 +698,7 @@ private fun AccessorySlot(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Check,
-                            contentDescription = "Equipped",
+                            contentDescription = stringResource(R.string.ui_cd_equipped),
                             modifier = Modifier.size(11.dp),
                             tint = WhitePure
                         )
@@ -704,7 +707,7 @@ private fun AccessorySlot(
             } else {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = "Locked",
+                    contentDescription = stringResource(R.string.ui_cd_locked),
                     modifier = Modifier.size(18.dp),
                     tint = Color.Gray
                 )
@@ -784,7 +787,7 @@ private fun AchievementCard(
                                 .padding(horizontal = 6.dp, vertical = 2.dp)
                         ) {
                             Text(
-                                text = "Unlocked! ✨",
+                                text = stringResource(R.string.ui_album_unlocked),
                                 style = typography.caption.copy(
                                     fontSize = 10.sp,
                                     fontWeight = FontWeight.Bold

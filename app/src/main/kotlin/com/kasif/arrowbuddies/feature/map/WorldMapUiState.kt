@@ -1,12 +1,13 @@
 package com.kasif.arrowbuddies.feature.map
 
+import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 
 @Immutable
 data class WorldUnlockGate(
     val world: Int,
-    val worldName: String,
+    @StringRes val worldNameRes: Int,
     val speciesSilhouettes: List<String>
 )
 

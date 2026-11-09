@@ -203,24 +203,6 @@ class SettingsViewModelTest {
     }
 
     @Test
-    fun changingLanguageUpdatesState() = runTest(testDispatcher) {
-        val repository = FakeGameRepository()
-        val soundManager = FakeSoundManager()
-        val hapticsManager = FakeHapticsManager()
-        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
-
-        viewModel.uiState.test {
-            val initial = awaitItem()
-
-            viewModel.onEvent(SettingsUiEvent.SetLanguage("hi"))
-            testScheduler.advanceUntilIdle()
-
-            val updated = awaitItem()
-            assertThat(updated.currentLanguage).isEqualTo("hi")
-        }
-    }
-
-    @Test
     fun dialogTogglesWork() = runTest(testDispatcher) {
         val repository = FakeGameRepository()
         val soundManager = FakeSoundManager()

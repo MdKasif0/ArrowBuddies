@@ -10,12 +10,15 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.designsystem.modifier.LocalHaptics
 import com.kasif.arrowbuddies.core.designsystem.modifier.LocalSound
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesTheme
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
+import com.kasif.arrowbuddies.data.repository.GameRepository
 import com.kasif.arrowbuddies.navigation.ArrowBuddiesNavHost
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -29,10 +32,21 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var hapticsManager: HapticsManager
 
+    @Inject
+    lateinit var gameRepository: GameRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // Apply saved audio/haptic preferences app-wide (not only once Settings is opened),
+        // and keep them in sync with toggles from the pause sheet or Settings.
+        lifecycleScope.launch {
+            launch { gameRepository.soundEnabled.collect { soundManager.setSoundEnabled(it) } }
+            launch { gameRepository.musicEnabled.collect { soundManager.setMusicEnabled(it) } }
+            launch { gameRepository.hapticsEnabled.collect { hapticsManager.setHapticsEnabled(it) } }
+        }
 
         setContent {
             CompositionLocalProvider(
@@ -65,6 +79,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        soundManager.release()
+        // SoundManager is an app-wide singleton: never release it here, or recreated activities
+        // (rotation, dark mode, relaunch) would be left silent.
+        if (isFinishing) soundManager.stopMusic()
     }
 }

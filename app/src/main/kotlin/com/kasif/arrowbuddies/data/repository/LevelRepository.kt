@@ -1,6 +1,17 @@
 package com.kasif.arrowbuddies.data.repository
 
 import android.content.Context
+import com.kasif.arrowbuddies.BuildConfig
+import com.kasif.arrowbuddies.engine.generator.LevelGenerator
+import com.kasif.arrowbuddies.engine.model.LevelIdHelper
+import com.kasif.arrowbuddies.engine.runtime.RescueRun
+import java.time.LocalDate
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.time.format.DateTimeFormatter
 import com.kasif.arrowbuddies.engine.codec.LevelCodec
 import com.kasif.arrowbuddies.engine.generator.HandcraftedTutorials
 import com.kasif.arrowbuddies.engine.model.LevelDef
@@ -12,6 +23,12 @@ import javax.inject.Singleton
 
 interface LevelRepository {
     fun loadLevel(levelId: String): LevelDef
+
+    /**
+     * Loads a level without blocking the caller's thread. Parsing world packs and generating
+     * daily / Rescue Run puzzles is CPU-heavy, so the real implementation runs it in the background.
+     */
+    suspend fun loadLevelInBackground(levelId: String): LevelDef = loadLevel(levelId)
     fun loadWorldLevels(world: Int): List<LevelDef> = emptyList()
     fun loadDailyRescue(): LevelDef = loadLevel("1")
     fun registerCustomLevel(level: LevelDef): String = level.id
@@ -25,31 +42,76 @@ class DefaultLevelRepository @Inject constructor(
 
     private val worldCache = ConcurrentHashMap<Int, List<LevelDef>>()
     private val customLevels = ConcurrentHashMap<String, LevelDef>()
+    private val dailyCache = ConcurrentHashMap<LocalDate, LevelDef>()
+    private val backgroundScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+
+    init {
+        // Warm caches off the main thread: world packs are large JSON files and the daily puzzle
+        // runs the generator + solver, so doing either on first open would stall the UI.
+        backgroundScope.launch {
+            runCatching { dailyFor(LocalDate.now(DailyRescue.TIME_ZONE)) }
+            for (world in 1..8) runCatching { loadWorldLevels(world) }
+        }
+    }
+
+    private fun rescueRunStage(stage: Int): LevelDef = rescueRunCache.getOrPut(stage) {
+        LevelGenerator.generate(rescueRun.getParamsForStage(stage)).copy(
+            id = "rescuerun-$stage",
+            comment = "Rescue Run Stage $stage"
+        )
+    }
+
+    private fun dailyFor(date: LocalDate): LevelDef =
+        dailyCache.getOrPut(date) { DailyRescue.generate(date) }
 
     override fun registerCustomLevel(level: LevelDef): String {
         customLevels[level.id] = level
         return level.id
     }
 
+    // One Rescue Run per process: stages are deterministic for this seed, so a stage reloaded
+    // via "Restart" is the same puzzle.
+    private val rescueRun = RescueRun(runSeed = System.currentTimeMillis())
+    private val rescueRunCache = ConcurrentHashMap<Int, LevelDef>()
+
     override fun loadLevel(levelId: String): LevelDef {
         customLevels[levelId]?.let { return it }
 
-        // Daily rescue routing
+        // Daily rescue routing ("daily-yyyyMMdd" replays that exact day's puzzle)
         if (levelId == "daily" || levelId.startsWith("daily-")) {
-            return DailyRescue.generate()
+            val date = levelId.removePrefix("daily-").takeIf { it.length == 8 }?.let {
+                runCatching { LocalDate.parse(it, DateTimeFormatter.BASIC_ISO_DATE) }.getOrNull()
+            }
+            return dailyFor(date ?: LocalDate.now(DailyRescue.TIME_ZONE))
+        }
+
+        // Endless Rescue Run: "rescuerun-{stage}"
+        RESCUE_RUN_REGEX.matchEntire(levelId)?.let { match ->
+            val stage = match.groupValues[1].toInt().coerceAtLeast(1)
+            val level = rescueRunStage(stage)
+            // Generate the next stage in the background so "Next" is instant
+            backgroundScope.launch { runCatching { rescueRunStage(stage + 1) } }
+            return level
         }
 
         // Campaign level pattern: w{world}-l{level} (e.g. w1-l01 ... w8-l30)
-        val campaignMatch = Regex("""w([1-8])-l([0-3][0-9])""").matchEntire(levelId)
-        if (campaignMatch != null) {
-            val world = campaignMatch.groupValues[1].toInt()
-            val index = campaignMatch.groupValues[2].toInt()
-            val worldLevels = loadWorldLevels(world)
-            val level = worldLevels.firstOrNull { it.id == levelId || it.index == index }
+        LevelIdHelper.parseCampaignIndex(levelId)?.let { flat ->
+            val world = (flat - 1) / 30 + 1
+            val index = (flat - 1) % 30 + 1
+            val level = loadWorldLevels(world).firstOrNull { it.id == levelId || it.index == index }
             if (level != null) return level
             if (index in 1..3) return HandcraftedTutorials.getTutorialLevel(world, index)
         }
 
+        // Dev levels only exist in debug builds; release falls back to a real campaign level.
+        if (!BuildConfig.DEBUG) {
+            val flat = LevelIdHelper.parseFlatIndex(levelId)?.coerceIn(1, 240) ?: 1
+            return loadLevel(LevelIdHelper.formatLevelId(flat))
+        }
+        return loadDevLevel(levelId)
+    }
+
+    private fun loadDevLevel(levelId: String): LevelDef {
         // Dev level routing & backward compatibility
         val assetPath = when (levelId) {
             "2", "w1-l02-dev" -> "levels/dev/level_dev_02.json"
@@ -71,6 +133,9 @@ class DefaultLevelRepository @Inject constructor(
         }
     }
 
+    override suspend fun loadLevelInBackground(levelId: String): LevelDef =
+        withContext(Dispatchers.Default) { loadLevel(levelId) }
+
     override fun loadWorldLevels(world: Int): List<LevelDef> {
         require(world in 1..8) { "Invalid world: $world" }
         return worldCache.getOrPut(world) {
@@ -84,11 +149,10 @@ class DefaultLevelRepository @Inject constructor(
         }
     }
 
-    override fun loadDailyRescue(): LevelDef {
-        return DailyRescue.generate()
-    }
+    override fun loadDailyRescue(): LevelDef = dailyFor(LocalDate.now(DailyRescue.TIME_ZONE))
 
     override fun getAvailableDevLevelIds(): List<String> {
+        if (!BuildConfig.DEBUG) return emptyList()
         return listOf(
             "w1-l01-dev",
             "w1-l02-dev",
@@ -118,6 +182,8 @@ class DefaultLevelRepository @Inject constructor(
     }
 
     companion object {
+        private val RESCUE_RUN_REGEX = Regex("""rescuerun-(\d{1,4})""")
+
         const val DEV_01_JSON = """{
   "id": "w1-l01-dev",
   "world": 1,

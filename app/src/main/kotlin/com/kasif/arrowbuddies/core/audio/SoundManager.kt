@@ -6,7 +6,6 @@ import android.media.AudioFocusRequest
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.SoundPool
-import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -132,6 +131,7 @@ class DefaultSoundManager(
 
     private fun playSfx(resId: Int, pitch: Float = 1.0f, volume: Float = 1.0f) {
         if (!soundEnabled || isAppPaused) return
+        if (soundPool == null) context?.let { initSoundPool(it) } // re-create after release()
         val soundId = soundMap[resId] ?: return
         soundPool?.play(soundId, volume, volume, 1, 0, pitch.coerceIn(0.5f, 2.0f))
         duckMusicBriefly()
@@ -312,41 +312,28 @@ class DefaultSoundManager(
         try {
             soundPool?.release()
             soundPool = null
+            soundMap.clear()
         } catch (ignored: Exception) {}
         handler.removeCallbacksAndMessages(null)
     }
 
     private fun requestAudioFocus(): Boolean {
         val am = audioManager ?: return false
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val attr = AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_GAME)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build()
-            val req = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
-                .setAudioAttributes(attr)
-                .setOnAudioFocusChangeListener(audioFocusChangeListener, handler)
-                .build()
-            audioFocusRequest = req
-            am.requestAudioFocus(req) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED
-        } else {
-            @Suppress("DEPRECATION")
-            am.requestAudioFocus(
-                audioFocusChangeListener,
-                AudioManager.STREAM_MUSIC,
-                AudioManager.AUDIOFOCUS_GAIN
-            ) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED
-        }
+        val attr = AudioAttributes.Builder()
+            .setUsage(AudioAttributes.USAGE_GAME)
+            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+            .build()
+        val req = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+            .setAudioAttributes(attr)
+            .setOnAudioFocusChangeListener(audioFocusChangeListener, handler)
+            .build()
+        audioFocusRequest = req
+        return am.requestAudioFocus(req) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED
     }
 
     private fun abandonAudioFocus() {
         val am = audioManager ?: return
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            audioFocusRequest?.let { am.abandonAudioFocusRequest(it) }
-            audioFocusRequest = null
-        } else {
-            @Suppress("DEPRECATION")
-            am.abandonAudioFocus(audioFocusChangeListener)
-        }
+        audioFocusRequest?.let { am.abandonAudioFocusRequest(it) }
+        audioFocusRequest = null
     }
 }

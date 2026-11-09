@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.core.designsystem.component
 
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
@@ -40,7 +41,7 @@ fun HeartsRow(
     totalHearts: Int = 3,
     heartSize: Dp = 32.dp
 ) {
-    val heartsLabel = stringResource(R.string.talkback_hud_hearts, heartsRemaining)
+    val heartsLabel = pluralStringResource(R.plurals.talkback_hud_hearts, heartsRemaining, heartsRemaining)
     Row(
         modifier = modifier.semantics { contentDescription = heartsLabel },
         horizontalArrangement = Arrangement.spacedBy(8.dp),

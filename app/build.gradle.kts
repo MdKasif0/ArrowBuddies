@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId = applicationPackage
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
@@ -77,6 +77,16 @@ android {
         buildConfig = true
     }
 
+    testOptions {
+        // Robolectric tests read the level packs from assets
+        unitTests.isIncludeAndroidResources = true
+    }
+
+    sourceSets {
+        // Exported Room schemas, used by migration tests
+        getByName("test").assets.srcDir("$projectDir/schemas")
+    }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -84,12 +94,16 @@ android {
     }
 }
 
+ksp {
+    // Export Room schemas so every version is reviewed and migrations can be tested
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     implementation(project(":engine"))
 
     // AndroidX Core & Lifecycle
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)

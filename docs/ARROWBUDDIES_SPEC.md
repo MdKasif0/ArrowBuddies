@@ -7,9 +7,9 @@ Something in the way = it BONKS, bounces back, and you lose a heart. Find the ri
 
 ## Platform & stack
 - Android only, 100% Kotlin, Jetpack Compose, single Activity, portrait only.
-- minSdk 24, compile/target the latest stable SDK.
+- minSdk 26, compile/target the latest stable SDK.
 - Must hold 60 fps on budget phones (3 GB RAM, 720p). Offline-first, no login. Download size under 25 MB.
-- Languages: English + Hindi.
+- Language: English only.
 
 ## Core rules
 - Board: grid from 4x4 up to 7 columns x 9 rows. Never more than 7 columns, so cells stay >= 44dp on a 360dp phone.

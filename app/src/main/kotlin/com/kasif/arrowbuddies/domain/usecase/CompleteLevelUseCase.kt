@@ -74,12 +74,13 @@ class CompleteLevelUseCase @Inject constructor(
 
         // 2. Update player profile
         val currentProfile = profileDao.getPlayerProfileOnce() ?: PlayerProfile()
-        val levelIndex = LevelIdHelper.parseFlatIndex(levelId) ?: currentProfile.currentLevelIndex
-        val nextLevel = (levelIndex + 1).coerceAtMost(240)
-        val newHighest = maxOf(currentProfile.highestUnlockedLevel, nextLevel)
-        val newCurrent = maxOf(currentProfile.currentLevelIndex, nextLevel)
+        // Only real campaign levels advance the map. Daily, Rescue Run, dev and custom levels don't.
+        val campaignIndex = LevelIdHelper.parseCampaignIndex(levelId)
+        val nextLevel = campaignIndex?.let { (it + 1).coerceAtMost(240) }
+        val newHighest = maxOf(currentProfile.highestUnlockedLevel, nextLevel ?: 0)
+        val newCurrent = maxOf(currentProfile.currentLevelIndex, nextLevel ?: 0)
         val newTotalRescued = currentProfile.totalRescued + rescuedSpeciesList.size
-        val isTutorialGraduation = levelIndex >= 3 || currentProfile.tutorialDone
+        val isTutorialGraduation = (campaignIndex != null && campaignIndex >= 3) || currentProfile.tutorialDone
 
         profileDao.insertOrUpdate(
             currentProfile.copy(
@@ -154,7 +155,7 @@ class CompleteLevelUseCase @Inject constructor(
         // Perfect World check
         val allProgress = levelDao.getAllProgressOnce()
         for (world in 1..8) {
-            val worldLevels = (1..30).map { String.format("w%d-l%02d", world, it) }
+            val worldLevels = (1..30).map { LevelIdHelper.formatLevelId((world - 1) * 30 + it) }
             val hasAll3Stars = worldLevels.all { wId ->
                 allProgress.any { it.levelId == wId && it.bestStars == 3 }
             }
@@ -165,7 +166,7 @@ class CompleteLevelUseCase @Inject constructor(
         }
 
         // Zero-Bonk Big Rescue check (levels 15 and 30)
-        val isBigRescue = levelId.endsWith("-l15") || levelId.endsWith("-l30") || levelId in listOf("15", "30")
+        val isBigRescue = campaignIndex != null && (levelId.endsWith("-l15") || levelId.endsWith("-l30"))
         if (isBigRescue && mistakes == 0) {
             checkAndUnlock(AchievementType.ZERO_BONK_BOSS, true)
         }

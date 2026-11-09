@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.core.designsystem.component
 
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -146,7 +147,7 @@ fun CandyButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(minHeight)
-                .offset(y = pressOffsetY)
+                .offset { IntOffset(0, pressOffsetY.roundToPx()) }
                 .background(
                     brush = Brush.verticalGradient(
                         colors = listOf(

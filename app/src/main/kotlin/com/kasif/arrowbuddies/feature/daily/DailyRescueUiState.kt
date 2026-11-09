@@ -24,8 +24,7 @@ data class DailyRescueUiState(
     val berries: Int = 100,
     val worldThemeIndex: Int = 1,
     val buddyCount: Int = 8,
-    val dailyLevelId: String = "daily",
-    val shareResultText: String = ""
+    val dailyLevelId: String = "daily"
 )
 
 sealed interface DailyRescueUiEvent {

@@ -2,32 +2,19 @@
     <string name="app_name">ArrowBuddies</string>
 
     <!-- Screen Titles -->
-    <string name="screen_splash">Splash</string>
-    <string name="screen_home">Sanctuary Home</string>
     <string name="screen_map">World Map</string>
     <string name="screen_game">Level %1$s</string>
-    <string name="screen_sanctuary">Sanctuary</string>
     <string name="screen_album">Buddy Album</string>
     <string name="screen_daily">Daily Rescue</string>
     <string name="screen_rescue_run">Rescue Run</string>
     <string name="screen_settings">Settings</string>
-    <string name="screen_design_catalog">Design Catalog</string>
     <string name="screen_buddy_gallery">Buddy Characters Gallery</string>
 
     <!-- Actions & Buttons -->
-    <string name="action_play">Play Level 1</string>
-    <string name="action_map">World Map</string>
-    <string name="action_sanctuary">Sanctuary</string>
-    <string name="action_album">Buddy Album</string>
-    <string name="action_daily">Daily Rescue</string>
-    <string name="action_settings">Settings</string>
     <string name="action_back">Back</string>
-    <string name="action_next_level">Next Level</string>
     <string name="action_cancel">Cancel</string>
     <string name="action_ok">OK</string>
     <string name="action_tap_to_skip">Tap to skip</string>
-    <string name="action_design_catalog">🎨 Design System Catalog</string>
-    <string name="action_buddy_gallery">🐾 Buddy Characters Gallery</string>
 
     <!-- Splash & Home -->
     <string name="splash_tagline">Free cute buddies with every tap!</string>
@@ -35,20 +22,12 @@
     <string name="home_play_level">Play · Level %1$s</string>
 
     <!-- Content Descriptions & Placeholders -->
-    <string name="desc_splash_logo">ArrowBuddies Logo</string>
-    <string name="placeholder_game_instruction">Tap a buddy to rescue it. Avoid obstacles and blockers!</string>
-    <string name="placeholder_current_level">Current Level: %1$s</string>
 
     <!-- Game Screen HUD & Dialogs -->
-    <string name="game_rescued_count">%1$d / %2$d</string>
-    <string name="game_undo">Undo</string>
     <string name="game_restart">Restart</string>
-    <string name="game_level_complete">Level Complete!</string>
-    <string name="game_level_complete_subtitle">All buddies safely rescued!</string>
     <string name="game_all_buddies_rescued">All Buddies Rescued!</string>
     <string name="game_new_friend_unlocked">New Friend Unlocked!</string>
     <string name="game_replay">Replay</string>
-    <string name="game_level_failed">Out of Hearts!</string>
     <string name="game_level_failed_title">Oh no! Try Again?</string>
     <string name="game_level_failed_subtitle">The buddies need one more try to escape!</string>
     <string name="game_try_again">Try Again</string>
@@ -60,10 +39,8 @@
     <string name="game_leave_level_subtitle">Your level progress will be lost if you leave now.</string>
     <string name="game_leave_level_stay">Keep Playing</string>
     <string name="game_leave_level_confirm">Leave Level</string>
-    <string name="game_dev_level_chip">Dev %1$s</string>
 
     <!-- Boosters -->
-    <string name="booster_hint">Hint</string>
     <string name="booster_need_hint">Need a Hint?</string>
     <string name="booster_need_undo">Need an Undo?</string>
     <string name="booster_need_heart">Need a Heart?</string>
@@ -74,10 +51,9 @@
     <string name="settings_music">Music</string>
     <string name="settings_vibration">Haptic Vibration</string>
     <string name="settings_reduce_motion">Reduce Motion</string>
-    <string name="settings_language">Language / भाषा</string>
     <string name="settings_general">General</string>
     <string name="settings_privacy_policy">Privacy Policy</string>
-    <string name="settings_privacy_policy_body">ArrowBuddies is 100% offline-first and safe for everyone. We do not collect, store, or transmit any personal information, analytics, or identifiers. All your progress, berries, and stars are saved locally on your device.</string>
+    <string name="settings_privacy_policy_body" formatted="false">ArrowBuddies is 100% offline-first and safe for everyone. We do not collect, store, or transmit any personal information, analytics, or identifiers. All your progress, berries, and stars are saved locally on your device.</string>
     <string name="settings_credits">Credits</string>
     <string name="settings_credits_body">ArrowBuddies — Crafted with love for curious minds and animal lovers everywhere.\n\nBaloo 2 font by Ek Type (SIL Open Font License).\nAudio and tactile design crafted for delight.</string>
     <string name="settings_replay_tutorial">Replay Tutorial</string>
@@ -96,13 +72,9 @@
     <string name="mechanic_sleepy_title">Sleepy Buddies</string>
     <string name="mechanic_sleepy_desc">Sleepy buddies wake up when a neighbor leaves!</string>
     <string name="bubble_needs_key">Needs a key!</string>
-    <string name="bubble_sleepy_mumble">Zzz...</string>
+    <string name="bubble_sleepy_mumble">Zzz…</string>
 
     <!-- Buddy Gallery Controls -->
-    <string name="gallery_expression_label">Expression</string>
-    <string name="gallery_direction_label">Direction</string>
-    <string name="gallery_size_label">Size: %1$ddp</string>
-    <string name="gallery_world_format">World %1$d: %2$s</string>
 
     <!-- Buddy Expressions -->
     <string name="expression_idle">Idle</string>
@@ -115,10 +87,6 @@
     <string name="expression_caged">Caged</string>
 
     <!-- Buddy Directions -->
-    <string name="direction_up">Up</string>
-    <string name="direction_down">Down</string>
-    <string name="direction_left">Left</string>
-    <string name="direction_right">Right</string>
 
     <!-- 24 Buddy Species Names -->
     <!-- World 1: Sunny Meadow -->
@@ -188,42 +156,10 @@
     <string name="achievement_zero_bonk_boss_desc">Beat a Big Rescue level with 0 mistakes!</string>
 
     <!-- Sanctuary -->
-    <string name="sanctuary_title">Sanctuary</string>
-    <string name="sanctuary_treat_time_title">Treat Time!</string>
-    <string name="sanctuary_treat_time_desc">Tap to share treats with your buddies (+20 🫐)</string>
-    <string name="sanctuary_treat_time_claimed">Next treat tomorrow!</string>
-    <string name="sanctuary_signboard_format">%1$d buddies living happily here!</string>
-    <string name="sanctuary_buy_decor_title">Add Decoration</string>
-    <string name="sanctuary_buy_decor_prompt">Add %1$s to this zone for %2$d 🫐?</string>
-    <string name="sanctuary_zone_locked_format">Unlock World %1$d to expand Sanctuary!</string>
 
     <!-- Decorations -->
-    <string name="decor_pond_title">Koi Pond</string>
-    <string name="decor_swing_title">Tree Swing</string>
-    <string name="decor_flower_bed_title">Tropical Flower Bed</string>
-    <string name="decor_firepit_title">Warm Firepit</string>
-    <string name="decor_hammock_title">Seashell Hammock</string>
-    <string name="decor_lanterns_title">Glow Lanterns</string>
-    <string name="decor_kite_title">Oasis Kite</string>
-    <string name="decor_rangoli_mat_title">Rangoli Mat &amp; Mango Tree</string>
 
     <!-- Album & Tiers -->
-    <string name="album_tab_species">Species</string>
-    <string name="album_tab_achievements">Achievements</string>
-    <string name="album_species_locked">\?\?\?</string>
-    <string name="album_appears_in">Appears in %1$s</string>
-    <string name="album_rescued_count">Rescued: %1$d times</string>
-    <string name="album_tier_locked">Locked</string>
-    <string name="album_tier_bronze">Bronze Friend</string>
-    <string name="album_tier_silver">Silver Friend</string>
-    <string name="album_tier_gold">Gold Best Friend</string>
-    <string name="album_accessory_bow">Sweet Bow</string>
-    <string name="album_accessory_scarf">Cozy Scarf</string>
-    <string name="album_accessory_crown">Royal Crown</string>
-    <string name="album_equip">Equip</string>
-    <string name="album_equipped">Equipped</string>
-    <string name="album_tier_up_title">Friendship Tier Up!</string>
-    <string name="album_tier_up_desc">%1$s reached %2$s! Unlocked %3$s!</string>
 
     <!-- 24 Fun Facts -->
     <string name="fact_bunny">Rabbits can jump over 3 feet high in a single leap!</string>
@@ -252,12 +188,6 @@
     <string name="fact_peacock">Only male peacocks have iridescent green-and-gold fan feathers!</string>
 
     <!-- Daily Rescue & Streak -->
-    <string name="daily_streak_format">%1$d Day Streak!</string>
-    <string name="daily_streak_today">Day %1$d</string>
-    <string name="daily_play_today">Play Today\'s Rescue (+50 🫐)</string>
-    <string name="daily_completed_today">Completed Today!</string>
-    <string name="daily_share_button">Share Result</string>
-    <string name="daily_share_text">I rescued today\'s buddies in %1$d mistakes on ArrowBuddies! 🐾🫐 Free cute buddies with every tap!</string>
 
     <!-- Daily Reminder -->
     <string name="reminder_prompt_title">Daily Buddies Reminder?</string>
@@ -278,10 +208,113 @@
     <string name="talkback_dir_left">left</string>
     <string name="talkback_dir_right">right</string>
     <string name="talkback_action_help_escape">Help escape</string>
-    <string name="talkback_hud_hearts">%1$d hearts remaining</string>
-    <string name="talkback_hud_rescued">%1$d of %2$d buddies rescued</string>
     <string name="talkback_hud_undo">Undo move</string>
     <string name="talkback_hud_restart">Restart level</string>
     <string name="talkback_hud_hint">Use hint</string>
     <string name="talkback_hud_pause">Pause game</string>
+
+    <!-- Player-facing UI strings (localized) -->
+    <string name="ui_cd_locked">Locked</string>
+    <string name="ui_home_daily_done">DONE</string>
+    <string name="ui_home_come_back">Come back tomorrow</string>
+    <string name="ui_home_endless">ENDLESS</string>
+    <string name="ui_home_rr_unlocked">Infinite levels</string>
+    <string name="ui_home_rr_locked">Unlocks at World 2</string>
+    <string name="ui_home_map_subtitle">8 Worlds · 240 Levels</string>
+    <string name="ui_home_species_discovered">%1$d/24 Species Discovered</string>
+    <string name="ui_win_golden_bonus">\u0020(Golden Bonus!)</string>
+    <string name="ui_pause_sounds">Sounds</string>
+    <string name="ui_pause_music">Music</string>
+    <string name="ui_pause_haptics">Haptics</string>
+    <string name="ui_booster_price">Price: %1$d 🫐 (You have: %2$d 🫐)</string>
+    <string name="ui_booster_buy">Get for %1$d 🫐</string>
+    <string name="ui_daily_loop">7-Day Loop</string>
+    <string name="ui_daily_today_puzzle">Today\'s Rescue Puzzle 🐾</string>
+    <string name="ui_daily_world_biome">Biome: World %1$d</string>
+    <string name="ui_daily_reward">+%1$d 🫐 Reward</string>
+    <string name="ui_daily_share">Share Result 📤</string>
+    <string name="ui_daily_play_again">Play Again 🔄</string>
+    <string name="ui_daily_play_today">Play Today\'s Rescue (+%1$d 🫐)</string>
+    <string name="ui_daily_day">Day %1$d</string>
+    <string name="ui_cd_claimed">Claimed</string>
+    <string name="ui_daily_today">Today</string>
+    <string name="ui_sanctuary_treat">🍯 Treat! (+%1$d)</string>
+    <string name="ui_sanctuary_treat_claimed">🍯 Claimed</string>
+    <string name="ui_decor_pond">Koi Pond</string>
+    <string name="ui_decor_swing">Tree Swing</string>
+    <string name="ui_decor_flower_bed">Flower Bed</string>
+    <string name="ui_decor_firepit">Warm Firepit</string>
+    <string name="ui_decor_hammock">Hammock</string>
+    <string name="ui_decor_lanterns">Glow Lanterns</string>
+    <string name="ui_decor_kite">Desert Kite</string>
+    <string name="ui_decor_rangoli">Rangoli &amp; Mango Tree</string>
+    <string name="ui_decor_default">Cozy Decor</string>
+    <string name="ui_sanctuary_build">Build %1$s ✨</string>
+    <string name="ui_sanctuary_cost">Cost: %1$d 🫐 (You have: %2$d 🫐)</string>
+    <string name="ui_sanctuary_build_for">Build for %1$d 🫐</string>
+    <string name="ui_sanctuary_chip">🐾 Sanctuary</string>
+    <string name="ui_sanctuary_rescued">Rescued: %1$d/240</string>
+    <string name="ui_sanctuary_tap">✨ Tap!</string>
+    <string name="ui_sanctuary_build_slot">🔨 Build Slot</string>
+    <string name="ui_cd_locked_zone">Locked Zone</string>
+    <string name="ui_sanctuary_unlocks_in">Unlocks in World %1$d</string>
+    <string name="ui_zone_name_1">Sunny Meadow</string>
+    <string name="ui_zone_name_2">Sticky Bog</string>
+    <string name="ui_zone_name_3">Clockwork Garden</string>
+    <string name="ui_zone_name_4">Ancient Ruins</string>
+    <string name="ui_zone_name_5">Mystic Forest</string>
+    <string name="ui_zone_name_6">Cozy Burrow</string>
+    <string name="ui_zone_name_7">Twilight Oasis</string>
+    <string name="ui_zone_name_8">Celebration Grove</string>
+    <string name="ui_world_name_1">Sunny Meadow</string>
+    <string name="ui_world_name_2">Happy Farm</string>
+    <string name="ui_world_name_3">Jungle Ruins</string>
+    <string name="ui_world_name_4">Snowy Peaks</string>
+    <string name="ui_world_name_5">Coral Coast</string>
+    <string name="ui_world_name_6">Moonlit Forest</string>
+    <string name="ui_world_name_7">Desert Oasis</string>
+    <string name="ui_world_name_8">Sky Islands</string>
+    <string name="ui_map_world_unlocked">🎉 World Unlocked!</string>
+    <string name="ui_map_welcome">Welcome to %1$s!</string>
+    <string name="ui_map_discover">Discover 3 new animal friends trapped in this world:</string>
+    <string name="ui_map_explore">Let\'s Explore!</string>
+    <string name="ui_map_world_header">World %1$d · %2$s</string>
+    <string name="ui_album_tab_buddies">🐾 Buddies (%1$d/24)</string>
+    <string name="ui_album_tab_badges">🏆 Badges (%1$d/12)</string>
+    <string name="ui_album_rescued">Rescued: %1$d</string>
+    <string name="ui_album_max">MAX 👑</string>
+    <string name="ui_album_world">World %1$d</string>
+    <string name="ui_album_fun_fact">💡 Fun Buddy Fact:</string>
+    <string name="ui_album_wardrobe">Accessories Wardrobe ✨</string>
+    <string name="ui_acc_none">None</string>
+    <string name="ui_acc_bow">Bow (10)</string>
+    <string name="ui_acc_scarf">Scarf (50)</string>
+    <string name="ui_acc_crown">Crown (150)</string>
+    <string name="ui_album_done">Done</string>
+    <string name="ui_cd_equipped">Equipped</string>
+    <string name="ui_album_unlocked">Unlocked! ✨</string>
+    <string name="ui_tutorial_tap_me">Tap me to help me escape!</string>
+    <string name="ui_tutorial_free_friend">Oops! Free your friend first!</string>
+
+    <!-- Counted text -->
+    <plurals name="daily_share_text">
+        <item quantity="one">I rescued today\'s buddies with %1$d mistake on ArrowBuddies! 🐾🫐 Free cute buddies with every tap!</item>
+        <item quantity="other">I rescued today\'s buddies with %1$d mistakes on ArrowBuddies! 🐾🫐 Free cute buddies with every tap!</item>
+    </plurals>
+    <plurals name="talkback_hud_hearts">
+        <item quantity="one">%1$d heart remaining</item>
+        <item quantity="other">%1$d hearts remaining</item>
+    </plurals>
+    <plurals name="talkback_hud_rescued">
+        <item quantity="one">%1$d of %2$d buddy rescued</item>
+        <item quantity="other">%1$d of %2$d buddies rescued</item>
+    </plurals>
+    <plurals name="ui_daily_streak">
+        <item quantity="one">%1$d-Day Rescue Streak!</item>
+        <item quantity="other">%1$d-Day Rescue Streak!</item>
+    </plurals>
+    <plurals name="ui_daily_completed">
+        <item quantity="one">✓ Completed! (%1$d Mistake)</item>
+        <item quantity="other">✓ Completed! (%1$d Mistakes)</item>
+    </plurals>
 </resources>

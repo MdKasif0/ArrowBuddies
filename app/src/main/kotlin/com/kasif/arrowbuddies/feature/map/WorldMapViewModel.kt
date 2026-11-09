@@ -1,5 +1,7 @@
 package com.kasif.arrowbuddies.feature.map
 
+import com.kasif.arrowbuddies.R
+import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kasif.arrowbuddies.data.repository.GameRepository
@@ -43,13 +45,12 @@ class WorldMapViewModel @Inject constructor(
         when (event) {
             is WorldMapUiEvent.ShowWorldGate -> {
                 val world = event.world.coerceIn(1, 8)
-                val worldName = getWorldName(world)
                 val species = WorldSpecies.forWorld(world)
                 _uiState.update {
                     it.copy(
                         unlockedWorldGate = WorldUnlockGate(
                             world = world,
-                            worldName = worldName,
+                            worldNameRes = worldNameRes(world),
                             speciesSilhouettes = species
                         )
                     )
@@ -62,16 +63,16 @@ class WorldMapViewModel @Inject constructor(
     }
 
     companion object {
-        fun getWorldName(world: Int): String = when (world) {
-            1 -> "Sunny Meadow"
-            2 -> "Happy Farm"
-            3 -> "Jungle Ruins"
-            4 -> "Snowy Peaks"
-            5 -> "Coral Coast"
-            6 -> "Moonlit Forest"
-            7 -> "Desert Oasis"
-            8 -> "Sky Islands"
-            else -> "Sunny Meadow"
+        @StringRes
+        fun worldNameRes(world: Int): Int = when (world) {
+            2 -> R.string.ui_world_name_2
+            3 -> R.string.ui_world_name_3
+            4 -> R.string.ui_world_name_4
+            5 -> R.string.ui_world_name_5
+            6 -> R.string.ui_world_name_6
+            7 -> R.string.ui_world_name_7
+            8 -> R.string.ui_world_name_8
+            else -> R.string.ui_world_name_1
         }
     }
 }

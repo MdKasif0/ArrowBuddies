@@ -28,7 +28,7 @@ import com.kasif.arrowbuddies.data.db.entity.SpeciesProgress
         Achievement::class
     ],
     version = 2,
-    exportSchema = false
+    exportSchema = true
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun placeholderDao(): PlaceholderDao

@@ -1,5 +1,7 @@
 package com.kasif.arrowbuddies.feature.daily
 
+import androidx.compose.ui.res.pluralStringResource
+import com.kasif.arrowbuddies.core.economy.EconomyConfig
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -76,10 +78,11 @@ import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 fun DailyRescueScreen(
     uiState: DailyRescueUiState,
     onNavigateBack: () -> Unit,
-    onPlayDailyLevel: (String) -> Unit = {},
     modifier: Modifier = Modifier,
+    onPlayDailyLevel: (String) -> Unit = {},
     onEvent: (DailyRescueUiEvent) -> Unit = {}
 ) {
+    val shareText = pluralStringResource(R.plurals.daily_share_text, uiState.todayMistakes, uiState.todayMistakes)
     val typography = ArrowBuddiesThemeTokens.typography
     val context = LocalContext.current
     val worldTheme = worldThemeFor(uiState.worldThemeIndex)
@@ -179,13 +182,13 @@ fun DailyRescueScreen(
                             ) {
                                 Text(text = "🔥", fontSize = 20.sp)
                                 Text(
-                                    text = "${uiState.streakDays} Day Rescue Streak!",
+                                    text = pluralStringResource(R.plurals.ui_daily_streak, uiState.streakDays, uiState.streakDays),
                                     style = typography.title.copy(fontSize = 17.sp),
                                     color = Ink
                                 )
                             }
                             Text(
-                                text = "7-Day Loop",
+                                text = stringResource(R.string.ui_daily_loop),
                                 style = typography.caption.copy(fontSize = 11.sp, fontWeight = FontWeight.Bold),
                                 color = Ink.copy(alpha = 0.5f)
                             )
@@ -227,7 +230,7 @@ fun DailyRescueScreen(
                         verticalArrangement = Arrangement.spacedBy(14.dp)
                     ) {
                         Text(
-                            text = "Today's Rescue Puzzle 🐾",
+                            text = stringResource(R.string.ui_daily_today_puzzle),
                             style = typography.title.copy(fontSize = 22.sp),
                             color = Ink,
                             textAlign = TextAlign.Center
@@ -252,7 +255,7 @@ fun DailyRescueScreen(
                                     .padding(horizontal = 10.dp, vertical = 4.dp)
                             ) {
                                 Text(
-                                    text = "World ${uiState.worldThemeIndex} Biome",
+                                    text = stringResource(R.string.ui_daily_world_biome, uiState.worldThemeIndex),
                                     style = typography.caption.copy(fontSize = 12.sp, fontWeight = FontWeight.Bold),
                                     color = Ink
                                 )
@@ -264,7 +267,7 @@ fun DailyRescueScreen(
                                     .padding(horizontal = 10.dp, vertical = 4.dp)
                             ) {
                                 Text(
-                                    text = "+50 🫐 Reward",
+                                    text = stringResource(R.string.ui_daily_reward, EconomyConfig.BERRIES_DAILY_RESCUE),
                                     style = typography.caption.copy(fontSize = 12.sp, fontWeight = FontWeight.Bold),
                                     color = Ink
                                 )
@@ -293,7 +296,7 @@ fun DailyRescueScreen(
                                         .padding(horizontal = 14.dp, vertical = 6.dp)
                                 ) {
                                     Text(
-                                        text = "✓ Completed! (${uiState.todayMistakes} Mistakes)",
+                                        text = pluralStringResource(R.plurals.ui_daily_completed, uiState.todayMistakes, uiState.todayMistakes),
                                         style = typography.caption.copy(fontSize = 13.sp, fontWeight = FontWeight.Bold),
                                         color = Ink
                                     )
@@ -301,10 +304,10 @@ fun DailyRescueScreen(
 
                                 // Share Result Button
                                 CandyButton(
-                                    text = "Share Result 📤",
+                                    text = stringResource(R.string.ui_daily_share),
                                     onClick = {
                                         onEvent(DailyRescueUiEvent.ShareResult)
-                                        shareResult(context, uiState.shareResultText)
+                                        shareResult(context, shareText)
                                     },
                                     variant = CandyButtonVariant.Success,
                                     modifier = Modifier
@@ -317,7 +320,7 @@ fun DailyRescueScreen(
 
                                 // Replay without pressure
                                 CandyButton(
-                                    text = "Play Again 🔄",
+                                    text = stringResource(R.string.ui_daily_play_again),
                                     onClick = { onPlayDailyLevel(uiState.dailyLevelId) },
                                     variant = CandyButtonVariant.Ghost,
                                     modifier = Modifier.fillMaxWidth()
@@ -325,7 +328,7 @@ fun DailyRescueScreen(
                             }
                         } else {
                             CandyButton(
-                                text = "Play Today's Rescue (+50 🫐)",
+                                text = stringResource(R.string.ui_daily_play_today, EconomyConfig.BERRIES_DAILY_RESCUE),
                                 onClick = {
                                     onEvent(DailyRescueUiEvent.PlayDailyRescue)
                                     onPlayDailyLevel(uiState.dailyLevelId)
@@ -383,7 +386,7 @@ private fun StreakDayCard(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
-                text = "Day ${reward.dayNumber}",
+                text = stringResource(R.string.ui_daily_day, reward.dayNumber),
                 style = typography.caption.copy(
                     fontSize = 11.sp,
                     fontWeight = if (reward.isCurrent) FontWeight.Bold else FontWeight.Medium
@@ -413,7 +416,7 @@ private fun StreakDayCard(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Check,
-                        contentDescription = "Claimed",
+                        contentDescription = stringResource(R.string.ui_cd_claimed),
                         modifier = Modifier.size(11.dp),
                         tint = WhitePure
                     )
@@ -426,7 +429,7 @@ private fun StreakDayCard(
                         .padding(horizontal = 4.dp, vertical = 1.dp)
                 ) {
                     Text(
-                        text = "Today",
+                        text = stringResource(R.string.ui_daily_today),
                         style = typography.caption.copy(fontSize = 9.sp, fontWeight = FontWeight.Bold),
                         color = WhitePure
                     )

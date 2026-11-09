@@ -60,12 +60,6 @@ class DailyRescueViewModel @Inject constructor(
                     )
                 }
 
-                val starsEmoji = if (stars > 0) "⭐".repeat(stars) else "⭐⭐⭐"
-                val shareText = "ArrowBuddies Daily Rescue 🐾\n" +
-                        "Date: $todayFormatted\n" +
-                        "Stars: $starsEmoji\n" +
-                        "Bonks: $mistakes 🎯\n" +
-                        "Free cute buddies with every tap!"
 
                 _uiState.update { current ->
                     current.copy(
@@ -79,8 +73,7 @@ class DailyRescueViewModel @Inject constructor(
                         berries = profile.berries,
                         worldThemeIndex = world,
                         buddyCount = 8,
-                        dailyLevelId = "daily-$todayStr",
-                        shareResultText = shareText
+                        dailyLevelId = "daily-$todayStr"
                     )
                 }
             }.collect {}

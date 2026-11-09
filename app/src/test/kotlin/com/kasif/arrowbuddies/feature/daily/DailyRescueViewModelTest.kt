@@ -128,7 +128,7 @@ class DailyRescueViewModelTest {
         assertThat(state.todayMistakes).isEqualTo(0)
         assertThat(state.streakRewards.size).isEqualTo(7)
         assertThat(state.streakRewards.last().hasDecorGift).isTrue()
-        assertThat(state.shareResultText).contains("Stars: ⭐⭐⭐")
-        assertThat(state.shareResultText).contains("Bonks: 0 🎯")
+        assertThat(state.todayStars).isEqualTo(3)
+        assertThat(state.todayMistakes).isEqualTo(0)
     }
 }

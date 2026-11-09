@@ -1,5 +1,7 @@
 package com.kasif.arrowbuddies.feature.home
 
+import kotlinx.coroutines.delay
+import androidx.compose.runtime.produceState
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -90,6 +92,14 @@ fun HomeScreen(
 
     LaunchedEffect(Unit) {
         soundManager.playMenuMusic()
+    }
+
+    // Keep the Daily Rescue countdown ticking while Home is visible
+    val dailyCountdown by produceState(initialValue = uiState.dailyCountdownFormatted) {
+        while (true) {
+            value = dailyCountdownText()
+            delay(30_000L)
+        }
     }
 
     // Pulsing button animation
@@ -274,7 +284,7 @@ fun HomeScreen(
                                     .padding(horizontal = 6.dp, vertical = 2.dp)
                             ) {
                                 Text(
-                                    text = if (uiState.isDailyDone) "DONE" else "+50 🫐",
+                                    text = if (uiState.isDailyDone) stringResource(R.string.ui_home_daily_done) else "+50 🫐",
                                     style = typography.caption,
                                     fontWeight = FontWeight.Bold,
                                     color = Ink
@@ -288,7 +298,7 @@ fun HomeScreen(
                             color = Ink
                         )
                         Text(
-                            text = if (uiState.isDailyDone) "Come back tomorrow" else uiState.dailyCountdownFormatted,
+                            text = if (uiState.isDailyDone) stringResource(R.string.ui_home_come_back) else dailyCountdown,
                             style = typography.caption,
                             color = Ink.copy(alpha = 0.60f)
                         )
@@ -316,7 +326,7 @@ fun HomeScreen(
                             if (!uiState.isRescueRunUnlocked) {
                                 Icon(
                                     imageVector = Icons.Default.Lock,
-                                    contentDescription = "Locked",
+                                    contentDescription = stringResource(R.string.ui_cd_locked),
                                     tint = Color.Gray,
                                     modifier = Modifier.size(16.dp)
                                 )
@@ -328,7 +338,7 @@ fun HomeScreen(
                                         .padding(horizontal = 6.dp, vertical = 2.dp)
                                 ) {
                                     Text(
-                                        text = "ENDLESS",
+                                        text = stringResource(R.string.ui_home_endless),
                                         style = typography.caption,
                                         fontWeight = FontWeight.Bold,
                                         color = Ink
@@ -343,7 +353,7 @@ fun HomeScreen(
                             color = if (uiState.isRescueRunUnlocked) Ink else Color.Gray
                         )
                         Text(
-                            text = if (uiState.isRescueRunUnlocked) "Infinite levels" else "Unlocks at World 2",
+                            text = if (uiState.isRescueRunUnlocked) stringResource(R.string.ui_home_rr_unlocked) else stringResource(R.string.ui_home_rr_locked),
                             style = typography.caption,
                             color = Color.Gray
                         )
@@ -375,7 +385,7 @@ fun HomeScreen(
                             color = Ink
                         )
                         Text(
-                            text = "8 Worlds · 240 Levels",
+                            text = stringResource(R.string.ui_home_map_subtitle),
                             style = typography.caption,
                             color = Ink.copy(alpha = 0.60f)
                         )
@@ -400,7 +410,7 @@ fun HomeScreen(
                             color = Ink
                         )
                         Text(
-                            text = "${uiState.unlockedSpeciesCount}/24 Species Discovered",
+                            text = stringResource(R.string.ui_home_species_discovered, uiState.unlockedSpeciesCount),
                             style = typography.caption,
                             color = Ink.copy(alpha = 0.60f)
                         )

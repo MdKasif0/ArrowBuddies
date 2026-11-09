@@ -67,6 +67,7 @@ import com.kasif.arrowbuddies.engine.model.Direction
 fun LevelWinSheet(
     stars: Int,
     rescuedBuddies: List<Buddy>,
+    berriesEarned: Int,
     goldenBonus: Int,
     newSpecies: BuddySpecies?,
     onNextLevel: () -> Unit,
@@ -75,7 +76,8 @@ fun LevelWinSheet(
     modifier: Modifier = Modifier
 ) {
     val typography = ArrowBuddiesThemeTokens.typography
-    val totalBerries = 10 + (5 * stars) + goldenBonus
+    // Show what was actually credited (replays only pay for improved stars)
+    val totalBerries = berriesEarned
 
     val infiniteTransition = rememberInfiniteTransition(label = "buddyDance")
     val hopOffset by infiniteTransition.animateFloat(
@@ -172,7 +174,7 @@ fun LevelWinSheet(
                         )
                         if (goldenBonus > 0) {
                             Text(
-                                text = " (Golden Bonus!)",
+                                text = stringResource(R.string.ui_win_golden_bonus),
                                 style = typography.caption,
                                 color = Mango,
                                 fontWeight = FontWeight.Bold
@@ -383,7 +385,7 @@ fun PauseSheet(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Sounds", style = typography.body, color = Ink)
+                    Text(text = stringResource(R.string.ui_pause_sounds), style = typography.body, color = Ink)
                     ToggleSwitch(checked = soundEnabled, onCheckedChange = onToggleSound)
                 }
 
@@ -392,7 +394,7 @@ fun PauseSheet(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Music", style = typography.body, color = Ink)
+                    Text(text = stringResource(R.string.ui_pause_music), style = typography.body, color = Ink)
                     ToggleSwitch(checked = musicEnabled, onCheckedChange = onToggleMusic)
                 }
 
@@ -401,7 +403,7 @@ fun PauseSheet(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Haptics", style = typography.body, color = Ink)
+                    Text(text = stringResource(R.string.ui_pause_haptics), style = typography.body, color = Ink)
                     ToggleSwitch(checked = hapticsEnabled, onCheckedChange = onToggleHaptics)
                 }
 
@@ -547,13 +549,13 @@ fun BoosterShopDialog(
                 )
 
                 Text(
-                    text = "Price: $price 🫐 (You have: $berries 🫐)",
+                    text = stringResource(R.string.ui_booster_price, price, berries),
                     style = typography.body,
                     color = Ink.copy(alpha = 0.75f)
                 )
 
                 CandyButton(
-                    text = "Get for $price 🫐",
+                    text = stringResource(R.string.ui_booster_buy, price),
                     onClick = { onBuy(type) },
                     variant = CandyButtonVariant.Success,
                     enabled = berries >= price,

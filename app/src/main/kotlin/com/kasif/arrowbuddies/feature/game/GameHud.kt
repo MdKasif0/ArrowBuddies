@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.feature.game
 
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -109,7 +110,7 @@ fun GameTopBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Rescued counter pill with tiny face emoji
-            val rescuedA11yLabel = stringResource(R.string.talkback_hud_rescued, rescuedCount, totalBuddies)
+            val rescuedA11yLabel = pluralStringResource(R.plurals.talkback_hud_rescued, totalBuddies, rescuedCount, totalBuddies)
             Box(
                 modifier = Modifier
                     .graphicsLayer {

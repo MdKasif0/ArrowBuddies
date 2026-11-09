@@ -31,6 +31,9 @@ enum class SoundType {
  * One-shot UI effects emitted by [GameViewModel].
  */
 sealed interface GameEffect {
+    /** There is no next level to load (end of campaign, daily, tutorial graduation): leave the game. */
+    data object NavigateBack : GameEffect
+
     data class PlayEscape(
         val buddyId: String,
         val path: List<Step>,

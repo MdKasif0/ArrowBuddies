@@ -16,3 +16,12 @@ local.properties
 app/build/
 engine/build/
 
+
+# Signing secrets — never commit
+keystore*.properties
+*.keystore
+*.jks
+
+# IDE compiled output
+engine/bin/
+app/bin/

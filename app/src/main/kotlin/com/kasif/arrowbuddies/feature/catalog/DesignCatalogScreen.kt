@@ -194,7 +194,7 @@ fun DesignCatalogScreen(
                         Text("Subtitle: Big Rescue Ahead!", style = typography.subtitle, color = colors.textPrimary)
                         Text("Button: RESCUE BUDDIES!", style = typography.button, color = colors.mango.lip)
                         Text("Body: Tap an animal to dash to the edge.", style = typography.body, color = colors.textPrimary)
-                        Text("Caption / Hindi: नमस्ते प्यारे साथी (Hello Buddies)", style = typography.caption, color = colors.textSecondary)
+                        Text("Caption: Hello, Buddies!", style = typography.caption, color = colors.textSecondary)
                     }
                 }
 

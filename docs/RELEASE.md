@@ -12,7 +12,7 @@ This document contains the complete production metadata, store listing copy (Eng
 - **Version Code**: `1`
 - **Version Name**: `1.0.0`
 - **Target SDK**: `35` (Android 15)
-- **Min SDK**: `24` (Android 7.0 Nougat — covering >99% of active devices)
+- **Min SDK**: `26` (Android 8.0 Oreo — required for java.time and adaptive icons)
 - **Category**: Puzzle / Brain Games / Family
 
 ---

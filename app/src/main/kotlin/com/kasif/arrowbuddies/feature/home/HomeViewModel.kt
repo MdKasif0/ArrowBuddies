@@ -14,7 +14,8 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import java.time.Duration
 import java.time.LocalDateTime
-import java.time.LocalTime
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,13 +23,16 @@ class HomeViewModel @Inject constructor(
     private val repository: GameRepository
 ) : ViewModel() {
 
+    private val todayKey: String =
+        LocalDate.now(DailyRescue.TIME_ZONE).format(DateTimeFormatter.BASIC_ISO_DATE)
+
     val uiState: StateFlow<HomeUiState> = combine(
-        repository.totalRescued,
-        repository.berries,
+        combine(repository.totalRescued, repository.berries, ::Pair),
         repository.currentLevelIndex,
         repository.highestUnlockedLevel,
-        repository.rescuedSpecies
-    ) { totalRescued, berries, currentLevelIndex, highestUnlocked, speciesSet ->
+        repository.rescuedSpecies,
+        repository.getDailyRecord(todayKey)
+    ) { (totalRescued, berries), currentLevelIndex, highestUnlocked, speciesSet, dailyRecord ->
         val safeIndex = currentLevelIndex.coerceIn(1, 240)
         val levelId = LevelIdHelper.formatLevelId(safeIndex)
         val world = ((safeIndex - 1) / 30) + 1
@@ -38,13 +42,7 @@ class HomeViewModel @Inject constructor(
         val speciesName = worldPool[(levelInWorld - 1) % worldPool.size]
         val speciesEnum = runCatching { BuddySpecies.valueOf(speciesName) }.getOrDefault(BuddySpecies.BUNNY)
 
-        // Calculate time to next daily puzzle (midnight in Asia/Kolkata)
-        val now = LocalDateTime.now(DailyRescue.TIME_ZONE)
-        val midnight = now.toLocalDate().plusDays(1).atStartOfDay()
-        val duration = Duration.between(now, midnight)
-        val hours = duration.toHours()
-        val minutes = duration.toMinutes() % 60
-        val countdown = "${hours}h ${minutes}m"
+        val countdown = dailyCountdownText()
 
         HomeUiState(
             totalRescued = totalRescued,
@@ -52,7 +50,7 @@ class HomeViewModel @Inject constructor(
             currentLevelIndex = safeIndex,
             currentLevelId = levelId,
             nextSpecies = speciesEnum,
-            isDailyDone = false,
+            isDailyDone = dailyRecord?.completed == true,
             dailyCountdownFormatted = countdown,
             isRescueRunUnlocked = highestUnlocked >= 31, // Unlocked after World 1 (level 31+)
             unlockedSpeciesCount = maxOf(1, speciesSet.size),
@@ -67,4 +65,12 @@ class HomeViewModel @Inject constructor(
     fun onEvent(event: HomeUiEvent) {
         // Event handling
     }
+}
+
+/** Time left until the next Daily Rescue (midnight in the daily puzzle's time zone), e.g. "5h 12m". */
+fun dailyCountdownText(): String {
+    val now = LocalDateTime.now(DailyRescue.TIME_ZONE)
+    val midnight = now.toLocalDate().plusDays(1).atStartOfDay()
+    val duration = Duration.between(now, midnight)
+    return "${duration.toHours()}h ${duration.toMinutes() % 60}m"
 }

@@ -338,7 +338,7 @@ fun BuddyGalleryScreen(
                                             phaseSeed = (species.ordinal * 1337) % 10000
                                         )
 
-                                        // Species Name (English + Hindi)
+                                        // Species Name
                                         Text(
                                             text = stringResource(species.nameRes),
                                             style = ArrowBuddiesThemeTokens.typography.subtitle,

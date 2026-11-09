@@ -48,11 +48,7 @@ class DefaultHapticsManager @Inject constructor(
         if (!hapticsEnabled) return
         var handled = false
         if (view != null) {
-            val feedback = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                HapticFeedbackConstants.CLOCK_TICK
-            } else {
-                HapticFeedbackConstants.KEYBOARD_TAP
-            }
+            val feedback = HapticFeedbackConstants.CLOCK_TICK
             @Suppress("DEPRECATION")
             handled = view.performHapticFeedback(feedback, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING)
         }
@@ -104,12 +100,7 @@ class DefaultHapticsManager @Inject constructor(
             runCatching {
                 vibrator?.let { v ->
                     if (v.hasVibrator()) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            v.vibrate(VibrationEffect.createWaveform(longArrayOf(0, 20, 50, 25), -1))
-                        } else {
-                            @Suppress("DEPRECATION")
-                            v.vibrate(longArrayOf(0, 20, 50, 25), -1)
-                        }
+                        v.vibrate(VibrationEffect.createWaveform(longArrayOf(0, 20, 50, 25), -1))
                     }
                 }
             }

@@ -198,7 +198,7 @@ fun WorldMapScreen(
                         // World Section Banner
                         WorldBanner(
                             world = world,
-                            worldName = WorldMapViewModel.getWorldName(world),
+                            worldName = stringResource(WorldMapViewModel.worldNameRes(world)),
                             isUnlocked = uiState.highestUnlockedLevel >= ((world - 1) * 30 + 1)
                         )
 
@@ -264,21 +264,21 @@ fun WorldMapScreen(
                             verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
                             Text(
-                                text = "🎉 World Unlocked!",
+                                text = stringResource(R.string.ui_map_world_unlocked),
                                 style = typography.title,
                                 color = Ink,
                                 textAlign = TextAlign.Center
                             )
 
                             Text(
-                                text = "Welcome to ${gate.worldName}!",
+                                text = stringResource(R.string.ui_map_welcome, stringResource(gate.worldNameRes)),
                                 style = typography.subtitle,
                                 color = Grape,
                                 textAlign = TextAlign.Center
                             )
 
                             Text(
-                                text = "Discover 3 new animal friends trapped in this world:",
+                                text = stringResource(R.string.ui_map_discover),
                                 style = typography.body,
                                 color = Ink.copy(alpha = 0.75f),
                                 textAlign = TextAlign.Center
@@ -312,7 +312,7 @@ fun WorldMapScreen(
                             }
 
                             CandyButton(
-                                text = "Let's Explore!",
+                                text = stringResource(R.string.ui_map_explore),
                                 onClick = { onNavigateToGame("w${gate.world}-l01") },
                                 variant = CandyButtonVariant.Primary,
                                 modifier = Modifier.fillMaxWidth()
@@ -340,7 +340,7 @@ private fun WorldBanner(
             .shadow(4.dp, RoundedCornerShape(16.dp))
     ) {
         Text(
-            text = "World $world · $worldName",
+            text = stringResource(R.string.ui_map_world_header, world, worldName),
             style = typography.subtitle.copy(fontSize = 16.sp),
             color = WhitePure,
             fontWeight = FontWeight.Bold
@@ -405,7 +405,7 @@ private fun LevelNode(
             if (isLocked) {
                 Icon(
                     imageVector = Icons.Default.Lock,
-                    contentDescription = "Locked",
+                    contentDescription = stringResource(R.string.ui_cd_locked),
                     tint = Color.Gray,
                     modifier = Modifier.size(20.dp)
                 )

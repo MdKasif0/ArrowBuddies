@@ -12,9 +12,9 @@ class HandcraftedDevLevelsTest {
 
     private fun findLevelFile(filename: String): File {
         val candidates = listOf(
-            File("src/main/assets/levels/dev/$filename"),
-            File("../app/src/main/assets/levels/dev/$filename"),
-            File("app/src/main/assets/levels/dev/$filename")
+            File("src/debug/assets/levels/dev/$filename"),
+            File("../app/src/debug/assets/levels/dev/$filename"),
+            File("app/src/debug/assets/levels/dev/$filename")
         )
         return candidates.firstOrNull { it.exists() }
             ?: throw IllegalStateException("Could not find $filename in candidate locations")

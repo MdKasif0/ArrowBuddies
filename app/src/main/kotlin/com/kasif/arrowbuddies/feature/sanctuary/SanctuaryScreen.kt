@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.feature.sanctuary
 
+import com.kasif.arrowbuddies.core.economy.EconomyConfig
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -225,7 +226,7 @@ fun SanctuaryScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "${uiState.activeZoneName} 🌿",
+                    text = "${stringResource(uiState.activeZoneNameRes)} 🌿",
                     style = typography.title.copy(fontSize = 17.sp),
                     color = Ink
                 )
@@ -260,7 +261,7 @@ fun SanctuaryScreen(
                     horizontalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
                     Text(
-                        text = if (uiState.isTreatTimeAvailable) "🍯 Treat! (+20)" else "🍯 Claimed",
+                        text = if (uiState.isTreatTimeAvailable) stringResource(R.string.ui_sanctuary_treat, EconomyConfig.BERRIES_TREAT_TIME) else stringResource(R.string.ui_sanctuary_treat_claimed),
                         style = typography.caption.copy(fontSize = 13.sp, fontWeight = FontWeight.Bold),
                         color = if (uiState.isTreatTimeAvailable) Ink else Ink.copy(alpha = 0.5f)
                     )
@@ -341,7 +342,7 @@ fun SanctuaryScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Lock,
-                                contentDescription = "Locked",
+                                contentDescription = stringResource(R.string.ui_cd_locked),
                                 modifier = Modifier.size(12.dp),
                                 tint = Ink.copy(alpha = 0.4f)
                             )
@@ -362,15 +363,15 @@ fun SanctuaryScreen(
         if (uiState.selectedDecorToBuy != null) {
             val item = uiState.selectedDecorToBuy
             val decorName = when (item.id) {
-                "decor_pond_1" -> "Koi Pond"
-                "decor_swing_2" -> "Tree Swing"
-                "decor_flower_bed_3" -> "Flower Bed"
-                "decor_firepit_4" -> "Warm Firepit"
-                "decor_hammock_5" -> "Hammock"
-                "decor_lanterns_6" -> "Glow Lanterns"
-                "decor_kite_7" -> "Desert Kite"
-                "decor_rangoli_mat_8" -> "Rangoli & Mango Tree"
-                else -> "Cozy Decor"
+                "decor_pond_1" -> stringResource(R.string.ui_decor_pond)
+                "decor_swing_2" -> stringResource(R.string.ui_decor_swing)
+                "decor_flower_bed_3" -> stringResource(R.string.ui_decor_flower_bed)
+                "decor_firepit_4" -> stringResource(R.string.ui_decor_firepit)
+                "decor_hammock_5" -> stringResource(R.string.ui_decor_hammock)
+                "decor_lanterns_6" -> stringResource(R.string.ui_decor_lanterns)
+                "decor_kite_7" -> stringResource(R.string.ui_decor_kite)
+                "decor_rangoli_mat_8" -> stringResource(R.string.ui_decor_rangoli)
+                else -> stringResource(R.string.ui_decor_default)
             }
 
             GameDialog(
@@ -390,7 +391,7 @@ fun SanctuaryScreen(
                         verticalArrangement = Arrangement.spacedBy(14.dp)
                     ) {
                         Text(
-                            text = "Build $decorName ✨",
+                            text = stringResource(R.string.ui_sanctuary_build, decorName),
                             style = typography.title.copy(fontSize = 22.sp),
                             color = Ink,
                             textAlign = TextAlign.Center
@@ -409,13 +410,13 @@ fun SanctuaryScreen(
                         }
 
                         Text(
-                            text = "Cost: ${item.costBerries} 🫐 (You have: ${uiState.berries} 🫐)",
+                            text = stringResource(R.string.ui_sanctuary_cost, item.costBerries, uiState.berries),
                             style = typography.body,
                             color = Ink.copy(alpha = 0.85f)
                         )
 
                         CandyButton(
-                            text = "Build for ${item.costBerries} 🫐",
+                            text = stringResource(R.string.ui_sanctuary_build_for, item.costBerries),
                             onClick = { onEvent(SanctuaryUiEvent.ConfirmBuyDecor(item.id)) },
                             variant = CandyButtonVariant.Success,
                             enabled = uiState.berries >= item.costBerries,
@@ -645,12 +646,12 @@ private fun ZoneGroundSection(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "🐾 Sanctuary",
+                        text = stringResource(R.string.ui_sanctuary_chip),
                         style = typography.caption.copy(fontSize = 13.sp, fontWeight = FontWeight.Bold),
                         color = Cream
                     )
                     Text(
-                        text = "Rescued: $totalRescued/240",
+                        text = stringResource(R.string.ui_sanctuary_rescued, totalRescued),
                         style = typography.caption.copy(fontSize = 11.sp),
                         color = WhitePure.copy(alpha = 0.90f)
                     )
@@ -670,7 +671,7 @@ private fun ZoneGroundSection(
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     if (isTreatTimeAvailable) {
                         Text(
-                            text = "✨ Tap!",
+                            text = stringResource(R.string.ui_sanctuary_tap),
                             style = typography.caption.copy(fontSize = 10.sp, fontWeight = FontWeight.Bold),
                             color = Coral
                         )
@@ -721,7 +722,7 @@ private fun ZoneGroundSection(
                             verticalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             Text(
-                                text = "🔨 Build Slot",
+                                text = stringResource(R.string.ui_sanctuary_build_slot),
                                 style = typography.caption.copy(fontSize = 12.sp, fontWeight = FontWeight.Bold),
                                 color = Ink
                             )
@@ -754,12 +755,12 @@ private fun ZoneGroundSection(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Lock,
-                            contentDescription = "Locked Zone",
+                            contentDescription = stringResource(R.string.ui_cd_locked_zone),
                             modifier = Modifier.size(16.dp),
                             tint = WhitePure
                         )
                         Text(
-                            text = "Unlocks in World ${zoneIndex + 1}",
+                            text = stringResource(R.string.ui_sanctuary_unlocks_in, zoneIndex + 1),
                             style = typography.caption.copy(fontSize = 12.sp),
                             color = WhitePure
                         )

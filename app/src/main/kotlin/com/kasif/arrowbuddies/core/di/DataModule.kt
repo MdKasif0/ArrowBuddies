@@ -44,7 +44,9 @@ object DatabaseModule {
             "arrow_buddies.db"
         )
             .addMigrations(AppDatabaseMigrations.MIGRATION_1_2)
-            .fallbackToDestructiveMigration()
+            // No destructive fallback on upgrade: a missing migration must fail loudly in testing
+            // instead of silently wiping every player's progress. Downgrades only happen in dev.
+            .fallbackToDestructiveMigrationOnDowngrade()
             .build()
     }
 

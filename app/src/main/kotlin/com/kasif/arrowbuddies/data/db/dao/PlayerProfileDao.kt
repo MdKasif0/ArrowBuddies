@@ -22,6 +22,22 @@ interface PlayerProfileDao {
     @Update
     suspend fun update(profile: PlayerProfile)
 
+    /** Creates the single profile row if it doesn't exist yet (no-op otherwise). */
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertIfMissing(profile: PlayerProfile)
+
+    @Query("UPDATE player_profile SET berries = berries - :price, hints = hints + 1 WHERE id = 1 AND berries >= :price")
+    suspend fun buyHint(price: Int): Int
+
+    @Query("UPDATE player_profile SET berries = berries - :price, undos = undos + 1 WHERE id = 1 AND berries >= :price")
+    suspend fun buyUndo(price: Int): Int
+
+    @Query("UPDATE player_profile SET tutorialDone = :done WHERE id = 1")
+    suspend fun setTutorialDone(done: Boolean)
+
+    @Query("UPDATE player_profile SET currentLevelIndex = :index, highestUnlockedLevel = MAX(highestUnlockedLevel, :index) WHERE id = 1")
+    suspend fun setCurrentLevel(index: Int)
+
     @Query("UPDATE player_profile SET berries = berries + :amount WHERE id = 1")
     suspend fun addBerries(amount: Int)
 

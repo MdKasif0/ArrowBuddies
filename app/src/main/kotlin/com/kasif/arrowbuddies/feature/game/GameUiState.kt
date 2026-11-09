@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.feature.game
 
+import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.engine.model.GameState
@@ -30,7 +31,7 @@ data class GameUiState(
     val activeMechanicIntro: MechanicType? = null,
     val safeBuddyIds: Set<String> = emptySet(),
     val hintBuddyId: String? = null,
-    val tutorialSpeechBubble: String? = null,
+    @StringRes val tutorialSpeechBubble: Int? = null,
     val tutorialHandPos: Pos? = null,
     val hintsAvailable: Int = 3,
     val undosAvailable: Int = 3,
@@ -40,9 +41,12 @@ data class GameUiState(
     val hapticsEnabled: Boolean = true,
     val newSpeciesUnlocked: BuddySpecies? = null,
     val goldenBerryBonus: Int = 0,
+    val berriesEarned: Int = 0,
     val isTutorialLevel: Boolean = false,
     val showReminderPromptDialog: Boolean = false,
-    val reduceMotion: Boolean = false
+    val reduceMotion: Boolean = false,
+    /** True while the level is being loaded in the background; the board isn't shown yet. */
+    val isLoading: Boolean = false
 ) {
     val heartsRemaining: Int get() = gameState.hearts
     val rescuedCount: Int get() = gameState.rescuedIds.size

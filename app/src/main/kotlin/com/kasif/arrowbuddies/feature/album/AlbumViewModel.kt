@@ -1,6 +1,7 @@
 package com.kasif.arrowbuddies.feature.album
 
 import androidx.lifecycle.ViewModel
+import com.kasif.arrowbuddies.BuildConfig
 import androidx.lifecycle.viewModelScope
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
@@ -124,6 +125,7 @@ class AlbumViewModel @Inject constructor(
             }
 
             is AlbumUiEvent.GrantDebugBerries -> {
+                if (!BuildConfig.DEBUG) return
                 viewModelScope.launch {
                     repository.addBerries(event.amount)
                     soundManager.playChime()

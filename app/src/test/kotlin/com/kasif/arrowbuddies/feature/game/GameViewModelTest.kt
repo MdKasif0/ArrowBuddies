@@ -192,6 +192,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.uiState.test {
             val state = awaitItem()
@@ -211,6 +212,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.TapBuddy("bunny_1"))
         advanceTimeBy(50)
@@ -237,6 +239,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "2"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         assertThat(viewModel.uiState.value.safeBuddyIds).containsExactly("bunny_1", "piglet_1")
 
@@ -267,6 +270,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.TapBuddy("bunny_1"))
         advanceTimeBy(600)
@@ -287,6 +291,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "2"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.TapBuddy("chick_1"))
         advanceTimeBy(600)
@@ -307,6 +312,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "2"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.StartPathPeek("bunny_1"))
         val bunnyPeek = viewModel.uiState.value.activePeekingPath
@@ -325,10 +331,25 @@ class GameViewModelTest {
     }
 
     @Test
+    fun `level loads in the background and shows a loading state until ready`() = runTest {
+        Dispatchers.setMain(StandardTestDispatcher(testScheduler))
+        val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
+        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+
+        assertThat(viewModel.uiState.value.isLoading).isTrue()
+        assertThat(viewModel.uiState.value.gameState.buddies).isEmpty()
+
+        advanceUntilIdle()
+        assertThat(viewModel.uiState.value.isLoading).isFalse()
+        assertThat(viewModel.uiState.value.gameState.buddies).isNotEmpty()
+    }
+
+    @Test
     fun `survives process recreation by restoring serialized GameState from SavedStateHandle`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
         val vm1 = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         vm1.onEvent(GameUiEvent.TapBuddy("bunny_1"))
         advanceTimeBy(600)
@@ -347,6 +368,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "4"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         // In level 4, puppy is at (2,4) facing UP towards mud at (2,2)
         val initialPuppy = viewModel.uiState.value.gameState.findBuddy("puppy_1")
@@ -376,6 +398,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "6"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         // Tapping caged fox refuses without heart loss
         viewModel.onEvent(GameUiEvent.TapBuddy("fox_1"))
@@ -399,6 +422,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "8"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         // Tapping sleepy owl refuses without heart loss
         viewModel.onEvent(GameUiEvent.TapBuddy("owl_1"))
@@ -448,6 +472,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         val devLevelIds = levelRepository.getAvailableDevLevelIds()
         assertThat(devLevelIds.size).isEqualTo(9)
@@ -464,11 +489,12 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l01"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         val state = viewModel.uiState.value
         assertThat(state.isTutorialLevel).isTrue()
         assertThat(state.tutorialHandPos).isEqualTo(Pos(1, 1))
-        assertThat(state.tutorialSpeechBubble).isEqualTo("Tap me to help me escape!")
+        assertThat(state.tutorialSpeechBubble).isEqualTo(com.kasif.arrowbuddies.R.string.ui_tutorial_tap_me)
     }
 
     @Test
@@ -476,6 +502,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l02"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         // Blocked buddy bonks into blocker
         viewModel.onEvent(GameUiEvent.TapBuddy("piglet_1"))
@@ -483,7 +510,7 @@ class GameViewModelTest {
 
         // Hearts remain intact during tutorial!
         assertThat(viewModel.uiState.value.heartsRemaining).isEqualTo(3)
-        assertThat(viewModel.uiState.value.tutorialSpeechBubble).isEqualTo("Oops! Free your friend first!")
+        assertThat(viewModel.uiState.value.tutorialSpeechBubble).isEqualTo(com.kasif.arrowbuddies.R.string.ui_tutorial_free_friend)
     }
 
     @Test
@@ -491,6 +518,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        viewModel.computeDispatcher = StandardTestDispatcher(testScheduler)
         advanceUntilIdle()
 
         viewModel.onEvent(GameUiEvent.RequestHint)
@@ -509,6 +537,7 @@ class GameViewModelTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
         val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.OpenPauseSheet)
         assertThat(viewModel.uiState.value.showPauseSheet).isTrue()

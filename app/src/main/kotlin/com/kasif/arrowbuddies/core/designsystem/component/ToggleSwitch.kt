@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.core.designsystem.component
 
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
@@ -94,7 +95,7 @@ fun ToggleSwitch(
         // Chunky 3D Thumb
         Box(
             modifier = Modifier
-                .offset(x = thumbOffset)
+                .offset { IntOffset(thumbOffset.roundToPx(), 0) }
                 .size(thumbSize)
                 .shadow(elevation = 4.dp, shape = CircleShape)
                 .background(
