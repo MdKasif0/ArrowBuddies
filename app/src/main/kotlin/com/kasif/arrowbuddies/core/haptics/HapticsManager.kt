@@ -35,13 +35,15 @@ class DefaultHapticsManager @Inject constructor(
 
     override fun tick() {
         if (!hapticsEnabled) return
-        vibrator?.let { v ->
-            if (v.hasVibrator()) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    v.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
-                } else {
-                    @Suppress("DEPRECATION")
-                    v.vibrate(15)
+        runCatching {
+            vibrator?.let { v ->
+                if (v.hasVibrator()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        v.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK))
+                    } else {
+                        @Suppress("DEPRECATION")
+                        v.vibrate(15)
+                    }
                 }
             }
         }
@@ -49,13 +51,15 @@ class DefaultHapticsManager @Inject constructor(
 
     override fun bonk() {
         if (!hapticsEnabled) return
-        vibrator?.let { v ->
-            if (v.hasVibrator()) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    v.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK))
-                } else {
-                    @Suppress("DEPRECATION")
-                    v.vibrate(40)
+        runCatching {
+            vibrator?.let { v ->
+                if (v.hasVibrator()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        v.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK))
+                    } else {
+                        @Suppress("DEPRECATION")
+                        v.vibrate(40)
+                    }
                 }
             }
         }
@@ -63,13 +67,15 @@ class DefaultHapticsManager @Inject constructor(
 
     override fun rescueSuccess() {
         if (!hapticsEnabled) return
-        vibrator?.let { v ->
-            if (v.hasVibrator()) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    v.vibrate(VibrationEffect.createWaveform(longArrayOf(0, 20, 50, 25), -1))
-                } else {
-                    @Suppress("DEPRECATION")
-                    v.vibrate(longArrayOf(0, 20, 50, 25), -1)
+        runCatching {
+            vibrator?.let { v ->
+                if (v.hasVibrator()) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        v.vibrate(VibrationEffect.createWaveform(longArrayOf(0, 20, 50, 25), -1))
+                    } else {
+                        @Suppress("DEPRECATION")
+                        v.vibrate(longArrayOf(0, 20, 50, 25), -1)
+                    }
                 }
             }
         }
