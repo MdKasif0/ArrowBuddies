@@ -132,18 +132,17 @@ class SanctuaryViewModelTest {
     fun `sanctuary initializes with unlocked zones and roaming buddies`() = runTest(testDispatcher) {
         val repo = FakeGameRepository()
         val viewModel = SanctuaryViewModel(repo, FakeSoundManager(), FakeHapticsManager())
+        testScheduler.advanceUntilIdle()
 
-        viewModel.uiState.test {
-            val state = awaitItem()
-            // Level 35 = World 2 unlocked => 2 zones unlocked
-            assertThat(state.unlockedZonesCount).isEqualTo(2)
-            assertThat(state.berries).isEqualTo(500)
-            assertThat(state.buddies.isNotEmpty()).isTrue()
-            // Verify equipped accessory carries over to buddy model
-            val bunnyBuddy = state.buddies.firstOrNull { it.species.name == "BUNNY" }
-            assertThat(bunnyBuddy).isNotNull()
-            assertThat(bunnyBuddy?.accessory).isEqualTo(BuddyAccessory.BOW)
-        }
+        val state = viewModel.uiState.value
+        // Level 35 = World 2 unlocked => 2 zones unlocked
+        assertThat(state.unlockedZonesCount).isEqualTo(2)
+        assertThat(state.berries).isEqualTo(500)
+        assertThat(state.buddies.isNotEmpty()).isTrue()
+        // Verify equipped accessory carries over to buddy model
+        val bunnyBuddy = state.buddies.firstOrNull { it.species.name == "BUNNY" }
+        assertThat(bunnyBuddy).isNotNull()
+        assertThat(bunnyBuddy?.accessory).isEqualTo(BuddyAccessory.BOW)
     }
 
     @Test

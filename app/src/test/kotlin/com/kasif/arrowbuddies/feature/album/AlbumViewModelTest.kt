@@ -138,22 +138,21 @@ class AlbumViewModelTest {
     fun `album loads all 24 species and correctly marks unlocked ones`() = runTest(testDispatcher) {
         val repo = FakeGameRepository()
         val viewModel = AlbumViewModel(repo, FakeSoundManager(), FakeHapticsManager())
+        testScheduler.advanceUntilIdle()
 
-        viewModel.uiState.test {
-            val state = awaitItem()
-            assertThat(state.speciesList.size).isEqualTo(24)
-            assertThat(state.discoveredSpeciesCount).isEqualTo(2) // BUNNY and CHICK
+        val state = viewModel.uiState.value
+        assertThat(state.speciesList.size).isEqualTo(24)
+        assertThat(state.discoveredSpeciesCount).isEqualTo(2) // BUNNY and CHICK
 
-            val bunny = state.speciesList.first { it.species.name == "BUNNY" }
-            assertThat(bunny.unlocked).isTrue()
-            assertThat(bunny.tier).isEqualTo(FriendshipTier.SILVER)
-            assertThat(bunny.rescuedCount).isEqualTo(55)
-            assertThat(bunny.equippedAccessory).isEqualTo(BuddyAccessory.BOW)
+        val bunny = state.speciesList.first { it.species.name == "BUNNY" }
+        assertThat(bunny.unlocked).isTrue()
+        assertThat(bunny.tier).isEqualTo(FriendshipTier.SILVER)
+        assertThat(bunny.rescuedCount).isEqualTo(55)
+        assertThat(bunny.equippedAccessory).isEqualTo(BuddyAccessory.BOW)
 
-            val lockedSpecies = state.speciesList.first { it.species.name == "TIGER_CUB" }
-            assertThat(lockedSpecies.unlocked).isFalse()
-            assertThat(lockedSpecies.rescuedCount).isEqualTo(0)
-        }
+        val lockedSpecies = state.speciesList.first { it.species.name == "TIGER_CUB" }
+        assertThat(lockedSpecies.unlocked).isFalse()
+        assertThat(lockedSpecies.rescuedCount).isEqualTo(0)
     }
 
     @Test

@@ -119,17 +119,16 @@ class DailyRescueViewModelTest {
     fun `daily rescue loads streak and today completion status`() = runTest(testDispatcher) {
         val repo = FakeGameRepository()
         val viewModel = DailyRescueViewModel(repo, FakeSoundManager(), FakeHapticsManager())
+        testScheduler.advanceUntilIdle()
 
-        viewModel.uiState.test {
-            val state = awaitItem()
-            assertThat(state.streakDays).isEqualTo(3)
-            assertThat(state.isCompletedToday).isTrue()
-            assertThat(state.todayStars).isEqualTo(3)
-            assertThat(state.todayMistakes).isEqualTo(0)
-            assertThat(state.streakRewards.size).isEqualTo(7)
-            assertThat(state.streakRewards.last().hasDecorGift).isTrue()
-            assertThat(state.shareResultText).contains("Stars: ⭐⭐⭐")
-            assertThat(state.shareResultText).contains("Bonks: 0 🎯")
-        }
+        val state = viewModel.uiState.value
+        assertThat(state.streakDays).isEqualTo(3)
+        assertThat(state.isCompletedToday).isTrue()
+        assertThat(state.todayStars).isEqualTo(3)
+        assertThat(state.todayMistakes).isEqualTo(0)
+        assertThat(state.streakRewards.size).isEqualTo(7)
+        assertThat(state.streakRewards.last().hasDecorGift).isTrue()
+        assertThat(state.shareResultText).contains("Stars: ⭐⭐⭐")
+        assertThat(state.shareResultText).contains("Bonks: 0 🎯")
     }
 }
