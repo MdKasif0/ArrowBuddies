@@ -1,10 +1,18 @@
 package com.kasif.arrowbuddies.feature.game
 
 import androidx.compose.runtime.Immutable
+import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.engine.model.GameState
 import com.kasif.arrowbuddies.engine.model.GameStatus
 import com.kasif.arrowbuddies.engine.model.LevelDef
 import com.kasif.arrowbuddies.engine.model.PeekingPath
+import com.kasif.arrowbuddies.engine.model.Pos
+
+enum class BoosterType {
+    Hint,
+    Undo,
+    ExtraHeart
+}
 
 @Immutable
 data class GameUiState(
@@ -16,8 +24,23 @@ data class GameUiState(
     val activePeekingPath: PeekingPath? = null,
     val showLevelCompleteDialog: Boolean = false,
     val showLevelFailedDialog: Boolean = false,
+    val showPauseSheet: Boolean = false,
+    val showLeaveLevelDialog: Boolean = false,
+    val showBoosterShop: BoosterType? = null,
     val activeMechanicIntro: MechanicType? = null,
-    val safeBuddyIds: Set<String> = emptySet()
+    val safeBuddyIds: Set<String> = emptySet(),
+    val hintBuddyId: String? = null,
+    val tutorialSpeechBubble: String? = null,
+    val tutorialHandPos: Pos? = null,
+    val hintsAvailable: Int = 3,
+    val undosAvailable: Int = 3,
+    val berries: Int = 100,
+    val soundEnabled: Boolean = true,
+    val musicEnabled: Boolean = true,
+    val hapticsEnabled: Boolean = true,
+    val newSpeciesUnlocked: BuddySpecies? = null,
+    val goldenBerryBonus: Int = 0,
+    val isTutorialLevel: Boolean = false
 ) {
     val heartsRemaining: Int get() = gameState.hearts
     val rescuedCount: Int get() = gameState.rescuedIds.size
@@ -40,4 +63,16 @@ sealed interface GameUiEvent {
     data object DismissDialog : GameUiEvent
     data object DismissMechanicIntro : GameUiEvent
     data object NextLevel : GameUiEvent
+    data object RequestHint : GameUiEvent
+    data object OpenPauseSheet : GameUiEvent
+    data object DismissPauseSheet : GameUiEvent
+    data object RequestLeaveLevel : GameUiEvent
+    data object DismissLeaveLevel : GameUiEvent
+    data object OpenBoosterShop : GameUiEvent
+    data object DismissBoosterShop : GameUiEvent
+    data class BuyBooster(val type: BoosterType) : GameUiEvent
+    data object ReviveWithHeart : GameUiEvent
+    data class ToggleSound(val enabled: Boolean) : GameUiEvent
+    data class ToggleMusic(val enabled: Boolean) : GameUiEvent
+    data class ToggleHaptics(val enabled: Boolean) : GameUiEvent
 }

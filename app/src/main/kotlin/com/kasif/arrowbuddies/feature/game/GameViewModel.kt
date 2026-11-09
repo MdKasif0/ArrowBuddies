@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.kasif.arrowbuddies.core.audio.SoundManager
+import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import com.kasif.arrowbuddies.data.repository.GameRepository
 import com.kasif.arrowbuddies.data.repository.LevelRepository
@@ -13,6 +14,7 @@ import com.kasif.arrowbuddies.engine.model.GameState
 import com.kasif.arrowbuddies.engine.model.GameStatus
 import com.kasif.arrowbuddies.engine.model.LevelDef
 import com.kasif.arrowbuddies.engine.model.MoveResult
+import com.kasif.arrowbuddies.engine.model.Pos
 import com.kasif.arrowbuddies.engine.model.RefusalReason
 import com.kasif.arrowbuddies.engine.model.Tile
 import com.kasif.arrowbuddies.navigation.Route
@@ -60,26 +62,35 @@ class GameViewModel @Inject constructor(
             runCatching { json.decodeFromString(GameState.serializer(), it) }.getOrNull()
         }
 
-        val levelDef: LevelDef
-        val gameState: GameState
+        val levelDef = levelRepository.loadLevel(initialLevelId)
+        val activeState = restoredState ?: GameState(level = levelDef, buddies = levelDef.buddies)
+        val safeIds = computeSafeBuddyIds(activeState)
 
-        if (restoredState != null) {
-            levelDef = restoredState.level
-            gameState = restoredState
-        } else {
-            levelDef = levelRepository.loadLevel(initialLevelId)
-            gameState = GameState(level = levelDef, buddies = levelDef.buddies)
-        }
+        val isTutorial = isTutorialLevelId(levelDef.id)
+        val initialHandPos = if (isTutorial && (levelDef.id == "w1-l01" || levelDef.id == "1")) Pos(1, 1) else null
+        val initialSpeech = if (isTutorial && (levelDef.id == "w1-l01" || levelDef.id == "1")) "Tap me to help me escape!" else null
 
-        val safeBuddyIds = computeSafeBuddyIds(gameState)
         _uiState = MutableStateFlow(
             GameUiState(
                 levelId = levelDef.id,
                 level = levelDef,
-                gameState = gameState,
-                safeBuddyIds = safeBuddyIds
+                gameState = activeState,
+                safeBuddyIds = safeIds,
+                isTutorialLevel = isTutorial,
+                tutorialHandPos = initialHandPos,
+                tutorialSpeechBubble = initialSpeech
             )
         )
+
+        // Observe repository state for inventory and preferences
+        viewModelScope.launch {
+            launch { gameRepository.hintsCount.collect { c -> _uiState.update { it.copy(hintsAvailable = c) } } }
+            launch { gameRepository.undosCount.collect { c -> _uiState.update { it.copy(undosAvailable = c) } } }
+            launch { gameRepository.berries.collect { b -> _uiState.update { it.copy(berries = b) } } }
+            launch { gameRepository.soundEnabled.collect { s -> _uiState.update { it.copy(soundEnabled = s) } } }
+            launch { gameRepository.musicEnabled.collect { m -> _uiState.update { it.copy(musicEnabled = m) } } }
+            launch { gameRepository.hapticsEnabled.collect { h -> _uiState.update { it.copy(hapticsEnabled = h) } } }
+        }
 
         checkMechanicIntro(levelDef)
     }
@@ -99,6 +110,18 @@ class GameViewModel @Inject constructor(
             is GameUiEvent.DismissDialog -> handleDismissDialog()
             is GameUiEvent.DismissMechanicIntro -> handleDismissMechanicIntro()
             is GameUiEvent.NextLevel -> handleNextLevel()
+            is GameUiEvent.RequestHint -> handleRequestHint()
+            is GameUiEvent.OpenPauseSheet -> _uiState.update { it.copy(showPauseSheet = true) }
+            is GameUiEvent.DismissPauseSheet -> _uiState.update { it.copy(showPauseSheet = false) }
+            is GameUiEvent.RequestLeaveLevel -> _uiState.update { it.copy(showLeaveLevelDialog = true) }
+            is GameUiEvent.DismissLeaveLevel -> _uiState.update { it.copy(showLeaveLevelDialog = false) }
+            is GameUiEvent.OpenBoosterShop -> _uiState.update { it.copy(showBoosterShop = BoosterType.Hint) }
+            is GameUiEvent.DismissBoosterShop -> _uiState.update { it.copy(showBoosterShop = null) }
+            is GameUiEvent.BuyBooster -> handleBuyBooster(event.type)
+            is GameUiEvent.ReviveWithHeart -> handleReviveWithHeart()
+            is GameUiEvent.ToggleSound -> handleToggleSound(event.enabled)
+            is GameUiEvent.ToggleMusic -> handleToggleMusic(event.enabled)
+            is GameUiEvent.ToggleHaptics -> handleToggleHaptics(event.enabled)
         }
     }
 
@@ -130,17 +153,24 @@ class GameViewModel @Inject constructor(
 
         when (val result = outcome.result) {
             is MoveResult.Escaped -> {
-                // Lock input during escape animation (55 ms per cell, max 450 ms)
                 val dashMs = (result.path.size * 55L).coerceAtMost(450L)
                 val totalAnimMs = 70L + dashMs + 320L
 
-                _uiState.update { it.copy(isInputLocked = true, pressedBuddyId = null, activePeekingPath = null) }
+                _uiState.update {
+                    it.copy(
+                        isInputLocked = true,
+                        pressedBuddyId = null,
+                        activePeekingPath = null,
+                        tutorialSpeechBubble = null,
+                        tutorialHandPos = null
+                    )
+                }
 
                 viewModelScope.launch {
                     _effects.emit(GameEffect.PlayEscape(buddyId, result.path, result.exitSide, buddy))
                     _effects.emit(GameEffect.PlaySound(SoundType.ESCAPE))
 
-                    // Key Carrier Escaped -> Unlock matching cages!
+                    // Key Carrier Escaped -> Unlock matching cages
                     val carrierKeyColor = buddy.keyColor
                     if (carrierKeyColor != null) {
                         val matchingCages = currentState.gameState.buddies.filter { it.cageColor == carrierKeyColor }
@@ -180,15 +210,28 @@ class GameViewModel @Inject constructor(
                     }
 
                     if (outcome.newState.status == GameStatus.WON) {
-                        _effects.emit(GameEffect.PlaySound(SoundType.WIN))
-                        delay(500L)
-                        _uiState.update { it.copy(showLevelCompleteDialog = true) }
+                        onLevelWon(outcome.newState)
                     }
                 }
             }
 
             is MoveResult.Bonked -> {
                 val dashMs = (result.path.size * 45L).coerceAtMost(280L)
+
+                // Tutorial protection: never lose hearts during tutorial
+                val safeNewState = if (currentState.isTutorialLevel) {
+                    outcome.newState.copy(hearts = 3, mistakes = 0, status = GameStatus.PLAYING)
+                } else {
+                    outcome.newState
+                }
+
+                val speechBubbleText = if (currentState.isTutorialLevel && (currentState.levelId == "w1-l02" || currentState.levelId == "2")) {
+                    "Oops! Free your friend first!"
+                } else null
+
+                val tutorialHandPos = if (currentState.isTutorialLevel && (currentState.levelId == "w1-l02" || currentState.levelId == "2")) {
+                    Pos(2, 2) // Point to the unblocked buddy
+                } else null
 
                 _uiState.update { it.copy(isInputLocked = true, pressedBuddyId = null, activePeekingPath = null) }
 
@@ -197,22 +240,23 @@ class GameViewModel @Inject constructor(
                     _effects.emit(GameEffect.PlaySound(SoundType.BONK))
 
                     delay(dashMs)
-                    // Impact! Soft screen shake & reject haptic
                     _effects.emit(GameEffect.ScreenShake(intensityDp = 4f, durationMs = 180L))
                     _effects.emit(GameEffect.TriggerHaptic(HapticType.REJECT))
 
-                    delay(260L) // Star orbit and bounce back
-                    persistGameState(outcome.newState)
-                    val safeIds = computeSafeBuddyIds(outcome.newState)
+                    delay(260L)
+                    persistGameState(safeNewState)
+                    val safeIds = computeSafeBuddyIds(safeNewState)
                     _uiState.update {
                         it.copy(
-                            gameState = outcome.newState,
+                            gameState = safeNewState,
                             isInputLocked = false,
-                            safeBuddyIds = safeIds
+                            safeBuddyIds = safeIds,
+                            tutorialSpeechBubble = speechBubbleText,
+                            tutorialHandPos = tutorialHandPos
                         )
                     }
 
-                    if (outcome.newState.status == GameStatus.LOST) {
+                    if (safeNewState.status == GameStatus.LOST) {
                         _effects.emit(GameEffect.PlaySound(SoundType.LOSE))
                         delay(350L)
                         _uiState.update { it.copy(showLevelFailedDialog = true) }
@@ -230,7 +274,6 @@ class GameViewModel @Inject constructor(
                     _effects.emit(GameEffect.PlayMudStop(buddyId, result.path, targetPos, buddy))
                     _effects.emit(GameEffect.PlaySound(SoundType.SQUELCH))
 
-                    // Sleepy buddies waking up if neighbor vacated
                     val newlyAwakened = outcome.newState.buddies.filter { newB ->
                         val oldB = currentState.gameState.findBuddy(newB.id)
                         oldB != null && oldB.sleepy && !newB.sleepy
@@ -273,6 +316,157 @@ class GameViewModel @Inject constructor(
         }
     }
 
+    private fun onLevelWon(state: GameState) {
+        viewModelScope.launch {
+            _effects.emit(GameEffect.PlaySound(SoundType.WIN))
+
+            val level = _uiState.value.level
+            val hasGolden = level.buddies.any { it.isGolden }
+            val goldenBonus = if (hasGolden) 25 else 0
+            val berriesEarned = 10 + (5 * state.stars) + goldenBonus
+
+            // Check if any species rescued was not previously recorded
+            val existingSpecies = gameRepository.rescuedSpecies.first()
+            val levelSpecies = level.buddies.map { it.species }.distinct()
+            val newSpecies = levelSpecies.filter { it !in existingSpecies }
+            val newSpeciesEnum = newSpecies.firstOrNull()?.let {
+                runCatching { BuddySpecies.valueOf(it) }.getOrNull()
+            }
+
+            gameRepository.recordLevelWin(
+                levelId = level.id,
+                stars = state.stars,
+                berriesEarned = berriesEarned,
+                rescuedCount = state.rescuedIds.size,
+                newSpecies = newSpecies
+            )
+
+            if (_uiState.value.isTutorialLevel && (level.id == "w1-l03" || level.id == "3")) {
+                gameRepository.setTutorialCompleted(true)
+            }
+
+            delay(500L)
+            _uiState.update {
+                it.copy(
+                    showLevelCompleteDialog = true,
+                    newSpeciesUnlocked = newSpeciesEnum,
+                    goldenBerryBonus = goldenBonus
+                )
+            }
+        }
+    }
+
+    private fun handleRequestHint() {
+        val state = _uiState.value
+        if (state.hintsAvailable > 0) {
+            viewModelScope.launch {
+                gameRepository.useHint()
+                val hintBuddyId = GameEngine.findHint(state.gameState)
+                if (hintBuddyId != null) {
+                    val buddy = state.gameState.findBuddy(hintBuddyId)
+                    _uiState.update {
+                        it.copy(
+                            hintBuddyId = hintBuddyId,
+                            tutorialHandPos = buddy?.pos
+                        )
+                    }
+                    _effects.emit(GameEffect.TriggerHaptic(HapticType.CONFIRM))
+                    delay(2000L)
+                    _uiState.update {
+                        it.copy(
+                            hintBuddyId = null,
+                            tutorialHandPos = null
+                        )
+                    }
+                }
+            }
+        } else {
+            _uiState.update { it.copy(showBoosterShop = BoosterType.Hint) }
+        }
+    }
+
+    private fun handleUndo() {
+        val currentState = _uiState.value
+        if (currentState.isInputLocked || currentState.gameState.status != GameStatus.PLAYING) return
+
+        if (currentState.undosAvailable > 0) {
+            viewModelScope.launch {
+                gameRepository.useUndo()
+            }
+            val restored = GameEngine.undo(currentState.gameState) ?: return
+            persistGameState(restored)
+            val safeIds = computeSafeBuddyIds(restored)
+
+            _uiState.update {
+                it.copy(
+                    gameState = restored,
+                    safeBuddyIds = safeIds,
+                    activePeekingPath = null,
+                    pressedBuddyId = null
+                )
+            }
+            viewModelScope.launch {
+                _effects.emit(GameEffect.TriggerHaptic(HapticType.TICK))
+            }
+        } else {
+            _uiState.update { it.copy(showBoosterShop = BoosterType.Undo) }
+        }
+    }
+
+    private fun handleBuyBooster(type: BoosterType) {
+        viewModelScope.launch {
+            when (type) {
+                BoosterType.Hint -> gameRepository.buyHintWithBerries(30)
+                BoosterType.Undo -> gameRepository.buyUndoWithBerries(20)
+                BoosterType.ExtraHeart -> {
+                    if (gameRepository.spendBerries(40)) {
+                        _uiState.update {
+                            it.copy(
+                                gameState = it.gameState.copy(
+                                    hearts = (it.gameState.hearts + 1).coerceAtMost(3),
+                                    status = GameStatus.PLAYING
+                                ),
+                                showLevelFailedDialog = false
+                            )
+                        }
+                    }
+                }
+            }
+            _uiState.update { it.copy(showBoosterShop = null) }
+        }
+    }
+
+    private fun handleReviveWithHeart() {
+        viewModelScope.launch {
+            if (gameRepository.spendBerries(40)) {
+                _uiState.update {
+                    it.copy(
+                        gameState = it.gameState.copy(
+                            hearts = 1,
+                            status = GameStatus.PLAYING
+                        ),
+                        showLevelFailedDialog = false
+                    )
+                }
+                _effects.emit(GameEffect.TriggerHaptic(HapticType.CONFIRM))
+            } else {
+                _uiState.update { it.copy(showBoosterShop = BoosterType.ExtraHeart) }
+            }
+        }
+    }
+
+    private fun handleToggleSound(enabled: Boolean) {
+        viewModelScope.launch { gameRepository.setSoundEnabled(enabled) }
+    }
+
+    private fun handleToggleMusic(enabled: Boolean) {
+        viewModelScope.launch { gameRepository.setMusicEnabled(enabled) }
+    }
+
+    private fun handleToggleHaptics(enabled: Boolean) {
+        viewModelScope.launch { gameRepository.setHapticsEnabled(enabled) }
+    }
+
     private fun handlePathPeekStart(buddyId: String) {
         val currentState = _uiState.value
         if (currentState.isInputLocked || currentState.gameState.status != GameStatus.PLAYING) return
@@ -289,27 +483,6 @@ class GameViewModel @Inject constructor(
         _uiState.update { it.copy(activePeekingPath = null) }
     }
 
-    private fun handleUndo() {
-        val currentState = _uiState.value
-        if (currentState.isInputLocked || currentState.gameState.status != GameStatus.PLAYING) return
-
-        val restored = GameEngine.undo(currentState.gameState) ?: return
-        persistGameState(restored)
-        val safeIds = computeSafeBuddyIds(restored)
-
-        _uiState.update {
-            it.copy(
-                gameState = restored,
-                safeBuddyIds = safeIds,
-                activePeekingPath = null,
-                pressedBuddyId = null
-            )
-        }
-        viewModelScope.launch {
-            _effects.emit(GameEffect.TriggerHaptic(HapticType.TICK))
-        }
-    }
-
     private fun handleRestart() {
         val currentLevel = _uiState.value.level
         val initialState = GameState(level = currentLevel, buddies = currentLevel.buddies)
@@ -324,6 +497,7 @@ class GameViewModel @Inject constructor(
                 activePeekingPath = null,
                 showLevelCompleteDialog = false,
                 showLevelFailedDialog = false,
+                showPauseSheet = false,
                 safeBuddyIds = safeIds
             )
         }
@@ -333,9 +507,23 @@ class GameViewModel @Inject constructor(
     }
 
     private fun handleNextLevel() {
-        val available = levelRepository.getAvailableDevLevelIds()
-        val currentIndex = available.indexOf(_uiState.value.level.id).coerceAtLeast(0)
-        val nextId = available[(currentIndex + 1) % available.size]
+        val currentId = _uiState.value.level.id
+        val match = Regex("""w([1-8])-l([0-3][0-9])""").matchEntire(currentId)
+        val nextId = if (match != null) {
+            val world = match.groupValues[1].toInt()
+            val level = match.groupValues[2].toInt()
+            if (level < 30) {
+                "w$world-l${(level + 1).toString().padStart(2, '0')}"
+            } else if (world < 8) {
+                "w${world + 1}-l01"
+            } else {
+                "w1-l01"
+            }
+        } else {
+            val available = levelRepository.getAvailableDevLevelIds()
+            val currentIndex = available.indexOf(currentId).coerceAtLeast(0)
+            available[(currentIndex + 1) % available.size]
+        }
         handleLoadLevel(nextId)
     }
 
@@ -345,6 +533,10 @@ class GameViewModel @Inject constructor(
         persistGameState(initialState)
         savedStateHandle["levelId"] = levelId
         val safeIds = computeSafeBuddyIds(initialState)
+
+        val isTutorial = isTutorialLevelId(nextLevel.id)
+        val initialHandPos = if (isTutorial && (nextLevel.id == "w1-l01" || nextLevel.id == "1")) Pos(1, 1) else null
+        val initialSpeech = if (isTutorial && (nextLevel.id == "w1-l01" || nextLevel.id == "1")) "Tap me to help me escape!" else null
 
         _uiState.update {
             it.copy(
@@ -356,7 +548,13 @@ class GameViewModel @Inject constructor(
                 activePeekingPath = null,
                 showLevelCompleteDialog = false,
                 showLevelFailedDialog = false,
-                safeBuddyIds = safeIds
+                showPauseSheet = false,
+                showLeaveLevelDialog = false,
+                safeBuddyIds = safeIds,
+                isTutorialLevel = isTutorial,
+                tutorialHandPos = initialHandPos,
+                tutorialSpeechBubble = initialSpeech,
+                newSpeciesUnlocked = null
             )
         }
         checkMechanicIntro(nextLevel)
@@ -366,7 +564,10 @@ class GameViewModel @Inject constructor(
         _uiState.update {
             it.copy(
                 showLevelCompleteDialog = false,
-                showLevelFailedDialog = false
+                showLevelFailedDialog = false,
+                showPauseSheet = false,
+                showLeaveLevelDialog = false,
+                showBoosterShop = null
             )
         }
     }
@@ -407,6 +608,10 @@ class GameViewModel @Inject constructor(
         runCatching {
             savedStateHandle[KEY_SAVED_GAME_STATE] = json.encodeToString(GameState.serializer(), state)
         }
+    }
+
+    private fun isTutorialLevelId(id: String): Boolean {
+        return id in listOf("1", "w1-l01", "2", "w1-l02", "3", "w1-l03")
     }
 
     companion object {
