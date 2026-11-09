@@ -20,16 +20,15 @@ object HandcraftedTutorials {
             1 -> when (index) {
                 1 -> LevelDef(
                     id = "w1-l01",
-                    cols = 4,
-                    rows = 4,
+                    cols = 3,
+                    rows = 3,
                     tiles = emptyMap(),
                     buddies = listOf(
-                        Buddy("bunny_1", "BUNNY", Pos(1, 1), Direction.UP),
-                        Buddy("chick_1", "CHICK", Pos(2, 2), Direction.DOWN)
+                        Buddy("bunny_1", "BUNNY", Pos(1, 1), Direction.UP)
                     ),
                     world = 1,
                     index = 1,
-                    comment = "Tutorial 1: Tap a buddy to dash to the edge and escape to safety!"
+                    comment = "Tutorial 1: Tap me to help me escape!"
                 )
                 2 -> LevelDef(
                     id = "w1-l02",
@@ -46,17 +45,18 @@ object HandcraftedTutorials {
                 )
                 else -> LevelDef(
                     id = "w1-l03",
-                    cols = 5,
-                    rows = 5,
-                    tiles = mapOf(Pos(2, 1) to Tile.Rock),
+                    cols = 4,
+                    rows = 4,
+                    tiles = emptyMap(),
                     buddies = listOf(
-                        Buddy("chick_1", "CHICK", Pos(1, 1), Direction.DOWN),
-                        Buddy("bunny_1", "BUNNY", Pos(2, 3), Direction.DOWN),
-                        Buddy("piglet_1", "PIGLET", Pos(3, 1), Direction.DOWN)
+                        Buddy("bunny_1", "BUNNY", Pos(1, 1), Direction.UP),
+                        Buddy("chick_1", "CHICK", Pos(2, 2), Direction.DOWN),
+                        Buddy("piglet_1", "PIGLET", Pos(2, 1), Direction.RIGHT),
+                        Buddy("chick_2", "CHICK", Pos(1, 2), Direction.LEFT)
                     ),
                     world = 1,
                     index = 3,
-                    comment = "Tutorial 3: Watch out for Rocks! They block your path and cause a bonk."
+                    comment = "Tutorial 3: Free all 4 buddies to complete the tutorial!"
                 )
             }
             2 -> when (index) {

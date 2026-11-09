@@ -3,13 +3,12 @@
         "id": "w1-l01",
         "world": 1,
         "index": 1,
-        "cols": 4,
-        "rows": 4,
+        "cols": 3,
+        "rows": 3,
         "grid": [
-            "....",
-            "....",
-            "....",
-            "...."
+            "...",
+            "...",
+            "..."
         ],
         "buddies": [
             {
@@ -22,20 +21,9 @@
                 "keyColor": null,
                 "sleepy": false,
                 "isGolden": false
-            },
-            {
-                "x": 2,
-                "y": 2,
-                "d": "D",
-                "s": "CHICK",
-                "id": "chick_1",
-                "cageColor": null,
-                "keyColor": null,
-                "sleepy": false,
-                "isGolden": false
             }
         ],
-        "comment": "Tutorial 1: Tap a buddy to dash to the edge and escape to safety!"
+        "comment": "Tutorial 1: Tap me to help me escape!"
     },
     {
         "id": "w1-l02",
@@ -79,19 +67,29 @@
         "id": "w1-l03",
         "world": 1,
         "index": 3,
-        "cols": 5,
-        "rows": 5,
+        "cols": 4,
+        "rows": 4,
         "grid": [
-            ".....",
-            "..R..",
-            ".....",
-            ".....",
-            "....."
+            "....",
+            "....",
+            "....",
+            "...."
         ],
         "buddies": [
             {
                 "x": 1,
                 "y": 1,
+                "d": "U",
+                "s": "BUNNY",
+                "id": "bunny_1",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
+            },
+            {
+                "x": 2,
+                "y": 2,
                 "d": "D",
                 "s": "CHICK",
                 "id": "chick_1",
@@ -102,28 +100,28 @@
             },
             {
                 "x": 2,
-                "y": 3,
-                "d": "D",
-                "s": "BUNNY",
-                "id": "bunny_1",
-                "cageColor": null,
-                "keyColor": null,
-                "sleepy": false,
-                "isGolden": false
-            },
-            {
-                "x": 3,
                 "y": 1,
-                "d": "D",
+                "d": "R",
                 "s": "PIGLET",
                 "id": "piglet_1",
                 "cageColor": null,
                 "keyColor": null,
                 "sleepy": false,
                 "isGolden": false
+            },
+            {
+                "x": 1,
+                "y": 2,
+                "d": "L",
+                "s": "CHICK",
+                "id": "chick_2",
+                "cageColor": null,
+                "keyColor": null,
+                "sleepy": false,
+                "isGolden": false
             }
         ],
-        "comment": "Tutorial 3: Watch out for Rocks! They block your path and cause a bonk."
+        "comment": "Tutorial 3: Free all 4 buddies to complete the tutorial!"
     },
     {
         "id": "w1-l04",
