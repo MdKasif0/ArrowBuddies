@@ -141,12 +141,13 @@ class GameViewModel @Inject constructor(
                     _effects.emit(GameEffect.PlaySound(SoundType.ESCAPE))
 
                     // Key Carrier Escaped -> Unlock matching cages!
-                    if (buddy.keyColor != null) {
-                        val matchingCages = currentState.gameState.buddies.filter { it.cageColor == buddy.keyColor }
+                    val carrierKeyColor = buddy.keyColor
+                    if (carrierKeyColor != null) {
+                        val matchingCages = currentState.gameState.buddies.filter { it.cageColor == carrierKeyColor }
                         if (matchingCages.isNotEmpty()) {
                             _effects.emit(
                                 GameEffect.PlayKeyUnlock(
-                                    keyColor = buddy.keyColor,
+                                    keyColor = carrierKeyColor,
                                     fromPos = buddy.pos,
                                     targetPositions = matchingCages.map { it.pos }
                                 )
