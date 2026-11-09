@@ -29,5 +29,8 @@ sealed interface Route {
 
     @Serializable
     data object DesignCatalog : Route
+
+    @Serializable
+    data object BuddyGallery : Route
 }
 

@@ -149,12 +149,23 @@ fun ArrowBuddiesNavHost(
                 },
                 onNavigateToCatalog = {
                     navController.navigate(Route.DesignCatalog)
+                },
+                onNavigateToGallery = {
+                    navController.navigate(Route.BuddyGallery)
                 }
             )
         }
 
         composable<Route.DesignCatalog> {
             DesignCatalogScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable<Route.BuddyGallery> {
+            com.kasif.arrowbuddies.feature.gallery.BuddyGalleryScreen(
                 onNavigateBack = {
                     navController.popBackStack()
                 }

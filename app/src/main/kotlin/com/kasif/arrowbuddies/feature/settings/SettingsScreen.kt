@@ -20,7 +20,8 @@ fun SettingsScreen(
     onEvent: (SettingsUiEvent) -> Unit,
     onNavigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    onNavigateToCatalog: (() -> Unit)? = null
+    onNavigateToCatalog: (() -> Unit)? = null,
+    onNavigateToGallery: (() -> Unit)? = null
 ) {
     ArrowBuddiesScreenScaffold(
         title = stringResource(R.string.screen_settings),
@@ -45,13 +46,23 @@ fun SettingsScreen(
             onClick = { onEvent(SettingsUiEvent.ToggleHaptics(!uiState.hapticsEnabled)) }
         )
 
-        if (BuildConfig.DEBUG && onNavigateToCatalog != null) {
-            Spacer(modifier = Modifier.height(8.dp))
-            CandyButton(
-                text = "🎨 Design System Catalog",
-                variant = CandyButtonVariant.Primary,
-                onClick = onNavigateToCatalog
-            )
+        if (BuildConfig.DEBUG) {
+            if (onNavigateToGallery != null) {
+                Spacer(modifier = Modifier.height(8.dp))
+                CandyButton(
+                    text = "🐾 Buddy Characters Gallery",
+                    variant = CandyButtonVariant.Primary,
+                    onClick = onNavigateToGallery
+                )
+            }
+            if (onNavigateToCatalog != null) {
+                Spacer(modifier = Modifier.height(8.dp))
+                CandyButton(
+                    text = "🎨 Design System Catalog",
+                    variant = CandyButtonVariant.Secondary,
+                    onClick = onNavigateToCatalog
+                )
+            }
         }
 
         ArrowBuddiesNavButton(
