@@ -1,13 +1,16 @@
 package com.kasif.arrowbuddies.feature.settings
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
+import com.kasif.arrowbuddies.core.notification.DailyReminderScheduler
 import com.kasif.arrowbuddies.data.repository.GameRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,6 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val repository: GameRepository,
     private val soundManager: SoundManager,
     private val hapticsManager: HapticsManager
@@ -54,6 +58,11 @@ class SettingsViewModel @Inject constructor(
                 _uiState.update { it.copy(reduceMotion = enabled) }
             }
         }
+        viewModelScope.launch {
+            repository.dailyReminderEnabled.collect { enabled ->
+                _uiState.update { it.copy(dailyReminderEnabled = enabled) }
+            }
+        }
     }
 
     fun onEvent(event: SettingsUiEvent) {
@@ -63,6 +72,14 @@ class SettingsViewModel @Inject constructor(
                 is SettingsUiEvent.ToggleMusic -> repository.setMusicEnabled(event.enabled)
                 is SettingsUiEvent.ToggleHaptics -> repository.setHapticsEnabled(event.enabled)
                 is SettingsUiEvent.ToggleReduceMotion -> repository.setReduceMotion(event.enabled)
+                is SettingsUiEvent.ToggleDailyReminder -> {
+                    repository.setDailyReminderEnabled(event.enabled)
+                    if (event.enabled) {
+                        DailyReminderScheduler.scheduleDailyReminder(context)
+                    } else {
+                        DailyReminderScheduler.cancelDailyReminder(context)
+                    }
+                }
                 is SettingsUiEvent.SetLanguage -> {
                     val appLocale = LocaleListCompat.forLanguageTags(event.langCode)
                     AppCompatDelegate.setApplicationLocales(appLocale)

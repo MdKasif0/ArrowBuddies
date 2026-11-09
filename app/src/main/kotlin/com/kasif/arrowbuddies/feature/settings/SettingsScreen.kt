@@ -201,6 +201,30 @@ fun SettingsScreen(
                                 onCheckedChange = { onEvent(SettingsUiEvent.ToggleReduceMotion(it)) }
                             )
                         }
+
+                        // Daily Reminder (6:00 PM)
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
+                                Text(
+                                    text = stringResource(R.string.reminder_setting_title),
+                                    style = typography.body,
+                                    color = Ink
+                                )
+                                Text(
+                                    text = stringResource(R.string.reminder_setting_subtitle),
+                                    style = typography.caption.copy(fontSize = 11.sp),
+                                    color = Ink.copy(alpha = 0.6f)
+                                )
+                            }
+                            ToggleSwitch(
+                                checked = uiState.dailyReminderEnabled,
+                                onCheckedChange = { onEvent(SettingsUiEvent.ToggleDailyReminder(it)) }
+                            )
+                        }
                     }
                 }
 

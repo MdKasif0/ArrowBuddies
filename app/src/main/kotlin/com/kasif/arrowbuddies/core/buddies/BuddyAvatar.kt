@@ -26,9 +26,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.kasif.arrowbuddies.core.buddies.model.BuddyExpression
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
+import com.kasif.arrowbuddies.core.buddies.render.AccessoryRenderer
 import com.kasif.arrowbuddies.core.buddies.render.BuddyDrawContext
 import com.kasif.arrowbuddies.core.buddies.render.BuddyRenderer
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesTheme
+import com.kasif.arrowbuddies.core.model.BuddyAccessory
 import com.kasif.arrowbuddies.engine.model.Direction
 
 /**
@@ -54,6 +56,7 @@ fun BuddyAvatar(
     direction: Direction,
     modifier: Modifier = Modifier,
     expression: BuddyExpression = BuddyExpression.IDLE,
+    accessory: BuddyAccessory = BuddyAccessory.NONE,
     size: Dp = 64.dp,
     phaseSeed: Int = remember(species) { (species.ordinal * 739) % 10000 },
     sharedClock: State<Long>? = null
@@ -120,6 +123,13 @@ fun BuddyAvatar(
                         timeMs = effectiveClock.value,
                         phaseSeed = phaseSeed,
                         animatedAngleDegrees = animatedBadgeAngle
+                    )
+                    AccessoryRenderer.renderAccessory(
+                        drawScope = this,
+                        accessory = accessory,
+                        w = this.size.width,
+                        h = this.size.height,
+                        timeMs = effectiveClock.value
                     )
                 }
             }

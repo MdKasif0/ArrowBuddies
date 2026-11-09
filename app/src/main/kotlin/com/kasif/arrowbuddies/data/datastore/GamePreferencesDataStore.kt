@@ -34,6 +34,8 @@ class GamePreferencesDataStore @Inject constructor(
         val HINTS_COUNT = intPreferencesKey("hints_count")
         val UNDOS_COUNT = intPreferencesKey("undos_count")
         val RESCUED_SPECIES = stringSetPreferencesKey("rescued_species")
+        val DAILY_REMINDER_ENABLED = booleanPreferencesKey("daily_reminder_enabled")
+        val REMINDER_PROMPT_SHOWN = booleanPreferencesKey("reminder_prompt_shown")
     }
 
     val soundEnabled: Flow<Boolean> = context.dataStore.data.map { preferences ->
@@ -82,6 +84,14 @@ class GamePreferencesDataStore @Inject constructor(
 
     val rescuedSpecies: Flow<Set<String>> = context.dataStore.data.map { preferences ->
         preferences[PreferencesKeys.RESCUED_SPECIES] ?: emptySet()
+    }
+
+    val dailyReminderEnabled: Flow<Boolean> = context.dataStore.data.map { preferences ->
+        preferences[PreferencesKeys.DAILY_REMINDER_ENABLED] ?: false
+    }
+
+    val reminderPromptShown: Flow<Boolean> = context.dataStore.data.map { preferences ->
+        preferences[PreferencesKeys.REMINDER_PROMPT_SHOWN] ?: false
     }
 
     fun getLevelStars(levelId: String): Flow<Int> = context.dataStore.data.map { preferences ->
@@ -256,6 +266,18 @@ class GamePreferencesDataStore @Inject constructor(
     suspend fun setMechanicSeen(mechanic: String) {
         context.dataStore.edit { preferences ->
             preferences[booleanPreferencesKey("mechanic_seen_$mechanic")] = true
+        }
+    }
+
+    suspend fun setDailyReminderEnabled(enabled: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[PreferencesKeys.DAILY_REMINDER_ENABLED] = enabled
+        }
+    }
+
+    suspend fun setReminderPromptShown(shown: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[PreferencesKeys.REMINDER_PROMPT_SHOWN] = shown
         }
     }
 }

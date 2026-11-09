@@ -570,3 +570,63 @@ fun BoosterShopDialog(
         }
     }
 }
+
+/**
+ * Polite opt-in prompt for 6 PM Daily Rescue reminder, shown once after level 5.
+ */
+@Composable
+fun DailyReminderOptInDialog(
+    onAccept: () -> Unit,
+    onDismiss: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val typography = ArrowBuddiesThemeTokens.typography
+
+    GameDialog(
+        visible = true,
+        onDismissRequest = onDismiss,
+        modifier = modifier
+    ) {
+        ToyPanel(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.reminder_prompt_title),
+                    style = typography.title.copy(fontSize = 22.sp),
+                    color = Ink,
+                    textAlign = TextAlign.Center
+                )
+
+                Text(
+                    text = stringResource(R.string.reminder_prompt_body),
+                    style = typography.body,
+                    color = Ink.copy(alpha = 0.85f),
+                    textAlign = TextAlign.Center
+                )
+
+                CandyButton(
+                    text = stringResource(R.string.reminder_prompt_confirm),
+                    onClick = onAccept,
+                    variant = CandyButtonVariant.Primary,
+                    modifier = Modifier.fillMaxWidth()
+                )
+
+                CandyButton(
+                    text = stringResource(R.string.reminder_prompt_dismiss),
+                    onClick = onDismiss,
+                    variant = CandyButtonVariant.Ghost,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+        }
+    }
+}

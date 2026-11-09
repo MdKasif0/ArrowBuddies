@@ -266,4 +266,8 @@
     <string name="reminder_prompt_dismiss">Maybe Later</string>
     <string name="reminder_notification_title">ArrowBuddies</string>
     <string name="reminder_notification_body">Your cute buddies miss you! Tap to play today\'s rescue. 🐾🫐</string>
+    <string name="reminder_channel_name">Daily Rescue Reminder</string>
+    <string name="reminder_channel_desc">Reminds you when a new Daily Rescue puzzle is ready</string>
+    <string name="reminder_setting_title">Daily Reminder (6:00 PM)</string>
+    <string name="reminder_setting_subtitle">Get notified when a new puzzle is ready</string>
 </resources>

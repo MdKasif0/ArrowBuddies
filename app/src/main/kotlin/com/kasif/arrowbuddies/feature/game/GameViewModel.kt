@@ -1,5 +1,6 @@
 package com.kasif.arrowbuddies.feature.game
 
+import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,6 +8,7 @@ import androidx.navigation.toRoute
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
+import com.kasif.arrowbuddies.core.notification.DailyReminderScheduler
 import com.kasif.arrowbuddies.data.repository.GameRepository
 import com.kasif.arrowbuddies.data.repository.LevelRepository
 import com.kasif.arrowbuddies.engine.GameEngine
@@ -19,6 +21,7 @@ import com.kasif.arrowbuddies.engine.model.RefusalReason
 import com.kasif.arrowbuddies.engine.model.Tile
 import com.kasif.arrowbuddies.navigation.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,10 +33,13 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
 class GameViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val levelRepository: LevelRepository,
     private val gameRepository: GameRepository,
     private val savedStateHandle: SavedStateHandle,
@@ -122,6 +128,20 @@ class GameViewModel @Inject constructor(
             is GameUiEvent.ToggleSound -> handleToggleSound(event.enabled)
             is GameUiEvent.ToggleMusic -> handleToggleMusic(event.enabled)
             is GameUiEvent.ToggleHaptics -> handleToggleHaptics(event.enabled)
+            is GameUiEvent.AcceptDailyReminder -> {
+                viewModelScope.launch {
+                    gameRepository.setDailyReminderEnabled(true)
+                    gameRepository.setReminderPromptShown(true)
+                    DailyReminderScheduler.scheduleDailyReminder(context)
+                    _uiState.update { it.copy(showReminderPromptDialog = false, showLevelCompleteDialog = true) }
+                }
+            }
+            is GameUiEvent.DismissDailyReminder -> {
+                viewModelScope.launch {
+                    gameRepository.setReminderPromptShown(true)
+                    _uiState.update { it.copy(showReminderPromptDialog = false, showLevelCompleteDialog = true) }
+                }
+            }
         }
     }
 
@@ -322,35 +342,47 @@ class GameViewModel @Inject constructor(
 
             val level = _uiState.value.level
             val hasGolden = level.buddies.any { it.isGolden }
-            val goldenBonus = if (hasGolden) 25 else 0
-            val berriesEarned = 10 + (5 * state.stars) + goldenBonus
+            val levelSpecies = level.buddies.map { it.species }
 
-            // Check if any species rescued was not previously recorded
-            val existingSpecies = gameRepository.rescuedSpecies.first()
-            val levelSpecies = level.buddies.map { it.species }.distinct()
-            val newSpecies = levelSpecies.filter { it !in existingSpecies }
-            val newSpeciesEnum = newSpecies.firstOrNull()?.let {
-                runCatching { BuddySpecies.valueOf(it) }.getOrNull()
-            }
-
-            gameRepository.recordLevelWin(
+            // Atomic database transaction via CompleteLevelUseCase in Room
+            val completionResult = gameRepository.completeLevel(
                 levelId = level.id,
                 stars = state.stars,
-                berriesEarned = berriesEarned,
-                rescuedCount = state.rescuedIds.size,
-                newSpecies = newSpecies
+                mistakes = state.mistakes,
+                rescuedSpeciesList = levelSpecies,
+                isGoldenBuddyRescued = hasGolden
             )
+
+            // If daily rescue, also record completion & streak
+            if (level.id.startsWith("daily")) {
+                val dateStr = level.id.removePrefix("daily-").ifEmpty {
+                    LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE)
+                }
+                gameRepository.recordDailyCompletion(dateStr, state.stars, state.mistakes)
+            }
 
             if (_uiState.value.isTutorialLevel && (level.id == "w1-l03" || level.id == "3")) {
                 gameRepository.setTutorialCompleted(true)
             }
 
+            // Check if reminder opt-in should trigger (after level 5)
+            val isLevel5 = level.id == "w1-l05" || level.id == "5" || level.index == 5
+            val promptShown = gameRepository.reminderPromptShown.first()
+            val shouldShowReminderPrompt = isLevel5 && !promptShown
+
+            val newSpeciesEnum = completionResult.tierUpEvents.firstOrNull()?.species?.let { s ->
+                runCatching { BuddySpecies.valueOf(s) }.getOrNull()
+            } ?: levelSpecies.firstOrNull()?.let {
+                runCatching { BuddySpecies.valueOf(it) }.getOrNull()
+            }
+
             delay(500L)
             _uiState.update {
                 it.copy(
-                    showLevelCompleteDialog = true,
+                    showLevelCompleteDialog = !shouldShowReminderPrompt,
+                    showReminderPromptDialog = shouldShowReminderPrompt,
                     newSpeciesUnlocked = newSpeciesEnum,
-                    goldenBerryBonus = goldenBonus
+                    goldenBerryBonus = if (hasGolden) 25 else 0
                 )
             }
         }

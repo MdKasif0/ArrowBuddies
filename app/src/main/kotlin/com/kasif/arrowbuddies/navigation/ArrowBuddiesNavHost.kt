@@ -154,6 +154,7 @@ fun ArrowBuddiesNavHost(
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             SanctuaryScreen(
                 uiState = uiState,
+                onEvent = viewModel::onEvent,
                 onNavigateBack = {
                     navController.popBackStack()
                 }

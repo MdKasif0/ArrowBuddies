@@ -40,7 +40,8 @@ data class GameUiState(
     val hapticsEnabled: Boolean = true,
     val newSpeciesUnlocked: BuddySpecies? = null,
     val goldenBerryBonus: Int = 0,
-    val isTutorialLevel: Boolean = false
+    val isTutorialLevel: Boolean = false,
+    val showReminderPromptDialog: Boolean = false
 ) {
     val heartsRemaining: Int get() = gameState.hearts
     val rescuedCount: Int get() = gameState.rescuedIds.size
@@ -75,4 +76,6 @@ sealed interface GameUiEvent {
     data class ToggleSound(val enabled: Boolean) : GameUiEvent
     data class ToggleMusic(val enabled: Boolean) : GameUiEvent
     data class ToggleHaptics(val enabled: Boolean) : GameUiEvent
+    data object AcceptDailyReminder : GameUiEvent
+    data object DismissDailyReminder : GameUiEvent
 }

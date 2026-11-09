@@ -279,5 +279,13 @@ fun GameScreen(
                 onDismiss = { onEvent(GameUiEvent.DismissMechanicIntro) }
             )
         }
+
+        // Daily Reminder Opt-in Dialog (Level 5+)
+        if (uiState.showReminderPromptDialog) {
+            DailyReminderOptInDialog(
+                onAccept = { onEvent(GameUiEvent.AcceptDailyReminder) },
+                onDismiss = { onEvent(GameUiEvent.DismissDailyReminder) }
+            )
+        }
     }
 }
