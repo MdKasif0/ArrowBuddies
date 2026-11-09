@@ -7,7 +7,14 @@ import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.haptics.DefaultHapticsManager
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import com.kasif.arrowbuddies.data.db.AppDatabase
+import com.kasif.arrowbuddies.data.db.AppDatabaseMigrations
+import com.kasif.arrowbuddies.data.db.dao.AchievementDao
+import com.kasif.arrowbuddies.data.db.dao.DailyRecordDao
+import com.kasif.arrowbuddies.data.db.dao.DecorDao
+import com.kasif.arrowbuddies.data.db.dao.LevelProgressDao
 import com.kasif.arrowbuddies.data.db.dao.PlaceholderDao
+import com.kasif.arrowbuddies.data.db.dao.PlayerProfileDao
+import com.kasif.arrowbuddies.data.db.dao.SpeciesProgressDao
 import com.kasif.arrowbuddies.data.repository.DefaultGameRepository
 import com.kasif.arrowbuddies.data.repository.DefaultLevelRepository
 import com.kasif.arrowbuddies.data.repository.GameRepository
@@ -33,19 +40,35 @@ object DatabaseModule {
             context,
             AppDatabase::class.java,
             "arrow_buddies.db"
-        ).fallbackToDestructiveMigration().build()
+        )
+            .addMigrations(AppDatabaseMigrations.MIGRATION_1_2)
+            .build()
     }
 
     @Provides
-    fun providePlaceholderDao(database: AppDatabase): PlaceholderDao {
-        return database.placeholderDao()
-    }
+    fun providePlaceholderDao(database: AppDatabase): PlaceholderDao = database.placeholderDao()
+
+    @Provides
+    fun providePlayerProfileDao(database: AppDatabase): PlayerProfileDao = database.playerProfileDao()
+
+    @Provides
+    fun provideLevelProgressDao(database: AppDatabase): LevelProgressDao = database.levelProgressDao()
+
+    @Provides
+    fun provideSpeciesProgressDao(database: AppDatabase): SpeciesProgressDao = database.speciesProgressDao()
+
+    @Provides
+    fun provideDecorDao(database: AppDatabase): DecorDao = database.decorDao()
+
+    @Provides
+    fun provideDailyRecordDao(database: AppDatabase): DailyRecordDao = database.dailyRecordDao()
+
+    @Provides
+    fun provideAchievementDao(database: AppDatabase): AchievementDao = database.achievementDao()
 
     @Provides
     @Singleton
-    fun provideSoundManager(): SoundManager {
-        return DefaultSoundManager()
-    }
+    fun provideSoundManager(): SoundManager = DefaultSoundManager()
 }
 
 @Module

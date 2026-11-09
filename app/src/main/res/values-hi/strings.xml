@@ -160,4 +160,110 @@
     <string name="buddy_red_panda">लाल पांडा</string>
     <string name="buddy_elephant_calf">नन्हा हाथी</string>
     <string name="buddy_peacock">मोर</string>
+
+    <!-- Achievements -->
+    <string name="achievement_first_rescue_title">पहला बचाव</string>
+    <string name="achievement_first_rescue_desc">अपने पहले साथी को आज़ाद करें!</string>
+    <string name="achievement_rescued_10_title">साथियों के मित्र</string>
+    <string name="achievement_rescued_10_desc">10 साथियों को बचाएँ।</string>
+    <string name="achievement_rescued_100_title">शतक रक्षक</string>
+    <string name="achievement_rescued_100_desc">100 साथियों को बचाएँ।</string>
+    <string name="achievement_rescued_500_title">अभयारण्य नायक</string>
+    <string name="achievement_rescued_500_desc">500 साथियों को बचाएँ।</string>
+    <string name="achievement_rescued_1000_title">परम संरक्षक</string>
+    <string name="achievement_rescued_1000_desc">1,000 साथियों को आज़ाद करें!</string>
+    <string name="achievement_perfect_world_title">उत्कृष्ट संसार</string>
+    <string name="achievement_perfect_world_desc">किसी भी संसार के सभी 30 स्तरों में 3 सितारे पाएँ।</string>
+    <string name="achievement_mud_master_title">कीचड़ विजेता</string>
+    <string name="achievement_mud_master_desc">बिना दिल गँवाए 10 कीचड़ स्तर पूरे करें।</string>
+    <string name="achievement_portal_pro_title">सुरंग प्रवीण</string>
+    <string name="achievement_portal_pro_desc">20 बार सुरंग द्वारों से पार निकलें।</string>
+    <string name="achievement_streak_7_title">सप्ताहिक समर्पण</string>
+    <string name="achievement_streak_7_desc">7 दिनों का लगातार दैनिक बचाव पूरा करें।</string>
+    <string name="achievement_collector_title">संग्राहक</string>
+    <string name="achievement_collector_desc">सभी 24 साथी प्रजातियों को खोजें।</string>
+    <string name="achievement_decorator_title">सजावट विशेषज्ञ</string>
+    <string name="achievement_decorator_desc">अभयारण्य की सभी 8 सजावटें प्राप्त करें।</string>
+    <string name="achievement_zero_bonk_boss_title">त्रुटिहीन बड़ा बचाव</string>
+    <string name="achievement_zero_bonk_boss_desc">बिना किसी गलती के बड़ा बचाव (Big Rescue) जीतें!</string>
+
+    <!-- Sanctuary -->
+    <string name="sanctuary_title">अभयारण्य</string>
+    <string name="sanctuary_treat_time_title">उपहार का समय!</string>
+    <string name="sanctuary_treat_time_desc">साथियों के साथ दावत साझा करने के लिए टैप करें (+20 🫐)</string>
+    <string name="sanctuary_treat_time_claimed">अगली दावत कल मिलेगी!</string>
+    <string name="sanctuary_signboard_format">%1$d साथी यहाँ आनंद से रह रहे हैं!</string>
+    <string name="sanctuary_buy_decor_title">सजावट जोड़ें</string>
+    <string name="sanctuary_buy_decor_prompt">क्या आप %2$d 🫐 में %1$s जोड़ना चाहते हैं?</string>
+    <string name="sanctuary_zone_locked_format">अभयारण्य बढ़ाने के लिए संसार %1$d खोलें!</string>
+
+    <!-- Decorations -->
+    <string name="decor_pond_title">कोई मछली तालाब</string>
+    <string name="decor_swing_title">पेड़ का झूला</string>
+    <string name="decor_flower_bed_title">सुंदर फूलों की क्यारी</string>
+    <string name="decor_firepit_title">गर्म अलाव</string>
+    <string name="decor_hammock_title">सीपी झूला</string>
+    <string name="decor_lanterns_title">रोशनी वाली लालटेन</string>
+    <string name="decor_kite_title">मरूद्यान पतंग</string>
+    <string name="decor_rangoli_mat_title">रंगोली और आम का पेड़</string>
+
+    <!-- Album & Tiers -->
+    <string name="album_tab_species">प्रजातियाँ</string>
+    <string name="album_tab_achievements">उपलब्धियाँ</string>
+    <string name="album_species_locked">\?\?\?</string>
+    <string name="album_appears_in">%1$s में मिलता है</string>
+    <string name="album_rescued_count">%1$d बार बचाया गया</string>
+    <string name="album_tier_locked">बंद है</string>
+    <string name="album_tier_bronze">कांस्य मित्र</string>
+    <string name="album_tier_silver">रजत मित्र</string>
+    <string name="album_tier_gold">स्वर्ण परम मित्र</string>
+    <string name="album_accessory_bow">प्यारा बो</string>
+    <string name="album_accessory_scarf">गर्म मफ़लर</string>
+    <string name="album_accessory_crown">शाही मुकुट</string>
+    <string name="album_equip">पहनें</string>
+    <string name="album_equipped">पहना हुआ</string>
+    <string name="album_tier_up_title">मित्रता स्तर बढ़ा!</string>
+    <string name="album_tier_up_desc">%1$s अब %2$s बन गया! %3$s मिला!</string>
+
+    <!-- 24 Fun Facts -->
+    <string name="fact_bunny">खरगोश एक ही छलांग में 3 फीट से भी ऊँचा कूद सकते हैं!</string>
+    <string name="fact_chick">नन्हे चूज़े अंडे से निकलने से पहले ही अपनी माँ से बातें कर सकते हैं!</string>
+    <string name="fact_piglet">सूअरों की सूँघने की क्षमता बहुत तेज़ होती है और उन्हें पहेलियाँ पसंद हैं!</string>
+    <string name="fact_puppy">हर कुत्ते की नाक का निशान उँगलियों के निशान की तरह अनोखा होता है!</string>
+    <string name="fact_lamb">भेड़ों की पुतलियाँ आयताकार होती हैं, जिससे वे 300° तक देख सकती हैं!</string>
+    <string name="fact_calf">गायों के पक्के दोस्त होते हैं और वे साथ रहकर खुश रहती हैं!</string>
+    <string name="fact_monkey">बंदर संतुलन के लिए पूँछ का इस्तेमाल करते हैं और कलाबाज़ी खाते हैं!</string>
+    <string name="fact_tiger_cub">हर बाघ की धारियों का पैटर्न बिल्कुल अनोखा होता है!</string>
+    <string name="fact_parrot">तोते सबसे समझदार पक्षियों में से हैं और संगीत की ताल पहचानते हैं!</string>
+    <string name="fact_penguin">पेंगुइन तैरते समय छिपने के लिए प्राकृतिक टक्सीडो पहनते हैं!</string>
+    <string name="fact_polar_cub">ध्रुवीय भालू के बाल पारदर्शी और खोखले होते हैं जो सफेद दिखते हैं!</string>
+    <string name="fact_arctic_fox">बर्फीली लोमड़ी सर्दियों में अपने फर का रंग बिल्कुल सफेद कर लेती है!</string>
+    <string name="fact_turtle">समुद्री कछुए पानी के अंदर कई घंटों तक अपनी सांस रोक सकते हैं!</string>
+    <string name="fact_otter">ऊदबिलाव सोते समय एक-दूसरे का हाथ पकड़ते हैं ताकि बह न जाएँ!</string>
+    <string name="fact_crab">केकड़े रेत पर अपने पंजे थपथपाकर आपस में बातें करते हैं!</string>
+    <string name="fact_owl">उल्लू चारों तरफ देखने के लिए अपनी गर्दन 270 अंश तक घुमा सकते हैं!</string>
+    <string name="fact_hedgehog">साही डरने पर खुद को बचाने के लिए काँटेदार गेंद बन जाता है!</string>
+    <string name="fact_raccoon">रैकून के पंजे पानी में बहुत संवेदनशील और तेज़ महसूस करते हैं!</string>
+    <string name="fact_camel">ऊँट रेतीले तूफ़ान के समय अपनी नथुने पूरी तरह बंद कर सकते हैं!</string>
+    <string name="fact_fennec_fox">फ़ेनेक लोमड़ी के बड़े कान रेगिस्तान की गर्मी बाहर निकालते हैं!</string>
+    <string name="fact_meerkat">मीरकट की आँखों के पास काले घेरे धूप के चश्मे की तरह काम करते हैं!</string>
+    <string name="fact_red_panda">लाल पांडा सर्दियों में अपनी घनी पूँछ को कंबल की तरह ओढ़ते हैं!</string>
+    <string name="fact_elephant_calf">हाथी के बच्चे सुकून के लिए अपनी सूँड़ चूसते हैं, जैसे मानव शिशु!</string>
+    <string name="fact_peacock">केवल नर मोर के पास ही इंद्रधनुषी हरे-सुनहरे सुंदर पंख होते हैं!</string>
+
+    <!-- Daily Rescue & Streak -->
+    <string name="daily_streak_format">%1$d दिन का स्ट्रीक!</string>
+    <string name="daily_streak_today">दिन %1$d</string>
+    <string name="daily_play_today">आज का बचाव खेलें (+50 🫐)</string>
+    <string name="daily_completed_today">आज पूरा हुआ!</string>
+    <string name="daily_share_button">परिणाम साझा करें</string>
+    <string name="daily_share_text">मैंने आज ArrowBuddies में बिना किसी गलती के साथियों को बचा लिया! 🐾🫐 हर टैप पर प्यारे साथी आज़ाद करें!</string>
+
+    <!-- Daily Reminder -->
+    <string name="reminder_prompt_title">दैनिक साथी स्मरण?</string>
+    <string name="reminder_prompt_body">क्या आप शाम 6 बजे एक प्यारा स्मरण चाहते हैं ताकि आपका स्ट्रीक न टूटे? (कोई स्पैम नहीं, सेटिंग्स में कभी भी बंद करें)।</string>
+    <string name="reminder_prompt_confirm">हाँ, याद दिलाएँ!</string>
+    <string name="reminder_prompt_dismiss">शायद बाद में</string>
+    <string name="reminder_notification_title">ArrowBuddies</string>
+    <string name="reminder_notification_body">आपके प्यारे साथी आपको याद कर रहे हैं! आज का बचाव खेलने के लिए टैप करें। 🐾🫐</string>
 </resources>

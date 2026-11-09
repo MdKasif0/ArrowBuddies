@@ -160,4 +160,110 @@
     <string name="buddy_red_panda">Red Panda</string>
     <string name="buddy_elephant_calf">Elephant Calf</string>
     <string name="buddy_peacock">Peacock</string>
+
+    <!-- Achievements -->
+    <string name="achievement_first_rescue_title">First Rescue</string>
+    <string name="achievement_first_rescue_desc">Rescue your very first buddy!</string>
+    <string name="achievement_rescued_10_title">Buddy Whisperer</string>
+    <string name="achievement_rescued_10_desc">Rescue 10 buddies.</string>
+    <string name="achievement_rescued_100_title">Centurion Rescuer</string>
+    <string name="achievement_rescued_100_desc">Rescue 100 buddies.</string>
+    <string name="achievement_rescued_500_title">Sanctuary Hero</string>
+    <string name="achievement_rescued_500_desc">Rescue 500 buddies.</string>
+    <string name="achievement_rescued_1000_title">Master Guardian</string>
+    <string name="achievement_rescued_1000_desc">Rescue 1,000 buddies!</string>
+    <string name="achievement_perfect_world_title">Perfect World</string>
+    <string name="achievement_perfect_world_desc">Earn 3 stars on all 30 levels of any world.</string>
+    <string name="achievement_mud_master_title">Mud Master</string>
+    <string name="achievement_mud_master_desc">Complete 10 mud levels without losing a heart.</string>
+    <string name="achievement_portal_pro_title">Portal Pro</string>
+    <string name="achievement_portal_pro_desc">Step through portals 20 times.</string>
+    <string name="achievement_streak_7_title">Week-Long Dedication</string>
+    <string name="achievement_streak_7_desc">Reach a 7-day daily rescue streak.</string>
+    <string name="achievement_collector_title">Collector</string>
+    <string name="achievement_collector_desc">Discover all 24 buddy species.</string>
+    <string name="achievement_decorator_title">Decorator</string>
+    <string name="achievement_decorator_desc">Own all 8 sanctuary decorations.</string>
+    <string name="achievement_zero_bonk_boss_title">Flawless Big Rescue</string>
+    <string name="achievement_zero_bonk_boss_desc">Beat a Big Rescue level with 0 mistakes!</string>
+
+    <!-- Sanctuary -->
+    <string name="sanctuary_title">Sanctuary</string>
+    <string name="sanctuary_treat_time_title">Treat Time!</string>
+    <string name="sanctuary_treat_time_desc">Tap to share treats with your buddies (+20 🫐)</string>
+    <string name="sanctuary_treat_time_claimed">Next treat tomorrow!</string>
+    <string name="sanctuary_signboard_format">%1$d buddies living happily here!</string>
+    <string name="sanctuary_buy_decor_title">Add Decoration</string>
+    <string name="sanctuary_buy_decor_prompt">Add %1$s to this zone for %2$d 🫐?</string>
+    <string name="sanctuary_zone_locked_format">Unlock World %1$d to expand Sanctuary!</string>
+
+    <!-- Decorations -->
+    <string name="decor_pond_title">Koi Pond</string>
+    <string name="decor_swing_title">Tree Swing</string>
+    <string name="decor_flower_bed_title">Tropical Flower Bed</string>
+    <string name="decor_firepit_title">Warm Firepit</string>
+    <string name="decor_hammock_title">Seashell Hammock</string>
+    <string name="decor_lanterns_title">Glow Lanterns</string>
+    <string name="decor_kite_title">Oasis Kite</string>
+    <string name="decor_rangoli_mat_title">Rangoli Mat &amp; Mango Tree</string>
+
+    <!-- Album & Tiers -->
+    <string name="album_tab_species">Species</string>
+    <string name="album_tab_achievements">Achievements</string>
+    <string name="album_species_locked">\?\?\?</string>
+    <string name="album_appears_in">Appears in %1$s</string>
+    <string name="album_rescued_count">Rescued: %1$d times</string>
+    <string name="album_tier_locked">Locked</string>
+    <string name="album_tier_bronze">Bronze Friend</string>
+    <string name="album_tier_silver">Silver Friend</string>
+    <string name="album_tier_gold">Gold Best Friend</string>
+    <string name="album_accessory_bow">Sweet Bow</string>
+    <string name="album_accessory_scarf">Cozy Scarf</string>
+    <string name="album_accessory_crown">Royal Crown</string>
+    <string name="album_equip">Equip</string>
+    <string name="album_equipped">Equipped</string>
+    <string name="album_tier_up_title">Friendship Tier Up!</string>
+    <string name="album_tier_up_desc">%1$s reached %2$s! Unlocked %3$s!</string>
+
+    <!-- 24 Fun Facts -->
+    <string name="fact_bunny">Rabbits can jump over 3 feet high in a single leap!</string>
+    <string name="fact_chick">Baby chicks communicate with their mothers before hatching!</string>
+    <string name="fact_piglet">Pigs have an amazing sense of smell and love puzzles!</string>
+    <string name="fact_puppy">Every dog has a unique nose print, just like a fingerprint!</string>
+    <string name="fact_lamb">Sheep have rectangular pupils that give them 300° vision!</string>
+    <string name="fact_calf">Cows have best friends and get happier when together!</string>
+    <string name="fact_monkey">Monkeys use their tails for balance and can swing like acrobats!</string>
+    <string name="fact_tiger_cub">Every tiger has a completely unique stripe pattern on its fur!</string>
+    <string name="fact_parrot">Parrots are among the smartest birds and love rhythmic music!</string>
+    <string name="fact_penguin">Penguins wear natural tuxedos to camouflage while swimming!</string>
+    <string name="fact_polar_cub">Polar bear fur is actually clear and hollow, reflecting light as white!</string>
+    <string name="fact_arctic_fox">Arctic foxes change their fur color to pure white in winter!</string>
+    <string name="fact_turtle">Sea turtles can hold their breath underwater for several hours!</string>
+    <string name="fact_otter">Sea otters hold hands while sleeping so they don\'t drift away!</string>
+    <string name="fact_crab">Crabs communicate with each other by drumming their claws on sand!</string>
+    <string name="fact_owl">Owls can rotate their heads up to 270 degrees to look around!</string>
+    <string name="fact_hedgehog">Hedgehogs roll into a spike ball when startled to stay safe!</string>
+    <string name="fact_raccoon">Raccoons have super-sensitive front paws that feel extra clear in water!</string>
+    <string name="fact_camel">Camels can close their nostrils during desert windstorms!</string>
+    <string name="fact_fennec_fox">Fennec foxes have giant ears that radiate heat away in the desert!</string>
+    <string name="fact_meerkat">Meerkats have dark fur patches around their eyes that act like sunglasses!</string>
+    <string name="fact_red_panda">Red pandas use their big bushy ringed tails as blankets in winter!</string>
+    <string name="fact_elephant_calf">Elephant calves suck their trunks for comfort, just like human babies!</string>
+    <string name="fact_peacock">Only male peacocks have iridescent green-and-gold fan feathers!</string>
+
+    <!-- Daily Rescue & Streak -->
+    <string name="daily_streak_format">%1$d Day Streak!</string>
+    <string name="daily_streak_today">Day %1$d</string>
+    <string name="daily_play_today">Play Today\'s Rescue (+50 🫐)</string>
+    <string name="daily_completed_today">Completed Today!</string>
+    <string name="daily_share_button">Share Result</string>
+    <string name="daily_share_text">I rescued today\'s buddies in %1$d mistakes on ArrowBuddies! 🐾🫐 Free cute buddies with every tap!</string>
+
+    <!-- Daily Reminder -->
+    <string name="reminder_prompt_title">Daily Buddies Reminder?</string>
+    <string name="reminder_prompt_body">Would you like a gentle reminder at 6 PM so you don\'t lose your rescue streak? (No spam, opt-out anytime in Settings).</string>
+    <string name="reminder_prompt_confirm">Yes, Remind Me!</string>
+    <string name="reminder_prompt_dismiss">Maybe Later</string>
+    <string name="reminder_notification_title">ArrowBuddies</string>
+    <string name="reminder_notification_body">Your cute buddies miss you! Tap to play today\'s rescue. 🐾🫐</string>
 </resources>
