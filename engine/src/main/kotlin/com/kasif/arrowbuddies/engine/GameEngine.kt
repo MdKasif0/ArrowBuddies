@@ -13,6 +13,7 @@ import com.kasif.arrowbuddies.engine.model.RefusalReason
 import com.kasif.arrowbuddies.engine.model.Step
 import com.kasif.arrowbuddies.engine.model.StepEvent
 import com.kasif.arrowbuddies.engine.model.Tile
+import com.kasif.arrowbuddies.engine.solver.LevelSolver
 
 /**
  * Pure Kotlin rule engine for ArrowBuddies.
@@ -271,6 +272,29 @@ object GameEngine {
             val outcome = tap(state, buddy.id)
             outcome.result is MoveResult.Escaped || outcome.result is MoveResult.Stopped
         }
+    }
+
+    /**
+     * Upgraded Hint API: Returns a buddy ID whose move keeps the level solvable,
+     * preferring moves on the shortest solution. Returns null if level is not solvable.
+     */
+    fun findHint(state: GameState): String? {
+        if (state.status != GameStatus.PLAYING) return null
+
+        val solveResult = LevelSolver.solve(state, maxNodes = 6_000, timeoutMs = 150L)
+        if (solveResult.solvable && solveResult.shortestSolution.isNotEmpty()) {
+            return solveResult.shortestSolution.first()
+        }
+
+        val safe = safeMoves(state)
+        for (buddy in safe) {
+            val nextState = tap(state, buddy.id).newState
+            if (LevelSolver.isSolvable(nextState, maxNodes = 600, timeoutMs = 30L)) {
+                return buddy.id
+            }
+        }
+
+        return null
     }
 
     /**
