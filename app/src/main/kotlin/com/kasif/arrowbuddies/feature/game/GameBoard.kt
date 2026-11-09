@@ -4,10 +4,15 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
@@ -17,6 +22,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -54,6 +60,7 @@ import com.kasif.arrowbuddies.core.designsystem.component.ParticleBurst
 import com.kasif.arrowbuddies.core.designsystem.component.ParticleSystemState
 import com.kasif.arrowbuddies.core.designsystem.component.SpeechBubble
 import com.kasif.arrowbuddies.core.designsystem.component.TailPosition
+import com.kasif.arrowbuddies.core.designsystem.theme.Mango
 import com.kasif.arrowbuddies.core.designsystem.theme.WhitePure
 import com.kasif.arrowbuddies.core.designsystem.theme.WorldTheme
 import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
@@ -97,7 +104,10 @@ fun GameBoard(
     onPathPeekEnd: () -> Unit,
     onRescuedBump: () -> Unit,
     modifier: Modifier = Modifier,
-    particleSystemState: ParticleSystemState = remember { ParticleSystemState() }
+    particleSystemState: ParticleSystemState = remember { ParticleSystemState() },
+    hintBuddyId: String? = null,
+    tutorialHandPos: Pos? = null,
+    tutorialSpeechBubble: String? = null
 ) {
     val density = LocalDensity.current
     val viewConfig = LocalViewConfiguration.current
@@ -547,6 +557,7 @@ fun GameBoard(
                         }
                     }
 
+                    val isHinted = buddy.id == hintBuddyId
                     Box(
                         modifier = Modifier
                             .size(cellSizeDp)
@@ -558,6 +569,28 @@ fun GameBoard(
                                 alpha = currentAlpha
                             }
                     ) {
+                        if (isHinted) {
+                            val hintPulseAnim = rememberInfiniteTransition(label = "hintPulse")
+                            val pulseScale by hintPulseAnim.animateFloat(
+                                initialValue = 0.92f,
+                                targetValue = 1.18f,
+                                animationSpec = infiniteRepeatable(
+                                    animation = tween(380, easing = FastOutSlowInEasing),
+                                    repeatMode = RepeatMode.Reverse
+                                ),
+                                label = "scale"
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .size(cellSizeDp)
+                                    .graphicsLayer {
+                                        scaleX = pulseScale
+                                        scaleY = pulseScale
+                                    }
+                                    .border(3.5.dp, Mango, CircleShape)
+                            )
+                        }
+
                         BuddyAvatar(
                             species = species,
                             direction = currentDir,
@@ -616,6 +649,18 @@ fun GameBoard(
                         )
                     }
                 }
+            }
+
+            // Tutorial / Hint Hand Overlay
+            if (tutorialHandPos != null) {
+                val handTargetX = rimPaddingPx + (tutorialHandPos.x + 0.5f) * cellSizePx
+                val handTargetY = rimPaddingPx + (tutorialHandPos.y + 0.5f) * cellSizePx
+                TutorialHandOverlay(
+                    targetX = handTargetX,
+                    targetY = handTargetY,
+                    speechText = tutorialSpeechBubble,
+                    modifier = Modifier.fillMaxSize()
+                )
             }
 
             // Path Peek Overlay

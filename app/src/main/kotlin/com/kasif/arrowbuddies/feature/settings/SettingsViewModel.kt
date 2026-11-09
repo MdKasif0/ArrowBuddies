@@ -1,5 +1,7 @@
 package com.kasif.arrowbuddies.feature.settings
 
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kasif.arrowbuddies.core.audio.SoundManager
@@ -24,6 +26,11 @@ class SettingsViewModel @Inject constructor(
     val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
 
     init {
+        // Initialize current locale tag
+        val currentTag = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        val initialLang = if (currentTag.contains("hi")) "hi" else "en"
+        _uiState.update { it.copy(currentLanguage = initialLang) }
+
         viewModelScope.launch {
             repository.soundEnabled.collect { enabled ->
                 _uiState.update { it.copy(soundEnabled = enabled) }
@@ -42,6 +49,11 @@ class SettingsViewModel @Inject constructor(
                 hapticsManager.setHapticsEnabled(enabled)
             }
         }
+        viewModelScope.launch {
+            repository.reduceMotion.collect { enabled ->
+                _uiState.update { it.copy(reduceMotion = enabled) }
+            }
+        }
     }
 
     fun onEvent(event: SettingsUiEvent) {
@@ -50,8 +62,20 @@ class SettingsViewModel @Inject constructor(
                 is SettingsUiEvent.ToggleSound -> repository.setSoundEnabled(event.enabled)
                 is SettingsUiEvent.ToggleMusic -> repository.setMusicEnabled(event.enabled)
                 is SettingsUiEvent.ToggleHaptics -> repository.setHapticsEnabled(event.enabled)
+                is SettingsUiEvent.ToggleReduceMotion -> repository.setReduceMotion(event.enabled)
+                is SettingsUiEvent.SetLanguage -> {
+                    val appLocale = LocaleListCompat.forLanguageTags(event.langCode)
+                    AppCompatDelegate.setApplicationLocales(appLocale)
+                    _uiState.update { it.copy(currentLanguage = event.langCode) }
+                }
+                is SettingsUiEvent.OpenPrivacyPolicy -> _uiState.update { it.copy(showPrivacyPolicyDialog = true) }
+                is SettingsUiEvent.DismissPrivacyPolicy -> _uiState.update { it.copy(showPrivacyPolicyDialog = false) }
+                is SettingsUiEvent.OpenCredits -> _uiState.update { it.copy(showCreditsDialog = true) }
+                is SettingsUiEvent.DismissCredits -> _uiState.update { it.copy(showCreditsDialog = false) }
+                is SettingsUiEvent.ReplayTutorial -> {
+                    repository.resetTutorial()
+                }
             }
         }
     }
 }
-

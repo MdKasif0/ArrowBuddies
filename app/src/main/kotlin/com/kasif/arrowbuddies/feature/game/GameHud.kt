@@ -7,7 +7,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,9 +16,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
@@ -50,7 +51,7 @@ fun GameTopBar(
     rescuedCount: Int,
     totalBuddies: Int,
     levelName: String,
-    onNavigateBack: () -> Unit,
+    onOpenPause: () -> Unit,
     modifier: Modifier = Modifier,
     bumpRescuedTrigger: Int = 0
 ) {
@@ -76,15 +77,15 @@ fun GameTopBar(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Back Button
+        // Pause Button
         RoundIconButton(
-            icon = Icons.AutoMirrored.Filled.ArrowBack,
-            onClick = onNavigateBack,
-            contentDescription = stringResource(R.string.action_back),
+            icon = Icons.Default.Menu,
+            onClick = onOpenPause,
+            contentDescription = stringResource(R.string.game_paused),
             size = 46.dp
         )
 
-        // Level Title Pill
+        // Level Title Pill ("Level 12")
         Box(
             modifier = Modifier
                 .shadow(elevation = 3.dp, shape = RoundedCornerShape(16.dp))
@@ -105,7 +106,7 @@ fun GameTopBar(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Rescued counter pill
+            // Rescued counter pill with tiny face emoji
             Box(
                 modifier = Modifier
                     .graphicsLayer {
@@ -122,11 +123,9 @@ fun GameTopBar(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.Star,
-                        contentDescription = null,
-                        tint = Mango,
-                        modifier = Modifier.size(16.dp)
+                    Text(
+                        text = "🐾",
+                        fontSize = 13.sp
                     )
                     Text(
                         text = "$rescuedCount/$totalBuddies",
@@ -149,6 +148,9 @@ fun GameTopBar(
 @Composable
 fun GameBottomControls(
     canUndo: Boolean,
+    hintsCount: Int,
+    undosCount: Int,
+    onHint: () -> Unit,
     onUndo: () -> Unit,
     onRestart: () -> Unit,
     onSelectDevLevel: (String) -> Unit,
@@ -161,66 +163,37 @@ fun GameBottomControls(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
+            .padding(horizontal = 16.dp, vertical = 10.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        // Dev Level Quick Switcher Chips (Dev 1 to Dev 9)
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            val devLevels = listOf(
-                "w1-l01-dev" to "1",
-                "w1-l02-dev" to "2",
-                "w1-l03-dev" to "3",
-                "w2-l04-dev" to "4",
-                "w3-l05-dev" to "5",
-                "w4-l06-dev" to "6",
-                "w5-l07-dev" to "7",
-                "w6-l08-dev" to "8",
-                "w7-l09-dev" to "9"
-            )
-            for ((id, num) in devLevels) {
-                val isSelected = currentLevelId == id || currentLevelId == num
-                val chipBg = if (isSelected) Mango else WhitePure
-                val chipText = if (isSelected) WhitePure else colors.textPrimary
-
-                Box(
-                    modifier = Modifier
-                        .shadow(elevation = if (isSelected) 3.dp else 1.dp, shape = RoundedCornerShape(12.dp))
-                        .background(chipBg, RoundedCornerShape(12.dp))
-                        .border(1.dp, if (isSelected) Mango else Color(0xFFDDD2BC), RoundedCornerShape(12.dp))
-                        .clickable { onSelectDevLevel(id) }
-                        .padding(horizontal = 14.dp, vertical = 6.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = stringResource(R.string.game_dev_level_chip, num),
-                        style = typography.caption.copy(fontSize = 13.sp),
-                        color = chipText
-                    )
-                }
-            }
-        }
-
-        // Action Buttons: Undo & Restart
+        // Main In-Game Boosters & Actions
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Undo Button
+            // Hint Button with badge count
+            RoundIconButton(
+                icon = Icons.Default.Info,
+                onClick = onHint,
+                variant = CandyButtonVariant.Primary,
+                badgeCount = hintsCount,
+                contentDescription = stringResource(R.string.booster_hint),
+                size = 54.dp
+            )
+
+            Spacer(modifier = Modifier.width(28.dp))
+
+            // Undo Button with badge count
             RoundIconButton(
                 icon = Icons.Default.Refresh,
                 onClick = onUndo,
-                enabled = canUndo,
+                enabled = true, // tapping at 0 opens purchase sheet
                 variant = CandyButtonVariant.Secondary,
+                badgeCount = undosCount,
                 contentDescription = stringResource(R.string.game_undo),
-                size = 50.dp
+                size = 54.dp
             )
 
             Spacer(modifier = Modifier.width(28.dp))
@@ -231,7 +204,7 @@ fun GameBottomControls(
                 onClick = onRestart,
                 variant = CandyButtonVariant.Danger,
                 contentDescription = stringResource(R.string.game_restart),
-                size = 50.dp
+                size = 54.dp
             )
         }
     }

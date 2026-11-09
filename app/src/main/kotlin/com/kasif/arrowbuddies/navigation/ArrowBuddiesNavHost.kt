@@ -1,5 +1,12 @@
 package com.kasif.arrowbuddies.navigation
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -37,6 +44,10 @@ fun ArrowBuddiesNavHost(
     NavHost(
         navController = navController,
         startDestination = Route.Splash,
+        enterTransition = { fadeIn(animationSpec = tween(220)) },
+        exitTransition = { fadeOut(animationSpec = tween(180)) },
+        popEnterTransition = { fadeIn(animationSpec = tween(220)) },
+        popExitTransition = { fadeOut(animationSpec = tween(180)) },
         modifier = modifier
     ) {
         composable<Route.Splash> {
@@ -45,10 +56,14 @@ fun ArrowBuddiesNavHost(
             SplashScreen(
                 uiState = uiState,
                 onNavigateToGame = { levelId ->
-                    navController.navigate(Route.Game(levelId = levelId))
+                    navController.navigate(Route.Game(levelId = levelId)) {
+                        popUpTo(Route.Splash) { inclusive = true }
+                    }
                 },
                 onNavigateToHome = {
-                    navController.navigate(Route.Home)
+                    navController.navigate(Route.Home) {
+                        popUpTo(Route.Splash) { inclusive = true }
+                    }
                 }
             )
         }
@@ -93,7 +108,32 @@ fun ArrowBuddiesNavHost(
             )
         }
 
-        composable<Route.Game> {
+        composable<Route.Game>(
+            enterTransition = {
+                scaleIn(
+                    initialScale = 0.85f,
+                    animationSpec = spring(dampingRatio = 0.75f, stiffness = Spring.StiffnessMedium)
+                ) + fadeIn(animationSpec = tween(220))
+            },
+            exitTransition = {
+                scaleOut(
+                    targetScale = 0.90f,
+                    animationSpec = tween(180)
+                ) + fadeOut(animationSpec = tween(180))
+            },
+            popEnterTransition = {
+                scaleIn(
+                    initialScale = 0.90f,
+                    animationSpec = tween(200)
+                ) + fadeIn(animationSpec = tween(200))
+            },
+            popExitTransition = {
+                scaleOut(
+                    targetScale = 0.85f,
+                    animationSpec = tween(180)
+                ) + fadeOut(animationSpec = tween(180))
+            }
+        ) {
             val viewModel: GameViewModel = hiltViewModel()
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             GameScreen(
@@ -150,6 +190,11 @@ fun ArrowBuddiesNavHost(
                 onEvent = viewModel::onEvent,
                 onNavigateBack = {
                     navController.popBackStack()
+                },
+                onReplayTutorial = {
+                    navController.navigate(Route.Game(levelId = "w1-l01")) {
+                        popUpTo(Route.Home) { inclusive = false }
+                    }
                 },
                 onNavigateToCatalog = {
                     navController.navigate(Route.DesignCatalog)

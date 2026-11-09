@@ -2,6 +2,7 @@ package com.kasif.arrowbuddies.feature.game
 
 import android.app.Activity
 import android.view.WindowManager
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,6 +30,7 @@ import com.kasif.arrowbuddies.core.designsystem.component.AnimatedSkyBackground
 import com.kasif.arrowbuddies.core.designsystem.component.ParticleSystemState
 import com.kasif.arrowbuddies.core.designsystem.modifier.LocalHaptics
 import com.kasif.arrowbuddies.core.designsystem.modifier.LocalSound
+import com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -50,6 +52,11 @@ fun GameScreen(
 
     val particleSystemState = remember { ParticleSystemState() }
     var bumpRescuedCount by remember { mutableIntStateOf(0) }
+
+    // Intercept back button to prompt "Leave this level?"
+    BackHandler {
+        onEvent(GameUiEvent.RequestLeaveLevel)
+    }
 
     // Immersive mode & Keep Screen On during gameplay
     DisposableEffect(activity) {
@@ -117,7 +124,7 @@ fun GameScreen(
     ) {
         // Living animated sky backdrop for the current world biome
         val worldTheme = remember(uiState.level.world) {
-            com.kasif.arrowbuddies.core.designsystem.theme.worldThemeFor(uiState.level.world)
+            worldThemeFor(uiState.level.world)
         }
         AnimatedSkyBackground(
             worldTheme = worldTheme,
@@ -131,13 +138,13 @@ fun GameScreen(
                 .navigationBarsPadding(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Top HUD Bar (Hearts, Rescued counter, Level title, Back)
+            // Top HUD Bar (Hearts, Rescued counter, Level title, Pause button)
             GameTopBar(
                 hearts = uiState.heartsRemaining,
                 rescuedCount = uiState.rescuedCount,
                 totalBuddies = uiState.totalBuddiesInLevel,
                 levelName = stringResource(R.string.screen_game, uiState.level.index),
-                onNavigateBack = onNavigateBack,
+                onOpenPause = { onEvent(GameUiEvent.OpenPauseSheet) },
                 bumpRescuedTrigger = bumpRescuedCount
             )
 
@@ -163,13 +170,19 @@ fun GameScreen(
                     onPathPeekEnd = { onEvent(GameUiEvent.EndPathPeek) },
                     onRescuedBump = { bumpRescuedCount++ },
                     particleSystemState = particleSystemState,
+                    hintBuddyId = uiState.hintBuddyId,
+                    tutorialHandPos = uiState.tutorialHandPos,
+                    tutorialSpeechBubble = uiState.tutorialSpeechBubble,
                     modifier = Modifier.fillMaxSize()
                 )
             }
 
-            // Bottom Controls (Undo, Restart, Dev level switcher)
+            // Bottom Controls (Hint, Undo, Restart)
             GameBottomControls(
                 canUndo = uiState.canUndo,
+                hintsCount = uiState.hintsAvailable,
+                undosCount = uiState.undosAvailable,
+                onHint = { onEvent(GameUiEvent.RequestHint) },
                 onUndo = { onEvent(GameUiEvent.Undo) },
                 onRestart = { onEvent(GameUiEvent.RestartLevel) },
                 onSelectDevLevel = { levelId -> onEvent(GameUiEvent.LoadLevel(levelId)) },
@@ -177,10 +190,13 @@ fun GameScreen(
             )
         }
 
-        // Level Complete Dialog
+        // Level Complete Celebration Sheet
         if (uiState.showLevelCompleteDialog) {
-            LevelCompleteDialog(
+            LevelWinSheet(
                 stars = uiState.starsEarned,
+                rescuedBuddies = uiState.level.buddies,
+                goldenBonus = uiState.goldenBerryBonus,
+                newSpecies = uiState.newSpeciesUnlocked,
                 onNextLevel = {
                     onEvent(GameUiEvent.DismissDialog)
                     onEvent(GameUiEvent.NextLevel)
@@ -189,18 +205,70 @@ fun GameScreen(
                     onEvent(GameUiEvent.DismissDialog)
                     onEvent(GameUiEvent.RestartLevel)
                 },
-                onDismiss = { onEvent(GameUiEvent.DismissDialog) }
+                onNavigateToMap = {
+                    onEvent(GameUiEvent.DismissDialog)
+                    onNavigateBack()
+                }
             )
         }
 
-        // Level Failed Dialog
+        // Level Failed Sheet (Gentle, non-shaming)
         if (uiState.showLevelFailedDialog) {
-            LevelFailedDialog(
+            LevelFailSheet(
+                berries = uiState.berries,
                 onRestart = {
                     onEvent(GameUiEvent.DismissDialog)
                     onEvent(GameUiEvent.RestartLevel)
                 },
-                onDismiss = { onEvent(GameUiEvent.DismissDialog) }
+                onReviveWithHeart = {
+                    onEvent(GameUiEvent.ReviveWithHeart)
+                },
+                onNavigateToMap = {
+                    onEvent(GameUiEvent.DismissDialog)
+                    onNavigateBack()
+                }
+            )
+        }
+
+        // In-game Pause Sheet
+        if (uiState.showPauseSheet) {
+            PauseSheet(
+                soundEnabled = uiState.soundEnabled,
+                musicEnabled = uiState.musicEnabled,
+                hapticsEnabled = uiState.hapticsEnabled,
+                onResume = { onEvent(GameUiEvent.DismissPauseSheet) },
+                onRestart = {
+                    onEvent(GameUiEvent.DismissPauseSheet)
+                    onEvent(GameUiEvent.RestartLevel)
+                },
+                onNavigateToMap = {
+                    onEvent(GameUiEvent.DismissPauseSheet)
+                    onNavigateBack()
+                },
+                onToggleSound = { onEvent(GameUiEvent.ToggleSound(it)) },
+                onToggleMusic = { onEvent(GameUiEvent.ToggleMusic(it)) },
+                onToggleHaptics = { onEvent(GameUiEvent.ToggleHaptics(it)) }
+            )
+        }
+
+        // Leave Level Confirmation Dialog
+        if (uiState.showLeaveLevelDialog) {
+            LeaveLevelDialog(
+                onStay = { onEvent(GameUiEvent.DismissLeaveLevel) },
+                onLeave = {
+                    onEvent(GameUiEvent.DismissLeaveLevel)
+                    onNavigateBack()
+                }
+            )
+        }
+
+        // Booster Purchase Modal
+        if (uiState.showBoosterShop != null) {
+            BoosterShopDialog(
+                type = uiState.showBoosterShop,
+                berries = uiState.berries,
+                onBuy = { type -> onEvent(GameUiEvent.BuyBooster(type)) },
+                onDismiss = { onEvent(GameUiEvent.DismissBoosterShop) }
             )
         }
 
