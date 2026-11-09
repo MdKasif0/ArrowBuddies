@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -65,8 +64,10 @@ import com.kasif.arrowbuddies.core.designsystem.component.CandyButton
 import com.kasif.arrowbuddies.core.designsystem.component.CandyButtonVariant
 import com.kasif.arrowbuddies.core.designsystem.component.ToyPanel
 import com.kasif.arrowbuddies.core.designsystem.modifier.bounceClick
+import com.kasif.arrowbuddies.core.designsystem.theme.AllWorldThemes
 import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesTheme
-import com.kasif.arrowbuddies.core.designsystem.theme.WorldTheme
+import com.kasif.arrowbuddies.core.designsystem.theme.ArrowBuddiesThemeTokens
+import com.kasif.arrowbuddies.core.designsystem.theme.WhitePure
 import com.kasif.arrowbuddies.engine.model.Direction
 
 /**
@@ -108,34 +109,34 @@ fun BuddyGalleryScreen(
                         Column {
                             Text(
                                 text = stringResource(R.string.screen_buddy_gallery),
-                                style = ArrowBuddiesTheme.typography.title,
-                                color = ArrowBuddiesTheme.colors.ink
+                                style = ArrowBuddiesThemeTokens.typography.title,
+                                color = ArrowBuddiesThemeTokens.colors.ink
                             )
                             Text(
                                 text = "24 Species • 8 Worlds • Pure Vector Compose",
-                                style = ArrowBuddiesTheme.typography.caption,
-                                color = ArrowBuddiesTheme.colors.ink.copy(alpha = 0.7f)
+                                style = ArrowBuddiesThemeTokens.typography.caption,
+                                color = ArrowBuddiesThemeTokens.colors.ink.copy(alpha = 0.7f)
                             )
                         }
                     },
                     navigationIcon = {
                         IconButton(
                             onClick = onNavigateBack,
-                            modifier = Modifier.bounceClick()
+                            modifier = Modifier.bounceClick(onClick = onNavigateBack)
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = stringResource(R.string.action_back),
-                                tint = ArrowBuddiesTheme.colors.ink
+                                tint = ArrowBuddiesThemeTokens.colors.ink
                             )
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = ArrowBuddiesTheme.colors.cream
+                        containerColor = ArrowBuddiesThemeTokens.colors.cream
                     )
                 )
             },
-            containerColor = ArrowBuddiesTheme.colors.cream,
+            containerColor = ArrowBuddiesThemeTokens.colors.cream,
             modifier = modifier.fillMaxSize()
         ) { paddingValues ->
             LazyColumn(
@@ -149,7 +150,7 @@ fun BuddyGalleryScreen(
                 item(key = "controls_panel") {
                     ToyPanel(
                         modifier = Modifier.fillMaxWidth(),
-                        backgroundColor = Color.White
+                        backgroundColor = WhitePure
                     ) {
                         Column(
                             modifier = Modifier.padding(14.dp),
@@ -163,8 +164,8 @@ fun BuddyGalleryScreen(
                             ) {
                                 Text(
                                     text = "Direction:",
-                                    style = ArrowBuddiesTheme.typography.subtitle,
-                                    color = ArrowBuddiesTheme.colors.ink
+                                    style = ArrowBuddiesThemeTokens.typography.subtitle,
+                                    color = ArrowBuddiesThemeTokens.colors.ink
                                 )
                                 CandyButton(
                                     text = "Spin 90° ↻",
@@ -172,7 +173,7 @@ fun BuddyGalleryScreen(
                                     onClick = {
                                         selectedDirection = selectedDirection.turnClockwise90()
                                     },
-                                    minHeight = 36.dp
+                                    minHeight = 40.dp
                                 )
                             }
 
@@ -193,8 +194,8 @@ fun BuddyGalleryScreen(
                                         onClick = { selectedDirection = dir },
                                         label = { Text(arrowGlyph, fontWeight = FontWeight.Bold) },
                                         colors = FilterChipDefaults.filterChipColors(
-                                            selectedContainerColor = ArrowBuddiesTheme.colors.mango,
-                                            selectedLabelColor = ArrowBuddiesTheme.colors.ink
+                                            selectedContainerColor = ArrowBuddiesThemeTokens.colors.mango,
+                                            selectedLabelColor = ArrowBuddiesThemeTokens.colors.ink
                                         ),
                                         modifier = Modifier.weight(1f)
                                     )
@@ -204,8 +205,8 @@ fun BuddyGalleryScreen(
                             // Expression Selector
                             Text(
                                 text = "Expression:",
-                                style = ArrowBuddiesTheme.typography.subtitle,
-                                color = ArrowBuddiesTheme.colors.ink
+                                style = ArrowBuddiesThemeTokens.typography.subtitle,
+                                color = ArrowBuddiesThemeTokens.colors.ink
                             )
                             Row(
                                 modifier = Modifier
@@ -220,8 +221,8 @@ fun BuddyGalleryScreen(
                                         onClick = { selectedExpression = expr },
                                         label = { Text(stringResource(expr.labelRes)) },
                                         colors = FilterChipDefaults.filterChipColors(
-                                            selectedContainerColor = ArrowBuddiesTheme.colors.mint,
-                                            selectedLabelColor = ArrowBuddiesTheme.colors.ink
+                                            selectedContainerColor = ArrowBuddiesThemeTokens.colors.mint,
+                                            selectedLabelColor = ArrowBuddiesThemeTokens.colors.ink
                                         )
                                     )
                                 }
@@ -235,8 +236,8 @@ fun BuddyGalleryScreen(
                             ) {
                                 Text(
                                     text = "Avatar Size: ${avatarSizeDp.toInt()}dp",
-                                    style = ArrowBuddiesTheme.typography.subtitle,
-                                    color = ArrowBuddiesTheme.colors.ink
+                                    style = ArrowBuddiesThemeTokens.typography.subtitle,
+                                    color = ArrowBuddiesThemeTokens.colors.ink
                                 )
 
                                 // Preset size buttons
@@ -245,7 +246,7 @@ fun BuddyGalleryScreen(
                                         Box(
                                             modifier = Modifier
                                                 .background(
-                                                    color = if (avatarSizeDp.toInt() == preset) ArrowBuddiesTheme.colors.sky else Color(0xFFECEFF1),
+                                                    color = if (avatarSizeDp.toInt() == preset) ArrowBuddiesThemeTokens.colors.sky else Color(0xFFECEFF1),
                                                     shape = CircleShape
                                                 )
                                                 .clickable { avatarSizeDp = preset.toFloat() }
@@ -254,8 +255,8 @@ fun BuddyGalleryScreen(
                                         ) {
                                             Text(
                                                 text = "${preset}p",
-                                                style = ArrowBuddiesTheme.typography.caption,
-                                                color = ArrowBuddiesTheme.colors.ink,
+                                                style = ArrowBuddiesThemeTokens.typography.caption,
+                                                color = ArrowBuddiesThemeTokens.colors.ink,
                                                 fontWeight = FontWeight.Bold
                                             )
                                         }
@@ -268,8 +269,8 @@ fun BuddyGalleryScreen(
                                 onValueChange = { avatarSizeDp = it },
                                 valueRange = 32f..160f,
                                 colors = SliderDefaults.colors(
-                                    thumbColor = ArrowBuddiesTheme.colors.mango,
-                                    activeTrackColor = ArrowBuddiesTheme.colors.mango
+                                    thumbColor = ArrowBuddiesThemeTokens.colors.mango,
+                                    activeTrackColor = ArrowBuddiesThemeTokens.colors.mango
                                 )
                             )
                         }
@@ -277,10 +278,10 @@ fun BuddyGalleryScreen(
                 }
 
                 // 24 Species grouped by 8 Worlds
-                WorldTheme.allWorlds.forEach { world ->
-                    val speciesInWorld = BuddySpecies.byWorld(world.index)
+                AllWorldThemes.forEach { world ->
+                    val speciesInWorld = BuddySpecies.byWorld(world.id)
 
-                    item(key = "world_header_${world.index}") {
+                    item(key = "world_header_${world.id}") {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -289,17 +290,17 @@ fun BuddyGalleryScreen(
                             Box(
                                 modifier = Modifier
                                     .size(12.dp)
-                                    .background(world.accentColor, CircleShape)
+                                    .background(world.accent.main, CircleShape)
                             )
                             Text(
-                                text = "World ${world.index}: ${world.name}",
-                                style = ArrowBuddiesTheme.typography.title,
-                                color = ArrowBuddiesTheme.colors.ink
+                                text = "World ${world.id}: ${world.name}",
+                                style = ArrowBuddiesThemeTokens.typography.title,
+                                color = ArrowBuddiesThemeTokens.colors.ink
                             )
                         }
                     }
 
-                    item(key = "world_grid_${world.index}") {
+                    item(key = "world_grid_${world.id}") {
                         FlowRow(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -307,11 +308,17 @@ fun BuddyGalleryScreen(
                             maxItemsInEachRow = if (avatarSizeDp > 100f) 1 else if (avatarSizeDp > 60f) 2 else 3
                         ) {
                             speciesInWorld.forEach { species ->
+                                var itemExpression by remember { mutableStateOf<BuddyExpression?>(null) }
+                                val activeExpression = itemExpression ?: selectedExpression
+
                                 ToyPanel(
                                     modifier = Modifier
                                         .weight(1f)
-                                        .bounceClick(),
-                                    backgroundColor = Color.White
+                                        .bounceClick(onClick = {
+                                            // Toggle expression on individual tap
+                                            itemExpression = if (itemExpression == null) BuddyExpression.HAPPY else null
+                                        }),
+                                    backgroundColor = WhitePure
                                 ) {
                                     Column(
                                         modifier = Modifier
@@ -324,7 +331,7 @@ fun BuddyGalleryScreen(
                                         BuddyAvatar(
                                             species = species,
                                             direction = selectedDirection,
-                                            expression = selectedExpression,
+                                            expression = activeExpression,
                                             size = avatarSizeDp.dp,
                                             phaseSeed = (species.ordinal * 1337) % 10000
                                         )
@@ -332,16 +339,16 @@ fun BuddyGalleryScreen(
                                         // Species Name (English + Hindi)
                                         Text(
                                             text = stringResource(species.nameRes),
-                                            style = ArrowBuddiesTheme.typography.subtitle,
-                                            color = ArrowBuddiesTheme.colors.ink,
+                                            style = ArrowBuddiesThemeTokens.typography.subtitle,
+                                            color = ArrowBuddiesThemeTokens.colors.ink,
                                             textAlign = TextAlign.Center
                                         )
 
                                         // Feature Tag
                                         Text(
                                             text = "Ear: ${species.earType.name.lowercase()} • Tail: ${species.tailType.name.lowercase()}",
-                                            style = ArrowBuddiesTheme.typography.caption.copy(fontSize = 11.sp),
-                                            color = ArrowBuddiesTheme.colors.ink.copy(alpha = 0.6f),
+                                            style = ArrowBuddiesThemeTokens.typography.caption.copy(fontSize = 11.sp),
+                                            color = ArrowBuddiesThemeTokens.colors.ink.copy(alpha = 0.6f),
                                             textAlign = TextAlign.Center
                                         )
                                     }
