@@ -37,3 +37,4 @@ sealed interface Tile {
     @Serializable
     data class Portal(val pairId: Int) : Tile
 }
+

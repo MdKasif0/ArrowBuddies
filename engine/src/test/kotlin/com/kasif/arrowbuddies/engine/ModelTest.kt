@@ -129,3 +129,4 @@ class ModelTest {
         LevelCodec.decode(json)
     }
 }
+

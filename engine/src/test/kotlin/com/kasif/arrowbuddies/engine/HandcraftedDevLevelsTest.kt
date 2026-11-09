@@ -81,3 +81,4 @@ class HandcraftedDevLevelsTest {
         assertThat(state.stars).isEqualTo(3)
     }
 }
+

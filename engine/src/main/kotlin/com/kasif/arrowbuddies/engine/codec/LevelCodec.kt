@@ -186,3 +186,4 @@ object LevelCodec {
         return json.encodeToString(dto)
     }
 }
+

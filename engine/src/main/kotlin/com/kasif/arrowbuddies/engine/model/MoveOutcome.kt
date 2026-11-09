@@ -115,3 +115,4 @@ data class MoveOutcome(
     val newState: GameState,
     val result: MoveResult
 )
+

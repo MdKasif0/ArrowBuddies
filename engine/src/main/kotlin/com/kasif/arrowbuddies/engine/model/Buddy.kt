@@ -30,3 +30,4 @@ data class Buddy(
     val isImmobilized: Boolean
         get() = cageColor != null || sleepy
 }
+
