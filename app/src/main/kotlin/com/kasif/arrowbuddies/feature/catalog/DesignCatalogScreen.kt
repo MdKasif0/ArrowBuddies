@@ -449,26 +449,31 @@ fun DesignCatalogScreen(
                 visible = showDialog,
                 onDismissRequest = { showDialog = false }
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(14.dp)
-                ) {
-                    Text(
-                        text = "Level 1 Cleared! 🌟",
-                        style = typography.title,
-                        color = colors.textPrimary
-                    )
-                    StarRow(starsEarned = 3, animateSequential = false)
-                    Text(
-                        text = "All 4 Buddies escaped unharmed!",
-                        style = typography.body,
-                        color = colors.textSecondary
-                    )
-                    CandyButton(
-                        text = "Next Adventure",
-                        variant = CandyButtonVariant.Primary,
-                        onClick = { showDialog = false }
-                    )
+                ToyPanel(modifier = Modifier.fillMaxWidth()) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(20.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(14.dp)
+                    ) {
+                        Text(
+                            text = "Level 1 Cleared! 🌟",
+                            style = typography.title,
+                            color = colors.textPrimary
+                        )
+                        StarRow(starsEarned = 3, animateSequential = false)
+                        Text(
+                            text = "All 4 Buddies escaped unharmed!",
+                            style = typography.body,
+                            color = colors.textSecondary
+                        )
+                        CandyButton(
+                            text = "Next Adventure",
+                            variant = CandyButtonVariant.Primary,
+                            onClick = { showDialog = false }
+                        )
+                    }
                 }
             }
         }

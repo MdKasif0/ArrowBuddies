@@ -76,7 +76,7 @@ fun GameDialog(
                 ),
             contentAlignment = Alignment.BottomCenter
         ) {
-            ToyPanel(
+            Box(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 24.dp)
@@ -90,15 +90,9 @@ fun GameDialog(
                         indication = null,
                         onClick = {} // Intercept clicks inside panel
                     ),
-                cornerRadius = ArrowBuddiesThemeTokens.radius.large
+                contentAlignment = Alignment.Center
             ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(24.dp)
-                ) {
-                    content()
-                }
+                content()
             }
         }
     }
