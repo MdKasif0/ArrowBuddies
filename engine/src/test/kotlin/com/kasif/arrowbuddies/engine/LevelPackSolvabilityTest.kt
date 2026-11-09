@@ -40,3 +40,4 @@ class LevelPackSolvabilityTest {
         assertTrue("Solving all 240 levels took $elapsed ms, must be under 15,000 ms", elapsed < 15000L)
     }
 }
+

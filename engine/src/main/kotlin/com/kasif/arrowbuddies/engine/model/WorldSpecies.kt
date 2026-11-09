@@ -20,3 +20,4 @@ object WorldSpecies {
         return WORLD_SPECIES[world] ?: listOf("BUNNY", "CHICK", "PIGLET")
     }
 }
+

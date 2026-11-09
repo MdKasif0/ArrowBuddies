@@ -28,3 +28,4 @@ data class GenParams(
     val index: Int = 4,
     val isBigRescue: Boolean = false
 )
+

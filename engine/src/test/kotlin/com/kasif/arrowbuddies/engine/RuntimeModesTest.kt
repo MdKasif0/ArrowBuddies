@@ -56,3 +56,4 @@ class RuntimeModesTest {
         assertTrue("Stage 2 must be solvable", result2.solvable)
     }
 }
+

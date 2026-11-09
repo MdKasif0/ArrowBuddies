@@ -38,3 +38,4 @@ object DifficultyCalculator {
         return raw.coerceIn(0.0, 100.0)
     }
 }
+

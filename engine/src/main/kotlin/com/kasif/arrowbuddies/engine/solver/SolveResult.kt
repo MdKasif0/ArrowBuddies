@@ -34,3 +34,4 @@ data class SolveResult(
     val timeMs: Long,
     val exploredNodes: Int
 )
+

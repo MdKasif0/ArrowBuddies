@@ -36,3 +36,4 @@ internal fun GameState.toCompactKey(): CompactStateKey {
     }.sorted()
     return CompactStateKey(list)
 }
+

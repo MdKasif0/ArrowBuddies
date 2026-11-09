@@ -83,3 +83,4 @@ class LevelGeneratorTest {
         assertTrue("Big rescue level must be solvable", solveResult.solvable)
     }
 }
+
