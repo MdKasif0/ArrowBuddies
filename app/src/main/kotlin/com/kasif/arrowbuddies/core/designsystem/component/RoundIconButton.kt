@@ -3,6 +3,7 @@ package com.kasif.arrowbuddies.core.designsystem.component
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -112,7 +113,7 @@ fun RoundIconButton(
             modifier = Modifier
                 .size(size)
                 .offset(y = lipHeight)
-                .shadow(elevation = 4.dp, shape = CircleShape, spotColor = colors.textPrimary.copy(alpha = 0.25f))
+                .shadow(elevation = 3.dp, shape = CircleShape, spotColor = colors.textPrimary.copy(alpha = 0.20f))
                 .background(tactileColor.lip, shape = CircleShape)
         )
 
@@ -128,6 +129,11 @@ fun RoundIconButton(
                             tactileColor.main
                         )
                     ),
+                    shape = CircleShape
+                )
+                .border(
+                    width = 1.5.dp,
+                    color = if (variant == CandyButtonVariant.Ghost) Color(0xFFE2D6C0) else tactileColor.lip.copy(alpha = 0.35f),
                     shape = CircleShape
                 )
                 .clip(CircleShape),
@@ -153,7 +159,7 @@ fun RoundIconButton(
             Icon(
                 imageVector = icon,
                 contentDescription = contentDescription,
-                tint = tactileColor.onColor,
+                tint = if (variant == CandyButtonVariant.Ghost) colors.textPrimary else tactileColor.onColor,
                 modifier = Modifier.size(size * 0.48f)
             )
         }

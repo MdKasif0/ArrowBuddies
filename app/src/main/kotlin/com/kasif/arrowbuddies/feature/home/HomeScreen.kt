@@ -7,6 +7,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -148,9 +149,9 @@ fun HomeScreen(
                         onClick = onNavigateToMap,
                         modifier = Modifier
                             .size(44.dp)
-                            .clip(CircleShape)
-                            .background(WhitePure)
                             .shadow(2.dp, CircleShape)
+                            .background(WhitePure, CircleShape)
+                            .border(1.5.dp, Color(0xFFE2D6C0), CircleShape)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Place,
@@ -163,9 +164,9 @@ fun HomeScreen(
                         onClick = onNavigateToSettings,
                         modifier = Modifier
                             .size(44.dp)
-                            .clip(CircleShape)
-                            .background(WhitePure)
                             .shadow(2.dp, CircleShape)
+                            .background(WhitePure, CircleShape)
+                            .border(1.5.dp, Color(0xFFE2D6C0), CircleShape)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Settings,
