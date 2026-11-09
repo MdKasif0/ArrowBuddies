@@ -1,10 +1,13 @@
 package com.kasif.arrowbuddies.engine.model
 
+import kotlinx.serialization.Serializable
+
 /**
  * Fundamental movement and orientation direction for game elements (Buddies, Portals, Lasers).
  * Grid coordinate system: (0, 0) is top-left.
  * UP is -Y, DOWN is +Y, LEFT is -X, RIGHT is +X.
  */
+@Serializable
 enum class Direction(
     val dx: Int,
     val dy: Int,
@@ -16,9 +19,9 @@ enum class Direction(
     LEFT(-1, 0, 270f);
 
     /**
-     * Clockwise 90-degree turn (e.g. used by Turntable obstacle mechanic).
+     * 90-degree clockwise rotation.
      */
-    fun turnClockwise90(): Direction = when (this) {
+    fun rotateClockwise(): Direction = when (this) {
         UP -> RIGHT
         RIGHT -> DOWN
         DOWN -> LEFT
@@ -26,14 +29,24 @@ enum class Direction(
     }
 
     /**
-     * Counter-clockwise 90-degree turn.
+     * Alias for [rotateClockwise].
      */
-    fun turnCounterClockwise90(): Direction = when (this) {
+    fun turnClockwise90(): Direction = rotateClockwise()
+
+    /**
+     * 90-degree counter-clockwise rotation.
+     */
+    fun rotateCounterClockwise(): Direction = when (this) {
         UP -> LEFT
         LEFT -> DOWN
         DOWN -> RIGHT
         RIGHT -> UP
     }
+
+    /**
+     * Alias for [rotateCounterClockwise].
+     */
+    fun turnCounterClockwise90(): Direction = rotateCounterClockwise()
 
     /**
      * Opposite direction (180-degree reversal).
@@ -45,4 +58,3 @@ enum class Direction(
         RIGHT -> LEFT
     }
 }
-
