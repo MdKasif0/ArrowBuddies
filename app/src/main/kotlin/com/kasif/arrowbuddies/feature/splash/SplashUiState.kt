@@ -4,12 +4,11 @@ import androidx.compose.runtime.Immutable
 
 @Immutable
 data class SplashUiState(
-    val isLoading: Boolean = true,
-    val initialLevelId: String = "1"
+    val isLoading: Boolean = false,
+    val isFirstLaunch: Boolean = true,
+    val initialLevelId: String = "w1-l01"
 )
 
 sealed interface SplashUiEvent {
-    data object ContinueToGame : SplashUiEvent
-    data object ContinueToHome : SplashUiEvent
+    data object FinishIntro : SplashUiEvent
 }
-
