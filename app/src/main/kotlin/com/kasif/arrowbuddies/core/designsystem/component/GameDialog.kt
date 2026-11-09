@@ -1,6 +1,5 @@
 package com.kasif.arrowbuddies.core.designsystem.component
 
-import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.fadeIn
@@ -25,7 +24,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,7 +37,7 @@ import com.kasif.arrowbuddies.core.designsystem.theme.ScrimDim
 
 /**
  * A bottom-sheet-style bouncy modal dialog:
- * - Dims background with blur on API 31+
+ * - Dims background with translucent ScrimDim
  * - Panel pops in from the bottom with Bouncy spring
  * - Child-friendly tactile look
  */
@@ -70,13 +68,6 @@ fun GameDialog(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .then(
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        Modifier.blur(16.dp)
-                    } else {
-                        Modifier
-                    }
-                )
                 .background(ScrimDim)
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
