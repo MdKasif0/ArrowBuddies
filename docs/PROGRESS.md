@@ -4,7 +4,7 @@
 - [x] **Step 1: Project Foundation** — Gradle setup, multi-module (:engine, :app), architecture skeleton, navigation routes, theme tokens, release/debug builds, tests.
 - [x] **Step 2: Premium Design System** — Soft-toy / clay tactile UI tokens, 3D candy buttons, Baloo 2 typography, 8 WorldTheme biomes, spring physics, squishy components, particle burst system, Design Catalog showcase screen.
 - [x] **Step 3: Buddy Characters (Procedural Vector Buddies)** — 24 procedural species in code, distinct silhouettes, 8 expressions, directional arrow badge, drawWithCache performance optimization (60 fps), life & charm idle physics, BuddyGalleryScreen.
-- [ ] **Step 4: Pure Kotlin Game Engine & Solver** — Board representation, buddy movement, collisions, obstacle mechanics (rock, mud, turntable, cage/key, portal, sleepy), solver, test suite.
+- [x] **Step 4: Pure Kotlin Game Engine & Solver** — Immutable board models (Direction, Pos, Tile, Buddy, LevelDef, GameState), GameEngine tap physics with path tracing, bonk/escape/mud/turntable/portal/caged/sleepy mechanics, undo stack, safeMoves hint API, LevelCodec JSON parser, 93.4% line coverage unit test suite.
 - [ ] **Step 5: Level Generator & Catalog** — 240 level generator with sawtooth difficulty, solvability validator, Daily Rescue seed generator, JSON/binary level serialisation.
 - [ ] **Step 6: Core Gameplay Screen** — Interactive board, tap dashing, path peek, bonk bounce, escape animations, HUD (hearts, pause, boosters), 60fps budget optimization.
 - [ ] **Step 7: Sanctuary & World Progression** — Living home screen, 8 biomes, buddies wandering/interacting, decorations, total rescue counter.
@@ -140,6 +140,22 @@
    - Expression selector chips for all 8 expressions.
    - Avatar size slider ($32\text{dp}$ to $160\text{dp}$) with quick presets ($36\text{dp}$ Cell, $64\text{dp}$ Standard, $96\text{dp}$ Card, $128\text{dp}$ Hero).
    - Grouped grid showcasing all 24 species with English + Hindi labels and feature tags.
+
+---
+
+### Step 4: Core Game Engine API Summary
+- `GameEngine.tap(state: GameState, buddyId: String): MoveOutcome`
+  Executes a tap on a buddy. Traces cell-by-cell path to edge (`Escaped`) or collision (`Bonked` against Buddy, Rock, or Loop). Handles Mud stop, Turntable 90° turns, Portal teleports, and Caged/Sleepy refusal.
+- `GameEngine.undo(state: GameState): GameState?`
+  Restores previous board state and rescued IDs from the successful move history stack while preserving current hearts and mistakes. Returns `null` if history is empty.
+- `GameEngine.safeMoves(state: GameState): List<Buddy>`
+  Hint API returning all buddies that can currently be tapped without bonking.
+- `LevelCodec.decode(json: String): LevelDef` & `LevelCodec.encode(level: LevelDef): String`
+  Human-readable JSON serializer/deserializer with grid legend (`.` empty, `R` rock, `M` mud, `T` turntable, `1`..`9` portals) and validation diagnostics (bounds, rock placement, duplicate cells).
+- `GameState.stars: Int`
+  Computes star rating (3 = 0 mistakes, 2 = 1 mistake, 1 = 2 mistakes, 0 = failed/in-progress).
+- `Direction.rotateClockwise(): Direction` / `Pos.plus(Direction): Pos`
+  Cartesian grid math utilities for vector movement and 90-degree rotations.
 
 ---
 
