@@ -12,11 +12,14 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 interface HapticsManager {
-    fun tick(view: View? = null)
-    fun bonk(view: View? = null)
-    fun rescueSuccess(view: View? = null)
-    fun confirm(view: View? = null)
-    fun reject(view: View? = null)
+    fun tick() {}
+    fun tick(view: View?) { tick() }
+    fun bonk() {}
+    fun bonk(view: View?) { bonk() }
+    fun rescueSuccess() {}
+    fun rescueSuccess(view: View?) { rescueSuccess() }
+    fun confirm(view: View? = null) { rescueSuccess(view) }
+    fun reject(view: View? = null) { bonk(view) }
     fun setHapticsEnabled(enabled: Boolean)
 }
 
@@ -35,6 +38,10 @@ class DefaultHapticsManager @Inject constructor(
             @Suppress("DEPRECATION")
             context.getSystemService(Context.VIBRATOR_SERVICE) as? Vibrator
         }
+    }
+
+    override fun tick() {
+        tick(null)
     }
 
     override fun tick(view: View?) {
@@ -65,8 +72,16 @@ class DefaultHapticsManager @Inject constructor(
         }
     }
 
+    override fun bonk() {
+        bonk(null)
+    }
+
     override fun bonk(view: View?) {
         reject(view)
+    }
+
+    override fun rescueSuccess() {
+        rescueSuccess(null)
     }
 
     override fun rescueSuccess(view: View?) {

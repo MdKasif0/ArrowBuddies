@@ -37,7 +37,10 @@ class GameViewModel @Inject constructor(
     private val soundManager: SoundManager
 ) : ViewModel() {
 
-    private val json = Json { ignoreUnknownKeys = true }
+    private val json = Json {
+        ignoreUnknownKeys = true
+        allowStructuredMapKeys = true
+    }
 
     private val route = runCatching { savedStateHandle.toRoute<Route.Game>() }.getOrNull()
     private val initialLevelId = route?.levelId
@@ -345,7 +348,9 @@ class GameViewModel @Inject constructor(
     }
 
     private fun persistGameState(state: GameState) {
-        savedStateHandle[KEY_SAVED_GAME_STATE] = json.encodeToString(GameState.serializer(), state)
+        runCatching {
+            savedStateHandle[KEY_SAVED_GAME_STATE] = json.encodeToString(GameState.serializer(), state)
+        }
     }
 
     companion object {
