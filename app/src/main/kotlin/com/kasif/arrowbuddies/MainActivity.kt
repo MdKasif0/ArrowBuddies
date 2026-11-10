@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
+import com.kasif.arrowbuddies.core.ads.AdsManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.designsystem.modifier.LocalHaptics
 import com.kasif.arrowbuddies.core.designsystem.modifier.LocalSound
@@ -35,10 +36,16 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var gameRepository: GameRepository
 
+    @Inject
+    lateinit var adsManager: AdsManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // Initialize child-safe rewarded ads (UMP consent + background MobileAds)
+        adsManager.initialize(this)
 
         // Apply saved audio/haptic preferences app-wide (not only once Settings is opened),
         // and keep them in sync with toggles from the pause sheet or Settings.

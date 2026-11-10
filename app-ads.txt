@@ -1,0 +1,4 @@
+# app-ads.txt for ArrowBuddies
+# Host this file at the root of your developer website (e.g. https://yourdomain.com/app-ads.txt)
+# Replace pub-XXXXXXXXXXXXXXXX with your actual Google AdMob publisher ID.
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

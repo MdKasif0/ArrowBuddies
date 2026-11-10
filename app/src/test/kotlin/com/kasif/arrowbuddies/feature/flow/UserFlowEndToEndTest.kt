@@ -3,6 +3,7 @@ package com.kasif.arrowbuddies.feature.flow
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
+import com.kasif.arrowbuddies.core.ads.FakeAdsManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
@@ -175,6 +176,10 @@ class UserFlowEndToEndTest {
         override suspend fun recordDailyCompletion(date: String, stars: Int, mistakes: Int) {}
         override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
         override suspend fun setReminderPromptShown(shown: Boolean) {}
+        override val adsEnabled: Flow<Boolean> = kotlinx.coroutines.flow.flowOf(true)
+        override fun getRemainingDailyAdHints(): Flow<Int> = kotlinx.coroutines.flow.flowOf(3)
+        override suspend fun claimFreeAdHint(): Boolean = true
+        override suspend fun setAdsEnabled(enabled: Boolean) {}
     }
 
     private lateinit var gameRepository: InMemoryGameRepository
@@ -206,6 +211,7 @@ class UserFlowEndToEndTest {
         val level1Vm = GameViewModel(
             levelRepository = levelRepository,
             gameRepository = gameRepository,
+            adsManager = FakeAdsManager(),
             savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l01")),
             hapticsManager = hapticsManager,
             soundManager = soundManager
@@ -229,6 +235,7 @@ class UserFlowEndToEndTest {
         val level2Vm = GameViewModel(
             levelRepository = levelRepository,
             gameRepository = gameRepository,
+            adsManager = FakeAdsManager(),
             savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l02")),
             hapticsManager = hapticsManager,
             soundManager = soundManager
@@ -250,6 +257,7 @@ class UserFlowEndToEndTest {
         val level3Vm = GameViewModel(
             levelRepository = levelRepository,
             gameRepository = gameRepository,
+            adsManager = FakeAdsManager(),
             savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l03")),
             hapticsManager = hapticsManager,
             soundManager = soundManager

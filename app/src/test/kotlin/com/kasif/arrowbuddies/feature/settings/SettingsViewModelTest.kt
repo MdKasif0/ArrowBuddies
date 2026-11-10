@@ -2,6 +2,7 @@ package com.kasif.arrowbuddies.feature.settings
 
 import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
+import com.kasif.arrowbuddies.core.ads.FakeAdsManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import com.kasif.arrowbuddies.data.repository.GameRepository
@@ -9,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
@@ -111,6 +113,10 @@ class SettingsViewModelTest {
         override suspend fun recordDailyCompletion(date: String, stars: Int, mistakes: Int) {}
         override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
         override suspend fun setReminderPromptShown(shown: Boolean) {}
+        override val adsEnabled: Flow<Boolean> = flowOf(true)
+        override fun getRemainingDailyAdHints(): Flow<Int> = flowOf(3)
+        override suspend fun claimFreeAdHint(): Boolean = true
+        override suspend fun setAdsEnabled(enabled: Boolean) {}
     }
 
     private class FakeSoundManager : SoundManager {
@@ -148,7 +154,8 @@ class SettingsViewModelTest {
         val repository = FakeGameRepository()
         val soundManager = FakeSoundManager()
         val hapticsManager = FakeHapticsManager()
-        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
+        val adsManager = FakeAdsManager()
+        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager, adsManager)
 
         viewModel.uiState.test {
             val initial = awaitItem()
@@ -168,7 +175,8 @@ class SettingsViewModelTest {
         val repository = FakeGameRepository()
         val soundManager = FakeSoundManager()
         val hapticsManager = FakeHapticsManager()
-        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
+        val adsManager = FakeAdsManager()
+        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager, adsManager)
 
         viewModel.uiState.test {
             val initial = awaitItem()
@@ -188,7 +196,8 @@ class SettingsViewModelTest {
         val repository = FakeGameRepository()
         val soundManager = FakeSoundManager()
         val hapticsManager = FakeHapticsManager()
-        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
+        val adsManager = FakeAdsManager()
+        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager, adsManager)
 
         viewModel.uiState.test {
             val initial = awaitItem()
@@ -207,7 +216,8 @@ class SettingsViewModelTest {
         val repository = FakeGameRepository()
         val soundManager = FakeSoundManager()
         val hapticsManager = FakeHapticsManager()
-        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager)
+        val adsManager = FakeAdsManager()
+        val viewModel = SettingsViewModel(repository, soundManager, hapticsManager, adsManager)
 
         viewModel.uiState.test {
             val initial = awaitItem()

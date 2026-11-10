@@ -247,6 +247,12 @@ fun GameScreen(
                 berriesEarned = uiState.berriesEarned,
                 goldenBonus = uiState.goldenBerryBonus,
                 newSpecies = uiState.newSpeciesUnlocked,
+                canShowAds = uiState.canShowAds,
+                adState = uiState.adState,
+                isBerriesDoubled = uiState.isBerriesDoubled,
+                onDoubleBerriesWithAd = {
+                    activity?.let { onEvent(GameUiEvent.DoubleBerriesWithAd(it)) }
+                },
                 onNextLevel = {
                     onEvent(GameUiEvent.DismissDialog)
                     if (uiState.levelId in listOf("w1-l03", "3")) {
@@ -270,12 +276,17 @@ fun GameScreen(
         if (uiState.showLevelFailedDialog) {
             LevelFailSheet(
                 berries = uiState.berries,
+                canShowAds = uiState.canShowAds,
+                adState = uiState.adState,
                 onRestart = {
                     onEvent(GameUiEvent.DismissDialog)
                     onEvent(GameUiEvent.RestartLevel)
                 },
                 onReviveWithHeart = {
                     onEvent(GameUiEvent.ReviveWithHeart)
+                },
+                onReviveWithAd = {
+                    activity?.let { onEvent(GameUiEvent.ReviveWithAd(it)) }
                 },
                 onNavigateToMap = {
                     onEvent(GameUiEvent.DismissDialog)
@@ -321,7 +332,13 @@ fun GameScreen(
             BoosterShopDialog(
                 type = uiState.showBoosterShop,
                 berries = uiState.berries,
+                canShowAds = uiState.canShowAds,
+                adState = uiState.adState,
+                remainingDailyAdHints = uiState.remainingDailyAdHints,
                 onBuy = { type -> onEvent(GameUiEvent.BuyBooster(type)) },
+                onFreeHintWithAd = {
+                    activity?.let { onEvent(GameUiEvent.FreeHintWithAd(it)) }
+                },
                 onDismiss = { onEvent(GameUiEvent.DismissBoosterShop) }
             )
         }

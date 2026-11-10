@@ -1,5 +1,7 @@
 package com.kasif.arrowbuddies.feature.settings
 
+import android.app.Activity
+import androidx.compose.ui.platform.LocalContext
 import com.kasif.arrowbuddies.core.notification.rememberNotificationPermissionRequester
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -60,6 +62,8 @@ fun SettingsScreen(
     val requestNotificationPermission = rememberNotificationPermissionRequester { granted ->
         if (granted) onEvent(SettingsUiEvent.ToggleDailyReminder(true))
     }
+    val context = LocalContext.current
+    val activity = context as? Activity
     val typography = ArrowBuddiesThemeTokens.typography
     val colors = ArrowBuddiesThemeTokens.colors
     val worldTheme = worldThemeFor(1) // Sunny Meadow theme for settings
@@ -263,6 +267,16 @@ fun SettingsScreen(
                             onClick = {
                                 onEvent(SettingsUiEvent.ReplayTutorial)
                                 onReplayTutorial?.invoke()
+                            },
+                            variant = CandyButtonVariant.Secondary,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        // Ad Privacy Options (Google UMP consent form)
+                        CandyButton(
+                            text = stringResource(R.string.settings_ad_privacy_options),
+                            onClick = {
+                                activity?.let { onEvent(SettingsUiEvent.OpenPrivacyOptions(it)) }
                             },
                             variant = CandyButtonVariant.Secondary,
                             modifier = Modifier.fillMaxWidth()

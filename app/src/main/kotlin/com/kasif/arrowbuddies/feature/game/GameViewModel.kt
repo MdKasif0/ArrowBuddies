@@ -1,12 +1,16 @@
 package com.kasif.arrowbuddies.feature.game
 
-import com.kasif.arrowbuddies.engine.runtime.DailyRescue
-import com.kasif.arrowbuddies.R
+import android.app.Activity
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import com.kasif.arrowbuddies.R
+import com.kasif.arrowbuddies.core.ads.AdPlacement
+import com.kasif.arrowbuddies.core.ads.AdState
+import com.kasif.arrowbuddies.core.ads.AdsManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
@@ -19,6 +23,7 @@ import com.kasif.arrowbuddies.engine.model.GameStatus
 import com.kasif.arrowbuddies.engine.model.LevelDef
 import com.kasif.arrowbuddies.engine.model.LevelIdHelper
 import com.kasif.arrowbuddies.engine.model.MoveResult
+import com.kasif.arrowbuddies.engine.runtime.DailyRescue
 import com.kasif.arrowbuddies.engine.model.Pos
 import com.kasif.arrowbuddies.engine.model.RefusalReason
 import com.kasif.arrowbuddies.engine.model.Tile
@@ -49,6 +54,7 @@ import javax.inject.Inject
 class GameViewModel @Inject constructor(
     private val levelRepository: LevelRepository,
     private val gameRepository: GameRepository,
+    private val adsManager: AdsManager,
     private val savedStateHandle: SavedStateHandle,
     private val hapticsManager: HapticsManager,
     private val soundManager: SoundManager,
@@ -114,6 +120,8 @@ class GameViewModel @Inject constructor(
             launch { gameRepository.musicEnabled.collect { m -> _uiState.update { it.copy(musicEnabled = m) } } }
             launch { gameRepository.hapticsEnabled.collect { h -> _uiState.update { it.copy(hapticsEnabled = h) } } }
             launch { gameRepository.reduceMotion.collect { r -> _uiState.update { it.copy(reduceMotion = r) } } }
+            launch { adsManager.adState.collect { s -> _uiState.update { it.copy(adState = s) } } }
+            launch { gameRepository.getRemainingDailyAdHints().collect { rem -> _uiState.update { it.copy(remainingDailyAdHints = rem) } } }
         }
 
     }
@@ -159,6 +167,9 @@ class GameViewModel @Inject constructor(
                     _uiState.update { it.copy(showReminderPromptDialog = false, showLevelCompleteDialog = true) }
                 }
             }
+            is GameUiEvent.ReviveWithAd -> handleReviveWithAd(event.activity)
+            is GameUiEvent.DoubleBerriesWithAd -> handleDoubleBerriesWithAd(event.activity)
+            is GameUiEvent.FreeHintWithAd -> handleFreeHintWithAd(event.activity)
         }
     }
 
@@ -516,6 +527,85 @@ class GameViewModel @Inject constructor(
         }
     }
 
+    private fun handleReviveWithAd(activity: Activity) {
+        val state = _uiState.value
+        if (!state.canShowAds || state.adState != AdState.Ready) return
+
+        adsManager.showRewardedAd(
+            activity = activity,
+            placement = AdPlacement.FAIL_REVIVE,
+            onUserEarnedReward = {
+                _uiState.update {
+                    it.copy(
+                        gameState = it.gameState.copy(
+                            hearts = 1,
+                            status = GameStatus.PLAYING
+                        ),
+                        showLevelFailedDialog = false
+                    )
+                }
+                viewModelScope.launch {
+                    _effects.emit(GameEffect.TriggerHaptic(HapticType.CONFIRM))
+                }
+            },
+            onAdFailedToShow = { error ->
+                Log.w("GameViewModel", "Revive ad failed to show: $error")
+            }
+        )
+    }
+
+    private fun handleDoubleBerriesWithAd(activity: Activity) {
+        val state = _uiState.value
+        if (!state.canShowAds || state.adState != AdState.Ready || state.isBerriesDoubled) return
+
+        adsManager.showRewardedAd(
+            activity = activity,
+            placement = AdPlacement.WIN_DOUBLE_BERRIES,
+            onUserEarnedReward = {
+                val currentEarned = _uiState.value.berriesEarned
+                if (currentEarned > 0 && !_uiState.value.isBerriesDoubled) {
+                    viewModelScope.launch {
+                        gameRepository.addBerries(currentEarned)
+                        _uiState.update {
+                            it.copy(
+                                isBerriesDoubled = true,
+                                berriesEarned = currentEarned * 2
+                            )
+                        }
+                        _effects.emit(GameEffect.TriggerHaptic(HapticType.CONFIRM))
+                        _effects.emit(GameEffect.PlaySound(SoundType.WIN))
+                    }
+                }
+            },
+            onAdFailedToShow = { error ->
+                Log.w("GameViewModel", "Double berries ad failed to show: $error")
+            }
+        )
+    }
+
+    private fun handleFreeHintWithAd(activity: Activity) {
+        val state = _uiState.value
+        if (!state.canShowAds || state.adState != AdState.Ready || state.remainingDailyAdHints <= 0) return
+
+        adsManager.showRewardedAd(
+            activity = activity,
+            placement = AdPlacement.FREE_HINT,
+            onUserEarnedReward = {
+                viewModelScope.launch {
+                    val claimed = gameRepository.claimFreeAdHint()
+                    if (claimed) {
+                        _uiState.update { it.copy(showBoosterShop = null) }
+                        _effects.emit(GameEffect.TriggerHaptic(HapticType.CONFIRM))
+                        handleRequestHint()
+                    }
+                }
+            },
+            onAdFailedToShow = { error ->
+                Log.w("GameViewModel", "Free hint ad failed to show: $error")
+            }
+        )
+    }
+
     private fun handleToggleSound(enabled: Boolean) {
         viewModelScope.launch { gameRepository.setSoundEnabled(enabled) }
     }
@@ -646,7 +736,8 @@ class GameViewModel @Inject constructor(
                 isTutorialLevel = isTutorial,
                 tutorialHandPos = if (isFirstTutorial) Pos(1, 1) else null,
                 tutorialSpeechBubble = if (isFirstTutorial) R.string.ui_tutorial_tap_me else null,
-                hintBuddyId = null
+                hintBuddyId = null,
+                isBerriesDoubled = false
             )
         }
         checkMechanicIntro(levelDef)

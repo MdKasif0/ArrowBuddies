@@ -38,6 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kasif.arrowbuddies.R
+import com.kasif.arrowbuddies.core.ads.AdState
 import com.kasif.arrowbuddies.core.buddies.BuddyAvatar
 import com.kasif.arrowbuddies.core.buddies.model.BuddyExpression
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
@@ -70,6 +71,10 @@ fun LevelWinSheet(
     berriesEarned: Int,
     goldenBonus: Int,
     newSpecies: BuddySpecies?,
+    canShowAds: Boolean = false,
+    adState: AdState = AdState.Unavailable,
+    isBerriesDoubled: Boolean = false,
+    onDoubleBerriesWithAd: () -> Unit = {},
     onNextLevel: () -> Unit,
     onRestart: () -> Unit,
     onNavigateToMap: () -> Unit,
@@ -226,6 +231,40 @@ fun LevelWinSheet(
 
                     Spacer(modifier = Modifier.height(4.dp))
 
+                    // Rewarded ad placement: Double berries (once per level, only if canShowAds and totalBerries > 0)
+                    if (canShowAds && totalBerries > 0) {
+                        if (isBerriesDoubled) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .background(Mint.copy(alpha = 0.2f))
+                                    .border(1.5.dp, Mint, RoundedCornerShape(14.dp))
+                                    .padding(vertical = 10.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "✨ " + stringResource(R.string.game_berries_doubled) + " ✨",
+                                    style = typography.subtitle.copy(fontWeight = FontWeight.Bold),
+                                    color = Mint
+                                )
+                            }
+                        } else {
+                            val isReady = adState == AdState.Ready
+                            CandyButton(
+                                text = if (isReady) {
+                                    stringResource(R.string.game_double_berries_ad_button, totalBerries)
+                                } else {
+                                    stringResource(R.string.ad_unavailable)
+                                },
+                                onClick = onDoubleBerriesWithAd,
+                                enabled = isReady,
+                                variant = if (isReady) CandyButtonVariant.Success else CandyButtonVariant.Ghost,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                    }
+
                     // Buttons
                     CandyButton(
                         text = stringResource(R.string.game_next_level),
@@ -264,8 +303,11 @@ fun LevelWinSheet(
 @Composable
 fun LevelFailSheet(
     berries: Int,
+    canShowAds: Boolean = false,
+    adState: AdState = AdState.Unavailable,
     onRestart: () -> Unit,
     onReviveWithHeart: () -> Unit,
+    onReviveWithAd: () -> Unit = {},
     onNavigateToMap: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -321,7 +363,22 @@ fun LevelFailSheet(
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                /* Hook: Future Rewarded Video Ad Revive */
+                // Rewarded Video Ad Revive (+1 Heart, only if canShowAds)
+                if (canShowAds) {
+                    val isReady = adState == AdState.Ready
+                    CandyButton(
+                        text = if (isReady) {
+                            stringResource(R.string.game_revive_ad_button)
+                        } else {
+                            stringResource(R.string.ad_unavailable)
+                        },
+                        onClick = onReviveWithAd,
+                        enabled = isReady,
+                        variant = if (isReady) CandyButtonVariant.Secondary else CandyButtonVariant.Ghost,
+                        minHeight = 56.dp,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
 
                 Text(
                     text = stringResource(R.string.screen_map),
@@ -508,7 +565,11 @@ fun LeaveLevelDialog(
 fun BoosterShopDialog(
     type: BoosterType,
     berries: Int,
+    canShowAds: Boolean = false,
+    adState: AdState = AdState.Unavailable,
+    remainingDailyAdHints: Int = 3,
     onBuy: (BoosterType) -> Unit,
+    onFreeHintWithAd: () -> Unit = {},
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -561,6 +622,32 @@ fun BoosterShopDialog(
                     enabled = berries >= price,
                     modifier = Modifier.fillMaxWidth()
                 )
+
+                // Free Hint with Video (up to 3/day, only if canShowAds and type is Hint)
+                if (type == BoosterType.Hint && canShowAds) {
+                    if (remainingDailyAdHints > 0) {
+                        val isReady = adState == AdState.Ready
+                        CandyButton(
+                            text = if (isReady) {
+                                stringResource(R.string.booster_free_hint_ad, remainingDailyAdHints)
+                            } else {
+                                stringResource(R.string.ad_unavailable)
+                            },
+                            onClick = onFreeHintWithAd,
+                            enabled = isReady,
+                            variant = if (isReady) CandyButtonVariant.Primary else CandyButtonVariant.Ghost,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    } else {
+                        CandyButton(
+                            text = stringResource(R.string.booster_free_hint_ad_exhausted),
+                            onClick = {},
+                            enabled = false,
+                            variant = CandyButtonVariant.Ghost,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
 
                 CandyButton(
                     text = stringResource(R.string.action_cancel),

@@ -1,11 +1,14 @@
 package com.kasif.arrowbuddies.feature.game
 
+import android.app.Activity
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
+import com.kasif.arrowbuddies.core.ads.AdState
 import com.kasif.arrowbuddies.core.buddies.model.BuddySpecies
 import com.kasif.arrowbuddies.engine.model.GameState
 import com.kasif.arrowbuddies.engine.model.GameStatus
 import com.kasif.arrowbuddies.engine.model.LevelDef
+import com.kasif.arrowbuddies.engine.model.LevelIdHelper
 import com.kasif.arrowbuddies.engine.model.PeekingPath
 import com.kasif.arrowbuddies.engine.model.Pos
 
@@ -45,9 +48,13 @@ data class GameUiState(
     val isTutorialLevel: Boolean = false,
     val showReminderPromptDialog: Boolean = false,
     val reduceMotion: Boolean = false,
+    val adState: AdState = AdState.Unavailable,
+    val isBerriesDoubled: Boolean = false,
+    val remainingDailyAdHints: Int = 3,
     /** True while the level is being loaded in the background; the board isn't shown yet. */
     val isLoading: Boolean = false
 ) {
+    val canShowAds: Boolean get() = (LevelIdHelper.parseFlatIndex(levelId) ?: 999) > 6
     val heartsRemaining: Int get() = gameState.hearts
     val rescuedCount: Int get() = gameState.rescuedIds.size
     val totalBuddiesInLevel: Int get() = level.buddies.size
@@ -83,4 +90,7 @@ sealed interface GameUiEvent {
     data class ToggleHaptics(val enabled: Boolean) : GameUiEvent
     data object AcceptDailyReminder : GameUiEvent
     data object DismissDailyReminder : GameUiEvent
+    data class ReviveWithAd(val activity: Activity) : GameUiEvent
+    data class DoubleBerriesWithAd(val activity: Activity) : GameUiEvent
+    data class FreeHintWithAd(val activity: Activity) : GameUiEvent
 }

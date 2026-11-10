@@ -15,6 +15,8 @@ coreSplashscreen = "1.0.1"
 room = "2.6.1"
 datastore = "1.1.1"
 work = "2.9.1"
+playServicesAds = "23.6.0"
+userMessagingPlatform = "3.1.0"
 
 # Kotlinx
 kotlinxCoroutines = "1.9.0"
@@ -44,6 +46,7 @@ androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graph
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 
 # Navigation & Hilt Navigation
@@ -62,6 +65,10 @@ androidx-room-testing = { group = "androidx.room", name = "room-testing", versio
 
 # WorkManager
 androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
+
+# Google Play Services Ads & UMP
+play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "playServicesAds" }
+user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "userMessagingPlatform" }
 
 # DataStore
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }

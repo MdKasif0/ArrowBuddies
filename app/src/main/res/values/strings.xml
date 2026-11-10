@@ -297,6 +297,16 @@
     <string name="ui_tutorial_free_friend">Oops! Free your friend first!</string>
 
     <!-- Counted text -->
+    <!-- Rewarded Ads & Privacy Options (Child-Safe / Families Policy) -->
+    <string name="game_revive_ad_button">Watch Video for +1 Heart</string>
+    <string name="game_double_berries_ad_button">Double Berries (+%1$d 🫐 with Video)</string>
+    <string name="game_berries_doubled">Berries Doubled! 2x</string>
+    <string name="booster_free_hint_ad">Free Hint with Video (%1$d/3 today)</string>
+    <string name="booster_free_hint_ad_exhausted">Daily Free Hints Used (3/3)</string>
+    <string name="ad_unavailable">No video right now</string>
+    <string name="settings_ad_privacy_options">Ad Privacy Options</string>
+    <string name="settings_ad_privacy_options_desc">Manage consent and privacy choices</string>
+
     <plurals name="daily_share_text">
         <item quantity="one">I rescued today\'s buddies with %1$d mistake on ArrowBuddies! 🐾🫐 Free cute buddies with every tap!</item>
         <item quantity="other">I rescued today\'s buddies with %1$d mistakes on ArrowBuddies! 🐾🫐 Free cute buddies with every tap!</item>

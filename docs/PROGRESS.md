@@ -11,6 +11,7 @@
 - [x] **Step 8: Complete Game Flow** — End-to-end user journey: SplashScreen API + 1.2s bouncy letter branded intro with peeking/waving buddies; First-Time Experience (L1 pointing hand, L2 funny non-lethal bonk, L3 win celebration to Home); Home screen with live Sanctuary background, total rescued counter, pulsing Play button, Daily Rescue & Rescue Run cards; World Map with 240-level winding road, world banners, stars, padlock nodes, and Big Rescue gates; In-Game HUD with Pause, level pill, rescued counter, and HeartsRow; Bottom controls with Hint, Undo, and Restart; Win celebration sheet with dancing buddies, sequential star chimes, and New Friend flip card; Gentle Fail sheet with Try Again and +1 Heart revive; Leave level confirmation; Settings with sound, music, vibration, reduce motion, language switcher (English / Hindi via AppCompatDelegate), privacy policy, and credits; full authentic Hindi parity.
 - [x] **Step 9: Meta Progression & Persistence** — Room persistence (PlayerProfile, LevelProgress, SpeciesProgress, DecorItem, DailyRecord, Achievement) with atomic transactions and MIGRATION_1_2 test; Panoramic Sanctuary with 3 parallax layers (sky, hills, ground) and 8 world-themed habitat zones; autonomous buddy behavior AI loop with tap reactions and speech bubbles; Treat Time daily scatter (+20 berries); 8 procedural interactive decorations (100–600 berries); 24 species Buddy Album with kid-friendly fun facts, silhouettes, and friendship tiers (Bronze 10, Silver 50, Gold 150) unlocking vector accessories (Bow, Scarf, Crown); Daily Rescue screen with date-seeded puzzle, 7-day streak calendar, and Android share sheet; 12 achievements; polite opt-in 6 PM WorkManager daily reminder; economy tuning; child-safe ethics guard.
 - [x] **Step 10: Polish, Performance, QA and Release** — Full audio engine (SoundPool SFX preloaded + rising pitch escape chime + 9 CC0 music loops with crossfading and SFX ducking + audio focus); TalkBack accessibility semantics on buddies, HUD, and custom "Help escape" actions; colorblind-safe symbols across cages, keys, and portals; Reduce Motion setting integration; adaptive app icon (Bunny peeking on Mango gradient + monochrome themed icon) and matching splash; child-safe Firebase Crashlytics & Monetization hooks (disabled by default); keystore.properties release signing; production signed AAB (6.0 MB) & APK; comprehensive manual QA test matrix (`docs/QA.md`) and Google Play Store release guide (`docs/RELEASE.md`).
+- [x] **Step 10.5: Rewarded Ads (AdMob Only, Child-Safe)** — Full Google Play Families Policy & COPPA compliance; Google Mobile Ads SDK (v23.6.0) + Google UMP SDK (v3.1.0); clean `AdsManager` architecture behind interface with `FakeAdsManager` test double; `tagForChildDirectedTreatment=true`, `maxAdContentRating=G`, `tagForUnderAgeOfConsent=true`; 3 opt-in placements (Fail sheet +1 heart continue, Win sheet 2x berries, Hint shop max 3/day free hint with local midnight reset); atomic idempotency; `SoundManager` audio pause/resume integration; offline/unavailable non-blocking states; zero ads in tutorial levels 1-6; `ads.properties` release credential validation; UMP Privacy Options in Settings; `app-ads.txt`; `docs/ADS.md` & `docs/DATA_SAFETY.md`; 100% unit & Compose UI test coverage.
 
 ---
 
@@ -544,6 +545,48 @@ Screenshots captured from live Android emulator execution on API 35:
    - R8 code shrinking + resource shrinking verified.
    - 100% unit and integration test passing rate (240 baked levels verified in `LevelPackSolvabilityTest` in under 15s; end-to-end user flow verified in `UserFlowEndToEndTest`).
    - Manual QA matrix in `docs/QA.md` and Google Play Console release checklist in `docs/RELEASE.md`.
+
+---
+
+### Step 10.5: Rewarded Ads (AdMob Only, Child-Safe) Architecture Notes
+
+1. **Google Play Families Policy & COPPA Compliance**:
+   - `RequestConfiguration` configured globally prior to initialization:
+     - `setTagForChildDirectedTreatment(TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE)`
+     - `setMaxAdContentRating(MAX_AD_CONTENT_RATING_G)`
+     - `setTagForUnderAgeOfConsent(TAG_FOR_UNDER_AGE_OF_CONSENT_TRUE)`
+   - Only official Google Mobile Ads SDK (`play-services-ads:23.6.0`) and Google UMP SDK (`user-messaging-platform:3.1.0`). Zero external mediation, zero third-party ad networks.
+   - Absolutely NO interstitials, NO banners, and NO automatic or unprompted ad popups anywhere in the game.
+   - Complete ad suppression in tutorial levels 1 through 6 (`LevelIdHelper.parseFlatIndex(levelId) <= 6`).
+
+2. **Core Architecture (`com.kasif.arrowbuddies.core.ads`)**:
+   - `AdsManager` interface defining reactive `StateFlow<AdState>` (`Loading`, `Ready`, `Unavailable`), `isPrivacyOptionsRequired`, and `showRewardedAd(...)`.
+   - `AdMobAdsManager` singleton:
+     - Runs Google UMP consent flow on startup via `MainActivity`.
+     - Offloads `MobileAds.initialize` to `Dispatchers.IO`.
+     - Preloads one rewarded ad with exponential backoff retry (up to 3 tries: 2s, 4s, 8s).
+     - Idempotent reward callback guarded with `AtomicBoolean`.
+     - Audio synchronization: automatically calls `SoundManager.pauseAll()` while the ad plays and `SoundManager.resumeAll()` on dismiss/failure.
+   - `FakeAdsManager`: fast, in-memory test double with full state manipulation and simulated failures.
+
+3. **Opt-in Player Placements**:
+   - **Fail Sheet**: "Watch a short video for +1 heart" — allows continuing on the existing board state.
+   - **Win Sheet**: "Double your berries" — awards 2x berries once per level completion.
+   - **Hint Shop**: "Free hint with a video" — available when hints = 0, capped at max 3/day and stored in `GamePreferencesDataStore`, automatically resetting at local midnight.
+   - **Graceful Offline State**: Buttons are either hidden or cleanly disabled with `"No video right now"`. Never blocks player progress.
+
+4. **Privacy Options & Credentials**:
+   - Settings screen includes direct "Ad Privacy Options" button reopening UMP consent form (`adsManager.showPrivacyOptionsForm(activity)`).
+   - Single kill-switch: `BuildConfig.ADS_ENABLED` + `GamePreferencesDataStore` override.
+   - Debug builds use official Google test IDs (`ca-app-pub-3940256099942544/5224354917`).
+   - Release builds enforce presence of git-ignored `ads.properties` or fail the build at configuration time.
+   - `app-ads.txt` template placed at project root.
+   - Complete technical documentation in `docs/ADS.md` and Google Play Data Safety disclosure in `docs/DATA_SAFETY.md`.
+
+5. **Test Coverage**:
+   - Unit tests in `AdsManagerTest.kt`: reward idempotency (zero double-grants), tutorial level 1-6 suppression rule, daily cap of 3 with midnight reset, ad state transitions.
+   - Compose UI tests in `RewardedAdButtonUiTest.kt`: Ready vs Unavailable button states, tutorial suppression, fail sheet, win sheet, booster shop.
+   - All tests passing in both debug and release configurations.
 
 ---
 

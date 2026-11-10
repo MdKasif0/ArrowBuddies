@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
 import com.google.common.truth.Truth.assertThat
+import com.kasif.arrowbuddies.core.ads.FakeAdsManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import com.kasif.arrowbuddies.data.repository.DefaultLevelRepository
@@ -140,6 +141,10 @@ class GameViewModelTest {
         override suspend fun recordDailyCompletion(date: String, stars: Int, mistakes: Int) {}
         override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
         override suspend fun setReminderPromptShown(shown: Boolean) {}
+        override val adsEnabled: Flow<Boolean> = flowOf(true)
+        override fun getRemainingDailyAdHints(): Flow<Int> = flowOf(3)
+        override suspend fun claimFreeAdHint(): Boolean = true
+        override suspend fun setAdsEnabled(enabled: Boolean) {}
     }
 
     private class FakeHapticsManager : HapticsManager {
@@ -171,6 +176,7 @@ class GameViewModelTest {
 
     private lateinit var levelRepository: FakeLevelRepository
     private lateinit var gameRepository: FakeGameRepository
+    private lateinit var adsManager: FakeAdsManager
     private lateinit var hapticsManager: FakeHapticsManager
     private lateinit var soundManager: FakeSoundManager
 
@@ -178,6 +184,7 @@ class GameViewModelTest {
     fun setUp() {
         levelRepository = FakeLevelRepository()
         gameRepository = FakeGameRepository()
+        adsManager = FakeAdsManager()
         hapticsManager = FakeHapticsManager()
         soundManager = FakeSoundManager()
     }
@@ -191,7 +198,7 @@ class GameViewModelTest {
     fun `initial state loads dev level 1 with 3 hearts and safe moves`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.uiState.test {
@@ -211,7 +218,7 @@ class GameViewModelTest {
     fun `tapping escaping buddy locks input, plays escape effect, updates state, and wins on last buddy`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.TapBuddy("bunny_1"))
@@ -238,7 +245,7 @@ class GameViewModelTest {
     fun `tapping blocked buddy in level 2 triggers bonk, decrements heart, and causes game over after 3 bonks`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "2"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         assertThat(viewModel.uiState.value.safeBuddyIds).containsExactly("bunny_1", "piglet_1")
@@ -269,7 +276,7 @@ class GameViewModelTest {
     fun `undo restores board state from successful move history while keeping current hearts`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.TapBuddy("bunny_1"))
@@ -290,7 +297,7 @@ class GameViewModelTest {
     fun `restart resets level to initial state with 3 hearts and full buddy list`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "2"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.TapBuddy("chick_1"))
@@ -311,7 +318,7 @@ class GameViewModelTest {
     fun `path peek computes escape for clear buddy and blocker for blocked buddy`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "2"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.StartPathPeek("bunny_1"))
@@ -334,7 +341,7 @@ class GameViewModelTest {
     fun `level loads in the background and shows a loading state until ready`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
 
         assertThat(viewModel.uiState.value.isLoading).isTrue()
         assertThat(viewModel.uiState.value.gameState.buddies).isEmpty()
@@ -348,7 +355,7 @@ class GameViewModelTest {
     fun `survives process recreation by restoring serialized GameState from SavedStateHandle`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val vm1 = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val vm1 = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         vm1.onEvent(GameUiEvent.TapBuddy("bunny_1"))
@@ -358,7 +365,7 @@ class GameViewModelTest {
         val savedJson = savedStateHandle.get<String>(GameViewModel.KEY_SAVED_GAME_STATE)
         assertThat(savedJson).isNotNull()
 
-        val vm2 = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val vm2 = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         assertThat(vm2.uiState.value.rescuedCount).isEqualTo(1)
         assertThat(vm2.uiState.value.gameState.buddies.map { it.id }).containsExactly("chick_1")
     }
@@ -367,7 +374,7 @@ class GameViewModelTest {
     fun `level 4 mud mechanic stops buddy without losing hearts`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "4"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         // In level 4, puppy is at (2,4) facing UP towards mud at (2,2)
@@ -397,7 +404,7 @@ class GameViewModelTest {
     fun `level 6 cage and key unlocks matching cages when key carrier escapes`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "6"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         // Tapping caged fox refuses without heart loss
@@ -421,7 +428,7 @@ class GameViewModelTest {
     fun `level 8 sleepy buddy wakes up when neighbor vacates cell`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "8"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         // Tapping sleepy owl refuses without heart loss
@@ -448,7 +455,7 @@ class GameViewModelTest {
     fun `unseen mechanic triggers activeMechanicIntro dialog and dismissing marks it seen`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "4"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle()
 
         // Level 4 introduces MUD -> intro dialog shown
@@ -471,7 +478,7 @@ class GameViewModelTest {
     fun `switching across dev levels 1 through 9 loads correct level definitions`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         val devLevelIds = levelRepository.getAvailableDevLevelIds()
@@ -488,7 +495,7 @@ class GameViewModelTest {
     fun `level 1 starts with tutorial hand pointer and friendly speech bubble`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l01"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         val state = viewModel.uiState.value
@@ -501,7 +508,7 @@ class GameViewModelTest {
     fun `level 2 tutorial protects hearts on bonk and shows helpful speech bubble`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "w1-l02"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         // Blocked buddy bonks into blocker
@@ -517,7 +524,7 @@ class GameViewModelTest {
     fun `request hint highlights solvable buddy and points hand`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         viewModel.computeDispatcher = StandardTestDispatcher(testScheduler)
         advanceUntilIdle()
 
@@ -536,7 +543,7 @@ class GameViewModelTest {
     fun `pause and leave level dialog events toggle visibility correctly`() = runTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         val savedStateHandle = SavedStateHandle(mapOf("levelId" to "1"))
-        val viewModel = GameViewModel(levelRepository, gameRepository, savedStateHandle, hapticsManager, soundManager)
+        val viewModel = GameViewModel(levelRepository, gameRepository, adsManager, savedStateHandle, hapticsManager, soundManager)
         advanceUntilIdle() // let the level finish loading in the background
 
         viewModel.onEvent(GameUiEvent.OpenPauseSheet)

@@ -103,6 +103,10 @@ class SanctuaryViewModelTest {
         override suspend fun setMechanicSeen(mechanic: String) {}
         override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
         override suspend fun setReminderPromptShown(shown: Boolean) {}
+        override val adsEnabled: Flow<Boolean> = flowOf(true)
+        override fun getRemainingDailyAdHints(): Flow<Int> = flowOf(3)
+        override suspend fun claimFreeAdHint(): Boolean = true
+        override suspend fun setAdsEnabled(enabled: Boolean) {}
     }
 
     private class FakeSoundManager : SoundManager {

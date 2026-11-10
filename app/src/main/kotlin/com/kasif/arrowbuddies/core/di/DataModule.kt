@@ -2,6 +2,8 @@ package com.kasif.arrowbuddies.core.di
 
 import android.content.Context
 import androidx.room.Room
+import com.kasif.arrowbuddies.core.ads.AdMobAdsManager
+import com.kasif.arrowbuddies.core.ads.AdsManager
 import com.kasif.arrowbuddies.core.audio.DefaultSoundManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.haptics.DefaultHapticsManager
@@ -105,4 +107,10 @@ abstract class BindingModule {
     abstract fun bindMonetizationManager(
         impl: DefaultMonetizationManager
     ): MonetizationManager
+
+    @Binds
+    @Singleton
+    abstract fun bindAdsManager(
+        impl: AdMobAdsManager
+    ): AdsManager
 }

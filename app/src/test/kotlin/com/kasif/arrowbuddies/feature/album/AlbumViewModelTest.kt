@@ -108,6 +108,10 @@ class AlbumViewModelTest {
         override suspend fun setMechanicSeen(mechanic: String) {}
         override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
         override suspend fun setReminderPromptShown(shown: Boolean) {}
+        override val adsEnabled: Flow<Boolean> = flowOf(true)
+        override fun getRemainingDailyAdHints(): Flow<Int> = flowOf(3)
+        override suspend fun claimFreeAdHint(): Boolean = true
+        override suspend fun setAdsEnabled(enabled: Boolean) {}
     }
 
     private class FakeSoundManager : SoundManager {
@@ -185,7 +189,7 @@ class AlbumViewModelTest {
     }
 
     @Test
-    fun `granting debug berries increases berry balance`() = runTest(testDispatcher) {
+    fun `granting debug berries increases berry balance in debug builds`() = runTest(testDispatcher) {
         val repo = FakeGameRepository()
         val viewModel = AlbumViewModel(repo, FakeSoundManager(), FakeHapticsManager())
 
@@ -193,6 +197,10 @@ class AlbumViewModelTest {
         viewModel.onEvent(AlbumUiEvent.GrantDebugBerries(100))
         testScheduler.advanceUntilIdle()
 
-        assertThat(repo.grantedBerries).isEqualTo(100)
+        if (com.kasif.arrowbuddies.BuildConfig.DEBUG) {
+            assertThat(repo.grantedBerries).isEqualTo(100)
+        } else {
+            assertThat(repo.grantedBerries).isEqualTo(0)
+        }
     }
 }

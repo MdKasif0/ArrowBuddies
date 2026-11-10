@@ -41,6 +41,9 @@ interface PlayerProfileDao {
     @Query("UPDATE player_profile SET berries = berries + :amount WHERE id = 1")
     suspend fun addBerries(amount: Int)
 
+    @Query("UPDATE player_profile SET hints = hints + :amount WHERE id = 1")
+    suspend fun addHints(amount: Int)
+
     @Query("UPDATE player_profile SET berries = berries - :amount WHERE id = 1 AND berries >= :amount")
     suspend fun spendBerries(amount: Int): Int
 

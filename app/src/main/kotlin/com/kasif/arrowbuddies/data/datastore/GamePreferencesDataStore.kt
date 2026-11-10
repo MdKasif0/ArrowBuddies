@@ -5,7 +5,10 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.kasif.arrowbuddies.BuildConfig
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -29,6 +32,9 @@ class GamePreferencesDataStore @Inject constructor(
         val REDUCE_MOTION = booleanPreferencesKey("reduce_motion")
         val DAILY_REMINDER_ENABLED = booleanPreferencesKey("daily_reminder_enabled")
         val REMINDER_PROMPT_SHOWN = booleanPreferencesKey("reminder_prompt_shown")
+        val ADS_ENABLED_OVERRIDE = booleanPreferencesKey("ads_enabled_override")
+        val DAILY_AD_HINTS_COUNT = intPreferencesKey("daily_ad_hints_count")
+        val LAST_AD_HINT_DATE = stringPreferencesKey("last_ad_hint_date")
     }
 
     private fun flag(key: Preferences.Key<Boolean>, default: Boolean): Flow<Boolean> =
@@ -57,4 +63,55 @@ class GamePreferencesDataStore @Inject constructor(
 
     suspend fun setMechanicSeen(mechanic: String) =
         setFlag(booleanPreferencesKey("mechanic_seen_$mechanic"), true)
+
+    val adsEnabled: Flow<Boolean> = context.dataStore.data.map { preferences ->
+        (preferences[PreferencesKeys.ADS_ENABLED_OVERRIDE] ?: true) && BuildConfig.ADS_ENABLED
+    }
+
+    suspend fun setAdsEnabledOverride(enabled: Boolean) =
+        setFlag(PreferencesKeys.ADS_ENABLED_OVERRIDE, enabled)
+
+    suspend fun getRemainingDailyAdHints(todayDate: String): Int {
+        var remaining = 3
+        context.dataStore.edit { preferences ->
+            val lastDate = preferences[PreferencesKeys.LAST_AD_HINT_DATE] ?: ""
+            if (lastDate != todayDate) {
+                preferences[PreferencesKeys.LAST_AD_HINT_DATE] = todayDate
+                preferences[PreferencesKeys.DAILY_AD_HINTS_COUNT] = 0
+                remaining = 3
+            } else {
+                val currentCount = preferences[PreferencesKeys.DAILY_AD_HINTS_COUNT] ?: 0
+                remaining = (3 - currentCount).coerceAtLeast(0)
+            }
+        }
+        return remaining
+    }
+
+    suspend fun claimDailyAdHint(todayDate: String): Boolean {
+        var success = false
+        context.dataStore.edit { preferences ->
+            val lastDate = preferences[PreferencesKeys.LAST_AD_HINT_DATE] ?: ""
+            val currentCount = if (lastDate == todayDate) {
+                preferences[PreferencesKeys.DAILY_AD_HINTS_COUNT] ?: 0
+            } else {
+                preferences[PreferencesKeys.LAST_AD_HINT_DATE] = todayDate
+                0
+            }
+
+            if (currentCount < 3) {
+                preferences[PreferencesKeys.DAILY_AD_HINTS_COUNT] = currentCount + 1
+                success = true
+            }
+        }
+        return success
+    }
+
+    fun getDailyAdHintsCount(todayDate: String): Flow<Int> = context.dataStore.data.map { preferences ->
+        val lastDate = preferences[PreferencesKeys.LAST_AD_HINT_DATE] ?: ""
+        if (lastDate == todayDate) {
+            preferences[PreferencesKeys.DAILY_AD_HINTS_COUNT] ?: 0
+        } else {
+            0
+        }
+    }
 }

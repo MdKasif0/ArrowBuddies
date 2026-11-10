@@ -29,3 +29,9 @@
 # Coroutines
 -dontwarn kotlinx.coroutines.**
 
+# Google Mobile Ads & UMP SDK
+-keep public class com.google.android.gms.ads.** { *; }
+-keep public class com.google.android.ump.** { *; }
+-dontwarn com.google.android.gms.ads.**
+-dontwarn com.google.android.ump.**
+

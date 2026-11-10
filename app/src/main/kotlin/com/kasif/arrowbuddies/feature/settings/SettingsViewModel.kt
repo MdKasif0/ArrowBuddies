@@ -3,6 +3,7 @@ package com.kasif.arrowbuddies.feature.settings
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kasif.arrowbuddies.core.ads.AdsManager
 import com.kasif.arrowbuddies.core.audio.SoundManager
 import com.kasif.arrowbuddies.core.haptics.HapticsManager
 import com.kasif.arrowbuddies.core.notification.DailyReminderScheduler
@@ -21,6 +22,7 @@ class SettingsViewModel @Inject constructor(
     private val repository: GameRepository,
     private val soundManager: SoundManager,
     private val hapticsManager: HapticsManager,
+    private val adsManager: AdsManager,
     @ApplicationContext private val context: Context? = null
 ) : ViewModel() {
 
@@ -56,6 +58,16 @@ class SettingsViewModel @Inject constructor(
                 _uiState.update { it.copy(dailyReminderEnabled = enabled) }
             }
         }
+        viewModelScope.launch {
+            adsManager.isPrivacyOptionsRequired.collect { req ->
+                _uiState.update { it.copy(isPrivacyOptionsRequired = req) }
+            }
+        }
+        viewModelScope.launch {
+            repository.adsEnabled.collect { enabled ->
+                _uiState.update { it.copy(adsEnabled = enabled) }
+            }
+        }
     }
 
     fun onEvent(event: SettingsUiEvent) {
@@ -74,6 +86,10 @@ class SettingsViewModel @Inject constructor(
                             DailyReminderScheduler.cancelDailyReminder(ctx)
                         }
                     }
+                }
+                is SettingsUiEvent.ToggleAds -> repository.setAdsEnabled(event.enabled)
+                is SettingsUiEvent.OpenPrivacyOptions -> {
+                    adsManager.showPrivacyOptionsForm(event.activity)
                 }
                 is SettingsUiEvent.OpenPrivacyPolicy -> _uiState.update { it.copy(showPrivacyPolicyDialog = true) }
                 is SettingsUiEvent.DismissPrivacyPolicy -> _uiState.update { it.copy(showPrivacyPolicyDialog = false) }

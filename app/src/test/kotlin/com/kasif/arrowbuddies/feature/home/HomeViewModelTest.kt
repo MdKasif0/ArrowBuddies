@@ -90,6 +90,10 @@ class HomeViewModelTest {
         override suspend fun recordDailyCompletion(date: String, stars: Int, mistakes: Int) {}
         override suspend fun setDailyReminderEnabled(enabled: Boolean) {}
         override suspend fun setReminderPromptShown(shown: Boolean) {}
+        override val adsEnabled: Flow<Boolean> = kotlinx.coroutines.flow.flowOf(true)
+        override fun getRemainingDailyAdHints(): Flow<Int> = kotlinx.coroutines.flow.flowOf(3)
+        override suspend fun claimFreeAdHint(): Boolean = true
+        override suspend fun setAdsEnabled(enabled: Boolean) {}
     }
 
     @Before

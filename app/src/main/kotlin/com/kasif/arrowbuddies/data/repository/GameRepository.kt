@@ -50,6 +50,11 @@ interface GameRepository {
     val achievements: Flow<List<Achievement>>
     val dailyReminderEnabled: Flow<Boolean>
     val reminderPromptShown: Flow<Boolean>
+    val adsEnabled: Flow<Boolean>
+
+    fun getRemainingDailyAdHints(): Flow<Int>
+    suspend fun claimFreeAdHint(): Boolean
+    suspend fun setAdsEnabled(enabled: Boolean)
 
     fun getLevelStars(levelId: String): Flow<Int>
     fun isMechanicSeen(mechanic: String): Flow<Boolean>
@@ -167,6 +172,28 @@ class DefaultGameRepository @Inject constructor(
     override val achievements: Flow<List<Achievement>> = achievementDao.getAllAchievements()
     override val dailyReminderEnabled: Flow<Boolean> = preferences.dailyReminderEnabled
     override val reminderPromptShown: Flow<Boolean> = preferences.reminderPromptShown
+    override val adsEnabled: Flow<Boolean> = preferences.adsEnabled
+
+    override fun getRemainingDailyAdHints(): Flow<Int> {
+        val today = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE)
+        return preferences.getDailyAdHintsCount(today).map { count ->
+            (3 - count).coerceIn(0, 3)
+        }
+    }
+
+    override suspend fun claimFreeAdHint(): Boolean {
+        val today = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE)
+        val claimed = preferences.claimDailyAdHint(today)
+        if (claimed) {
+            ensureProfile()
+            profileDao.addHints(1)
+        }
+        return claimed
+    }
+
+    override suspend fun setAdsEnabled(enabled: Boolean) {
+        preferences.setAdsEnabledOverride(enabled)
+    }
 
     override val totalRescued: Flow<Int> = playerProfile.map { it.totalRescued }
     override val berries: Flow<Int> = playerProfile.map { it.berries }
