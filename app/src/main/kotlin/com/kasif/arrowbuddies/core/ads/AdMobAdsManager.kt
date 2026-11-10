@@ -84,6 +84,7 @@ class AdMobAdsManager @Inject constructor(
             .setTagForChildDirectedTreatment(RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE)
             .setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_G)
             .setTagForUnderAgeOfConsent(RequestConfiguration.TAG_FOR_UNDER_AGE_OF_CONSENT_TRUE)
+            .setTestDeviceIds(listOf(AdRequest.DEVICE_ID_EMULATOR))
             .build()
         MobileAds.setRequestConfiguration(requestConfiguration)
 
@@ -153,7 +154,7 @@ class AdMobAdsManager @Inject constructor(
         isAdLoading = true
         _adState.value = AdState.Loading
 
-        val adUnitId = BuildConfig.ADMOB_REWARDED_FAIL_ID
+        val adUnitId = BuildConfig.ADMOB_REWARDED_HINT_ID
         val adRequest = AdRequest.Builder().build()
 
         RewardedAd.load(

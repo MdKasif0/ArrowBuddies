@@ -16,6 +16,21 @@ android {
     namespace = applicationPackage
     compileSdk = 35
 
+    val adsPropertiesFile = rootProject.file("ads.properties")
+    val adsProperties = Properties()
+    val isReleaseTask = gradle.startParameter.taskNames.any { it.contains("release", ignoreCase = true) }
+    if (adsPropertiesFile.exists()) {
+        adsPropertiesFile.inputStream().use { adsProperties.load(it) }
+    } else if (isReleaseTask) {
+        throw GradleException("Release build failed: 'ads.properties' is missing! Please provide ads.properties at root with AdMob production IDs.")
+    }
+
+    val defaultAdmobAppId = adsProperties.getProperty("admob.app.id") ?: "ca-app-pub-2079661187183327~8349901250"
+    val defaultRewardedFailId = adsProperties.getProperty("admob.rewarded.fail.id") ?: "ca-app-pub-2079661187183327/2957973772"
+    val defaultRewardedWinId = adsProperties.getProperty("admob.rewarded.win.id") ?: "ca-app-pub-2079661187183327/2957973772"
+    val defaultRewardedHintId = adsProperties.getProperty("admob.rewarded.hint.id") ?: "ca-app-pub-2079661187183327/2957973772"
+    val defaultAdsEnabled = adsProperties.getProperty("admob.enabled", "true").toBoolean()
+
     defaultConfig {
         applicationId = applicationPackage
         minSdk = 26
@@ -30,31 +45,18 @@ android {
             useSupportLibrary = true
         }
 
-        // AdMob Official Test Identifiers
-        val testAdmobAppId = "ca-app-pub-3940256099942544~3347511713"
-        val testRewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917"
-
-        manifestPlaceholders["admobAppId"] = testAdmobAppId
-        buildConfigField("boolean", "ADS_ENABLED", "true")
-        buildConfigField("String", "ADMOB_APP_ID", "\"$testAdmobAppId\"")
-        buildConfigField("String", "ADMOB_REWARDED_FAIL_ID", "\"$testRewardedAdUnitId\"")
-        buildConfigField("String", "ADMOB_REWARDED_WIN_ID", "\"$testRewardedAdUnitId\"")
-        buildConfigField("String", "ADMOB_REWARDED_HINT_ID", "\"$testRewardedAdUnitId\"")
+        manifestPlaceholders["admobAppId"] = defaultAdmobAppId
+        buildConfigField("boolean", "ADS_ENABLED", defaultAdsEnabled.toString())
+        buildConfigField("String", "ADMOB_APP_ID", "\"$defaultAdmobAppId\"")
+        buildConfigField("String", "ADMOB_REWARDED_FAIL_ID", "\"$defaultRewardedFailId\"")
+        buildConfigField("String", "ADMOB_REWARDED_WIN_ID", "\"$defaultRewardedWinId\"")
+        buildConfigField("String", "ADMOB_REWARDED_HINT_ID", "\"$defaultRewardedHintId\"")
     }
 
     val keystorePropertiesFile = rootProject.file("keystore.properties")
     val keystoreProperties = Properties()
     if (keystorePropertiesFile.exists()) {
         keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-    }
-
-    val adsPropertiesFile = rootProject.file("ads.properties")
-    val adsProperties = Properties()
-    val isReleaseTask = gradle.startParameter.taskNames.any { it.contains("release", ignoreCase = true) }
-    if (adsPropertiesFile.exists()) {
-        adsPropertiesFile.inputStream().use { adsProperties.load(it) }
-    } else if (isReleaseTask) {
-        throw GradleException("Release build failed: 'ads.properties' is missing! Please provide ads.properties at root with AdMob production IDs.")
     }
 
     signingConfigs {
@@ -79,18 +81,12 @@ android {
                 "proguard-rules.pro"
             )
 
-            val releaseAppId = adsProperties.getProperty("admob.app.id") ?: "ca-app-pub-3940256099942544~3347511713"
-            val releaseFailAdId = adsProperties.getProperty("admob.rewarded.fail.id") ?: "ca-app-pub-3940256099942544/5224354917"
-            val releaseWinAdId = adsProperties.getProperty("admob.rewarded.win.id") ?: "ca-app-pub-3940256099942544/5224354917"
-            val releaseHintAdId = adsProperties.getProperty("admob.rewarded.hint.id") ?: "ca-app-pub-3940256099942544/5224354917"
-            val releaseAdsEnabled = adsProperties.getProperty("admob.enabled", "true").toBoolean()
-
-            manifestPlaceholders["admobAppId"] = releaseAppId
-            buildConfigField("boolean", "ADS_ENABLED", releaseAdsEnabled.toString())
-            buildConfigField("String", "ADMOB_APP_ID", "\"$releaseAppId\"")
-            buildConfigField("String", "ADMOB_REWARDED_FAIL_ID", "\"$releaseFailAdId\"")
-            buildConfigField("String", "ADMOB_REWARDED_WIN_ID", "\"$releaseWinAdId\"")
-            buildConfigField("String", "ADMOB_REWARDED_HINT_ID", "\"$releaseHintAdId\"")
+            manifestPlaceholders["admobAppId"] = defaultAdmobAppId
+            buildConfigField("boolean", "ADS_ENABLED", defaultAdsEnabled.toString())
+            buildConfigField("String", "ADMOB_APP_ID", "\"$defaultAdmobAppId\"")
+            buildConfigField("String", "ADMOB_REWARDED_FAIL_ID", "\"$defaultRewardedFailId\"")
+            buildConfigField("String", "ADMOB_REWARDED_WIN_ID", "\"$defaultRewardedWinId\"")
+            buildConfigField("String", "ADMOB_REWARDED_HINT_ID", "\"$defaultRewardedHintId\"")
         }
         debug {
             isMinifyEnabled = false

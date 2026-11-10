@@ -41,3 +41,4 @@ ArrowBuddies integrates Google Mobile Ads (AdMob) and Google User Messaging Plat
 
 - **In-App Privacy Options**: Players in the EEA/UK can access the UMP Consent management form at any time via **Settings > Ad Privacy Options**.
 - **Data Deletion**: Since ArrowBuddies does not retain data on external servers, uninstalling the app or clearing app storage immediately deletes all local progress and history.
+

@@ -1,8 +1,10 @@
-# Google AdMob Configuration Template for ArrowBuddies (Release IDs)
-# Copy this file to ads.properties and fill in your production AdMob credentials.
-# Google Play Families Policy requires all ad units to be configured for child-directed apps.
-admob.app.id=ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY
-admob.rewarded.fail.id=ca-app-pub-XXXXXXXXXXXXXXXX/ZZZZZZZZZZ
-admob.rewarded.win.id=ca-app-pub-XXXXXXXXXXXXXXXX/WWWWWWWWWW
-admob.rewarded.hint.id=ca-app-pub-XXXXXXXXXXXXXXXX/VVVVVVVVVV
+# Google AdMob Configuration Template for ArrowBuddies
+# App ID
+admob.app.id=ca-app-pub-2079661187183327~8349901250
+
+# Rewarded Ad Units (e.g. ArrowBuddies_Hint_Rewarded)
+admob.rewarded.hint.id=ca-app-pub-2079661187183327/2957973772
+admob.rewarded.fail.id=ca-app-pub-2079661187183327/2957973772
+admob.rewarded.win.id=ca-app-pub-2079661187183327/2957973772
+
 admob.enabled=true

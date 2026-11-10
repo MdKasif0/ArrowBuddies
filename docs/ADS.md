@@ -48,26 +48,25 @@ Rewards are granted strictly inside `onUserEarnedReward` guarded by an atomic bo
 
 ## 4. Configuration & Keys
 
-### Debug Builds
-Debug builds utilize Google's official, certified public test credentials:
-- **App ID**: `ca-app-pub-3940256099942544~3347511713`
-- **Rewarded Ad Unit ID**: `ca-app-pub-3940256099942544/5224354917`
+### Configured Identifiers
+- **App ID**: `ca-app-pub-2079661187183327~8349901250`
+- **Publisher ID**: `pub-2079661187183327`
+- **Rewarded Ad Unit Name**: `ArrowBuddies_Hint_Rewarded`
+- **Rewarded Ad Unit ID**: `ca-app-pub-2079661187183327/2957973772`
 
-### Release Builds
-Production IDs are loaded from a git-ignored `ads.properties` file in the project root:
+### ads.properties
+The credentials reside in `ads.properties` (git-ignored) and are injected via `BuildConfig` and manifest placeholders:
 ```properties
-ADMOB_APP_ID=ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX
-ADMOB_REWARDED_FAIL_ID=ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX
-ADMOB_REWARDED_WIN_ID=ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX
-ADMOB_REWARDED_HINT_ID=ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX
-ADS_ENABLED=true
+admob.app.id=ca-app-pub-2079661187183327~8349901250
+admob.rewarded.hint.id=ca-app-pub-2079661187183327/2957973772
+admob.rewarded.fail.id=ca-app-pub-2079661187183327/2957973772
+admob.rewarded.win.id=ca-app-pub-2079661187183327/2957973772
+admob.enabled=true
 ```
-*Note*: `app/build.gradle.kts` enforces that release builds will fail with a clear diagnostic message if `ads.properties` is missing or incomplete. An example template is provided in `ads.properties.example`.
 
 ### App-Ads.txt
-A standard `app-ads.txt` template is provided at the repository root:
 ```text
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-2079661187183327, DIRECT, f08c47fec0942fa0
 ```
 This file must be deployed to the root of the official developer website listed on Google Play Console (e.g. `https://arrowbuddies.com/app-ads.txt`).
 
@@ -95,3 +94,4 @@ Under EEA/UK GDPR and applicable child privacy regulations:
 - [x] UMP Privacy Options accessible from Settings
 - [x] Release build verification fails if `ads.properties` is missing
 - [x] Unit and Compose UI test coverage passing
+

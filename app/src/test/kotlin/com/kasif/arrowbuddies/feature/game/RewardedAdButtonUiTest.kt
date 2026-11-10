@@ -129,3 +129,4 @@ class RewardedAdButtonUiTest {
             .assertHasClickAction()
     }
 }
+

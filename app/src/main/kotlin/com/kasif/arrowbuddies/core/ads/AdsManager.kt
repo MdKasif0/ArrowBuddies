@@ -84,3 +84,4 @@ interface AdsManager {
      */
     fun showPrivacyOptionsForm(activity: Activity, onDismissed: () -> Unit = {})
 }
+
